@@ -1,0 +1,8 @@
+/*
+ * 0. Left-to-Right and Top-to-Bottom
+ * Latin, Cyrillic, Greek, Armenian, Georgian, Tamazight, Devanagari, Thai, Tibetan, Cherokee, and so on. 
+ */
+
+ * {
+    direction: ltr;
+ }

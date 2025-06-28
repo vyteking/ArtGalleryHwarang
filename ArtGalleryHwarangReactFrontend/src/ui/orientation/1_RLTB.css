@@ -1,0 +1,8 @@
+/*
+ * 1. Right-to-Left and Top-to-Bottom
+ * Arabic, Hebrew, Syriac, Thaana, N;Ko, and so on. 
+ */
+
+ * {
+    direction: rtl;
+ }

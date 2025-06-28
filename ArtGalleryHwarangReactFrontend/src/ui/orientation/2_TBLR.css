@@ -1,0 +1,9 @@
+/*
+ * 2. Top=to-Bottom and Left-to-Right
+ * Mongolian, Manchu, 'Phags-Pa, Sogdian, Mayan, and so on. 
+ */
+
+* {
+    direction: ltr;
+    writing-mode: vertical-lr;
+};

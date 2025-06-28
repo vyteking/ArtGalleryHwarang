@@ -1,0 +1,76 @@
+{
+    "LocaleInfo":{
+        "code":"de-DE",
+        "name":"Deutsch",
+        "direction":0
+    }, 
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":".",
+        "dateformat":"dd.MM.yyyy"
+    },
+    "Texts":{
+        "common":{
+            "OK":"OK",
+            "Yes":"Ja",
+            "No":"Nein",
+            "Confirm":"Bestätigen",
+            "Cancel":"Abbrechen", 
+            "Open":"Öffnen", 
+            "Close":"Schließen",
+            "Reset":"Zurücksetzen"
+        },
+        "userinfo":{
+            "userindex1st":"1. Benutzerindex", 
+            "userindex2nd":"2. Benutzerindex", 
+            "userindex3rd":"3. Benutzerindex", 
+            "userID":"Benutzer-ID",
+            "userpassword":"Passwort",
+            "userpassword2nd":"2. Passwort",
+            "userstatus":"Benutzerzustand",
+            "userlevel":"Benutzerehene",
+            "userjoindate":"Registrierungsdatum",
+            "useremail":"E-Mail",
+            "userphonenumber":"Telefonnummer",
+            "username":"Name",
+            "userdescription":"Beschreibung"
+        },
+        "useroptions":{
+            "Login":"Anmelden",
+            "Logout":"Abmelden",
+            "SignUp":"Registrieren"
+        },
+        "login":{
+            "scr_Login":"Anmeldung",
+            "lbl_userId":"Benutzer-ID",
+            "lbl_userPW":"Passwort",
+            "tbx_userId_Placeholder":"Gib deine Benutzer-ID ein hier. ",
+            "tbx_userPW_Placeholder":"Gib dein Passwort ein hier. ",
+            "btn_Login":"Anmelden",
+            "btn_Signup":"Registrieren",
+            "btn_reset":"Zurücksetzen"
+        }, 
+        "signup":{
+            "scr_SignUp":"Registrierung",
+            "lbl_UserId":"Benutzer-ID",
+            "tbx_UserId_Placeholder":"Gib deine Benutzer-ID ein hier. ",
+            "lbl_ConfirmUserID":"Benutzer-ID bestätigen",
+            "tbx_ConfirmUserID_Placeholder":"Wiederhole deine Benutzer-ID hier. ",
+            "lbl_UserPW":"Passwort",
+            "tbx_UserPW_Placeholder":"Gib dein Passwort ein hier. ",
+            "lbl_ConfirmUserPW":"Passwort bestätigen",
+            "tbx_ConfirmUserPW_Placeholder":"Wiederhole dein Passwort hier. ",
+            "btn_GoBack":"Zurückgehen",
+            "btn_Reset":"Zurücksetzen",
+            "btn_Signup":"Registrieren"
+        },
+        "userstatus":{
+            "SuspendedUser":"Gesperrter Benutzer",
+            "NormalUser":"Normaler Benutzer",
+            "Admin":"Verwalter",
+            "Developer":"Entwickler",
+            "ProjectManager":"Projektleiter",
+            "Founder":"Gründer"
+        }
+    }
+}

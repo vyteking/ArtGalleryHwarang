@@ -1,0 +1,76 @@
+{
+    "LocaleInfo":{
+        "code":"ru-RU",
+        "name":"Русский",
+        "direction":0
+    }, 
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":".",
+        "dateformat":"dd/MM/yyyy"
+    },
+    "Texts":{
+        "common":{
+            "OK":"OK",
+            "Yes":"Да",
+            "No":"Нет",
+            "Confirm":"Подтверждение",
+            "Cancel":"Отмена", 
+            "Open":"Открыть", 
+            "Close":"Закрыть",
+            "Reset":"Сброс"
+        },
+        "userinfo":{
+            "userindex1st":"1-ый индекс пользователя", 
+            "userindex2nd":"2-ой индекс пользователя", 
+            "userindex3rd":"3-ий индекс пользователя", 
+            "userID":"Идент. пользователя",
+            "userpassword":"Пароль",
+            "userpassword2nd":"2-ой пароль",
+            "userstatus":"Состояние пользователя",
+            "userlevel":"Уровень пользователя",
+            "userjoindate":"Дата регистрации",
+            "useremail":"Электронная почта",
+            "userphonenumber":"Номер телефона",
+            "username":"Имя пользователя",
+            "userdescription":"Описание"
+        },
+        "useroptions":{
+            "Login":"",
+            "Logout":"",
+            "SignUp":""
+        },
+        "login":{
+            "scr_Login":"Вход",
+            "lbl_userId":"Идент. пользователя",
+            "lbl_userPW":"Пароль",
+            "tbx_userId_Placeholder":"Вот вставить твой идент. ",
+            "tbx_userPW_Placeholder":"Вот вставить твой пароль. ",
+            "btn_Login":"Вход",
+            "btn_Signup":"Зарегистрироваться",
+            "btn_reset":"Сброс"
+        }, 
+        "signup":{
+            "scr_SignUp":"Регистрация",
+            "lbl_UserId":"Идент. пользователя",
+            "tbx_UserId_Placeholder":"Вот вставить твой идент. ",
+            "lbl_ConfirmUserID":"Подтверждение идент. ",
+            "tbx_ConfirmUserID_Placeholder":"Вот повторить твой идент. ",
+            "lbl_UserPW":"Пароль",
+            "tbx_UserPW_Placeholder":"Вот вставить твой пароль. ",
+            "lbl_ConfirmUserPW":"Подтверждение пароля",
+            "tbx_ConfirmUserPW_Placeholder":"Вот повторить твой пароль. ",
+            "btn_GoBack":"Пойти",
+            "btn_Reset":"Сброс",
+            "btn_Signup":"Зарегистрироваться"
+        },
+        "userstatus":{
+            "SuspendedUser":"Отстраненный пользователь",
+            "NormalUser":"Нормальный пользователь",
+            "Admin":"Администратор",
+            "Developer":"Разработчик",
+            "ProjectManager":"Менеджер проекта",
+            "Founder":"Основатель"
+        }
+    }
+}

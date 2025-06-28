@@ -1,0 +1,76 @@
+{
+    "LocaleInfo":{
+        "code":"ko-KR",
+        "name":"한국어",
+        "direction":3
+    }, 
+    "format":{
+        "number_decimal_separator":".",
+        "number_group_separator":",",
+        "dateformat":"yyyy/MM/dd"
+    },
+    "Texts":{
+        "common":{
+            "OK":"예",
+            "Yes":"네",
+            "No":"아니요",
+            "Confirm":"확인",
+            "Cancel":"취소", 
+            "Open":"열기", 
+            "Close":"닫기",
+            "Reset":"초기화"
+        },
+        "userinfo":{
+            "userindex1st":"사용자색인1번째", 
+            "userindex2nd":"사용자색인2번째", 
+            "userindex3rd":"사용자색인3번째", 
+            "userID":"아이디",
+            "userpassword":"암호",
+            "userpassword2nd":"2차암호",
+            "userstatus":"사용자상태",
+            "userlevel":"사용자레벨",
+            "userjoindate":"가입날짜",
+            "useremail":"전자우편",
+            "userphonenumber":"전화번호",
+            "username":"사용자이름",
+            "userdescription":"자기소개"
+        },
+        "useroptions":{
+            "Login":"로그인",
+            "Logout":"로그아웃",
+            "SignUp":"회원가입"
+        },
+        "login":{
+            "scr_Login":"로그인",
+            "lbl_userId":"아이디",
+            "lbl_userPW":"암호",
+            "tbx_userId_Placeholder":"아이디를 여기에 입력하세요. ",
+            "tbx_userPW_Placeholder":"암호를 여기에 입력하세요. ",
+            "btn_Login":"로그인",
+            "btn_Signup":"회원가입",
+            "btn_reset":"초기화"
+        },
+        "signup":{
+            "scr_SignUp":"회원가입",
+            "lbl_UserId":"아이디",
+            "tbx_UserId_Placeholder":"아이디를 여기에 입력하세요. ",
+            "lbl_ConfirmUserID":"아이디확인",
+            "tbx_ConfirmUserID_Placeholder":"아이디를 여기에 재입력하세요. ",
+            "lbl_UserPW":"암호",
+            "tbx_UserPW_Placeholder":"암호를 여기에 입력하세요. ",
+            "lbl_ConfirmUserPW":"암호확인",
+            "tbx_ConfirmUserPW_Placeholder":"암호를 여기에 재입력하세요. ",
+            "btn_GoBack":"뒤로 가기",
+            "btn_Reset":"초기화",
+            "btn_Signup":"회원가입"
+        },
+        "userstatus":{
+            "SuspendedUser":"정지사용자",
+            "NormalUser":"일반사용자",
+            "Admin":"관리자",
+            "Developer":"개발자",
+            "ProjectManager":"프로젝트관리자",
+            "Founder":"설립자"
+        }
+    }
+}

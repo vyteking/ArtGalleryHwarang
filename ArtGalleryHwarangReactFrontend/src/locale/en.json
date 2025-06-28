@@ -1,0 +1,76 @@
+{
+    "LocaleInfo":{
+        "code":"en-GB",
+        "name":"English",
+        "direction":0
+    }, 
+    "format":{
+        "number_decimal_separator":".",
+        "number_group_separator":",",
+        "dateformat":"dd/MM/yyyy"
+    },
+    "Texts":{
+        "common":{
+            "OK":"OK",
+            "Yes":"Yes",
+            "No":"No",
+            "Confirm":"Confirm",
+            "Cancel":"Cancel", 
+            "Open":"Open", 
+            "Close":"Close",
+            "Reset":"Reset"
+        },
+        "userinfo":{
+            "userindex1st":"1st User Index", 
+            "userindex2nd":"2nd User Index", 
+            "userindex3rd":"3rd User Index", 
+            "userID":"User ID",
+            "userpassword":"Password",
+            "userpassword2nd":"2nd Password",
+            "userstatus":"User Status",
+            "userlevel":"User Level",
+            "userjoindate":"Join Date",
+            "useremail":"E-Mail",
+            "userphonenumber":"Phone Number",
+            "username":"User Name",
+            "userdescription":"Description"
+        },
+        "useroptions":{
+            "Login":"",
+            "Logout":"",
+            "SignUp":""
+        },
+        "login":{
+            "scr_Login":"Login",
+            "lbl_userId":"User ID",
+            "lbl_userPW":"Password",
+            "tbx_userId_Placeholder":"Insert your user ID here. ",
+            "tbx_userPW_Placeholder":"Insert your password here. ",
+            "btn_Login":"Login",
+            "btn_Signup":"Sign up",
+            "btn_reset":"Reset"
+        }, 
+        "signup":{
+            "scr_SignUp":"Sign up",
+            "lbl_UserId":"User ID",
+            "tbx_UserId_Placeholder":"Insert your user ID here. ",
+            "lbl_ConfirmUserID":"Confirm User ID",
+            "tbx_ConfirmUserID_Placeholder":"Repeat your user ID here. ",
+            "lbl_UserPW":"Password",
+            "tbx_UserPW_Placeholder":"Insert your password here. ",
+            "lbl_ConfirmUserPW":"Confirm Password",
+            "tbx_ConfirmUserPW_Placeholder":"Repeat your password here. ",
+            "btn_GoBack":"Go Back",
+            "btn_Reset":"Reset",
+            "btn_Signup":"Sign Up"
+        },
+        "userstatus":{
+            "SuspendedUser":"Suspended User",
+            "NormalUser":"Normal User",
+            "Admin":"Administrator",
+            "Developer":"Developer",
+            "ProjectManager":"Project Manager",
+            "Founder":"Founder"
+        }
+    }
+}

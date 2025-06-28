@@ -1,0 +1,9 @@
+/*
+ * 3. Top-to-Bottom Right-to-Left Text Orientation. 
+ * Chinese, Korean, Japanese, Khitan, Jurchen, and so on. 
+ */
+
+* {
+    direction: rtl;
+    writing-mode: vertical-rl;
+};

@@ -1,0 +1,76 @@
+{
+    "LocaleInfo":{
+        "code":"fr-FR",
+        "name":"Français",
+        "direction":0
+    }, 
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":".",
+        "dateformat":"dd/MM/yyyy"
+    },
+    "Texts":{
+        "common":{
+            "OK":"OK",
+            "Yes":"Oui",
+            "No":"Non",
+            "Confirm":"Confirmer",
+            "Cancel":"Annuler", 
+            "Open":"Ouvrir", 
+            "Close":"Fermer",
+            "Reset":"Réinitialiser"
+        },
+        "userinfo":{
+            "userindex1st":"1er indice d'utilisateur", 
+            "userindex2nd":"2e indice d'utilisateur", 
+            "userindex3rd":"3e indice d'utilisateur", 
+            "userID":"ID utilisateur",
+            "userpassword":"Mot de passe",
+            "userpassword2nd":"2e mot de passe",
+            "userstatus":"Statut d'utilisateur",
+            "userlevel":"Niveau d'utilisateur",
+            "userjoindate":"Date d'inscription",
+            "useremail":"Courriel",
+            "userphonenumber":"Numéro d'appel",
+            "username":"Nom d'utilisateur",
+            "userdescription":"Description"
+        },
+        "useroptions":{
+            "Login":"Se connecter",
+            "Logout":"Se déconnecter",
+            "SignUp":"S'inscrire"
+        },
+        "login":{
+            "scr_Login":"Identifiant",
+            "lbl_userId":"ID utilisateur",
+            "lbl_userPW":"Mot de passe",
+            "tbx_userId_Placeholder":"Voici insérez votre ID utilisateur. ",
+            "tbx_userPW_Placeholder":"Voici insérez votre mot de passe. ",
+            "btn_Login":"Se connecter",
+            "btn_Signup":"S'inscrire",
+            "btn_reset":"Réinitialiser"
+        }, 
+        "signup":{
+            "scr_SignUp":"Inscription",
+            "lbl_UserId":"ID utilisateur",
+            "tbx_UserId_Placeholder":"Voici insérez votre ID utilisateur. ",
+            "lbl_ConfirmUserID":"Confirmer l'ID utilisateur",
+            "tbx_ConfirmUserID_Placeholder":"Voici répétez votre ID utilisateur. ",
+            "lbl_UserPW":"Mot de passe",
+            "tbx_UserPW_Placeholder":"Voici insérez votre mot de passe. ",
+            "lbl_ConfirmUserPW":"Confirmer le mot de passe",
+            "tbx_ConfirmUserPW_Placeholder":"Voici répétez votre mot de passe. ",
+            "btn_GoBack":"Rentrer",
+            "btn_Reset":"Réinitialiser",
+            "btn_Signup":"S'inscrire"
+        },
+        "userstatus":{
+            "SuspendedUser":"Utilisateur suspendu",
+            "NormalUser":"Utilisateur normal",
+            "Admin":"Administrateur",
+            "Developer":"Développeur",
+            "ProjectManager":"Chef de projet",
+            "Founder":"Fondateur"
+        }
+    }
+}

@@ -1,0 +1,84 @@
+{
+    "LocaleInfo":{
+        "code":"langcode",
+        "name":"Native Language Name",
+        "direction":0
+    }, 
+    "format":{
+        "number_decimal_separator":".",
+        "number_group_separator":",",
+        "dateformat":"yyyy-MM-dd"
+    },
+    "Texts":{
+        "common":{
+            "OK":"",
+            "Yes":"",
+            "No":"",
+            "Confirm":"",
+            "Cancel":"", 
+            "Open":"", 
+            "Close":"",
+            "Reset":""
+        },
+        "userinfo":{
+            "userindex1st":"", 
+            "userindex2nd":"", 
+            "userindex3rd":"", 
+            "userID":"",
+            "userpassword":"",
+            "userpassword2nd":"",
+            "userstatus":"",
+            "userlevel":"",
+            "userjoindate":"",
+            "useremail":"",
+            "userphonenumber":"",
+            "username":"",
+            "userdescription":""
+        },
+        "useroptions":{
+            "Login":"",
+            "Logout":"",
+            "SignUp":""
+        },
+        "login":{
+            "scr_Login":"",
+            "lbl_userId":"",
+            "lbl_userPW":"",
+            "tbx_userId_Placeholder":"",
+            "tbx_userPW_Placeholder":"",
+            "btn_Login":"",
+            "btn_Signup":"",
+            "btn_reset":""
+        }, 
+        "signup":{
+            "scr_SignUp":"",
+            "lbl_UserId":"",
+            "tbx_UserId_Placeholder":"",
+            "lbl_ConfirmUserID":"",
+            "tbx_ConfirmUserID_Placeholder":"",
+            "lbl_UserPW":"",
+            "tbx_UserPW_Placeholder":"",
+            "lbl_ConfirmUserPW":"",
+            "tbx_ConfirmUserPW_Placeholder":"",
+            "btn_GoBack":"",
+            "btn_Reset":"",
+            "btn_Signup":""
+        },
+        "userstatus":{
+            "SuspendedUser":"",
+            "NormalUser":"",
+            "Admin":"",
+            "Developer":"",
+            "ProjectManager":"",
+            "Founder":""
+        }
+    },
+    "LocaleTemplateCommentary":[
+        "JSON is UTF-8 only. ",
+        "LocaleInfo-direction: ",
+        "- 0=LR_TB: Left to right and top to bottom. Latin, Cyrillic, Greek, Armenian, Georgian, and so on",
+        "- 1=RL_TB: Right to left and top to bottom. Arabic, Hebrew, Syriac, and so on",
+        "- 2=TB_LR: Top to bottom and left to right. Mongolian, Mayan, and so on",
+        "- 3=TB_RL: Top to bottom and right to left. Chinese, Korean, Japanese, Jurchen, Khitan, and so on"
+    ]
+}
