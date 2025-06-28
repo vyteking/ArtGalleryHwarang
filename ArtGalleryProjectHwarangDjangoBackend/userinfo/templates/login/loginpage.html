@@ -1,0 +1,20 @@
+{%block login%}
+<div id="loginDiv" class="layout">
+<form id="loginform" class="login">
+    <h2>Login</h2>
+    <div class="loginDiv">
+        <label for="userident">Username: <label/>
+        <input type="text" id="userident" name="userident" placeholder="Your ident here">
+    </div>
+    <div class="loginDiv">
+        <label for="userPW">Password: <label/>
+        <input type="password" id="userPW" name="userPW" placeholder="Your password here">
+    </div>
+    <div class="loginDiv">
+        <button type="button" class="loginbutton">Sign up</button>
+        <button type="reset" class="loginbutton">Reset</button>
+        <button type="submit" class="loginbutton">Login</button>
+    </div>
+</form>
+</div>
+{%endblock%}

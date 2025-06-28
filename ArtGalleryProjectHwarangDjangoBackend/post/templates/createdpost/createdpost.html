@@ -1,0 +1,20 @@
+{% block createdpost %}
+<div id="postcreateDiv" class="layout">
+    <form method="post">
+        <div id="fileuploadDiv" class="postcreate">
+            <input type="file"/>
+        </div>
+        <div id="newposttitleDiv" class="postcreate">
+            <input type="text"/>
+        </div>
+        <div id="newpostdescriptionDiv" class="postcreate">
+            <textarea id="newpostdescriptionarea"></textarea>
+        </div>
+        <div class="postcreate">
+            <button type="button" id="">cancel</button>
+            <button type="reset">reset</button>
+            <button type="submit">post</button>
+        </div>
+    </form>
+</div>
+{% endblock createdpost %}
