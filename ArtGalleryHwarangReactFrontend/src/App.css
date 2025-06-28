@@ -6,3 +6,9 @@
   display: grid;
   place-items: center;
 }
+
+.text-hoz-ctr-ver-ctr {
+  text-align: center;
+  place-items: center;
+  place-content: center;
+}

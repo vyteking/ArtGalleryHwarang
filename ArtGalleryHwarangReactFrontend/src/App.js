@@ -12,9 +12,9 @@ function App() {
 
   return (
     <>
-      <Header loginusersession={usersessions} />
-      <MainWin loginusersession={usersessions} />
-      <Footer loginusersession={usersessions} />
+      <Header />
+      <MainWin />
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import './footer.css'
+import Base from '../../base'
 
 function Localelist() {
     const locales = [
@@ -20,7 +21,7 @@ function Localelist() {
     )
 }
 
-function Footer({loginusersession}) {
+function Footer() {
     return (
         <footer id="footertag" className="layout">
             footer

@@ -7,7 +7,7 @@ const Messageboxbuttons = Object.freeze({
 
 function Messagebox({messagestring, messagetype}) {
     return () => {
-        <div id="messagebox" class="layout">
+        <div id="messagebox" class="box">
             <div>
                 {messagestring}
             </div>

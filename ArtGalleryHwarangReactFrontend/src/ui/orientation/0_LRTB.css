@@ -5,4 +5,13 @@
 
  * {
     direction: ltr;
+    writing-mode: horizontal-tb;
+ }
+
+ .flowtype0 {
+    direction: ltr;
+ }
+
+ .flowtype1 {
+    direction:ltr;
  }
