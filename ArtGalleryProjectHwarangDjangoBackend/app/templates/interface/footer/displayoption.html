@@ -1,0 +1,31 @@
+{% block displayoption %}
+<div id="displayoptionwindowDiv" class="displayoptionwindow">
+    <table id="displayoptiontable" class="displayoptionwindow">
+        <tr class="displayoptiontablerow">
+            <td class="displayoptiontablecolumn">writing direction</td>
+            <td class="displayoptiontablecolumn">
+                <select class="displayoptionselect">
+                    <option>Horizontal</option>
+                    <option>Vertical</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="displayoptiontablecolumn">theme</td>
+            <td class="displayoptiontablecolumn">
+                <select class="displayoptionselect">
+                    <option>light</option>
+                    <option>dark</option>
+                    <option>terminal</option>
+                    <option>osilloscope</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div id="displayoptionbuttons">
+        <button class="displayoptionbutton">ok</button>
+        <button class="displayoptionbutton">confirm</button>
+        <button class="displayoptionbutton">cancel</button>
+    </div>
+</div>
+{% endblock displayoption %}

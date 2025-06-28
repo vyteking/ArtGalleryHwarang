@@ -1,0 +1,25 @@
+{
+    "LocaleInfo":{
+        "code":"langcode",
+        "name":"Native Language Name",
+        "direction":0
+    }, 
+    "format":{
+        "number_decimal_separator":".",
+        "number_group_separator":",",
+        "dateformat":"yyyy-MM-dd"
+    },
+    "Texts":{
+        "section":{
+            "text":"Hello World!"
+        }
+    },
+    "LocaleTemplateCommentary":[
+        "JSON is UTF-8 only. ",
+        "LocaleInfo-direction: ",
+        "- 0=LR_TB: Left to right and top to bottom. Latin, Cyrillic, Greek, Armenian, Georgian, and so on",
+        "- 1=RL_TB: Right to left and top to bottom. Arabic, Hebrew, Syriac, and so on",
+        "- 2=TB_LR: Top to bottom and left to right. Mongolian, Mayan, and so on",
+        "- 3=TB_RL: Top to bottom and right to left. Chinese, Korean, Japanese, Jurchen, Khitan, and so on"
+    ]
+}
