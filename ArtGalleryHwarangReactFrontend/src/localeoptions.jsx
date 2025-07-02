@@ -22,6 +22,11 @@ function SetLocale(selectedLocale) {
     currentLocale = localefilepath;
 }
 
+// Function to synchronize the locale files as the file `localetemplate.json`
+function SyncLocaleFile() {
+
+}
+
 // Function to load CSS files dynamically
 const loadStyles = () => {
   const context = require.context('./ui/orientation', false, /\.css$/);
