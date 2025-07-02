@@ -34,3 +34,7 @@ class UserAdditionalInfo(models.Model):
     username = models.CharField(null = True, max_length=255)
     userdescription = models.TextField()
 
+class UserAdditionalInfoWithMedia(models.Model):
+    userinfoindex1st = models.ForeignKey(Userinfo.userinfoindex1st, on_delete=models.CASCADE)
+    userprofilepic = models.FileField()
+    userheaderimage = models.FileField()

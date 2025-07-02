@@ -1,4 +1,5 @@
 import React from "react"
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Base from './base'
 import Header from './ui/header/header'
 import Footer from './ui/footer/footer'

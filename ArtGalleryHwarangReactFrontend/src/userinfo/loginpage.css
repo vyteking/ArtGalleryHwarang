@@ -7,3 +7,25 @@
     top:50%;
     left:50%;
 }
+
+#loginoptionstable {
+    top:50%;
+    left:50%;
+}
+
+#loginoptionstablebody {
+    top:50%;
+    left:50%;
+}
+
+.tablelabel {
+    margin: 4px;
+    padding: 4px;
+}
+
+.inputbox {
+    border-color: #DDDDDD;
+    border-radius: 4px;
+    margin: 4px;
+    padding: 4px;
+}

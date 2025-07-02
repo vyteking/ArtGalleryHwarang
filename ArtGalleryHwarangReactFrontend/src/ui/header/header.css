@@ -22,3 +22,9 @@
     right:10px; /*LR_TB*/
     padding:10px;
 }
+
+#UnloggedUserIcon {
+   width: 30px;
+   height: 30px;
+   background-color: gray;
+};

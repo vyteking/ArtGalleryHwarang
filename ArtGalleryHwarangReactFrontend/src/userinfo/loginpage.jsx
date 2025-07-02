@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import base from '../base';
-import theMain from '../ui/main'
+import Main from '../ui/main'
 import './loginpage.css';
 import signuppage from './signuppage';
 
@@ -21,7 +21,7 @@ function TryLogin() {
 }
 
 function RedirectSignup() {
-    theMain.CurrentWin(signuppage);
+    Main.SwitchWin(signuppage);
 }
 
 function Loginpage() {
@@ -58,17 +58,17 @@ function Loginpage() {
                     </thead>
                     <tbody id="logintablebody" classname="logintable">
                         <tr classname="logintablerow">
-                            <td classname="logintablecolumn"><label htmlFor="userident">{langTxt.lbl_userId}</label></td>
-                            <td classname="logintablecolumn" colSpan={2}><input type="text" id="userident" name="userident" value={userID} placeholder={langTxt.tbx_userId_Placeholder} onChange={(e)=>setUserID(e.target.value)} /></td>
+                            <td classname="logintablecolumn"><label htmlFor="userIDInput" className='tablelabel'>{langTxt.lbl_userId}</label></td>
+                            <td classname="logintablecolumn" colSpan={2}><input type="text" id="userIDInput" name="userID" className="inputbox" value={userID} placeholder={langTxt.tbx_userId_Placeholder} onChange={(e)=>setUserID(e.target.value)} /></td>
                         </tr>
                         <tr classname="logintablerow">
-                            <td classname="logintablecolumn"><label htmlFor="userPW">{langTxt.lbl_userPW}:</label></td>
-                            <td classname="logintablecolumn" colSpan={2}><input type="password" id="userPW" name="userPW" value={userPW} placeholder={langTxt.tbx_userPW_Placeholder} onChange={(e)=>setUserPW(e.target.value)}/></td>
+                            <td classname="logintablecolumn"><label htmlFor="userPWInput" className='tablelabel'>{langTxt.lbl_userPW}:</label></td>
+                            <td classname="logintablecolumn" colSpan={2}><input type="password" id="userPWInput" name="userPW" className="inputbox" value={userPW} placeholder={langTxt.tbx_userPW_Placeholder} onChange={(e)=>setUserPW(e.target.value)}/></td>
                         </tr>
                     </tbody>
                 </table>
-                <table id="logintable" className="loginbuttonstable">
-                    <tbody id="logintablebody" classname="loginbuttonstable">
+                <table id="loginoptionstable" className="loginbuttonstable">
+                    <tbody id="loginoptionstablebody" classname="loginbuttonstable">
                         <tr classname="loginbuttonstablerow">
                             <td classname="loginbuttonstablecolumn"><button type="button" className="loginbutton" onClick={RedirectSignup}>{langTxt.btn_Signup}</button></td>
                             <td classname="loginbuttonstablecolumn"><button type="reset" className="loginbutton">{langTxt.btn_reset}</button></td>

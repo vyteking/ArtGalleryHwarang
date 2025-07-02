@@ -67,10 +67,10 @@ function userinfoboxWhileNonLoggedIn() {
     };
 }
 
-function userinfobox({usersession}) {
+function UserInfoBox({usersession}) {
     const userinfo = GainUserInfo(usersession);
-    if (isLoggedOn && usersession !== null) return loginuserinfobox(usersession);
+    if (isLoggedOn && usersession !== null && usersession !== undefined) return loginuserinfobox(usersession);
     else return userinfoboxWhileNonLoggedIn;
 }
 
-export default userinfobox;
+export default UserInfoBox;
