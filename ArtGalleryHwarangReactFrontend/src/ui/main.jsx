@@ -1,8 +1,8 @@
 import base from '../base'
 import './main.css'
 
-import Loginpage from '../userinfo/loginpage'
-import UserInfoPage from '../userinfo/userinfopage'
+import PageRoutes from '../pageroutes';
+import { Outlet } from 'react-router-dom';
 
 let CurrentWin;
 export function SwitchWin(winToSwitch) {
@@ -10,14 +10,11 @@ export function SwitchWin(winToSwitch) {
 }
 
 function MainWin({winToView, loginusersession}) {
-    let isLoggedOn = loginusersession !== null && base.session !== null && loginusersession !== undefined && base.session !== undefined;
-    let userpage = isLoggedOn ? <UserInfoPage /> : <Loginpage />;
-    if (winToView === undefined || winToView === null) winToView = userpage;
-    SwitchWin(winToView);
-    let theMain = <div id="mainDiv" className='layout'>{CurrentWin}</div>;
-    //console.log("main test: "+window.location.pathname);
-    //console.log("Current Tag: "+currentpagename);
-    return (theMain);
+    // let theMain = <div id="mainDiv" className='layout'><PageRoutes/></div>;
+    // return (theMain);
+    return (
+        <div id="mainDiv" className='layout'><PageRoutes/></div>
+    );
 }
 
 export default MainWin;
