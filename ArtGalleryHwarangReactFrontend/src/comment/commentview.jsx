@@ -1,3 +1,5 @@
+import './commentview.css'
+
 function CommentViewer(postindex, commentauthorindex, commentindex) {
     return () => {
         <div>

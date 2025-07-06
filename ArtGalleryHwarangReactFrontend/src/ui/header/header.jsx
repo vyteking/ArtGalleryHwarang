@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import './header.css'
 import Base from '../../base'
 import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
@@ -24,7 +25,7 @@ function Header() {
                     <image src=""/>
                 </div>
                 <div id="headertitle" className="headerclass">
-                    title
+                    <Link to="/">title</Link>
                 </div>
                 <div id="headeruserinfoDiv" className="headerclass" onclick="DisplayHeaderUserInfoStatusBox()">
                     <Usericon/>

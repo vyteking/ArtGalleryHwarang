@@ -1,3 +1,5 @@
+import './commenteditor.css'
+
 function CommentEditor(postindex, commentauthorindex, commentindex) {
     return () => {
         <div>

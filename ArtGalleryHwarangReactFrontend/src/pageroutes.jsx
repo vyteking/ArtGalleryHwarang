@@ -10,7 +10,6 @@ import Signuppage from './userinfo/signuppage';
 
 function PageRoutes() {
   return (
-    <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Loginpage />} />
@@ -19,7 +18,6 @@ function PageRoutes() {
         <Route path="/u/:userindex1st/info" element={<UserInfoPage />} />
         <Route path="*" element={<Navigate to="/" />} />  {/* 잘못된 경로 리디렉션 */}
       </Routes>
-    </Router>
   );
 }
 
