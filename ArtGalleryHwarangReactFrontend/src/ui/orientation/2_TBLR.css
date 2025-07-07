@@ -7,3 +7,25 @@
     direction: ltr;
     writing-mode: vertical-lr;
 };
+
+ /*Horizontal. Left to Right. For DIV*/
+.flowtype0 {
+
+}
+.flexboxtype0 {
+
+}
+.gridtype0 {
+
+}
+
+ /*Vertical. Top to bottom. For DIV*/
+.flowtype1 {
+    
+}
+.flexboxtype1 {
+    
+}
+.gridtype1 {
+
+}

@@ -19,16 +19,15 @@ function Header() {
     return (
         <header id="headertag" className="layout">
             header
-            <div id="headerDiv" className="headerclass">
-                headerDiv
-                <div id="menubuttonDiv" className="headerclass">
-                    <image src=""/>
+            <div id="headerDiv" className="">
+                <div id="menubuttonDiv" className="">
+                    Menu<image src=""/>
                 </div>
-                <div id="headertitle" className="headerclass">
-                    <Link to="/">title</Link>
+                <div id="headertitle" className="">
+                    <Link to="/">Title</Link>
                 </div>
-                <div id="headeruserinfoDiv" className="headerclass" onclick="DisplayHeaderUserInfoStatusBox()">
-                    <Usericon/>
+                <div id="headeruserinfoDiv" className="" onclick="DisplayHeaderUserInfoStatusBox()">
+                    User<Usericon/>
                 </div>
             </div>
         </header>

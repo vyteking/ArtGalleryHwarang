@@ -105,28 +105,17 @@ function Loginpage() {
                         </tr>
                     </tbody>
                 </table>
-                <table id="loginoptionstable" className="loginbuttonstable">
-                    {/* Corrected classname to className */}
-                    <tbody id="loginoptionstablebody" className="loginbuttonstable">
-                        <tr className="loginbuttonstablerow">
-                            <td className="loginbuttonstablecolumn">
-                                <button type="button" className="loginbutton" onClick={RedirectSignup}>
-                                    {langTxt.btn_Signup}
-                                </button>
-                            </td>
-                            <td className="loginbuttonstablecolumn">
-                                <button type="reset" className="loginbutton">
-                                    {langTxt.btn_reset}
-                                </button>
-                            </td>
-                            <td className="loginbuttonstablecolumn">
-                                <button type="submit" className="loginbutton">
-                                    {langTxt.btn_Login}
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="loginoptionslist" className="flowtype1">
+                    <button type="button" className="loginbutton" onClick={RedirectSignup}>
+                        {langTxt.btn_Signup}
+                    </button>
+                    <button type="reset" className="loginbutton">
+                        {langTxt.btn_reset}
+                    </button>
+                    <button type="submit" className="loginbutton">
+                        {langTxt.btn_Login}
+                    </button>
+                </div>
             </form>
             {/* Render the LoginError component if there's an error */}
             <LoginError message={loginError} onClose={() => setLoginError(null)} />

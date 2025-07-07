@@ -5,21 +5,15 @@
     background-color: aqua;
 }
 
-.headerclass {
-    float:left;
-}
-
 #menubuttonDiv {
-    position:absolute;
+    /*position:absolute;*/
     top:10px;
-    left:10px; /*LR_TB*/
     padding:10px;
 }
 
 #headeruserinfoDiv {
-    position:absolute;
+    /*position:absolute;*/
     top:10px;
-    right:10px; /*LR_TB*/
     padding:10px;
 }
 

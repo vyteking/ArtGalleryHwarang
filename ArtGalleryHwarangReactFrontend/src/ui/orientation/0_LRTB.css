@@ -8,10 +8,39 @@
     writing-mode: horizontal-tb;
  }
 
- .flowtype0 {
+ /*Vertical. Top to bottom. For DIV*/
+.flowtype0 {
+ }
+.flexboxtype0 {
+    display: flex;
+    flex-direction: column;
+}
+.gridtype0 {
+
+}
+
+ /*Horizontal. Left to Right. For DIV*/
+ .flowtype1 {
     direction: ltr;
  }
+.flexboxtype1 {
+    display: flex;
+    flex-direction: row;
+}
+.gridtype1 {
+   display: grid;
+   grid-auto-flow: column;
+   grid-template-columns: repeat(3, 1fr);
+}
 
- .flowtype1 {
-    direction:ltr;
- }
+#headertag {
+    width:100%;
+}
+
+#menubuttonDiv {
+    left:10px; /*LR_TB*/
+}
+
+#headeruserinfoDiv {
+    right:10px; /*LR_TB*/
+}

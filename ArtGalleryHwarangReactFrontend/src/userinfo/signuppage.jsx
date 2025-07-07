@@ -58,8 +58,13 @@ function Signuppage() {
 
     return (
         <div id="signupDiv" className="layout" ><form id="signupform" className="layout" onSubmit={handleSignup}> {/* onSubmit on the form */}
-            <table id="signuptable" className="layout">
-                <tr className="signuptable">
+            <table id="signuptable" className="signuptable">
+                <thead className="signuptable">
+                    <tr>
+                        <th colSpan={3}><h2 id="signuptitle" className="signuptitle">{langTxt.scr_SignUp}</h2></th>
+                    </tr>
+                </thead>
+                <tbody id="signuptablebody" className="signuptable"><tr className="signuptable">
                     <td className="signuptable">
                         <label id="lbl_UserID" className="tablelabel" htmlFor="tbx_UserId_Placeholder">
                             {langTxt.lbl_UserId}
@@ -126,10 +131,10 @@ function Signuppage() {
                             onChange={(e) => setConfirmSignupUserPWInput(e.target.value)}
                         />
                     </td>
-                </tr>
+                </tr></tbody>
             </table>
             {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>} {/* Display error message */}
-            <div id="signupbuttonlist" className="layout">
+            <div id="signupbuttonlist" className="flowtype1">
                 {/* button type="submit" will trigger onSubmit on the form */}
                 <button type="submit" className="signupbutton">
                     {langTxt.btn_Signup}

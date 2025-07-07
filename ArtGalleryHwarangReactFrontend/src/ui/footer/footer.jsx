@@ -1,5 +1,6 @@
 import './footer.css'
 import Base from '../../base'
+// import Base.localeoptions.GetTextorentation;
 
 function Localelist() {
     const locales = [
@@ -24,15 +25,16 @@ function Localelist() {
 function Footer() {
     return (
         <footer id="footertag" className="layout">
-            footer
-            <div id="displayoptionDiv" className="footerclass">
-                displayoption
-            </div>
-            <div id="footerdatetimeDiv" className="footerclass">
-                datetime
-            </div>
-            <div id="localeDiv" className="footerclass">
-                <Localelist />
+            <div id='footerDiv' className=''>
+                <div id="displayoptionDiv" className="">
+                    displayoption
+                </div>
+                <div id="footerdatetimeDiv" className="">
+                    datetime
+                </div>
+                <div id="localeDiv" className="">
+                    <Localelist />
+                </div>
             </div>
         </footer>
     )
