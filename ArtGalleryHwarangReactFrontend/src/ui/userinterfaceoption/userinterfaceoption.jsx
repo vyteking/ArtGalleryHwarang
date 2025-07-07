@@ -14,8 +14,8 @@ const VerticalLayoutOption = () => {
 
 function Userinterfaceoptionwindow() {
     return () => {
-        <div className='box'>
-            <table>
+        <div id="UIOptionDiv" className='box'>
+            <table id="UIOptionTable">
                 <tr>
                     <td>language</td>
                     <td></td>

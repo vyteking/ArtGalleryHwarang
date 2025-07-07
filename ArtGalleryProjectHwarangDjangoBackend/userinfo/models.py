@@ -38,3 +38,9 @@ class UserAdditionalInfoWithMedia(models.Model):
     userinfoindex1st = models.ForeignKey(Userinfo.userinfoindex1st, on_delete=models.CASCADE)
     userprofilepic = models.FileField()
     userheaderimage = models.FileField()
+
+class UserUISetup(models.Model):
+    userinfoindex1st = models.ForeignKey(Userinfo.userinfoindex1st, on_delete=models.CASCADE)
+    setuplocale = models.CharField()
+    enableverticalmode = models.BooleanField()
+    setuptheme = models.CharField()
