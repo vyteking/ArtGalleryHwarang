@@ -1,0 +1,39 @@
+/*
+ * 0. Left-to-Right and Top-to-Bottom
+ * Latin, Cyrillic, Greek, Armenian, Georgian, Tamazight, Devanagari, Thai, Tibetan, Cherokee, and so on. 
+ */
+
+.ltr-ttb {
+    direction: ltr;
+    writing-mode: horizontal-tb;
+}
+
+/*
+ * 1. Right-to-Left and Top-to-Bottom
+ * Arabic, Hebrew, Syriac, Thaana, N;Ko, and so on. 
+ */
+
+ .rtl-ttb {
+    direction: rtl;
+    writing-mode: horizontal-tb;
+ }
+
+/*
+ * 2. Top=to-Bottom and Left-to-Right
+ * Mongolian, Manchu, 'Phags-Pa, Sogdian, Mayan, and so on. 
+ */
+
+.ttb-ltr {
+    direction: ltr;
+    writing-mode: vertical-lr;
+};
+
+/*
+ * 3. Top-to-Bottom Right-to-Left Text Orientation. 
+ * Chinese, Korean, Japanese, Khitan, Jurchen, and so on. 
+ */
+
+.ttb-rtl {
+    direction: rtl;
+    writing-mode: vertical-rl;
+};
