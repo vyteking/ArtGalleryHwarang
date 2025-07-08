@@ -36,9 +36,9 @@
             "userdescription":"Описание"
         },
         "useroptions":{
-            "Login":"",
-            "Logout":"",
-            "SignUp":""
+            "Login":"Вход",
+            "Logout":"Выход",
+            "SignUp":"Зарегистрироваться"
         },
         "login":{
             "scr_Login":"Вход",

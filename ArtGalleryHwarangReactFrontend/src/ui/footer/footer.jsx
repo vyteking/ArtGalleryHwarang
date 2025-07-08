@@ -24,7 +24,7 @@ function Localelist() {
 
 function Footer() {
     return (
-        <footer id="footertag" className="layout">
+        <footer id="footertag" className="layout footerorientation">
             <div id='footerDiv' className=''>
                 <div id="displayoptionDiv" className="">
                     displayoption

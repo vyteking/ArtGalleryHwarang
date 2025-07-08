@@ -33,14 +33,20 @@
    grid-template-columns: repeat(3, 1fr);
 }
 
-#headertag {
+.headerorientation {
+    top: 0px;
     width:100%;
 }
 
-#menubuttonDiv {
+.menubuttonorientation {
     left:10px; /*LR_TB*/
 }
 
-#headeruserinfoDiv {
+.headeruserinfoorientation {
     right:10px; /*LR_TB*/
+}
+
+.footerorientation {
+    bottom: 0px;
+    width:100%;
 }

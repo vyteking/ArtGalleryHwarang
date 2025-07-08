@@ -89,9 +89,17 @@ WSGI_APPLICATION = 'ArtGalleryProjectHwarang.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'pymongo',
+        'NAME': 'hwarangtestserver',
+        'ENFORCE_SCHEMA': False,  # Set to True if you want to enforce schema
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017',  # Replace with your MongoDB URI
+        }
+    },
+    # 'default_': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
 
 # Password validation

@@ -34,14 +34,20 @@
    direction: rtl;
 }
 
-#headertag {
+.headerorientation {
+    top: 0px;
     width:100%;
 }
 
-#menubuttonDiv {
+.menubuttonorientation {
     right:10px; /*LR_TB*/
 }
 
-#headeruserinfoDiv {
+.headeruserinfoorientation {
     left:10px; /*LR_TB*/
+}
+
+.footerorientation {
+    bottom: 0px;
+    width:100%;
 }

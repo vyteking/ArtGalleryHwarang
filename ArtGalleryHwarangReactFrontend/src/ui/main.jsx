@@ -13,7 +13,7 @@ function MainWin({winToView, loginusersession}) {
     // let theMain = <div id="mainDiv" className='layout'><PageRoutes/></div>;
     // return (theMain);
     return (
-        <div id="mainDiv" className='layout'><PageRoutes/></div>
+        <div id="mainDiv" className='layout mainorientation'><PageRoutes/></div>
     );
 }
 

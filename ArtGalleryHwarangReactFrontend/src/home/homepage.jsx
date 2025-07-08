@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import base from '../base';
+import './homepage.css';
 
 function Homepage() {
-    console.log("Homepage");
     let loginuser = base.session.loginaccounts;
     let u = loginuser ? <Link to="/user/:userindex1st/">UserPage of {loginuser}</Link> : <Link to="/login">Login</Link>;
 

@@ -29,3 +29,13 @@
 .gridtype1 {
 
 }
+
+.headerorientation {
+    left: 0px;
+    height: 100%;
+}
+
+.footerorientation {
+    right: 0px;
+    height: 100%;
+}

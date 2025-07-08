@@ -5,8 +5,8 @@ from . import post as Hwarangpost
 # Create your models here.
 class Postcontent(models.Model):
     postcontentindex = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
-    postindex = models.ForeignKey(Hwarangpost.postindex)
-    postcontenttag = models.CharField()
+    postindex = models.ForeignKey(Hwarangpost.postindex, on_delete=models.CASCADE, editable=False)
+    postcontenttag = models.CharField(max_length=255)
 
 class Blogcontent(models.Model):
     postcontentindex = models.ForeignKey(Postcontent.postcontentindex, on_delete=models.CASCADE, editable=False)
