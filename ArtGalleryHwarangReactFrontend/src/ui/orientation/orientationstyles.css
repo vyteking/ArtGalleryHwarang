@@ -6,6 +6,43 @@
 .ltr-ttb {
     direction: ltr;
     writing-mode: horizontal-tb;
+} /*Vertical. Top to bottom. For DIV*/
+.flexboxtype0.ltr-ttb {
+    display: flex;
+    flex-direction: column;
+}
+.gridtype0.ltr-ttb {
+    display: grid;
+}
+
+ /*Horizontal. Left to Right. For DIV*/
+.flexboxtype1.ltr-ttb {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+}
+.gridtype1.ltr-ttb {
+   display: grid;
+   grid-auto-flow: column;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+#headertag.ltr-ttb {
+    top: 0px;
+    width:100%;
+}
+
+.menubuttonorientation.ltr-ttb {
+    left:10px;
+}
+
+.headeruserinfoorientation.ltr-ttb {
+    right:10px;
+}
+
+#footertag.ltr-ttb {
+    bottom: 0px;
+    width:100%;
 }
 
 /*
@@ -18,6 +55,45 @@
     writing-mode: horizontal-tb;
  }
 
+ /*Vertical. Top to bottom. For DIV*/
+.flexboxtype0.rtl-ttb {
+   display: flex;
+   flex-direction: column;
+}
+.gridtype0.rtl-ttb {
+
+}
+
+ /*Horizontal. Right to Left. For DIV*/
+.flexboxtype1.rtl-ttb {
+   display: flex;
+   flex-direction: row-reverse;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+}
+.gridtype1.rtl-ttb {
+   display: grid;
+   grid-auto-flow: column;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+#headertag.rtl-ttb {
+    top: 0px;
+    width:100%;
+}
+
+.menubuttonorientation.rtl-ttb {
+    right:10px;
+}
+
+.headeruserinfoorientation.rtl-ttb {
+    left:10px;
+}
+
+#footertag.rtl-ttb {
+    bottom: 0px;
+    width:100%;
+}
+
 /*
  * 2. Top=to-Bottom and Left-to-Right
  * Mongolian, Manchu, 'Phags-Pa, Sogdian, Mayan, and so on. 
@@ -28,6 +104,16 @@
     writing-mode: vertical-lr;
 };
 
+#headertag.ttb-ltr {
+    left: 0px;
+    height: 100%;
+}
+
+#footertag.ttb-ltr {
+    right: 0px;
+    height: 100%;
+}
+
 /*
  * 3. Top-to-Bottom Right-to-Left Text Orientation. 
  * Chinese, Korean, Japanese, Khitan, Jurchen, and so on. 
@@ -37,3 +123,13 @@
     direction: rtl;
     writing-mode: vertical-rl;
 };
+
+#headertag.ttb-rtl {
+    right: 0px;
+    height: 100%;
+}
+
+#footertag.ttb-rtl {
+    left: 0px;
+    height: 100%;
+}

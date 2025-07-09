@@ -1,6 +1,9 @@
 import './footer.css'
 import Base from '../../base'
-// import Base.localeoptions.GetTextorentation;
+
+import orientationoptions, {GetDir} from '../orientation/orientationoptions';
+const dir = Base.localeoptions.direction
+const dirClass = GetDir(dir);
 
 function Localelist() {
     const locales = [
@@ -14,9 +17,9 @@ function Localelist() {
     ];
 
     return (
-        <select id="localelist">
+        <select id="localelist" className={dirClass}>
             {locales.map((lang) => (
-                <option className="localelistitem" key={lang.code}>{lang.name}</option>
+                <option className={"localelistitem "} key={lang.code}>{lang.name}</option>
             ))}
         </select>
     )
@@ -24,15 +27,15 @@ function Localelist() {
 
 function Footer() {
     return (
-        <footer id="footertag" className="layout footerorientation">
-            <div id='footerDiv' className=''>
-                <div id="displayoptionDiv" className="">
+        <footer id="footertag" className={'layout '+dirClass}>
+            <div id='footerDiv' className={dirClass}>
+                <div id="displayoptionDiv" className={dirClass}>
                     displayoption
                 </div>
-                <div id="footerdatetimeDiv" className="">
+                <div id="footerdatetimeDiv" className={dirClass}>
                     datetime
                 </div>
-                <div id="localeDiv" className="">
+                <div id="localeDiv" className={dirClass}>
                     <Localelist />
                 </div>
             </div>

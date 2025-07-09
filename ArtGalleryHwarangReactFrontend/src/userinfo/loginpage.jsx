@@ -60,6 +60,13 @@ function Loginpage() {
         }
     };
 
+    // Handler for the reset button
+    const handleReset = () => {
+        setUserID('');
+        setUserPW('');
+        setLoginError('');
+    };
+
     const RedirectSignup = () => {
         navigate("/signup");
     };
@@ -109,7 +116,7 @@ function Loginpage() {
                     <button type="button" className="loginbutton" onClick={RedirectSignup}>
                         {langTxt.btn_Signup}
                     </button>
-                    <button type="reset" className="loginbutton">
+                    <button type="reset" className="loginbutton" onClick={handleReset}>
                         {langTxt.btn_reset}
                     </button>
                     <button type="submit" className="loginbutton">

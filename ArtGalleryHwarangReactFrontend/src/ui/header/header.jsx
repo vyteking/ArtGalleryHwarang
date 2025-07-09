@@ -4,6 +4,10 @@ import './header.css'
 import Base from '../../base'
 import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
 
+import {GetDir} from '../orientation/orientationoptions';
+const dir = Base.localeoptions.direction
+const dirClass = GetDir(dir);
+
 function DisplayHeaderUserInfoStatusBox() {
 }
 
@@ -21,16 +25,16 @@ function Header() {
     }
 
     return (
-        <header id="headertag" className="layout headerorientation">
+        <header id="headertag" className={'layout '+dirClass}>
             header
-            <div id="headerDiv">
-                <div id="menubuttonDiv" className="flexboxtype0">
+            <div id="headerDiv" className={"flexboxtype0 "+dirClass}>
+                <div id="menubuttonDiv">
                     Menu<image src=""/>
                 </div>
-                <div id="headertitle" className="flexboxtype0">
+                <div id="headertitle">
                     <Link to="/">Title</Link>
                 </div>
-                <div id="headeruserinfoDiv" className="flexboxtype0" onClick={setHeaderUserInfoVisibility}>
+                <div id="headeruserinfoDiv" onClick={setHeaderUserInfoVisibility}>
                     User<Usericon/>
                 </div>
             </div>
