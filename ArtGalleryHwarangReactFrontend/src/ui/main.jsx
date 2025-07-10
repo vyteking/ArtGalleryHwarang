@@ -3,10 +3,8 @@ import './main.css'
 import PageRoutes from '../pageroutes';
 import { Outlet } from 'react-router-dom';
 
-import Base from '../base'
-import orientationoptions, {GetDir} from './orientation/orientationoptions';
-const dir = Base.localeoptions.direction
-const dirClass = GetDir(dir);
+import Base, { dirClass } from '../base'
+import orientationoptions from './orientation/orientationoptions';
 
 let CurrentWin;
 export function SwitchWin(winToSwitch) {

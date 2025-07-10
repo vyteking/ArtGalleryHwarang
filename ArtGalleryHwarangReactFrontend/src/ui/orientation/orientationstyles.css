@@ -32,11 +32,11 @@
     width:100%;
 }
 
-.menubuttonorientation.ltr-ttb {
+#menubuttonDiv.ltr-ttb {
     left:10px;
 }
 
-.headeruserinfoorientation.ltr-ttb {
+#headeruserinfoDiv.ltr-ttb {
     right:10px;
 }
 
@@ -81,11 +81,11 @@
     width:100%;
 }
 
-.menubuttonorientation.rtl-ttb {
+#menubuttonDiv.rtl-ttb {
     right:10px;
 }
 
-.headeruserinfoorientation.rtl-ttb {
+#headeruserinfoDiv.rtl-ttb {
     left:10px;
 }
 

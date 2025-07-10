@@ -1,17 +1,9 @@
 import React, { useEffect } from 'react';
-// import localeloader from '.locale'
 import localeloader from './locale/en.json' //English as temporarily
-// import textorientationfile from './ui/orientation/'
-// import LRTB from './ui/orientation/0_LRTB.css'//Left-to-right-top-to-bottom
-// import RLTB from './ui/orientation/1_RLTB.css'//Right-to-left-top-to-bottom
-// import TBLR from './ui/orientation/2_TBLR.css'//Top-to-bottom-left-to-right
-// import TBRL from './ui/orientation/3_TBRL.css'//Top-to-bottom-right-to-left
 
 let currentLocale = localeloader;
 let direction = currentLocale.LocaleInfo.direction;
 let localeTxt = currentLocale.Texts;
-//let isSupportingVerticalText;
-//let isVertical;
 
 // Function to load JSON locale files from `locale` folder
 const LoadLocaleList = (r) => {
@@ -25,92 +17,9 @@ function SetLocale(selectedLocale) {
     currentLocale = localefilepath;
 }
 
-// Function to synchronize the locale files as the file `localetemplate.json`
-function SyncLocaleFile() {
-
-}
-
-// // Function to load CSS files dynamically
-// const loadStyles = () => {
-//   const context = require.context('./ui/orientation', false, /\.css$/);
-//   context.keys().forEach((fileName) => {
-//     const style = context(fileName);
-//     // You can also log or manipulate the loaded styles if needed
-//     console.log(`Loaded style: ${fileName}`);
-//   });
-// };
-
-// const GetTextorentation = () => {
-//     let filename = "./ui/orientation";
-//     isSupportingVerticalText = (textorientation & 2) === 1;
-//     if (isSupportingVerticalText && isVertical) {
-//         switch (textorientation) {
-//             case 2:
-//                 filename += "2_TBLR.css";
-//                 break;
-//             case 3:
-//                 filename += "3_TBRL.css";
-//                 break;
-//         }
-//     }
-//     else {
-//         switch (textorientation) {
-//             case 0:
-//             case 3:
-//                 //isSupportingVerticalText = false;
-//                 filename += "0_LRTB.css";
-//                 break;
-//             case 1:
-//             case 2:
-//                 //isSupportingVerticalText = false;
-//                 filename += "1_RLTB.css";
-//                 break;
-//         }
-//     }
-//     return filename;
-// }
-
-// const GetTextorentation = () => {
-//     isSupportingVerticalText = (textorientation & 2) === 1;
-//     let dir;
-//     if (isSupportingVerticalText && isVertical) {
-//         switch (textorientation) {
-//             case 2:
-//                 dir = './ui/orientation/2_TBLR.css';
-//                 break;
-//             case 3:
-//                 dir = './ui/orientation/3_TBRL.css';
-//                 break;
-//             default:
-//                 dir = './ui/orientation/0_LRTB.css';
-//         }
-//     }
-//     else {
-//         switch (textorientation) {
-//             case 0:
-//             case 3:
-//                 dir = './ui/orientation/0_LRTB.css';
-//                 break;
-//             case 1:
-//             case 2:
-//                 dir = './ui/orientation/1_RLTB.css';
-//                 break;
-//             default:
-//                 dir = './ui/orientation/0_LRTB.css';
-//         }
-//     }
-//     return dir;
-// }
-
-// function SwitchVerticalMode(setVertical) {
-//     if (isSupportingVerticalText) isVertical = setVertical;
-// }
-
 export default {
     currentLocale, 
     SetLocale, 
     localeTxt, 
     direction,
-    // GetTextorentation, 
-    // SwitchVerticalMode,
 }

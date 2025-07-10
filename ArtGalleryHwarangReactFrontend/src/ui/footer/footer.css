@@ -1,3 +1,7 @@
 #footertag {
+    /**/position:absolute;
     background-color: aliceblue;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #999999;
 }

@@ -8,13 +8,13 @@
 }
 
 #menubuttonDiv {
-    /*position:absolute;*/
+    /**/position:absolute;
     top:10px;
     padding:10px;
 }
 
 #headeruserinfoDiv {
-    /*position:absolute;*/
+    /**/position:absolute;
     top:10px;
     padding:10px;
 }
@@ -22,5 +22,5 @@
 #UnloggedUserIcon {
    width: 30px;
    height: 30px;
-   background-color: gray;
+   background-color: #BBBBBB;
 };

@@ -1,9 +1,7 @@
 import './footer.css'
-import Base from '../../base'
+import Base, { dirClass } from '../../base'
 
-import orientationoptions, {GetDir} from '../orientation/orientationoptions';
-const dir = Base.localeoptions.direction
-const dirClass = GetDir(dir);
+import orientationoptions from '../orientation/orientationoptions';
 
 function Localelist() {
     const locales = [

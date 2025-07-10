@@ -1,7 +1,7 @@
 import Base from '../../base'
 
 const theLocale = Base.localeoptions;
-const langTxt = theLocale.localeTxt;
+const langTxt = theLocale.localeTxt.userinterfaceoptions;
 
 const VerticalLayoutOption = () => {
     return theLocale.isSupportingVerticalText ? (

@@ -72,8 +72,10 @@
             "ProjectManager":"",
             "Founder":""
         },
-        "":{
-            
+        "userinterfaceoptions":{
+            "theme":"", 
+            "language":"",
+            "enable_vertical_direction":""
         }
     },
     "LocaleTemplateCommentary":[

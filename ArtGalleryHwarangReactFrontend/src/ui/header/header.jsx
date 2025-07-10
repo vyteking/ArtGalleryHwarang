@@ -1,19 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import './header.css'
-import Base from '../../base'
+import Base, { dirClass } from '../../base'
 import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
-
-import {GetDir} from '../orientation/orientationoptions';
-const dir = Base.localeoptions.direction
-const dirClass = GetDir(dir);
+import orientationoptions from '../orientation/orientationoptions';
 
 function DisplayHeaderUserInfoStatusBox() {
 }
 
 function Usericon() {
-    let loginuser = Base.session;
-    let Loginusericon = (loginuser !== null && loginuser !== undefined) ? <img id="Loginusericon" src=''/> : <div id="UnloggedUserIcon"/>;
+    let loginuser = Base.session.loginaccounts;
+    let Loginusericon = 
+    loginuser ? <img id="Loginusericon" src=''/> : <div id="UnloggedUserIcon"/>;
     //const Loginusericon = loginuser === null ? <image/> : <image/>;
     return (Loginusericon);
 }
@@ -28,14 +26,14 @@ function Header() {
         <header id="headertag" className={'layout '+dirClass}>
             header
             <div id="headerDiv" className={"flexboxtype0 "+dirClass}>
-                <div id="menubuttonDiv">
+                <div id="menubuttonDiv" className={dirClass}>
                     Menu<image src=""/>
                 </div>
-                <div id="headertitle">
+                <div id="headertitle" className={dirClass}>
                     <Link to="/">Title</Link>
                 </div>
-                <div id="headeruserinfoDiv" onClick={setHeaderUserInfoVisibility}>
-                    User<Usericon/>
+                <div id="headeruserinfoDiv" className={dirClass} onClick={setHeaderUserInfoVisibility}>
+                    <Usericon/>
                 </div>
             </div>
         </header>

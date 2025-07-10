@@ -3,7 +3,7 @@ import './orientationstyles.css'
 let isSupportingVerticalText;
 let isVertical;
 
-export function GetDir(direction) {
+function GetDir(direction) {
     isSupportingVerticalText = (direction & 2) === 1;
     let dir;
     if (isSupportingVerticalText && isVertical) {
@@ -36,5 +36,5 @@ function SwitchVerticalMode(setVertical) {
 }
 
 export default {
-    SwitchVerticalMode
+    GetDir, SwitchVerticalMode
 }
