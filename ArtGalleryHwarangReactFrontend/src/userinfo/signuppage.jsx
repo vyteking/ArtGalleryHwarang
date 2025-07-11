@@ -1,7 +1,9 @@
 import React, { useState, Component } from 'react';
-import base from '../base';
+import axios from 'axios'
+
 import './signuppage.css';
 
+import base from '../base';
 const theLocale = base.localeoptions;
 const langTxt = theLocale.localeTxt.signup;
 
@@ -12,7 +14,7 @@ function Signuppage() {
     const [confirmSignupUserPWInput, setConfirmSignupUserPWInput] = useState('');
     const [error, setError] = useState('');
 
-    const handleSignup = (event) => { // Accept the event object
+    const handleSignup = async (event) => { // Accept the event object
         event.preventDefault(); // Prevent default form submission
 
         setError(''); // Clear previous errors
@@ -33,6 +35,20 @@ function Signuppage() {
         if (signupUserPWInput !== confirmSignupUserPWInput) {
             setError(langTxt.error_PasswordsMismatch || 'Passwords do not match.');
             return;
+        }
+
+        //axios
+        event.preventDefault();
+        try {
+            const signupdata = {signupUserIDInput, signupUserPWInput};
+
+            const signupaddress = base.serveraddress + 'signup';
+            const response = await axios.post(signupaddress, signupdata);
+            console.log("Login Success:", response.data);
+            base.session.UserLogin(response.data);
+        } catch (error) {
+            console.error("Error creating post:", error);
+            setError('Could not connect to the server. Please try again later. \nError: '+error);
         }
 
         // If all checks pass, proceed with signup logic (e.g., send to API)
@@ -133,7 +149,7 @@ function Signuppage() {
                     </td>
                 </tr></tbody>
             </table>
-            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>} {/* Display error message */}
+            {error && <div className='box' style={{ color: 'red', marginTop: '10px' }}>{error}</div>} {/* Display error message */}
             <div id="signupbuttonlist" className="flowtype1">
                 {/* button type="submit" will trigger onSubmit on the form */}
                 <button type="submit" className="signupbutton">

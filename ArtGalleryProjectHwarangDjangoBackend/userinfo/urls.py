@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('u', UserInfoViewset, 'u')
 urlpatterns = router.urls
-# urlpatterns = [
-#     path('api/login/', LoginView.as_view(), name='login'),
-# ]
+urlpatterns = [
+    path('api/login/', UserInfoViewset.retrieve.as_view(), name='login'),
+    # path('api/signup/')
+]

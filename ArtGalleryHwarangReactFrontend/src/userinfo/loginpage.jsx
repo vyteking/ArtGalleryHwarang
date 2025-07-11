@@ -1,9 +1,10 @@
 import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 import './loginpage.css';
 
-import base from '../base';
+import base, {GetServerAPIAddress} from '../base';
 const theLocale = base.localeoptions;
 const langTxt = theLocale.localeTxt.login;
 
@@ -12,7 +13,7 @@ const langTxt = theLocale.localeTxt.login;
 function LoginError({ message, onClose }) {
     if (!message) return null; // Don't render if there's no message
     return (
-        <div id="loginErrorWinDiv" className="window">
+        <div id="loginErrorWinDiv" className="box">
             <div id="alertDiv" className='alertDiv'>
                 <p>{message}</p> {/* Display the error message */}
             </div>
@@ -33,30 +34,50 @@ function Loginpage() {
         e.preventDefault(); // Prevent default form submission behavior
         setLoginError(null); // Clear any previous errors
 
-        try {
-            const response = await fetch(base.serveraddress, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ userID, userPW }),
-            });
+        // Basic validation for non-empty fields (though empty string is handled by === below)
+        if (!userID || !userPW) {
+            setLoginError(langTxt.error_AllFieldsRequired || 'All fields are required.');
+            return;
+        }
 
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Login successful:', result);
-                // Handle successful login, e.g., redirect to dashboard, store token
-                alert('Login successful!'); // For demonstration
-                // Example: Main.SwitchWin(DashboardPage);
-            } else {
-                // If response.ok is false, try to get a more specific error from the body
-                const errorData = await response.json().catch(() => ({ message: response.statusText }));
-                setLoginError(errorData.message || 'An unknown error occurred during login.');
-            }
+        const logindata = { userID, userPW };
+        //fetch
+        // try {
+        //     const response = await fetch(base.serveraddress, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({ userID, userPW }),
+        //     });
+
+        //     if (response.ok) {
+        //         const result = await response.json();
+        //         console.log('Login successful:', result);
+        //         // Handle successful login, e.g., redirect to dashboard, store token
+        //         alert('Login successful!'); // For demonstration
+        //         // Example: Main.SwitchWin(DashboardPage);
+        //     } else {
+        //         // If response.ok is false, try to get a more specific error from the body
+        //         const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        //         setLoginError(errorData.message || 'An unknown error occurred during login.');
+        //     }
+        // } catch (error) {
+        //     // Handle network errors or other exceptions
+        //     console.error('Network or other error:', error);
+        //     setLoginError('Could not connect to the server. Please try again later.');
+        // }
+
+        //axios
+        e.preventDefault();
+        try {
+            const loginaddress = GetServerAPIAddress('login');
+            const response = await axios.post(loginaddress, logindata);
+            console.log("Login Success:", response.data);
+            base.session.UserLogin(response.data);
         } catch (error) {
-            // Handle network errors or other exceptions
-            console.error('Network or other error:', error);
-            setLoginError('Could not connect to the server. Please try again later.');
+            console.error("Error creating post:", error);
+            setLoginError('Could not connect to the server. Please try again later. \nError: '+error);
         }
     };
 

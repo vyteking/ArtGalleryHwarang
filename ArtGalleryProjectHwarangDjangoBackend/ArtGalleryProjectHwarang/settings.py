@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'ArtGalleryProjectHwarang.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'pymongo',
+        'ENGINE': 'djongo',
         'NAME': 'hwarangtestserver',
         'ENFORCE_SCHEMA': False,  # Set to True if you want to enforce schema
         'CLIENT': {

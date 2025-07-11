@@ -3,6 +3,9 @@ import orientationoptions from './ui/orientation/orientationoptions.jsx';
 import session from './session.tsx'
 
 const serveraddress = "http://localhost:8000/api/";
+export function GetServerAPIAddress(type, submitvalue = '') {
+    return serveraddress + type + '/' + submitvalue;
+}
 
 let dir = localeoptions.direction
 let commonText = localeoptions.currentLocale.Texts.common;
