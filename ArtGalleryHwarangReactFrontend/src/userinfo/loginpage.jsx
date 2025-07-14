@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import './loginpage.css';
 
-import base, {GetServerAPIAddress} from '../base';
+import base, {GetServerAPIAddress, dirClass} from '../base';
 const theLocale = base.localeoptions;
 const langTxt = theLocale.localeTxt.login;
 
@@ -13,12 +13,12 @@ const langTxt = theLocale.localeTxt.login;
 function LoginError({ message, onClose }) {
     if (!message) return null; // Don't render if there's no message
     return (
-        <div id="loginErrorWinDiv" className="box">
-            <div id="alertDiv" className='alertDiv'>
+        <div id="loginErrorWinDiv" className={"box "+dirClass}>
+            <div id="alertDiv" className={'alertDiv '+dirClass}>
                 <p>{message}</p> {/* Display the error message */}
             </div>
             {/* Added an onClick handler to close the error */}
-            <button className='alertDiv' onClick={onClose}>Close</button>
+            <button className={'alertDiv '+dirClass} onClick={onClose}>Close</button>
         </div>
     );
 }

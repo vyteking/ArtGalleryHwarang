@@ -1,3 +1,6 @@
+import './messagebox.css'
+import Base, { dirClass } from '../../base'
+
 const Messageboxbuttons = Object.freeze({
     OK: 1, 
     Cancel: 2, 
@@ -7,8 +10,8 @@ const Messageboxbuttons = Object.freeze({
 
 function Messagebox({messagestring, messagetype}) {
     return () => {
-        <div id="messagebox" class="box">
-            <div>
+        <div id="messagebox" class={"box "+dirClass}>
+            <div id='messagestring' class={dirClass}>
                 {messagestring}
             </div>
             <div>
