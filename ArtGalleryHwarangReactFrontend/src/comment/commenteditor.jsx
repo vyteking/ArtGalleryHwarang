@@ -1,5 +1,7 @@
 import './commenteditor.css'
 
+import Base, { dirClass } from '../base'
+
 function CommentEditor(postindex, commentauthorindex, commentindex) {
     return () => {
         <div>
