@@ -1,7 +1,9 @@
 from django.db import models
 import uuid
+import mongoengine
 
 # Create your models here.
+mongoengine.connect('hwarangtestserver')
 
 # Basic user info such as user index, ID, password, etc.
 class UserInfo(models.Model):

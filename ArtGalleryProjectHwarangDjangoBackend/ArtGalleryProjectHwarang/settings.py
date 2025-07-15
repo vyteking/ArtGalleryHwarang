@@ -88,19 +88,41 @@ WSGI_APPLICATION = 'ArtGalleryProjectHwarang.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'hwarangtestserver',
-        'ENFORCE_SCHEMA': False,  # Set to True if you want to enforce schema
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',  # Replace with your MongoDB URI
-        }
-    },
+    'default_': {
+        'ENGINE': '',
+    }
     # 'default_': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
 }
+
+# MongoEngine Setup
+MONGO_USER = 'hwarangadmin'
+MONGO_HOST = 'mongodb://localhost:27017'
+MONGO_DB_NAME = 'hwarangtestserver'
+
+# MongoDB-Djongo Connection Setup
+DJONGO_MONGODB_CONNECTOR = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'hwarangtestserver', #Server Name Here
+        'ENFORCE_SCHEMA': False,  # Set to True if you want to enforce schema
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017',  # MongoDB URI Here
+        }
+    },
+}
+
+# Post Upload
+POST_FOLDER_NAME = 'p'
+POST_URL = '/' + POST_FOLDER_NAME
+POST_ROOT = BASE_DIR / POST_FOLDER_NAME
+
+# Media Upload
+MEDIA_FOLDER_NAME = 'm'
+MEDIA_URL = '/' + MEDIA_FOLDER_NAME
+MEDIA_ROOT = BASE_DIR / MEDIA_FOLDER_NAME
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
