@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import './galleryview.css'
 import Base, { dirClass } from '../../base'
 
-function PostBar(postindex, postimage) {
+function PostBar({postindex, postimage}) {
     return () => {
         <Link to="/p/:postindex">
             <div id="postbarview">
@@ -20,7 +20,7 @@ function PostBar(postindex, postimage) {
     }
 }
 
-function PostGrid(postindex, postimage) {
+function PostGrid({postindex, postimage}) {
     return () => {
         <Link to="/p/:postindex">
             <div id="postgridview">
@@ -37,7 +37,7 @@ function PostGrid(postindex, postimage) {
     }
 }
 
-function GalleryGridView(postlist) {
+function GalleryGridView({postlist}) {
     return () => {
         <div id="gallerygridview">
 
@@ -45,7 +45,7 @@ function GalleryGridView(postlist) {
     }
 }
 
-function PostListView(postindex, postimage) {
+function PostListView({postindex, postimage}) {
     return () => {
         <div id="postlistview">
 
@@ -53,7 +53,7 @@ function PostListView(postindex, postimage) {
     }
 }
 
-function GalleryListView(postlist) {
+function GalleryListView({postlist}) {
     return () => {
         <div id="gallerygridview">
 
