@@ -1,4 +1,4 @@
-import localeoptions from './localeoptions'
+import localeoptions from './locale/localeoptions'
 import orientationoptions from './ui/orientation/orientationoptions.jsx';
 import session from './session.tsx'
 
