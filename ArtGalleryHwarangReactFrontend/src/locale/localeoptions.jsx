@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import localeloader from './localetextfiles/en.json' //English as temporarily
+import {GetLocaleTexts} from './localeslist';
 
 let currentLocale = localeloader;
 let direction = currentLocale.LocaleInfo.direction;
@@ -13,8 +14,7 @@ const LoadLocaleList = (r) => {
 }
 
 function SetLocale(selectedLocale) {
-    let localefilepath = './localetextfiles/'+selectedLocale+".json";
-    currentLocale = localefilepath;
+    currentLocale = GetLocaleTexts(selectedLocale);
 }
 
 export default {

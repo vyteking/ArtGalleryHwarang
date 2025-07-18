@@ -2,22 +2,17 @@ import './footer.css'
 import Base, { dirClass } from '../../base'
 
 import orientationoptions from '../orientation/orientationoptions';
+import { GetLocalesList } from '../../locale/localeslist';
 
 function Localelist() {
-    const locales = [
-        {code:'en-GB', name:'English'},
-        {code:'es-ES', name:'Español'},
-        {code:'fr-FR', name:'Français'},
-        {code:'ja-JP', name:'日本語'},
-        {code:'zh-TC', name:'繁體中文'},
-        {code:'zh-SC', name:'简体中文'},
-        {code:'ko-KR', name:'한국어'},
-    ];
+    const locales = GetLocalesList();
 
     return (
         <select id="localelist" className={dirClass}>
-            {locales.map((lang) => (
-                <option className={"localelistitem "} key={lang.code}>{lang.name}</option>
+            {[...locales.entries()].map(([code, name]) => (
+                <option className="localelistitem" key={code} value={code}>
+                    {name}
+                </option>
             ))}
         </select>
     )
