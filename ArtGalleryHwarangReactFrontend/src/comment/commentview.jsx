@@ -1,11 +1,11 @@
 import './commentview.css'
 
-import Base, { dirClass } from '../base'
+import Base, { GetClassNames } from '../base'
 
 function CommentViewer(postindex, commentauthorindex, commentindex) {
     return () => {
-        <div id="commentviewer" className={dirClass}>
-            <div id="authorinfo" className={dirClass}>
+        <div id="commentviewer" className={GetClassNames("")}>
+            <div id="authorinfo" className={GetClassNames("")}>
                 <div id="authoricon">authoricon</div>
                 <div id="authorname">authorname</div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import './header.css'
-import Base, { dirClass } from '../../base'
+import Base, { GetClassNames } from '../../base'
 import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
 import orientationoptions from '../orientation/orientationoptions';
 
@@ -23,16 +23,16 @@ function Header() {
     }
 
     return (
-        <header id="headertag" className={'layout '+dirClass}>
+        <header id="headertag" className={GetClassNames("layout")}>
             header
-            <div id="headerDiv" className={"flexboxtype0 "+dirClass}>
-                <div id="menubuttonDiv" className={dirClass}>
+            <div id="headerDiv" className={GetClassNames("flexboxtype0")}>
+                <div id="menubuttonDiv" className={GetClassNames("")}>
                     Menu<image src=""/>
                 </div>
-                <div id="headertitle" className={dirClass}>
+                <div id="headertitle" className={GetClassNames("")}>
                     <Link to="/">Title</Link>
                 </div>
-                <div id="headeruserinfoDiv" className={dirClass} onClick={setHeaderUserInfoVisibility}>
+                <div id="headeruserinfoDiv" className={GetClassNames("")} onClick={setHeaderUserInfoVisibility}>
                     <Usericon/>
                 </div>
             </div>

@@ -9,45 +9,23 @@ import locale_ru from './localetextfiles/ru.json'
 import locale_zh_SC from './localetextfiles/zh-SC.json'
 import locale_zh_TC from './localetextfiles/zh-TC.json'
 
+const localeMap = new Map([
+    [locale_de.LocaleInfo.code, locale_de],
+    [locale_en.LocaleInfo.code, locale_en],
+    [locale_es.LocaleInfo.code, locale_es],
+    [locale_fr.LocaleInfo.code, locale_fr],
+    [locale_ja.LocaleInfo.code, locale_ja],
+    [locale_ko_HJ.LocaleInfo.code, locale_ko_HJ],
+    [locale_ko.LocaleInfo.code, locale_ko],
+    [locale_ru.LocaleInfo.code, locale_ru],
+    [locale_zh_SC.LocaleInfo.code, locale_zh_SC],
+    [locale_zh_TC.LocaleInfo.code, locale_zh_TC],
+]);
+
 export function GetLocalesList() {
-    const ls = new Map();
-    ls.set(locale_de.LocaleInfo.code, locale_de.LocaleInfo.name);
-    ls.set(locale_en.LocaleInfo.code, locale_en.LocaleInfo.name);
-    ls.set(locale_es.LocaleInfo.code, locale_es.LocaleInfo.name);
-    ls.set(locale_fr.LocaleInfo.code, locale_fr.LocaleInfo.name);
-    ls.set(locale_ja.LocaleInfo.code, locale_ja.LocaleInfo.name);
-    ls.set(locale_ko_HJ.LocaleInfo.code, locale_ko_HJ.LocaleInfo.name);
-    ls.set(locale_ko.LocaleInfo.code, locale_ko.LocaleInfo.name);
-    ls.set(locale_ru.LocaleInfo.code, locale_ru.LocaleInfo.name);
-    ls.set(locale_zh_SC.LocaleInfo.code, locale_zh_SC.LocaleInfo.name);
-    ls.set(locale_zh_TC.LocaleInfo.code, locale_zh_TC.LocaleInfo.name);
-    const sortedLS = new Map([...ls.entries()].sort((a, b) => a[1] - b[1]));
-    return sortedLS;
+    return new Map([...localeMap.entries()].map(([code, data]) => [code, data.LocaleInfo.name]).sort((a, b) => a[1].localeCompare(b[1])));
 }
 
-export async function GetLocaleTexts(currentLocale) {
-    switch (currentLocale) {
-        case 'de':
-            return locale_de;
-        case 'en':
-            return locale_en;
-        case 'es':
-            return locale_es;
-        case 'fr':
-            return locale_fr;
-        case 'ja':
-            return locale_ja;
-        case 'ko-HJ':
-            return locale_ko_HJ;
-        case 'ko':
-            return locale_ko;
-        case 'ru':
-            return locale_ru;
-        case 'zh-SC':
-            return locale_zh_SC;
-        case 'zh-TC':
-            return locale_zh_TC;
-        default:
-            return locale_en;
-    }
+export function GetLocaleTexts(code) {
+    return localeMap.get(code) || locale_en;
 }

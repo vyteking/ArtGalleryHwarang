@@ -10,8 +10,8 @@ const Messageboxbuttons = Object.freeze({
 
 function Messagebox({messagestring, messagetype}) {
     return () => {
-        <div id="messagebox" class={"box "+dirClass}>
-            <div id='messagestring' class={dirClass}>
+        <div id="messagebox" class={GetClassNames("box")}>
+            <div id='messagestring' class={GetClassNames("")}>
                 {messagestring}
             </div>
             <div>

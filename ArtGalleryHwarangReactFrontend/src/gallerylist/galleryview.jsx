@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './galleryview.css'
-import Base, { dirClass } from '../../base'
+import { GetClassNames } from '../base'
 
 function PostBar({postindex, postimage}) {
     return () => {

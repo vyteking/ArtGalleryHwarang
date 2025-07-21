@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import base from '../base';
+import base, { GetClassNames } from '../base';
+// import { useLocale } from "../locale/localeoptions";
 import './homepage.css';
 
 function Homepage() {

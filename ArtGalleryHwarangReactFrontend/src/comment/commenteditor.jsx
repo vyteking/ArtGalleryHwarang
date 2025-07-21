@@ -1,6 +1,6 @@
 import './commenteditor.css'
 
-import Base, { dirClass } from '../base'
+import Base, { GetClassNames } from '../base'
 
 function CommentEditor(postindex, commentauthorindex, commentindex) {
     return () => {
