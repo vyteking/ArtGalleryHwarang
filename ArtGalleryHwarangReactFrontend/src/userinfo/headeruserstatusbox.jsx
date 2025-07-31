@@ -1,4 +1,5 @@
 import UserSession from '../session.tsx'
+import { useNavigate } from 'react-router-dom';
 
 const isLoggedOn = false;
 
@@ -41,6 +42,17 @@ function loginuserinfobox(usersession) {
 
 //User info box when the session is logged out
 function userinfoboxWhileNonLoggedIn() {
+
+    const navigate = useNavigate();
+
+    const RedirectLogin = () => {
+        navigate("/login");
+    };
+
+    const RedirectSignup = () => {
+        navigate("/signup");
+    };
+
     return () => {  
         <div>
             <table>
@@ -59,8 +71,8 @@ function userinfoboxWhileNonLoggedIn() {
                     <td id="ForgotPW">forgot password</td>
                 </tr>
                 <tr>
-                    <td><button id="Signup">signup</button></td>
-                    <td><button>login</button></td>
+                    <td><button id="Signup" onClick={RedirectSignup}>signup</button></td>
+                    <td><button id="login" onClick={RedirectLogin}>login</button></td>
                 </tr>
             </table>
         </div>

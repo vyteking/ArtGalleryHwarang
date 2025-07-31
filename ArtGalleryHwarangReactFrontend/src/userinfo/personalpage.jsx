@@ -1,3 +1,4 @@
+import { GetClassNames } from '../base';
 import './personalpage.css'
 
 function LoadPersonalInfo() {
@@ -6,7 +7,7 @@ function LoadPersonalInfo() {
 
 function PersonalPage(userindex1st) {
     return (
-        <div id="PersonalPage" class="layout">
+        <div id="PersonalPage" className={GetClassNames("layout")}>
 
         </div>
     );
