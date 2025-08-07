@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import './signuppage.css';
 
-import base from '../base';
+import base, { GetServerAPIAddress } from '../base';
 const theLocale = base.localeoptions;
 const langTxt = theLocale.localeTxt.signup;
 
@@ -42,21 +42,20 @@ function Signuppage() {
         try {
             const signupdata = {signupUserIDInput, signupUserPWInput};
 
-            const signupaddress = base.serveraddress + 'signup';
+            const signupaddress = GetServerAPIAddress('signup');
             const response = await axios.post(signupaddress, signupdata);
             console.log("Login Success:", response.data);
             base.session.UserLogin(response.data);
+            // If all checks pass, proceed with signup logic (e.g., send to API)
+            console.log('Signup successful:', {
+                userId: signupUserIDInput
+            });
+            alert('Signup successful!'); // Simple feedback for now
         } catch (error) {
             console.error("Error creating post:", error);
             setError('Could not connect to the server. Please try again later. \nError: '+error);
         }
 
-        // If all checks pass, proceed with signup logic (e.g., send to API)
-        console.log('Signup successful:', {
-            userId: signupUserIDInput,
-            password: signupUserPWInput
-        });
-        alert('Signup successful!'); // Simple feedback for now
         // You would typically call an API here:
         // base.api.signup(signupUserIDInput, signupUserPWInput)
         //    .then(response => { /* handle success */ })

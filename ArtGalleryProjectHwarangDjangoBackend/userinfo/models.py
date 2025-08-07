@@ -22,12 +22,12 @@ class UserInfo(models.Model):
         GOLD_USER = 4
         PLATINUM_USER = 5
 
-    user_index_1st = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user_index_1st = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user_id = models.CharField(max_length=127, unique=True)
     user_password = models.CharField(max_length=255)
     user_password_2nd = models.CharField(max_length=255, null=True)
-    user_index_2nd = models.UUIDField(default=uuid.uuid4, editable=False)
-    user_index_3rd = models.UUIDField(default=uuid.uuid4, editable=False)
+    user_index_2nd = models.UUIDField(default=uuid.uuid4, editable=True)
+    user_index_3rd = models.UUIDField(default=uuid.uuid4, editable=True)
     user_status = models.SmallIntegerField(choices=UserStatus.choices, default=UserStatus.NORMAL_USER)
     user_level = models.SmallIntegerField(choices=UserLevel.choices, default=UserLevel.UNRANKED_USER)
     user_join_date = models.DateTimeField(auto_now_add=True)

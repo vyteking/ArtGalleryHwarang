@@ -1,46 +1,27 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework import generics, status, viewsets, permissions
+from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
 from .models import *
 from .serializers import *
+from django.contrib.auth.hashers import check_password
 
-# Create your views here.
+class SignupView(generics.CreateAPIView):
+    queryset = UserInfo.objects.all()
+    serializer_class = UserInfoSerializer
 
-# Basic User Info Viewset
-class UserInfoViewset(viewsets.ModelViewSet):
-    queryset = UserInfo.objects.all().order_by('-user_join_date')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class LoginView(generics.GenericAPIView):
+    serializer_class = UserInfoSerializer
 
-    def list(self, request):
-        queryset = self.queryset
-        serializer = self.serializer_class(queryset, many=True)
-        return Response(serializer.data)
-    
-    def create(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors, status=400)
-
-    def retrieve(self, request, pk=None):
-        userinfo_ = self.queryset.get(pk=pk)
-        serializer = self.serializer_class(userinfo_)
-        return Response(serializer.data)
-
-    def update(self, request, pk=None):
-        userinfo_ = self.queryset.get(pk=pk)
-        serializer = self.serializer_class(userinfo_, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors, status=400)
-
-    def delete(self, request, pk=None):
-        userinfo_ = self.queryset.get(pk=pk)
-        userinfo_.delete()
-        return Response(status=204)
+    def post(self, request, *args, **kwargs):
+        user_id = request.data.get('user_id')
+        password = request.data.get('user_password')
+        try:
+            user = UserInfo.objects.get(user_id=user_id)
+            if check_password(password, user.user_password):
+                # Note: Token-based authentication with custom user models requires
+                # a bit more setup. For now, we'll return a success message.
+                # In a real application, you would generate and return a JWT or similar token.
+                return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
+        except UserInfo.DoesNotExist:
+            pass
+        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
