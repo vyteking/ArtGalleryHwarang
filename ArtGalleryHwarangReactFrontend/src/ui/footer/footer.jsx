@@ -1,21 +1,13 @@
 import { useState } from 'react';
-
 import './footer.css'
 import Base, { GetClassNames } from '../../base'
-
-import orientationoptions from '../orientation/orientationoptions';
 import { GetLocalesList } from '../../locale/localeslist';
-// import { useLocale } from '../../locale/localeoptions';
-
-function UpdateLocale(localecode) { 
-    console.log(localecode);
-    Base.localeoptions.SetLocale(localecode);
-}
+import { useLocale } from '../../locale/localeoptions';
 
 function Localelist() {
     const locales = GetLocalesList();
-    // const { changeLocale, localeCode } = useLocale();
-    const [selectedLocale, setSelectedLocale] = useState('en');
+    const { currentLocale, setLocale } = useLocale();
+    const [selectedLocale, setSelectedLocale] = useState(currentLocale.LocaleInfo.code);
 
     return (
             <select
@@ -25,7 +17,7 @@ function Localelist() {
                 onChange={(e) => {
                     const val = e.target.value;
                     setSelectedLocale(val);
-                    changeLocale(val);
+                    setLocale(val);
                 }}
             >
                 {[...locales.entries()].map(([code, name]) => (

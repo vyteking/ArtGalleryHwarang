@@ -4,13 +4,10 @@ import Base from './base'
 
 import Header from './ui/header/header'
 import Footer from './ui/footer/footer'
-import MainWin from './ui/main'
+import MainWin from './ui/mainwin'
 import './App.css';
 
 function App() {
-  const usersessions = Base.session.loginaccounts;
-  const localesetup = Base.localeoptions;
-
   return (
     <>
       <Header />

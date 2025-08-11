@@ -1,24 +1,21 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 import './loginpage.css';
 
-import base, {GetServerAPIAddress, dirClass} from '../base';
-const theLocale = base.localeoptions;
-const langTxt = theLocale.localeTxt.login;
+import base, {GetClassNames, GetServerAPIAddress} from '../base';
+import { useLocale } from '../locale/localeoptions';
 
-// It's good practice to define helper/display components in the same file if they're small
-// or in a separate file if they are reusable.
-function LoginError({ message, onClose }) {
+function LoginError({ message, onClose, direction }) {
     if (!message) return null; // Don't render if there's no message
     return (
-        <div id="loginErrorWinDiv" className={"box "+dirClass}>
-            <div id="alertDiv" className={'alertDiv '+dirClass}>
+        <div id="loginErrorWinDiv" className={GetClassNames("box")}>
+            <div id="alertDiv" className={GetClassNames('alertDiv')}>
                 <p>{message}</p> {/* Display the error message */}
             </div>
             {/* Added an onClick handler to close the error */}
-            <button className={'alertDiv '+dirClass} onClick={onClose}>Close</button>
+            <button className={GetClassNames('alertDiv')} onClick={onClose}>Close</button>
         </div>
     );
 }
@@ -29,6 +26,7 @@ function Loginpage() {
     const [loginError, setLoginError] = useState(null); // State to store login error messages
 
     const navigate = useNavigate();
+    const { localeTxt } = useLocale();
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -36,38 +34,11 @@ function Loginpage() {
 
         // Basic validation for non-empty fields (though empty string is handled by === below)
         if (!userID || !userPW) {
-            setLoginError(langTxt.error_AllFieldsRequired || 'All fields are required.');
+            setLoginError(localeTxt.login.error_AllFieldsRequired || 'All fields are required.');
             return;
         }
 
-        const logindata = { userID, userPW };
-        //fetch
-        // try {
-        //     const response = await fetch(base.serveraddress, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ userID, userPW }),
-        //     });
-
-        //     if (response.ok) {
-        //         const result = await response.json();
-        //         console.log('Login successful:', result);
-        //         // Handle successful login, e.g., redirect to dashboard, store token
-        //         alert('Login successful!'); // For demonstration
-        //         // Example: Main.SwitchWin(DashboardPage);
-        //     } else {
-        //         // If response.ok is false, try to get a more specific error from the body
-        //         const errorData = await response.json().catch(() => ({ message: response.statusText }));
-        //         setLoginError(errorData.message || 'An unknown error occurred during login.');
-        //     }
-        // } catch (error) {
-        //     // Handle network errors or other exceptions
-        //     console.error('Network or other error:', error);
-        //     setLoginError('Could not connect to the server. Please try again later.');
-        // }
-
+        const logindata = { user_id: userID, user_password: userPW };
         //axios
         e.preventDefault();
         try {
@@ -75,6 +46,7 @@ function Loginpage() {
             const response = await axios.post(loginaddress, logindata);
             console.log("Login Success:", response.data);
             base.session.UserLogin(response.data);
+            navigate(`/u/${response.data.user_index_1st}`);
         } catch (error) {
             console.error("Error creating post:", error);
             setLoginError('Could not connect to the server. Please try again later. \nError: '+error);
@@ -98,13 +70,13 @@ function Loginpage() {
                 <table id="logintable" className="logintable">
                     <thead id="logintableheader" className='logintable'>
                         <tr>
-                            <th colSpan={3}><h2 id="logintitle" className="logintitle">{langTxt.scr_Login}</h2></th>
+                            <th colSpan={3}><h2 id="logintitle" className="logintitle">{localeTxt.login.scr_Login}</h2></th>
                         </tr>
                     </thead>
                     {/* Corrected classname to className */}
                     <tbody id="logintablebody" className="logintable">
                         <tr className="logintablerow">
-                            <td className="logintablecolumn"><label htmlFor="userIDInput" className='tablelabel'>{langTxt.lbl_userId}</label></td>
+                            <td className="logintablecolumn"><label htmlFor="userIDInput" className='tablelabel'>{localeTxt.login.lbl_userId}</label></td>
                             <td className="logintablecolumn" colSpan={2}>
                                 <input
                                     type="text"
@@ -112,13 +84,13 @@ function Loginpage() {
                                     name="userID"
                                     className="inputbox"
                                     value={userID}
-                                    placeholder={langTxt.tbx_userId_Placeholder}
+                                    placeholder={localeTxt.login.tbx_userId_Placeholder}
                                     onChange={(e) => setUserID(e.target.value)}
                                 />
                             </td>
                         </tr>
                         <tr className="logintablerow">
-                            <td className="logintablecolumn"><label htmlFor="userPWInput" className='tablelabel'>{langTxt.lbl_userPW}:</label></td>
+                            <td className="logintablecolumn"><label htmlFor="userPWInput" className='tablelabel'>{localeTxt.login.lbl_userPW}:</label></td>
                             <td className="logintablecolumn" colSpan={2}>
                                 <input
                                     type="password"
@@ -126,7 +98,7 @@ function Loginpage() {
                                     name="userPW"
                                     className="inputbox"
                                     value={userPW}
-                                    placeholder={langTxt.tbx_userPW_Placeholder}
+                                    placeholder={localeTxt.login.tbx_userPW_Placeholder}
                                     onChange={(e) => setUserPW(e.target.value)}
                                 />
                             </td>
@@ -135,13 +107,13 @@ function Loginpage() {
                 </table>
                 <div id="loginoptionslist" className="flowtype1">
                     <button type="button" className="loginbutton" onClick={RedirectSignup}>
-                        {langTxt.btn_Signup}
+                        {localeTxt.login.btn_Signup}
                     </button>
                     <button type="reset" className="loginbutton" onClick={handleReset}>
-                        {langTxt.btn_reset}
+                        {localeTxt.login.btn_reset}
                     </button>
                     <button type="submit" className="loginbutton">
-                        {langTxt.btn_Login}
+                        {localeTxt.login.btn_Login}
                     </button>
                 </div>
             </form>

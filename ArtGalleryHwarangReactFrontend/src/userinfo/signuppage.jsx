@@ -1,18 +1,21 @@
 import React, { useState, Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 import './signuppage.css';
 
 import base, { GetServerAPIAddress } from '../base';
-const theLocale = base.localeoptions;
-const langTxt = theLocale.localeTxt.signup;
+import { useLocale } from '../locale/localeoptions';
 
 function Signuppage() {
+    const navigate = useNavigate();
     const [signupUserIDInput, setSignupUserIDInput] = useState('');
     const [confirmSignupUserIDInput, setConfirmSignupUserIDInput] = useState('');
     const [signupUserPWInput, setSignupUserPWInput] = useState('');
     const [confirmSignupUserPWInput, setConfirmSignupUserPWInput] = useState('');
     const [error, setError] = useState('');
+
+    const { localeTxt } = useLocale();
 
     const handleSignup = async (event) => { // Accept the event object
         event.preventDefault(); // Prevent default form submission
@@ -21,39 +24,33 @@ function Signuppage() {
 
         // Basic validation for non-empty fields (though empty string is handled by === below)
         if (!signupUserIDInput || !confirmSignupUserIDInput || !signupUserPWInput || !confirmSignupUserPWInput) {
-            setError(langTxt.error_AllFieldsRequired || 'All fields are required.');
+            setError(localeTxt.signup.error_AllFieldsRequired || 'All fields are required.');
             return;
         }
 
         // Check if user IDs match
         if (signupUserIDInput !== confirmSignupUserIDInput) {
-            setError(langTxt.error_UserIDsMismatch || 'User IDs do not match.');
+            setError(localeTxt.signup.error_UserIDsMismatch || 'User IDs do not match.');
             return;
         }
 
         // Check if passwords match
         if (signupUserPWInput !== confirmSignupUserPWInput) {
-            setError(langTxt.error_PasswordsMismatch || 'Passwords do not match.');
+            setError(localeTxt.signup.error_PasswordsMismatch || 'Passwords do not match.');
             return;
         }
 
         //axios
         event.preventDefault();
         try {
-            const signupdata = {signupUserIDInput, signupUserPWInput};
+            const signupdata = {user_id: signupUserIDInput, user_password: signupUserPWInput};
 
             const signupaddress = GetServerAPIAddress('signup');
             const response = await axios.post(signupaddress, signupdata);
-            console.log("Login Success:", response.data);
-            base.session.UserLogin(response.data);
-            // If all checks pass, proceed with signup logic (e.g., send to API)
-            console.log('Signup successful:', {
-                userId: signupUserIDInput
-            });
-            alert('Signup successful!'); // Simple feedback for now
+            navigate('/login');
         } catch (error) {
             console.error("Error creating post:", error);
-            setError('Could not connect to the server. Please try again later. \nError: '+error);
+            setError('Could not connect to the server. Please try again later. Error: '+error);
         }
 
         // You would typically call an API here:
@@ -76,13 +73,13 @@ function Signuppage() {
             <table id="signuptable" className="signuptable">
                 <thead className="signuptable">
                     <tr>
-                        <th colSpan={3}><h2 id="signuptitle" className="signuptitle">{langTxt.scr_SignUp}</h2></th>
+                        <th colSpan={3}><h2 id="signuptitle" className="signuptitle">{localeTxt.signup.scr_SignUp}</h2></th>
                     </tr>
                 </thead>
                 <tbody id="signuptablebody" className="signuptable"><tr className="signuptable">
                     <td className="signuptable">
                         <label id="lbl_UserID" className="tablelabel" htmlFor="tbx_UserId_Placeholder">
-                            {langTxt.lbl_UserId}
+                            {localeTxt.signup.lbl_UserId}
                         </label>
                     </td>
                     <td className="signuptable">
@@ -90,7 +87,7 @@ function Signuppage() {
                             id="tbx_UserId_Placeholder"
                             className="inputbox"
                             type="text"
-                            placeholder={langTxt.tbx_UserId_Placeholder}
+                            placeholder={localeTxt.signup.tbx_UserId_Placeholder}
                             value={signupUserIDInput} // Controlled component
                             onChange={(e) => setSignupUserIDInput(e.target.value)} // Update state on change
                         />
@@ -99,7 +96,7 @@ function Signuppage() {
                 <tr className="signuptable">
                     <td className="signuptable">
                         <label id="lbl_ConfirmUserID" className="tablelabel" htmlFor="tbx_ConfirmUserID_Placeholder">
-                            {langTxt.lbl_ConfirmUserID}
+                            {localeTxt.signup.lbl_ConfirmUserID}
                         </label>
                     </td>
                     <td className="signuptable">
@@ -107,7 +104,7 @@ function Signuppage() {
                             id="tbx_ConfirmUserID_Placeholder"
                             className="inputbox"
                             type="text"
-                            placeholder={langTxt.tbx_ConfirmUserID_Placeholder}
+                            placeholder={localeTxt.signup.tbx_ConfirmUserID_Placeholder}
                             value={confirmSignupUserIDInput}
                             onChange={(e) => setConfirmSignupUserIDInput(e.target.value)}
                         />
@@ -116,7 +113,7 @@ function Signuppage() {
                 <tr className="signuptable">
                     <td className="signuptable">
                         <label id="lbl_UserPW" className="tablelabel" htmlFor="tbx_UserPW_Placeholder">
-                            {langTxt.lbl_UserPW}
+                            {localeTxt.signup.lbl_UserPW}
                         </label>
                     </td>
                     <td className="signuptable">
@@ -124,7 +121,7 @@ function Signuppage() {
                             id="tbx_UserPW_Placeholder"
                             className="inputbox"
                             type="password"
-                            placeholder={langTxt.tbx_UserPW_Placeholder}
+                            placeholder={localeTxt.signup.tbx_UserPW_Placeholder}
                             value={signupUserPWInput}
                             onChange={(e) => setSignupUserPWInput(e.target.value)}
                         />
@@ -133,7 +130,7 @@ function Signuppage() {
                 <tr className="signuptable">
                     <td className="signuptable">
                         <label id="lbl_ConfirmUserPW" className="tablelabel" htmlFor="tbx_ConfirmUserPW_Placeholder">
-                            {langTxt.lbl_ConfirmUserPW}
+                            {localeTxt.signup.lbl_ConfirmUserPW}
                         </label>
                     </td>
                     <td className="signuptable">
@@ -141,7 +138,7 @@ function Signuppage() {
                             id="tbx_ConfirmUserPW_Placeholder"
                             className="inputbox"
                             type="password"
-                            placeholder={langTxt.tbx_ConfirmUserPW_Placeholder}
+                            placeholder={localeTxt.signup.tbx_ConfirmUserPW_Placeholder}
                             value={confirmSignupUserPWInput}
                             onChange={(e) => setConfirmSignupUserPWInput(e.target.value)}
                         />
@@ -152,14 +149,14 @@ function Signuppage() {
             <div id="signupbuttonlist" className="flowtype1">
                 {/* button type="submit" will trigger onSubmit on the form */}
                 <button type="submit" className="signupbutton">
-                    {langTxt.btn_Signup}
+                    {localeTxt.signup.btn_Signup}
                 </button>
                 {/* Reset button should have its own click handler or rely on type="reset" */}
                 <button type="reset" className="signupbutton" onClick={handleReset}>
-                    {langTxt.btn_Reset}
+                    {localeTxt.signup.btn_Reset}
                 </button>
                 <button type="button" className="signupbutton">
-                    {langTxt.btn_GoBack}
+                    {localeTxt.signup.btn_GoBack}
                 </button>
             </div>
         </form></div>

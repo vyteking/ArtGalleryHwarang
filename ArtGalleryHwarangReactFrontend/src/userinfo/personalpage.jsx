@@ -1,29 +1,69 @@
-import { GetClassNames } from '../base';
-import './personalpage.css'
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import base, { GetServerAPIAddress, GetClassNames } from '../base';
+import { useLocale } from '../locale/localeoptions';
+import './personalpage.css';
 
-function LoadPersonalInfo() {
+function PersonalPage() {
+    const { userindex1st } = useParams();
+    const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-}
+    const { localeTxt } = useLocale();
 
-function PersonalPage(userindex1st) {
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+                const userDetailAddress = GetServerAPIAddress('users', userindex1st);
+                const response = await axios.get(userDetailAddress);
+                setCurrentUser(response.data);
+            } catch (err) {
+                console.error("Error fetching user data:", err);
+                setError("Failed to load user data.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (userindex1st) {
+            fetchUserData();
+        }
+    }, [userindex1st]);
+
+    if (loading) {
+        return <div>{"Loading user data..."}</div>;
+    }
+
+    if (error) {
+        return <div>error: {error}</div>;
+    }
+
+    if (!currentUser) {
+        return <div>{"User not found."}</div>;
+    }
+
     return (
         <div id="PersonalPage" className={GetClassNames("layout")}>
             <div id="Profile">
                 <div id="ProfilePic">
-
+                    {/* Placeholder for profile picture */}
                 </div>
                 <div id="UserName">
-                    nickname (Index1st)
+                    {currentUser.user_id} ({currentUser.user_index_1st})
                 </div>
                 <div id="Following">
-                    following
+                    {"following"}
                 </div>
                 <div id="Followers">
-                    followers
+                    {"followers"}
                 </div>
             </div>
             <div id="UserGallery">
-
+                {/* Placeholder for user's gallery */}
             </div>
         </div>
     );

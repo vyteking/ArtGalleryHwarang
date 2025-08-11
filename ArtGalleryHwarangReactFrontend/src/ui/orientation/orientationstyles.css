@@ -47,7 +47,7 @@
 
 /*
  * 1. Right-to-Left and Top-to-Bottom
- * Arabic, Hebrew, Syriac, Thaana, N;Ko, and so on. 
+ * Arabic, Hebrew, Syriac, Thaana, N'Ko, and so on. 
  */
 
  .rtl-ttb {
@@ -61,7 +61,7 @@
    flex-direction: column;
 }
 .gridtype0.rtl-ttb {
-
+    display: grid;
 }
 
  /*Horizontal. Right to Left. For DIV*/

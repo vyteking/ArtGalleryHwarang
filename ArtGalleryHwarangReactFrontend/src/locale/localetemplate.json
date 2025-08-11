@@ -33,12 +33,30 @@
             "useremail":"",
             "userphonenumber":"",
             "username":"",
-            "userdescription":""
+            "userdescription":"",
+            "following": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            },
+            "followers": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            }
         },
         "useroptions":{
             "Login":"",
             "Logout":"",
-            "SignUp":""
+            "SignUp":"",
+            "notification":"",
+            "directmessage":""
         },
         "login":{
             "scr_Login":"",
@@ -78,12 +96,21 @@
             "enable_vertical_direction":""
         }
     },
+    "plural_forms_template": {
+        "zero":"0",
+        "one":"1",
+        "two":"2",
+        "few":"",
+        "many":"",
+        "other":"default"
+    },
     "LocaleTemplateCommentary":[
         "JSON is UTF-8 only. ",
         "LocaleInfo-direction: ",
         "- 0=LR_TB: Left to right and top to bottom. Latin, Cyrillic, Greek, Armenian, Georgian, and so on",
         "- 1=RL_TB: Right to left and top to bottom. Arabic, Hebrew, Syriac, and so on",
         "- 2=TB_LR: Top to bottom and left to right. Mongolian, Mayan, and so on",
-        "- 3=TB_RL: Top to bottom and right to left. Chinese, Korean, Japanese, Jurchen, Khitan, and so on"
+        "- 3=TB_RL: Top to bottom and right to left. Chinese, Korean, Japanese, Jurchen, Khitan, and so on",
+        "For the plural forms or rules, refer to the CLDR document about plural rules of each languages (https://cldr.unicode.org/index/cldr-spec/plural-rules). "
     ]
 }

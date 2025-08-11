@@ -12,18 +12,28 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import posixpath
+import environ
+
+# Initialize environment variables
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7e362934-2b7f-4afa-844c-292c4e332585'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -92,15 +102,10 @@ WSGI_APPLICATION = 'ArtGalleryProjectHwarang.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'hwarangtestserver',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',
-        }
-    }
+    'default': env.db('DATABASE_URL', default='mongodb://localhost:27017/hwarangtestserver')
 }
+DATABASES['default']['ENGINE'] = 'djongo'
+DATABASES['default']['ENFORCE_SCHEMA'] = False
 
 # Post Upload
 POST_FOLDER_NAME = 'p'

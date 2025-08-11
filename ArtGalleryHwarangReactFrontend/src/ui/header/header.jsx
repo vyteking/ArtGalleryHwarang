@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import './header.css'
 import Base, { GetClassNames } from '../../base'
 import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
-import orientationoptions from '../orientation/orientationoptions';
 
 function DisplayHeaderUserInfoStatusBox() {
 }
@@ -26,13 +25,13 @@ function Header() {
         <header id="headertag" className={GetClassNames("layout")}>
             header
             <div id="headerDiv" className={GetClassNames("flexboxtype0")}>
-                <div id="menubuttonDiv" className={GetClassNames("")}>
+                <div id="menubuttonDiv" className={GetClassNames()}>
                     Menu<image src=""/>
                 </div>
-                <div id="headertitle" className={GetClassNames("")}>
+                <div id="headertitle" className={GetClassNames()}>
                     <Link to="/">Title</Link>
                 </div>
-                <div id="headeruserinfoDiv" className={GetClassNames("")} onClick={setHeaderUserInfoVisibility}>
+                <div id="headeruserinfoDiv" className={GetClassNames()} onClick={setHeaderUserInfoVisibility}>
                     <Usericon/>
                 </div>
             </div>

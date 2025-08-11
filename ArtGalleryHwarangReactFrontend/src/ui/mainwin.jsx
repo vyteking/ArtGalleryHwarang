@@ -1,10 +1,9 @@
-import './main.css'
+import './mainwin.css'
 
 import PageRoutes from '../pageroutes';
 import { Outlet } from 'react-router-dom';
 
-import Base, { dirClass } from '../base'
-import orientationoptions from './orientation/orientationoptions';
+import Base, { GetClassNames } from '../base'
 
 let CurrentWin;
 export function SwitchWin(winToSwitch) {
@@ -15,7 +14,7 @@ function MainWin({winToView, loginusersession}) {
     // let theMain = <div id="mainDiv" className='layout'><PageRoutes/></div>;
     // return (theMain);
     return (
-        <div id="mainDiv" className={'layout '+dirClass}><PageRoutes/></div>
+        <div id="mainDiv" className={GetClassNames('layout')}><PageRoutes/></div>
     );
 }
 
