@@ -20,6 +20,14 @@
             "Close":"閉じる",
             "Reset":"初期化"
         },
+        "statistic":{
+            "following": {
+                "other":"フォロー中"
+            },
+            "followers": {
+                "other":"フォロワー"
+            }
+        },
         "userinfo":{
             "userindex1st":"ユーザー索引１", 
             "userindex2nd":"ユーザー索引２", 
@@ -38,7 +46,9 @@
         "useroptions":{
             "Login":"ログイン",
             "Logout":"ログアウト",
-            "SignUp":"新規登録"
+            "SignUp":"新規登録",
+            "notification":"お知らせ",
+            "directmessage":"ダイレクトメッセージ"
         },
         "login":{
             "scr_Login":"ログイン",
@@ -71,6 +81,11 @@
             "Developer":"開発者",
             "ProjectManager":"プロジェクトマネジャー",
             "Founder":"設立者"
+        },
+        "userinterfaceoptions":{
+            "theme":"テーマ", 
+            "language":"言語",
+            "enable_vertical_direction":"縦書き活性化"
         }
     }
 }

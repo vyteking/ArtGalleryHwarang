@@ -2,22 +2,26 @@ import './posteditor.css'
 
 import axios from 'axios'
 
-function PostEditor() {
+function PostInfoLoader({postindex}) {
+
+}
+
+function PostEditor({postauthorindex1st, postindex}) {
     return () => {
         <div id="posteditor" className={GetClassNames("layout")}>
-            <form id="posteditorform" method="POST">
+            <form id="posteditorform" method="POST" className={GetClassNames()}>
                 <div id="posttitle" className={GetClassNames()}>
                     <input type="text" id="titleinput"/>
                 </div>
                 <div id="contextuploader">
                     <input type="file" id="fileuploader"/>
                 </div>
-                <div>
-                    <textarea>
+                <div id="postdescription">
+                    <textarea id="descriptiontextarea">
                         description
                     </textarea>
                 </div>
-                <div>
+                <div id="posttags">
                     <input type="text" id="taginput"/>
                 </div>
                 <div>

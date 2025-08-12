@@ -20,6 +20,14 @@
             "Close":"关闭",
             "Reset":"初始化"
         },
+        "statistic":{
+            "following": {
+                "other":"关注中"
+            },
+            "followers": {
+                "other":"关注者"
+            }
+        },
         "userinfo":{
             "userindex1st":"第一索引", 
             "userindex2nd":"第二索引", 
@@ -38,7 +46,9 @@
         "useroptions":{
             "Login":"登绿",
             "Logout":"退出",
-            "SignUp":"注册"
+            "SignUp":"注册",
+            "notification":"通知",
+            "directmessage":"直接讯信"
         },
         "login":{
             "scr_Login":"登绿",
@@ -71,6 +81,11 @@
             "Developer":"开发员",
             "ProjectManager":"项目管理者",
             "Founder":"创始人"
+        },
+        "userinterfaceoptions":{
+            "theme":"主题", 
+            "language":"语言",
+            "enable_vertical_direction":"活化纵书"
         }
     }
 }

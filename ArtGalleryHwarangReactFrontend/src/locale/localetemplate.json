@@ -20,20 +20,15 @@
             "Close":"",
             "Reset":""
         },
-        "userinfo":{
-            "userindex1st":"", 
-            "userindex2nd":"", 
-            "userindex3rd":"", 
-            "userID":"",
-            "userpassword":"",
-            "userpassword2nd":"",
-            "userstatus":"",
-            "userlevel":"",
-            "userjoindate":"",
-            "useremail":"",
-            "userphonenumber":"",
-            "username":"",
-            "userdescription":"",
+        "statistic":{
+            "posts": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            },
             "following": {
                 "zero":"",
                 "one":"",
@@ -50,6 +45,21 @@
                 "many":"",
                 "other":""
             }
+        },
+        "userinfo":{
+            "userindex1st":"", 
+            "userindex2nd":"", 
+            "userindex3rd":"", 
+            "userID":"",
+            "userpassword":"",
+            "userpassword2nd":"",
+            "userstatus":"",
+            "userlevel":"",
+            "userjoindate":"",
+            "useremail":"",
+            "userphonenumber":"",
+            "username":"",
+            "userdescription":""
         },
         "useroptions":{
             "Login":"",
@@ -111,6 +121,6 @@
         "- 1=RL_TB: Right to left and top to bottom. Arabic, Hebrew, Syriac, and so on",
         "- 2=TB_LR: Top to bottom and left to right. Mongolian, Mayan, and so on",
         "- 3=TB_RL: Top to bottom and right to left. Chinese, Korean, Japanese, Jurchen, Khitan, and so on",
-        "For the plural forms or rules, refer to the CLDR document about plural rules of each languages (https://cldr.unicode.org/index/cldr-spec/plural-rules). "
+        "For the plural forms or rules, refer to the CLDR document about plural rules of each languages (https://cldr.unicode.org/index/cldr-spec/plural-rules https://www.unicode.org/cldr/charts/47/supplemental/language_plural_rules.html). "
     ]
 }

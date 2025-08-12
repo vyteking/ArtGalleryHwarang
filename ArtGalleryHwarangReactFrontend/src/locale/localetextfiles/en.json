@@ -20,6 +20,15 @@
             "Close":"Close",
             "Reset":"Reset"
         },
+        "statistic":{
+            "following": {
+                "other":"following"
+            },
+            "followers": {
+                "one":"follower",
+                "other":"followers"
+            }
+        },
         "userinfo":{
             "userindex1st":"1st User Index", 
             "userindex2nd":"2nd User Index", 
@@ -36,9 +45,11 @@
             "userdescription":"Description"
         },
         "useroptions":{
-            "Login":"",
-            "Logout":"",
-            "SignUp":""
+            "Login":"Login",
+            "Logout":"Logout",
+            "SignUp":"Sign Up",
+            "notification":"Notification",
+            "directmessage":"DM"
         },
         "login":{
             "scr_Login":"Login",
@@ -71,6 +82,11 @@
             "Developer":"Developer",
             "ProjectManager":"Project Manager",
             "Founder":"Founder"
+        },
+        "userinterfaceoptions":{
+            "theme":"Theme", 
+            "language":"Language",
+            "enable_vertical_direction":"Enable Vertical Direction"
         }
     }
 }

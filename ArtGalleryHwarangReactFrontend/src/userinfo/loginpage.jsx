@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import './loginpage.css';
 
-import base, {GetClassNames, GetServerAPIAddress} from '../base';
+import base, { GetClassNames, GetServerAPIAddress } from '../base';
 import { useLocale } from '../locale/localeoptions';
 
 function LoginError({ message, onClose, direction }) {

@@ -20,6 +20,20 @@
             "Close":"Закрыть",
             "Reset":"Сброс"
         },
+        "statistic":{
+            "following": {
+                "one":"подписка",
+                "few":"подписки",
+                "many":"подписок",
+                "other":"подписки"
+            },
+            "followers": {
+                "one":"подписчик",
+                "few":"подписчика",
+                "many":"подписчиков",
+                "other":"подписчики"
+            }
+        },
         "userinfo":{
             "userindex1st":"1-ый индекс пользователя", 
             "userindex2nd":"2-ой индекс пользователя", 
@@ -38,7 +52,9 @@
         "useroptions":{
             "Login":"Вход",
             "Logout":"Выход",
-            "SignUp":"Зарегистрироваться"
+            "SignUp":"Зарегистрироваться",
+            "notification":"Уведомление",
+            "directmessage":"ПС"
         },
         "login":{
             "scr_Login":"Вход",
@@ -71,6 +87,11 @@
             "Developer":"Разработчик",
             "ProjectManager":"Менеджер проекта",
             "Founder":"Основатель"
+        },
+        "userinterfaceoptions":{
+            "theme":"Тема", 
+            "language":"Язык",
+            "enable_vertical_direction":"Позвопить вертикальное направление"
         }
     }
 }

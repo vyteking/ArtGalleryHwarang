@@ -20,6 +20,14 @@
             "Close":"닫기",
             "Reset":"초기화"
         },
+        "statistic":{
+            "following": {
+                "other":"팔로잉"
+            },
+            "followers": {
+                "other":"팔로워"
+            }
+        },
         "userinfo":{
             "userindex1st":"사용자색인1번째", 
             "userindex2nd":"사용자색인2번째", 
@@ -38,7 +46,9 @@
         "useroptions":{
             "Login":"로그인",
             "Logout":"로그아웃",
-            "SignUp":"회원가입"
+            "SignUp":"회원가입",
+            "notification":"알림",
+            "directmessage":"다이렉트메세지"
         },
         "login":{
             "scr_Login":"로그인",
@@ -71,6 +81,11 @@
             "Developer":"개발자",
             "ProjectManager":"프로젝트관리자",
             "Founder":"설립자"
+        },
+        "userinterfaceoptions":{
+            "theme":"테마", 
+            "language":"언어",
+            "enable_vertical_direction":"세로쓰기 활성화"
         }
     }
 }

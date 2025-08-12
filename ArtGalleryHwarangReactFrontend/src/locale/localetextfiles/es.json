@@ -20,6 +20,16 @@
             "Close":"Cerrar",
             "Reset":"Reajustar"
         },
+        "statistic":{
+            "following": {
+                "one":"seguido",
+                "other":"seguidos"
+            },
+            "followers": {
+                "one":"seguidor",
+                "other":"seguidores"
+            }
+        },
         "userinfo":{
             "userindex1st":"1o índice de usuario", 
             "userindex2nd":"2o índice de usuario", 
@@ -38,7 +48,9 @@
         "useroptions":{
             "Login":"Entrar",
             "Logout":"Deconectarse",
-            "SignUp":"Registrarse"
+            "SignUp":"Registrarse",
+            "notification":"Notificación",
+            "directmessage":"MD"
         },
         "login":{
             "scr_Login":"Inicio de sesión",
@@ -71,6 +83,11 @@
             "Developer":"Desarrollador",
             "ProjectManager":"Gestor de proyectos",
             "Founder":"Fundador"
+        },
+        "userinterfaceoptions":{
+            "theme":"Tema", 
+            "language":"Idioma",
+            "enable_vertical_direction":"Activar la dirección vertical"
         }
     }
 }

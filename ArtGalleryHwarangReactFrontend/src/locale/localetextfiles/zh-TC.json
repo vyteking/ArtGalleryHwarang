@@ -20,6 +20,14 @@
             "Close":"關閉",
             "Reset":"初始化"
         },
+        "statistic":{
+            "following": {
+                "other":"跟隨中"
+            },
+            "followers": {
+                "other":"跟隨者"
+            }
+        },
         "userinfo":{
             "userindex1st":"第一索引", 
             "userindex2nd":"第二索引", 
@@ -38,7 +46,9 @@
         "useroptions":{
             "Login":"登綠",
             "Logout":"退出",
-            "SignUp":"註冊"
+            "SignUp":"註冊",
+            "notification":"通知",
+            "directmessage":"直接訊信"
         },
         "login":{
             "scr_Login":"登綠",
@@ -71,6 +81,11 @@
             "Developer":"開發員",
             "ProjectManager":"項目管理者",
             "Founder":"創始人"
+        },
+        "userinterfaceoptions":{
+            "theme":"主題", 
+            "language":"語言",
+            "enable_vertical_direction":"活化縱書"
         }
     }
 }
