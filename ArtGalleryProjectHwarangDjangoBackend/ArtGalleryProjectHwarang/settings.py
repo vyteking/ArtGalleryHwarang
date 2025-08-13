@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'app',
     'userinfo',
@@ -102,10 +103,13 @@ WSGI_APPLICATION = 'ArtGalleryProjectHwarang.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='mongodb://localhost:27017/hwarangtestserver')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
-DATABASES['default']['ENGINE'] = 'djongo'
-DATABASES['default']['ENFORCE_SCHEMA'] = False
+
+MONGO_URI = env('MONGO_URI')
 
 # Post Upload
 POST_FOLDER_NAME = 'p'

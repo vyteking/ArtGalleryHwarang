@@ -42,7 +42,7 @@ function Loginpage() {
         //axios
         e.preventDefault();
         try {
-            const loginaddress = GetServerAPIAddress('login');
+            const loginaddress = GetServerAPIAddress('u', 'api/login');
             const response = await axios.post(loginaddress, logindata);
             console.log("Login Success:", response.data);
             base.session.UserLogin(response.data);

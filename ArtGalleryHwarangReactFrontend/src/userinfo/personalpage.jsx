@@ -18,7 +18,7 @@ function PersonalPage() {
             try {
                 setLoading(true);
                 setError(null);
-                const userDetailAddress = GetServerAPIAddress('users', userindex1st);
+                const userDetailAddress = GetServerAPIAddress('u', `${userindex1st}`);
                 const response = await axios.get(userDetailAddress);
                 setCurrentUser(response.data);
             } catch (err) {
@@ -48,21 +48,21 @@ function PersonalPage() {
 
     return (
         <div id="PersonalPage" className={GetClassNames("layout")}>
-            <div id="Profile">
-                <div id="ProfilePic">
+            <div id="Profile" className={GetClassNames("")}>
+                <div id="ProfilePic" className={GetClassNames("")}>
                     {/* Placeholder for profile picture */}
                 </div>
-                <div id="UserName">
+                <div id="UserName" className={GetClassNames("")}>
                     {currentUser.user_id} ({currentUser.user_index_1st})
                 </div>
-                <div id="Following">
+                <div id="Following" className={GetClassNames("")}>
                     {"following"}
                 </div>
-                <div id="Followers">
+                <div id="Followers" className={GetClassNames("")}>
                     {"followers"}
                 </div>
             </div>
-            <div id="UserGallery">
+            <div id="UserGallery" className={GetClassNames("")}>
                 {/* Placeholder for user's gallery */}
             </div>
         </div>

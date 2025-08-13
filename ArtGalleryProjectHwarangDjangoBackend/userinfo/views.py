@@ -24,6 +24,11 @@ class LoginView(generics.GenericAPIView):
             pass
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
+class UserPageView(generics.RetrieveAPIView):
+    queryset = UserInfo.objects.all()
+    serializer_class = PublicUserInfoSerializer
+    lookup_field = 'user_index_1st'
+
 class UserDetailView(generics.RetrieveAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = PublicUserInfoSerializer

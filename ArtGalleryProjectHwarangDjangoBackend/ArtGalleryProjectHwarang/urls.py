@@ -25,5 +25,6 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     #path('admin/', admin.site.urls)
     path('', AppLayout),
-    path('api/', include('userinfo.urls')),
+    path('u/', include('userinfo.urls')),
+    path('p/', include('post.urls')),
 ]

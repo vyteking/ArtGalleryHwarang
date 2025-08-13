@@ -45,7 +45,7 @@ function Signuppage() {
         try {
             const signupdata = {user_id: signupUserIDInput, user_password: signupUserPWInput};
 
-            const signupaddress = GetServerAPIAddress('signup');
+            const signupaddress = GetServerAPIAddress('u', 'api/signup');
             const response = await axios.post(signupaddress, signupdata);
             navigate('/login');
         } catch (error) {

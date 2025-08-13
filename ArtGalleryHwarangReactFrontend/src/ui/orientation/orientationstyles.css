@@ -37,6 +37,7 @@
 }
 
 #headeruserinfoDiv.ltr-ttb {
+    top:10px;
     right:10px;
 }
 
@@ -86,6 +87,7 @@
 }
 
 #headeruserinfoDiv.rtl-ttb {
+    top:10px;
     left:10px;
 }
 

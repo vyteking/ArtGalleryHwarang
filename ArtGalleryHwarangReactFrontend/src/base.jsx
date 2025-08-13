@@ -3,7 +3,7 @@ import themeoptions from './theme/themeoptions.jsx'
 import session from './session.tsx'
 import { LocaleProvider, useLocale } from './locale/localeoptions.jsx';
 
-const serveraddress = "http://localhost:8000/api/";
+const serveraddress = "http://localhost:8000/";
 export function GetServerAPIAddress(type, submitvalue = '') {
     return serveraddress + type + '/' + submitvalue;
 }
