@@ -13,6 +13,28 @@ function Homepage() {
         setLoggedInUsers(users);
     }, []);
 
+    function RefreshPage() {
+        window.location.reload(false);
+    }
+
+    function Logout(logoutuser) {
+        try {
+            base.session.UserLogout(logoutuser);
+            //RefreshPage();
+        } catch (ex) {
+            console.error(ex);
+        }
+    }
+
+    function LogoutAll() {
+        try {
+            base.session.ResetLoginSessions();
+            RefreshPage();
+        } catch (ex) {
+            console.error(ex);
+        }
+    }
+
     return (
         <div id="HomeDiv">
             {loggedInUsers.length > 0 ? (
@@ -23,10 +45,11 @@ function Homepage() {
                             <li key={user.user_index_1st}>
                                 <Link to={`/u/${user.user_index_1st}`}>
                                     {user.user_id}
-                                </Link>
+                                </Link> : <button onClick={() => Logout(user)}>Logout</button>
                             </li>
                         ))}
                     </ul>
+                    <button id="ResetLoginSessions" onClick={() => LogoutAll()}>Logout All</button>
                 </div>
             ) : (
                 <Link to="/login">Login</Link>

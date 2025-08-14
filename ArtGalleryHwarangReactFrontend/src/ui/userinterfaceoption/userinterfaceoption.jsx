@@ -5,6 +5,7 @@ import './userinterfaceoption.css'
 import { useLocale } from '../locale/localeoptions';
 
 const VerticalLayoutOption = () => {
+    const { localeTxt } = useLocale();
     return theLocale.isSupportingVerticalText ? (
         <tr id="EnableVerticalLayout">
             <td colSpan={2}><input type="checkbox" id="CheckboxEnableVerticalLayout"/>
