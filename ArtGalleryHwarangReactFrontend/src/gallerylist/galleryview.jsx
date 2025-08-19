@@ -10,7 +10,7 @@ function PostBar({ post }) {
             <div id="postbarview">
                 <div id="postimage">
                     {/* You might want to have an image URL in your post data */}
-                    <img src="https://via.placeholder.com/150" alt={post.posttitle} />
+                    <img src={"image link here"}  alt={post.posttitle} />
                 </div>
                 <div id="postoption">
                     <Link to={`/u/${post.postauthor}`}>
@@ -34,7 +34,7 @@ function PostGrid({ post }) {
         <Link to={`/p/${post.postindex}`}>
             <div id="postgridview">
                 <div id="postimage">
-                    <img src="https://via.placeholder.com/150" alt={post.posttitle} />
+                    <img src={"image link here"} alt={post.posttitle} />
                 </div>
                 <div id="postoption">
                     <Link to={`/u/${post.postauthor}`}>

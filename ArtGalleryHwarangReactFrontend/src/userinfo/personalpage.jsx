@@ -7,7 +7,7 @@ import './personalpage.css';
 
 function PersonalPage() {
     const { userindex1st } = useParams();
-    const [currentUser, setCurrentUser] = useState(null);
+    const [ user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -20,7 +20,7 @@ function PersonalPage() {
                 setError(null);
                 const userDetailAddress = GetServerAPIAddress('u', `${userindex1st}`);
                 const response = await axios.get(userDetailAddress);
-                setCurrentUser(response.data);
+                setUser(response.data);
             } catch (err) {
                 console.error("Error fetching user data:", err);
                 setError("Failed to load user data.");
@@ -42,9 +42,13 @@ function PersonalPage() {
         return <div>error: {error}</div>;
     }
 
-    if (!currentUser) {
+    if (!user) {
         return <div>{"User not found."}</div>;
     }
+
+    const RedirectPost = () => {
+        navigate("/newpost");
+    };
 
     return (
         <div id="PersonalPage" className={GetClassNames("layout")}>
@@ -53,7 +57,7 @@ function PersonalPage() {
                     {/* Placeholder for profile picture */}
                 </div>
                 <div id="UserName" className={GetClassNames("")}>
-                    {currentUser.user_id} ({currentUser.user_index_1st})
+                    {user.user_id} ({user.user_index_1st})
                 </div>
                 <div id="Following" className={GetClassNames("")}>
                     {"following"}

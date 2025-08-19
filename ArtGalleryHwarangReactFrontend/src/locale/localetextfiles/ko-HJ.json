@@ -52,7 +52,7 @@
         },
         "login":{
             "scr_Login":"로그인",
-            "lbl_userId":"使用者아이디",
+            "lbl_userId":"아이디",
             "lbl_userPW":"暗號",
             "tbx_userId_Placeholder":"使用者아이디를여기에入力하세요。",
             "tbx_userPW_Placeholder":"暗號를여기에入力하세요。",

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import base from '../base';
 import './homepage.css';
 
 import { useLocale } from '../locale/localeoptions';
 
 function Homepage() {
-    const [loggedInUsers, setLoggedInUsers] = useState([]);
+    const [ loggedInUsers, setLoggedInUsers ] = useState([]);
+    const { currentUserSession, setCurrentUserSession } = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const users = base.session.GetLoginUsers();
@@ -16,6 +18,10 @@ function Homepage() {
     function RefreshPage() {
         window.location.reload(false);
     }
+
+    const RedirectPost = () => {
+        navigate("/newpost");
+    };
 
     function Logout(logoutuser) {
         try {
@@ -49,6 +55,11 @@ function Homepage() {
                             </li>
                         ))}
                     </ul>
+                    <h3>Current User</h3>
+                    <p></p>
+                    <button onClick={RedirectPost}>
+                        New Post
+                    </button>
                     <button id="ResetLoginSessions" onClick={() => LogoutAll()}>Logout All</button>
                 </div>
             ) : (

@@ -1,5 +1,8 @@
 let loginaccounts = [];
 
+//current user
+let currentUser;
+
 // List of login users
 function GetLoginUsers() {
     const storedAccounts = localStorage.getItem('loginaccounts');
@@ -55,9 +58,19 @@ function UserLogout(logoutuser) {
 
 }
 
+function GetCurrentLoginSession() {
+    return currentUser;
+}
+
+function SwitchLoginSession(user) {
+    currentUser = user;
+}
+
 export default {
     GetLoginUsers, 
     ResetLoginSessions, 
+    GetCurrentLoginSession,
+    SwitchLoginSession,
     UserLogin, 
     UserLogout
 };

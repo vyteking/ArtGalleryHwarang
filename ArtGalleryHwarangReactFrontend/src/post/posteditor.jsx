@@ -6,7 +6,7 @@ function PostInfoLoader({postindex}) {
 
 }
 
-function PostEditor({postauthorindex1st, postindex}) {
+function PostEditor({postauthorindex1st = null, postindex = null}) {
     return () => {
         <div id="posteditor" className={GetClassNames("layout")}>
             <form id="posteditorform" method="POST" className={GetClassNames()}>

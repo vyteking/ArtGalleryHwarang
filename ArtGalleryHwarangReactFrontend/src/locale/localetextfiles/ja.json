@@ -52,7 +52,7 @@
         },
         "login":{
             "scr_Login":"ログイン",
-            "lbl_userId":"ユーザー名",
+            "lbl_userId":"ユーザーID",
             "lbl_userPW":"パスワード",
             "tbx_userId_Placeholder":"ユーザー名をここに入力してください。",
             "tbx_userPW_Placeholder":"パスワードをここに入力してください。",
