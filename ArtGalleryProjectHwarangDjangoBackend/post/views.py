@@ -1,6 +1,9 @@
+from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from utils import get_collection
+from .models import *
+from .serializers import *
 
 class PostListView(APIView):
     def get(self, request):
@@ -15,3 +18,9 @@ class PostListView(APIView):
                 'posttag': post.get('posttag'),
             })
         return Response(posts)
+
+class SubmitPostView(generics.GenericAPIView):
+    serializer_class = PostSerializer
+
+    def post(self, request, *args1, **args2):
+        posttitle = request.data.get("posttitle")
