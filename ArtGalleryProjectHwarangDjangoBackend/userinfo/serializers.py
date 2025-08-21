@@ -5,10 +5,12 @@ from django.contrib.auth.hashers import make_password
 class UserInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
-        fields = ('user_index_1st', 'user_id', 'user_password', 'user_index_2nd', 'user_index_3rd')
-        read_only_fields = ('user_index_1st', 'user_index_2nd', 'user_index_3rd')
+        fields = ('user_index_1st', 'user_id', 'user_status', 'user_level', 'user_join_date')
+        read_only_fields = ('user_index_1st', 'user_status', 'user_level', 'user_join_date')
         extra_kwargs = {
-            'user_password': {'write_only': True}
+            'user_password': {'write_only': True},
+            'user_index_2nd': {'write_only': True},
+            'user_index_3rd': {'write_only': True},
         }
 
     def create(self, validated_data):

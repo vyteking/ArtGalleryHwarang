@@ -24,7 +24,7 @@ class UserInfo(models.Model):
 
     user_index_1st = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user_id = models.CharField(max_length=127, unique=True)
-    user_password = models.CharField(max_length=255)
+    user_password = models.CharField(max_length=255, editable=True)
     user_password_2nd = models.CharField(max_length=255, null=True)
     user_index_2nd = models.UUIDField(default=uuid.uuid4, editable=True)
     user_index_3rd = models.UUIDField(default=uuid.uuid4, editable=True)

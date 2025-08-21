@@ -9,3 +9,4 @@ class Post(models.Model):
     postauthor = models.ForeignKey(Hwaranguserinfo, on_delete=models.CASCADE, editable=False)
     postdescription = models.TextField()
     posttag = models.CharField(max_length=255)
+    isInPublic = models.BooleanField(default=True)

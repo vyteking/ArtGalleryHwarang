@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from .models import *
 from .serializers import *
+import utils
 from django.contrib.auth.hashers import check_password
 
 class SignupView(generics.CreateAPIView):
@@ -33,3 +34,21 @@ class UserDetailView(generics.RetrieveAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = PublicUserInfoSerializer
     lookup_field = 'user_index_1st'
+
+class UserUpdateView(generics.RetrieveAPIView):
+    queryset = UserInfo.objects.all()
+    serializer_class = PublicUserInfoSerializer
+    lookup_field = 'user_index_1st'
+
+class UserDeletionView(generics.RetrieveAPIView):
+    def delete(self, request, pk):
+        user_index_1st = request.data.get('user_index_1st')
+        try:
+            user = UserInfo.objects.get(user_index_1st=user_index_1st)
+            result = utils.get_collection("userinfo").delete_one("user_index_1st", user.user_index_1st)
+            if result.deleted_count == 0:
+                return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except UserInfo.DoesNotExist:
+            pass
+        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
