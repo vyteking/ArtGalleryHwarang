@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post # No longer needed for this serializer
+from .models import Post 
 
 class PostSerializer(serializers.Serializer):
     # postindex = serializers.UUIDField(read_only=True)

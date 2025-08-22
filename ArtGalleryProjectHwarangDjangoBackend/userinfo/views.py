@@ -35,7 +35,7 @@ class UserDetailView(generics.RetrieveAPIView):
     serializer_class = PublicUserInfoSerializer
     lookup_field = 'user_index_1st'
 
-class UserUpdateView(generics.RetrieveAPIView):
+class UserUpdateView(generics.UpdateAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = PublicUserInfoSerializer
     lookup_field = 'user_index_1st'

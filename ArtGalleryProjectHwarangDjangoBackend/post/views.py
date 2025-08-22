@@ -8,7 +8,7 @@ from .serializers import *
 
 class PostListView(APIView):
     def get(self, request):
-        post_collection = get_collection('post_post')
+        post_collection = get_collection('post')
         posts = []
         for post in post_collection.find():
             posts.append({
