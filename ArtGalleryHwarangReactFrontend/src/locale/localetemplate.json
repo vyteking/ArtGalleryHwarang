@@ -44,6 +44,14 @@
                 "few":"",
                 "many":"",
                 "other":""
+            },
+            "Replies": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
             }
         },
         "userinfo":{
@@ -104,6 +112,26 @@
             "theme":"", 
             "language":"",
             "enable_vertical_direction":""
+        },
+        "postview":{
+            "prev_post":"",
+            "next_post":"",
+            "btn_Modify":"",
+            "btn_Delete":""
+        },
+        "posteditor":{
+            "lbl_title":"",
+            "tbx_title_Placeholder":"",
+            "lbl_uploadfile":"",
+            "txt_description_Placeholder":"",
+            "lbl_tags":"",
+            "tbx_tags_Placeholder":"",
+            "btn_Submit":"",
+            "btn_Reset":"",
+            "btn_Cancel":""
+        },
+        "replieslist":{
+            "lbl_Replies":""
         }
     },
     "plural_forms_template": {

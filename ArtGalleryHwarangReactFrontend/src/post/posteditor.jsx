@@ -33,7 +33,7 @@ function PostEditor({postauthorindex1st = null, postindex = null}) {
                     <input type="text" id="titleinput"/>
                 </div>
                 <div id="contextuploader">
-                    <input type="file" id="fileuploader"/>
+                    <input type="file" id="fileuploader" multiple/>
                 </div>
                 <div id="postdescription">
                     <textarea id="descriptiontextarea">
