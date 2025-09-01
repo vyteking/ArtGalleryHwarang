@@ -1,55 +1,104 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import { GetClassNames } from '../base';
+import { useParams, useNavigate } from "react-router-dom";
 import './posteditor.css'
 
 import axios from 'axios'
 
-function PostInfoLoader({postindex}) {
+function PostEditor() {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [tags, setTags] = useState('');
+    const [postError, setPostError] = useState(null);
 
-}
-
-function PostEditor({postauthorindex1st = null, postindex = null}) {
-    const [postError, setPostError] = useState(null); // State to store post error messages
-
+    const { postId } = useParams();
     const navigate = useNavigate();
-    const { localeTxt } = useLocale();
+    const isEditing = Boolean(postId);
 
-    const handlwSubmit = async (e) => {
-        e.prevemtDefault();
+    useEffect(() => {
+        if (isEditing) {
+            axios.get(`/api/post/${postId}/`)
+                .then(response => {
+                    const post = response.data;
+                    setTitle(post.title);
+                    setDescription(post.description);
+                    if (post.tags) {
+                        setTags(post.tags.join(', '));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching post:', error);
+                    setPostError('Failed to load post data.');
+                });
+        }
+    }, [isEditing, postId]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         setPostError(null);
 
-        const postdata = {};
+        const postData = {
+            title,
+            description,
+            tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+        };
+
+        const url = isEditing ? `/api/post/${postId}/update/` : '/api/post/create/';
+        const method = isEditing ? 'put' : 'post';
+
+        try {
+            const response = await axios[method](url, postData);
+            navigate(`/post/${response.data.id}`);
+        } catch (error) {
+            console.error('Error submitting post:', error);
+            setPostError('Failed to submit post.');
+        }
     };
 
-    const handleReset = () => {
-
+    const handleCancel = () => {
+        navigate(-1); // Go back to the previous page
     };
 
     return (
-        <div id="posteditor" className={GetClassNames("layout")}>
-            <form id="posteditorform" method="POST" className={GetClassNames()}>
-                <div id="posttitle" className={GetClassNames()}>
-                    <input type="text" id="titleinput"/>
+        <div id="posteditor" className={"layout"}>
+            <form id="posteditorform" method="POST" onSubmit={handleSubmit}>
+                <div id="posttitle" className={""}>
+                    <input
+                        type="text"
+                        id="titleinput"
+                        value={title}
+                        onChange={e => setTitle(e.target.value)}
+                        placeholder="Title"
+                        required
+                    />
                 </div>
                 <div id="contextuploader">
                     <input type="file" id="fileuploader" multiple/>
-                </div>
+                </div> {/* */}
                 <div id="postdescription">
-                    <textarea id="descriptiontextarea">
-                        description
-                    </textarea>
+                    <textarea
+                        id="descriptiontextarea"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        placeholder="Description"
+                        required
+                    />
                 </div>
                 <div id="posttags">
-                    <input type="text" id="taginput"/>
+                    <input
+                        type="text"
+                        id="taginput"
+                        value={tags}
+                        onChange={e => setTags(e.target.value)}
+                        placeholder="Tags, separated by commas"
+                    />
                 </div>
                 <div>
                     <div id="postoptions">
-                        <button id="submitbutton" type="submit">Submit</button>
-                        <button id="resetbutton" type="reset" onClick={handleReset}>Reset</button>
-                        <button id="cancelbutton">Cancel</button>
+                        <button id="submitbutton" type="submit">{isEditing ? 'Update Post' : 'Create Post'}</button>
+                        <button id="cancelbutton" type="button" onClick={handleCancel}>Cancel</button>
                     </div>
                 </div>
+                {postError && <div className="error-message">{postError}</div>}
             </form>
         </div>
     );

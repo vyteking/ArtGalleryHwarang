@@ -27,7 +27,7 @@ function Userinterfaceoptionwindow() {
 
     return () => {
         <div id="UIOptionDiv" className='box'>
-            <table id="UIOptionTable">
+            <div id="UIOptionTable" className={GetClassNames("layout")}>
                 <tr>
                     <td>{localeTxt.Texts.Userinterfaceoptions.language}</td>
                     <td></td>
@@ -37,7 +37,7 @@ function Userinterfaceoptionwindow() {
                     <td><button onClick={saveUIOption}>{localeTxt.Texts.common.OK}</button></td>
                     <td><button onClick={closeUIOptWin}>{localeTxt.Texts.common.Cancel}</button></td>
                 </tr>
-            </table>
+            </div>
         </div>
     };
 }
