@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import './header.css'
-import Base, { GetClassNames } from '../../base'
+import Base, { useClassNames } from '../../base'
 import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
 
 function DisplayHeaderUserInfoStatusBox() {
@@ -16,22 +16,23 @@ function Usericon() {
 }
 
 function Header() {
-    const {isHeaderUserInfoVisible, setHeaderUserInfoVisibility} = useState(false);
+    const [isHeaderUserInfoVisible, setHeaderUserInfoVisibility] = useState(false);
+    const getClassNames = useClassNames();
     const toggleInfoBox = () => {
         setHeaderUserInfoVisibility(!isHeaderUserInfoVisible);
     }
 
     return (
-        <header id="headertag" className={GetClassNames("layout")}>
+        <header id="headertag" className={getClassNames("layout")}>
             header
-            <div id="headerDiv" className={GetClassNames("flexboxtype0")}>
-                <div id="menubuttonDiv" className={GetClassNames()}>
-                    Menu<image src=""/>
+            <div id="headerDiv" className={getClassNames("flexboxtype0")}>
+                <div id="menubuttonDiv" className={getClassNames()}>
+                    Menu<img src=""/>
                 </div>
-                <div id="headertitle" className={GetClassNames()}>
+                <div id="headertitle" className={getClassNames()}>
                     <Link to="/">Title</Link>
                 </div>
-                <div id="headeruserinfoDiv" className={GetClassNames()} onClick={setHeaderUserInfoVisibility}>
+                <div id="headeruserinfoDiv" className={getClassNames()} onClick={toggleInfoBox}>
                     <Usericon/>
                 </div>
             </div>

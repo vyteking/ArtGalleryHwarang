@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './galleryview.css';
-import { GetClassNames, GetServerAPIAddress } from '../base';
+import { GetServerAPIAddress } from '../base';
 
 function PostBar({ post }) {
     return (
@@ -52,7 +52,7 @@ function PostGrid({ post }) {
     );
 }
 
-function GalleryGridView() {
+function GalleryGridView({origin, page, columns}) {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -93,7 +93,7 @@ function GalleryGridView() {
     );
 }
 
-function GalleryListView() {
+function GalleryListView({origin, page}) {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -103,6 +103,12 @@ function GalleryListView() {
             try {
                 setLoading(true);
                 setError(null);
+                const listorigin = '';
+                if (origin === undefined || origin === null) {
+                    listorigin = 'api/posts';
+                } else {
+                    listorigin = 'u:'+{origin,postauthor};
+                }
                 const postsAddress = GetServerAPIAddress('p', 'api/posts');
                 const response = await axios.get(postsAddress);
                 setPosts(response.data);

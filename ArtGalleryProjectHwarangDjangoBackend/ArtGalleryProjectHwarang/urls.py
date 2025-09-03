@@ -27,5 +27,6 @@ urlpatterns = [
     path('', AppLayout),
     path('u/', include('userinfo.urls')),
     path('p/', include('post.urls')),
+    path('c/', include('postcontent.urls')),
     path('r/', include('reply.urls')),
 ]

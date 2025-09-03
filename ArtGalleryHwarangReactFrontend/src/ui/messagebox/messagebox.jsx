@@ -1,5 +1,6 @@
 import './messagebox.css'
-import Base, { dirClass, GetClassNames } from '../../base'
+import Base, { useClassNames } from '../../base'
+import { useMessagebox } from './messageboxcontext';
 
 const Messageboxbuttons = Object.freeze({
     OK: 1, 
@@ -15,17 +16,24 @@ const Messageboxbuttons = Object.freeze({
     Delete: 1024,
 });
 
-function Messagebox({messagestring, messagetype}) {
-    return () => {
-        <div id="messagebox" className={GetClassNames("box")}>
-            <div id='messagestring' className={GetClassNames("")}>
-                {messagestring}
+function Messagebox() {
+    const getClassNames = useClassNames();
+    const { messagebox, hideMessage } = useMessagebox();
+
+    if (!messagebox.isOpen) {
+        return null;
+    }
+
+    return (
+        <div id="messagebox" className={getClassNames("box")}>
+            <div id='messagestring' className={getClassNames("")}>
+                {messagebox.message}
             </div>
             <div>
-
+                <button onClick={hideMessage}>Close</button>
             </div>
         </div>
-    }
+    );
 }
 
 export default Messagebox;

@@ -1,21 +1,22 @@
-import Base, { GetClassNames, GetServerAPIAddress } from '../../base'
+import Base, { useClassNames, GetServerAPIAddress } from '../../base'
 
 import './userinterfaceoption.css'
 
-import { useLocale } from '../locale/localeoptions';
+import { useLocale } from '../../locale/localeoptions';
 
 const VerticalLayoutOption = () => {
     const { localeTxt } = useLocale();
-    return theLocale.isSupportingVerticalText ? (
-        <tr id="EnableVerticalLayout">
-            <td colSpan={2}><input type="checkbox" id="CheckboxEnableVerticalLayout"/>
-            <label for="CheckboxEnableVerticalLayout">{localeTxt.Texts.Userinterfaceoptions.enable_vertical_direction}</label></td>
-        </tr>
+    return localeTxt.isSupportingVerticalText ? (
+        <div id="EnableVerticalLayout">
+            <input type="checkbox" id="CheckboxEnableVerticalLayout"/>
+            <label htmlFor="CheckboxEnableVerticalLayout">{localeTxt.Texts.Userinterfaceoptions.enable_vertical_direction}</label>
+        </div>
     ) : null; // Return null if the condition is false
 };
 
 function Userinterfaceoptionwindow() {
     const { localeTxt } = useLocale();
+    const getClassNames = useClassNames();
 
     const saveUIOption = () => {
 
@@ -25,21 +26,21 @@ function Userinterfaceoptionwindow() {
 
     }
 
-    return () => {
-        <div id="UIOptionDiv" className='box'>
-            <div id="UIOptionTable" className={GetClassNames("layout")}>
-                <tr>
-                    <td>{localeTxt.Texts.Userinterfaceoptions.language}</td>
-                    <td></td>
-                </tr>
-                <VerticalLayoutOption />
-                <tr>
-                    <td><button onClick={saveUIOption}>{localeTxt.Texts.common.OK}</button></td>
-                    <td><button onClick={closeUIOptWin}>{localeTxt.Texts.common.Cancel}</button></td>
-                </tr>
+    return (
+        <div id="UIOptionDiv" className={getClassNames("box")}>
+            <div id="UIOptionTable" className={getClassNames("layout")}>
+                    <div>
+                        <div>{localeTxt.Texts.Userinterfaceoptions.language}</div>
+                        <div></div>
+                    </div>
+                    <VerticalLayoutOption />
+                    <div>
+                        <button onClick={saveUIOption}>{localeTxt.Texts.common.OK}</button>
+                        <button onClick={closeUIOptWin}>{localeTxt.Texts.common.Cancel}</button>
+                    </div>
             </div>
         </div>
-    };
+    );
 }
 
 export default Userinterfaceoptionwindow;

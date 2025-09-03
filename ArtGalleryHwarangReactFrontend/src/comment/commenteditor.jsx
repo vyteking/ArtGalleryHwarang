@@ -1,12 +1,13 @@
 import './commentview.css'
 import './commenteditor.css'
 
-import Base, { GetClassNames } from '../base'
+import Base, { useClassNames } from '../base'
 
-function CommentEditor(postindex, commentauthorindex, commentindex) {
-    return () => {
-        <div id="commentviewer" className={GetClassNames("")}>
-            <div id="authorinfo" className={GetClassNames("")}>
+function CommentEditor({postindex, commentauthorindex, commentindex}) {
+    const getClassNames = useClassNames();
+    return (
+        <div id="commentviewer" className={getClassNames("")}>
+            <div id="authorinfo" className={getClassNames("")}>
                 <div id="authoricon">authoricon</div>
                 <div id="authorname">authorname</div>
             </div>
@@ -24,7 +25,7 @@ function CommentEditor(postindex, commentauthorindex, commentindex) {
                 </div>
             </div>
         </div>
-    };
+    );
 }
 
 export default CommentEditor;

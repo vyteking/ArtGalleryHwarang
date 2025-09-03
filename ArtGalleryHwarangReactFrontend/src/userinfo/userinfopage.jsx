@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import base, { GetClassNames } from '../base';
+import base, { useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import './userinfopage.css';
 
@@ -8,7 +8,7 @@ function Userinfopage() {
     const [selectedUser, setSelectedUser] = useState(null);
 
     const { localeTxt } = useLocale();
-    const getClassNames = useGetClassNames();
+    const getClassNames = useClassNames();
 
     useEffect(() => {
         const users = base.session.GetLoginUsers();
@@ -19,7 +19,7 @@ function Userinfopage() {
     }, []);
 
     return (
-        <div id="UserinfopageContainer" className={GetClassNames("layout")}>
+        <div id="UserinfopageContainer" className={getClassNames("layout")}>
             <h2>{localeTxt.userinfo.your_login_sessions || "Your Login Sessions:"}</h2>
             {loggedInUsers.length > 0 ? (
                 <div>
@@ -36,13 +36,13 @@ function Userinfopage() {
                     </div>
 
                     {selectedUser && (
-                        <form id="UserInfoDisplayForm" className={GetClassNames("layout")}>
+                        <form id="UserInfoDisplayForm" className={getClassNames("layout")}>
                             <h3>{localeTxt.userinfo.details_for || "Details for"} {selectedUser.user_id}:</h3>
                             <table id="UserInfoTable" className="layout">
                                 <tbody>
                                     <tr className="userinfotable">
                                         <td className="userinfotable">
-                                            <label id="lbl_UserIdx1st" className="userinfotable" htmlFor="tbx_Current_UserIdx1st">
+                                            <label id="lbl_UserIdx1st" className="userinfotable" htmlFor="tbx__Current_UserIdx1st">
                                                 {localeTxt.userinfo.userindex1st}
                                             </label>
                                         </td>

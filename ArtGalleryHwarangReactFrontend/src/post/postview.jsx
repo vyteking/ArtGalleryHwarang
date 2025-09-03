@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './postview.css';
-import { GetClassNames } from '../base';
+import { useClassNames } from '../base';
 
 // A component to display a single reply
 function Reply({ reply }) {
@@ -18,6 +18,7 @@ function PostViewer({ postindex }) {
     const [newReply, setNewReply] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const getClassNames = useClassNames();
 
     useEffect(() => {
         if (!postindex) return;
@@ -86,39 +87,39 @@ function PostViewer({ postindex }) {
     if (!post) return <div>Post not found.</div>;
 
     return (
-        <div id="postviewer" className={GetClassNames("layout")}>
-            <div id="AuthorInfo" className={GetClassNames()}>
-                <div id="AuthorProfile" className={GetClassNames()}>
+        <div id="postviewer" className={getClassNames("layout")}>
+            <div id="AuthorInfo" className={getClassNames()}>
+                <div id="AuthorProfile" className={getClassNames()}>
                     <div id="AuthorProfilePic">pfp</div>
                     {/* Assuming post.author has a username field */}
                     <div id="AuthorName">{post.author?.username || 'Unknown Author'}</div>
                 </div>
-                <div id="AuthorsOtherPosts" className={GetClassNames()}>
+                <div id="AuthorsOtherPosts" className={getClassNames()}>
                     other posts of the author
                 </div>
             </div>
-            <div id="PostHeader" className={GetClassNames()}>
-                <div id="PreviousPost" className={GetClassNames()}>prev. post</div>
-                <div id="PostTitle" className={GetClassNames()}>{post.title}</div>
-                <div id="NextPost" className={GetClassNames()}>next post</div>
+            <div id="PostHeader" className={getClassNames()}>
+                <div id="PreviousPost" className={getClassNames()}>prev. post</div>
+                <div id="PostTitle" className={getClassNames()}>{post.title}</div>
+                <div id="NextPost" className={getClassNames()}>next post</div>
             </div>
-            <div id="PostContents" className={GetClassNames()}>
+            <div id="PostContents" className={getClassNames()}>
                 {/* You'll need to handle rendering different content types here */}
                 context
             </div>
-            <div id="PostDescription" className={GetClassNames()}>
+            <div id="PostDescription" className={getClassNames()}>
                 {post.description}
             </div>
-            <div id="PostTags" className={GetClassNames()}>
+            <div id="PostTags" className={getClassNames()}>
                 {post.tags?.join(', ')}
             </div>
-            <div id="PostOptions" className={GetClassNames()}>
+            <div id="PostOptions" className={getClassNames()}>
                 <div id="EditPost">edit</div>
                 <div id="DeletePost">delete</div>
             </div>
             
             {/* Replies Section */}
-            <div id="PostReplies" className={GetClassNames()}>
+            <div id="PostReplies" className={getClassNames()}>
                 <h3>Replies</h3>
                 <div className="replies-list">
                     {replies.length > 0 ? (

@@ -4,37 +4,24 @@ import axios from 'axios'
 
 import './loginpage.css';
 
-import base, { GetClassNames, GetServerAPIAddress } from '../base';
+import base, { useClassNames, GetServerAPIAddress } from '../base';
 import { useLocale } from '../locale/localeoptions';
-
-function LoginError({ message, onClose, direction }) {
-    if (!message) return null; // Don't render if there's no message
-    return (
-        <div id="loginErrorWinDiv" className={GetClassNames("box")}>
-            <div id="alertDiv" className={GetClassNames('alertDiv')}>
-                <p>{message}</p> {/* Display the error message */}
-            </div>
-            {/* Added an onClick handler to close the error */}
-            <button className={GetClassNames('alertDiv')} onClick={onClose}>Close</button>
-        </div>
-    );
-}
+import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 
 function Loginpage() {
     const [userID, setUserID] = useState('');
     const [userPW, setUserPW] = useState('');
-    const [loginError, setLoginError] = useState(null); // State to store login error messages
+    const { showMessage } = useMessagebox();
 
     const navigate = useNavigate();
     const { localeTxt } = useLocale();
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
-        setLoginError(null); // Clear any previous errors
 
         // Basic validation for non-empty fields (though empty string is handled by === below)
         if (!userID || !userPW) {
-            setLoginError(localeTxt.login.error_AllFieldsRequired || 'All fields are required.');
+            showMessage(localeTxt.login.error_AllFieldsRequired || 'All fields are required.', 'error');
             return;
         }
 
@@ -49,7 +36,7 @@ function Loginpage() {
             navigate(`/u/${response.data.user_index_1st}`);
         } catch (error) {
             console.error("Error creating post:", error);
-            setLoginError('Could not connect to the server. Please try again later. \nError: '+error);
+            showMessage('Could not connect to the server. Please try again later. \nError: '+error, 'error');
         }
     };
 
@@ -57,7 +44,6 @@ function Loginpage() {
     const handleReset = () => {
         setUserID('');
         setUserPW('');
-        setLoginError('');
     };
 
     const RedirectSignup = () => {
@@ -117,8 +103,6 @@ function Loginpage() {
                     </button>
                 </div>
             </form>
-            {/* Render the LoginError component if there's an error */}
-            <LoginError message={loginError} onClose={() => setLoginError(null)} />
         </div>
     );
 }

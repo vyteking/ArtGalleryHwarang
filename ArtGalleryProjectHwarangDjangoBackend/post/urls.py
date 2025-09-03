@@ -6,6 +6,6 @@ urlpatterns = [
     path('api/submit', SubmitPostView.as_view(), name='submit-post'),
     path('u/<uuid:postauthor>', PostListView.as_view(), name='user-post-list'),
     path('<uuid:postindex>', PostListView.as_view(), name='post-view'),
-    path('<uuid:postindex>/update', PostListView.as_view(), name='update-post'),
-    path('<uuid:postindex>/delete', PostListView.as_view(), name='delete-post'),
+    path('<uuid:postindex>/update', UpdatePostView.as_view(), name='update-post'),
+    path('<uuid:postindex>/delete', DeletePostView.as_view(), name='delete-post'),
 ]

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import base, { GetServerAPIAddress, GetClassNames } from '../base';
+import base, { GetServerAPIAddress, useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import './personalpage.css';
 
@@ -10,8 +10,10 @@ function PersonalPage() {
     const [ user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const { localeTxt } = useLocale();
+    const getClassNames = useClassNames();
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -51,22 +53,22 @@ function PersonalPage() {
     };
 
     return (
-        <div id="PersonalPage" className={GetClassNames("layout")}>
-            <div id="Profile" className={GetClassNames("")}>
-                <div id="ProfilePic" className={GetClassNames("")}>
+        <div id="PersonalPage" className={getClassNames("layout")}>
+            <div id="Profile" className={getClassNames("")}>
+                <div id="ProfilePic" className={getClassNames("")}>
                     {/* Placeholder for profile picture */}
                 </div>
-                <div id="UserName" className={GetClassNames("")}>
+                <div id="UserName" className={getClassNames("")}>
                     {user.user_id} ({user.user_index_1st})
                 </div>
-                <div id="Following" className={GetClassNames("")}>
+                <div id="Following" className={getClassNames("")}>
                     {"following"}
                 </div>
-                <div id="Followers" className={GetClassNames("")}>
+                <div id="Followers" className={getClassNames("")}>
                     {"followers"}
                 </div>
             </div>
-            <div id="UserGallery" className={GetClassNames("")}>
+            <div id="UserGallery" className={getClassNames("")}>
                 {/* Placeholder for user's gallery */}
             </div>
         </div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import './posteditor.css'
+import { useClassNames } from '../base';
+import GetCurrentLoginSession from '../session.tsx'
 
 import axios from 'axios'
 
@@ -9,6 +11,8 @@ function PostEditor() {
     const [description, setDescription] = useState('');
     const [tags, setTags] = useState('');
     const [postError, setPostError] = useState(null);
+    const getClassNames = useClassNames();
+    // const postUser = GetCurrentLoginSession();
 
     const { postId } = useParams();
     const navigate = useNavigate();
@@ -59,7 +63,7 @@ function PostEditor() {
     };
 
     return (
-        <div id="posteditor" className={"layout"}>
+        <div id="posteditor" className={getClassNames("layout")}>
             <form id="posteditorform" method="POST" onSubmit={handleSubmit}>
                 <div id="posttitle" className={""}>
                     <input

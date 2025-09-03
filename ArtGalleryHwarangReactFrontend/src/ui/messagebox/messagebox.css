@@ -1,0 +1,10 @@
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#messagebox {
+    background-color: #ffffff;
+    border-color: #bbbbbb;
+}

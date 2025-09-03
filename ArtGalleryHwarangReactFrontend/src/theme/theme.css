@@ -1,7 +1,9 @@
-#bright-white {
-
+.bright-white {
+    background-color: #ffffff;
+    color: #222222;
 }
 
-#darky-black {
-    
+.darky-black {
+    background-color: #222222;
+    color: #eeeeee;
 }

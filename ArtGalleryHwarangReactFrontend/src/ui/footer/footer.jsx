@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './footer.css'
-import Base, { GetClassNames } from '../../base'
+import Base, { useClassNames } from '../../base'
 import { GetLocalesList } from '../../locale/localeslist';
 import { useLocale } from '../../locale/localeoptions';
 
@@ -30,16 +30,17 @@ function Localelist() {
 }
 
 function Footer() {
+    const getClassNames = useClassNames();
     return (
-        <footer id="footertag" className={GetClassNames("layout")}>
-            <div id='footerDiv' className={GetClassNames("")}>
-                <div id="displayoptionDiv" className={GetClassNames("")}>
+        <footer id="footertag" className={getClassNames("layout")}>
+            <div id='footerDiv' className={getClassNames("")}>
+                <div id="displayoptionDiv" className={getClassNames("")}>
                     displayoption
                 </div>
-                <div id="footerdatetimeDiv" className={GetClassNames("")}>
+                <div id="footerdatetimeDiv" className={getClassNames("")}>
                     datetime
                 </div>
-                <div id="localeDiv" className={GetClassNames("")}>
+                <div id="localeDiv" className={getClassNames("")}>
                     <Localelist />
                 </div>
             </div>

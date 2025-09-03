@@ -3,6 +3,16 @@ let loginaccounts = [];
 //current user
 let currentUser;
 
+// Function to get the index of the current user from localStorage
+function getCurrentUserIndex() {
+    return localStorage.getItem('currentUserIndex');
+}
+
+// Function to set the index of the current user in localStorage
+function setCurrentUserIndex(userIndex) {
+    localStorage.setItem('currentUserIndex', userIndex);
+}
+
 // List of login users
 function GetLoginUsers() {
     const storedAccounts = localStorage.getItem('loginaccounts');
@@ -25,45 +35,62 @@ function GetLoginUsers() {
 
 function ResetLoginSessions() {
     localStorage.removeItem('loginaccounts');
+    localStorage.removeItem('currentUserIndex');
     console.log(loginaccounts);
     localStorage.setItem('loginaccounts', JSON.stringify([]));
 }
 
 // Function to add a user to the login accounts when they log in
 function UserLogin(loginuser) {
-    if (loginuser) {
-        const existing = JSON.parse(localStorage.getItem('loginaccounts') || '[]');
-        if (!existing.includes(loginuser)) {
+    if (loginuser && loginuser.user_index_1st) {
+        const existing = GetLoginUsers();
+        const isAlreadyLoggedIn = existing.some(user => user.user_index_1st === loginuser.user_index_1st);
+
+        if (!isAlreadyLoggedIn) {
             existing.push(loginuser);
             localStorage.setItem('loginaccounts', JSON.stringify(existing));
+            // If this is the first user to log in, make them the current user
+            if (existing.length === 1) {
+                setCurrentUserIndex(loginuser.user_index_1st);
+            }
         }
     }
 }
 
 // Function to remove a user from the login accounts when they log out
 function UserLogout(logoutuser) {
-    const existing = JSON.parse(localStorage.getItem('loginaccounts') || '[]');
+    const existing = GetLoginUsers();
     console.log("Existing users before logout:", existing);
     console.log("User to logout:", logoutuser);
 
-    const updated = existing.filter(user => user !== logoutuser);
+    const updated = existing.filter(user => user.user_index_1st !== logoutuser.user_index_1st);
     console.log("login sessions after logout: ", updated);
     
-    if (existing.length === updated.length) {
-        localStorage.setItem('loginaccounts', JSON.stringify(updated));
-        console.warn("User not found for logout:", logoutuser);
-    } else {
-        console.log("User logged out successfully:", logoutuser);
-    }
+    localStorage.setItem('loginaccounts', JSON.stringify(updated));
 
+    // If the logged-out user was the current user, clear the current user index
+    if (getCurrentUserIndex() === logoutuser.user_index_1st) {
+        localStorage.removeItem('currentUserIndex');
+        // If there are other users logged in, make the first one the new current user
+        if (updated.length > 0) {
+            setCurrentUserIndex(updated[0].user_index_1st);
+        }
+    }
 }
 
 function GetCurrentLoginSession() {
-    return currentUser;
+    const currentUserIndex = getCurrentUserIndex();
+    if (!currentUserIndex) {
+        return null;
+    }
+    const accounts = GetLoginUsers();
+    return accounts.find(user => user.user_index_1st === currentUserIndex) || null;
 }
 
 function SwitchLoginSession(user) {
-    currentUser = user;
+    if (user && user.user_index_1st) {
+        setCurrentUserIndex(user.user_index_1st);
+    }
 }
 
 export default {
