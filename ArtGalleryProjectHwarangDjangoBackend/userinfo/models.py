@@ -1,9 +1,7 @@
 from django.db import models
 import uuid
-# import mongoengine
 
 # Create your models here.
-# mongoengine.connect('hwarangtestserver')
 
 # Basic user info such as user index, ID, password, etc.
 class UserInfo(models.Model):
@@ -65,3 +63,9 @@ class UserUISetup(models.Model):
 
     def __str__(self):
         return f"{self.user_info_index_1st}"
+    
+# User Following Statistics and Info
+class UserFollowing(models.Model):
+    following = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    followed_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE)
+    follow_date_time = models.DateTimeField(auto_now_add=True)

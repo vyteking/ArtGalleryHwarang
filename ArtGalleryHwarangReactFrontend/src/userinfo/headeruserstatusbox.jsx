@@ -1,5 +1,5 @@
 import UserSession from '../session.tsx'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const isLoggedOn = false;
 
@@ -10,32 +10,28 @@ function GainUserInfo(usersession) {
 
 //User info box when the user is logged in
 function loginuserinfobox(usersession) {
+    const navigate = useNavigate();
+
     return () => {  
         <div>
-            <table>
-                <tr>
-                    <td>
-                        <div><button>not.</button><button>DM</button></div>
-                    </td>
-                    <td>
-                        <div><button>Switchaccount</button><button>loginextra</button></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"><div>usericon</div></td>
-                </tr>
-                <tr>
-                    <td colspan="2">username</td>
-                </tr>
-                <tr>
-                    <td>followings</td>
-                    <td>followers</td>
-                </tr>
-                <tr>
-                    <td><button>userinfopage</button></td>
-                    <td><button>logout</button></td>
-                </tr>
-            </table>
+            <div>
+                <div><button>not.</button><button>DM</button></div>
+                <div><button>Switchaccount</button><button>loginextra</button></div>
+            </div>
+            <div>
+                <div>usericon</div>
+            </div>
+            <div>
+                <div>username</div>
+            </div>
+            <div>
+                <div>followings</div>
+                <div>followers</div>
+            </div>
+            <div>
+                <div><button>userinfopage</button></div>
+                <div><button>logout</button></div>
+            </div>
         </div>
     };
 }
@@ -55,26 +51,20 @@ function userinfoboxWhileNonLoggedIn() {
 
     return () => {  
         <div>
-            <table>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">logoutusericon</td>
-                </tr>
-                <tr>
-                    <td colspan="2">please login</td>
-                </tr>
-                <tr>
-                    <td id="ForgotID">forgot id</td>
-                    <td id="ForgotPW">forgot password</td>
-                </tr>
-                <tr>
-                    <td><button id="Signup" onClick={RedirectSignup}>signup</button></td>
-                    <td><button id="login" onClick={RedirectLogin}>login</button></td>
-                </tr>
-            </table>
+            <div>
+                <Link to='/login'><div id="LogoutUserIcon">logoutusericon</div></Link>
+            </div>
+            <div>
+                <Link to='/login'><div id="PleaseLogin">please login</div></Link>
+            </div>
+            <div>
+                <Link><div id="ForgotID">forgot id</div></Link>
+                <div id="ForgotPW"><Link></Link>forgot password</div>
+            </div>
+            <div>
+                <div><button id="Signup" onClick={RedirectSignup}>signup</button></div>
+                <div><button id="login" onClick={RedirectLogin}>login</button></div>
+            </div>
         </div>
     };
 }

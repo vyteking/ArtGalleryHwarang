@@ -24,7 +24,7 @@ function UserBar({userindex1st}) {
 }
 
 export function FollowingList() {
-    const {param} = useParams();
+    const {userInfo} = useParams();
     const getClassNames = useClassNames();
 
     return (
@@ -35,7 +35,7 @@ export function FollowingList() {
 }
 
 export function FollowersList() {
-    const {param} = useParams();
+    const {userInfo} = useParams();
     const getClassNames = useClassNames();
 
     return (
