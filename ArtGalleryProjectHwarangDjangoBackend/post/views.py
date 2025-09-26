@@ -1,3 +1,4 @@
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -36,18 +37,19 @@ class PostByUserView(generics.GenericAPIView):
 
 class SubmitPostView(generics.GenericAPIView):
     serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         posttitle = request.data.get("posttitle")
-        postauthor = request.data.get("postauthor")
         postdescription = request.data.get("postdescription")
-        posttags = request.data.get("posttags")  # Fixed variable name
+        posttag = request.data.get("posttag")
+        postauthor = request.user
         try:
             postsubmission = Post.objects.create(
                 posttitle=posttitle,
                 postauthor=postauthor,
                 postdescription=postdescription,
-                posttags=posttags
+                posttag=posttag
             )
             return Response({"message": "Post submitted successfully"}, status=status.HTTP_201_CREATED)
         except Exception as e:

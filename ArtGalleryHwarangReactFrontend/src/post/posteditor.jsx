@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import './posteditor.css'
-import { useClassNames } from '../base';
+import { useClassNames, GetServerAPIAddress } from '../base';
 import GetCurrentLoginSession from '../session.tsx'
+import session from '../session.tsx';
 
 import axios from 'axios'
 
@@ -40,17 +41,27 @@ function PostEditor() {
         e.preventDefault();
         setPostError(null);
 
+        const token = session.getAuthToken();
+        if (!token) {
+            setPostError('You must be logged in to post.');
+            return;
+        }
+
         const postData = {
-            title,
-            description,
-            tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+            posttitle: title,
+            postdescription: description,
+            posttag: tags.split(',').map(tag => tag.trim()).filter(tag => tag).join(','),
         };
 
-        const url = isEditing ? `/api/post/${postId}/update/` : '/api/post/create/';
+        const url = isEditing ? GetServerAPIAddress('p', `${postId}/update`) : GetServerAPIAddress('p', 'api/submit');
         const method = isEditing ? 'put' : 'post';
 
         try {
-            const response = await axios[method](url, postData);
+            const response = await axios[method](url, postData, {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            });
             navigate(`/post/${response.data.id}`);
         } catch (error) {
             console.error('Error submitting post:', error);

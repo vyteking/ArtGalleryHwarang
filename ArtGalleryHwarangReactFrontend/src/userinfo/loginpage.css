@@ -13,6 +13,10 @@
     left:50%;
 }
 
+#loginoptionslist {
+    left:50%;
+}
+
 #loginoptionstablebody {
     top:50%;
     left:50%;
@@ -26,14 +30,14 @@
 .inputbox {
     border-color: #DDDDDD;
     border-radius: 4px;
-    margin: 4px;
-    padding: 4px;
+    margin: 8px;
+    padding: 8px;
 }
 
 .loginbutton {
     background-color: #DDDDDD;
     border-color: #DDDDDD;
     border-radius: 8px;
-    margin: 4px;
-    padding: 4px;
+    margin: 8px;
+    padding: 8px;
 }

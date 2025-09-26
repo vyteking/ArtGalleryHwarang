@@ -54,6 +54,10 @@ function UserLogin(loginuser) {
                 setCurrentUserIndex(loginuser.user_index_1st);
             }
         }
+        // Store the token
+        if (loginuser.token) {
+            localStorage.setItem(`token_${loginuser.user_index_1st}`, loginuser.token);
+        }
     }
 }
 
@@ -67,6 +71,7 @@ function UserLogout(logoutuser) {
     console.log("login sessions after logout: ", updated);
     
     localStorage.setItem('loginaccounts', JSON.stringify(updated));
+    localStorage.removeItem(`token_${logoutuser.user_index_1st}`);
 
     // If the logged-out user was the current user, clear the current user index
     if (getCurrentUserIndex() === logoutuser.user_index_1st) {
@@ -87,6 +92,14 @@ function GetCurrentLoginSession() {
     return accounts.find(user => user.user_index_1st === currentUserIndex) || null;
 }
 
+function getAuthToken() {
+    const currentUser = GetCurrentLoginSession();
+    if (!currentUser) {
+        return null;
+    }
+    return localStorage.getItem(`token_${currentUser.user_index_1st}`);
+}
+
 function SwitchLoginSession(user) {
     if (user && user.user_index_1st) {
         setCurrentUserIndex(user.user_index_1st);
@@ -99,5 +112,6 @@ export default {
     GetCurrentLoginSession,
     SwitchLoginSession,
     UserLogin, 
-    UserLogout
+    UserLogout,
+    getAuthToken
 };

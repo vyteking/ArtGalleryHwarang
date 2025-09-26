@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'reply',
 ]
 
+AUTH_USER_MODEL = 'userinfo.UserInfo'
+
 # Middleware framework
 # https://docs.djangoproject.com/en/2.1/topics/http/middleware/
 MIDDLEWARE = [
