@@ -1,10 +1,13 @@
-from rest_framework import generics, status
-from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
 from .models import *
 from .serializers import *
 import utils
+from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 
@@ -12,15 +15,16 @@ class SignupView(generics.CreateAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = UserInfoSerializer
 
+@method_decorator(csrf_exempt, name='dispatch')
 class LoginView(generics.GenericAPIView):
     serializer_class = UserInfoSerializer
 
     def post(self, request, *args, **kwargs):
         user_id = request.data.get('user_id')
-        password = request.data.get('user_password')
+        user_password = request.data.get('user_password')
         try:
             user = UserInfo.objects.get(user_id=user_id)
-            if check_password(password, user.user_password):
+            if check_password(user_password, user.user_password):
                 token, created = Token.objects.get_or_create(user=user)
                 serializer = UserInfoSerializer(user)
                 response_data = serializer.data
@@ -63,32 +67,55 @@ class FollowUserView(APIView):
 
     def post(self, request, *args, **kwargs):
         user_to_follow_pk = kwargs.get('user_index_1st')
+        followed_by_user = request.user
+        
+        if str(user_to_follow_pk) == str(followed_by_user.pk):
+            return Response({"error": "Cannot follow yourself"}, status=status.HTTP_400_BAD_REQUEST)
+
         try:
             user_to_follow = UserInfo.objects.get(pk=user_to_follow_pk)
         except UserInfo.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
         
-        followed_by_user = request.user
+        # get_or_create를 사용하여 중복 팔로우 방지 및 로직 간소화
+        try:
+            relation, created = UserFollowing.objects.get_or_create(
+                following=user_to_follow,
+                followed_by=followed_by_user
+            )
+        except IntegrityError:
+             return Response({"message": "Already following."}, status=status.HTTP_200_OK)
 
-        UserFollowing.objects.create(following=user_to_follow, followed_by=followed_by_user)
 
-        return Response({"message": "Successfully followed user."}, status=status.HTTP_200_OK)
+        if created:
+            return Response({"message": "Successfully followed user."}, status=status.HTTP_201_CREATED) # 생성 시 201
+        else:
+            return Response({"message": "Already following."}, status=status.HTTP_200_OK) # 이미 존재 시 200
 
 class UnfollowUserView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def post(self, request, *args, **kwargs):
+    def delete(self, request, *args, **kwargs): # POST 대신 DELETE 사용
         user_to_unfollow_pk = kwargs.get('user_index_1st')
+        followed_by_user = request.user
+
         try:
             user_to_unfollow = UserInfo.objects.get(pk=user_to_unfollow_pk)
         except UserInfo.DoesNotExist:
-            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+            # 언팔로우 대상이 없어도 204를 반환하는 것이 idempotent하게 처리하는 데 유리
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
-        followed_by_user = request.user
-
-        UserFollowing.objects.filter(following=user_to_unfollow, followed_by=followed_by_user).delete()
-
-        return Response({"message": "Successfully unfollowed user."}, status=status.HTTP_200_OK)
+        # delete()는 삭제된 행의 개수를 반환합니다.
+        deleted_count, _ = UserFollowing.objects.filter(
+            following=user_to_unfollow,
+            followed_by=followed_by_user
+        ).delete()
+        
+        if deleted_count > 0:
+             return Response({"message": "Successfully unfollowed user."}, status=status.HTTP_200_OK)
+        else:
+             # 언팔로우할 관계가 없었어도 성공으로 간주하는 것이 일반적
+             return Response({"message": "Not currently following."}, status=status.HTTP_200_OK)
 
 class FollowingListView(APIView):
     def get(self, request, *args, **kwargs):

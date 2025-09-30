@@ -42,6 +42,7 @@ class UserInfo(AbstractBaseUser, PermissionsMixin):
 
     user_index_1st = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user_id = models.CharField(max_length=127, unique=True)
+    user_password = models.CharField(max_length=255, editable=True)
     user_password_2nd = models.CharField(max_length=255, null=True)
     user_index_2nd = models.UUIDField(default=uuid.uuid4, editable=True)
     user_index_3rd = models.UUIDField(default=uuid.uuid4, editable=True)
@@ -96,3 +97,11 @@ class UserFollowing(models.Model):
 
     class Meta:
         unique_together = (('following', 'followed_by'),)
+
+class UserCloseFriend(models.Model):
+    friend = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='followers')
+    friend_request_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='following')
+    befriend_date_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = (('friend', 'friend_request_by'),)

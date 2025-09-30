@@ -6,6 +6,7 @@ import './signuppage.css';
 
 import base, { GetServerAPIAddress } from '../base';
 import { useLocale } from '../locale/localeoptions';
+import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 
 function Signuppage() {
     const navigate = useNavigate();
@@ -13,30 +14,28 @@ function Signuppage() {
     const [confirmSignupUserIDInput, setConfirmSignupUserIDInput] = useState('');
     const [signupUserPWInput, setSignupUserPWInput] = useState('');
     const [confirmSignupUserPWInput, setConfirmSignupUserPWInput] = useState('');
-    const [error, setError] = useState('');
+    const { showMessage } = useMessagebox();
 
     const { localeTxt } = useLocale();
 
     const handleSignup = async (event) => { // Accept the event object
         event.preventDefault(); // Prevent default form submission
 
-        setError(''); // Clear previous errors
-
         // Basic validation for non-empty fields (though empty string is handled by === below)
         if (!signupUserIDInput || !confirmSignupUserIDInput || !signupUserPWInput || !confirmSignupUserPWInput) {
-            setError(localeTxt.signup.error_AllFieldsRequired || 'All fields are required.');
+            showMessage(localeTxt.signup.error_AllFieldsRequired || 'All fields are required.');
             return;
         }
 
         // Check if user IDs match
         if (signupUserIDInput !== confirmSignupUserIDInput) {
-            setError(localeTxt.signup.error_UserIDsMismatch || 'User IDs do not match.');
+            showMessage(localeTxt.signup.error_UserIDsMismatch || 'User IDs do not match.');
             return;
         }
 
         // Check if passwords match
         if (signupUserPWInput !== confirmSignupUserPWInput) {
-            setError(localeTxt.signup.error_PasswordsMismatch || 'Passwords do not match.');
+            showMessage(localeTxt.signup.error_PasswordsMismatch || 'Passwords do not match.');
             return;
         }
 
@@ -50,7 +49,7 @@ function Signuppage() {
             navigate('/login');
         } catch (error) {
             console.error("Error creating post:", error);
-            setError('Could not connect to the server. Please try again later. Error: '+error);
+            showMessage('Could not connect to the server. Please try again later. Error: '+error);
         }
 
         // You would typically call an API here:
@@ -65,7 +64,7 @@ function Signuppage() {
         setConfirmSignupUserIDInput('');
         setSignupUserPWInput('');
         setConfirmSignupUserPWInput('');
-        setError('');
+        showMessage('');
     };
 
     return (
@@ -145,7 +144,6 @@ function Signuppage() {
                     </td>
                 </tr></tbody>
             </table>
-            {error && <div className='box' style={{ color: 'red', marginTop: '10px' }}>{error}</div>} {/* Display error message */}
             <div id="signupbuttonlist" className="flowtype1">
                 {/* button type="submit" will trigger onSubmit on the form */}
                 <button type="submit" className="signupbutton">

@@ -7,33 +7,16 @@ from django.shortcuts import get_object_or_404
 from .models import Post
 from .serializers import PostSerializer
 
-class PostListView(APIView):
-    def get(self, request):
-        post_collection = get_collection('post')
-        posts = []
-        for post in post_collection.find():
-            posts.append({
-                'postindex': str(post.get('postindex')),
-                'posttitle': post.get('posttitle'),
-                'postauthor': str(post.get('postauthor_id')),  # Assuming you store author's id
-                'postdescription': post.get('postdescription'),
-                'posttag': post.get('posttag'),
-            })
-        return Response(posts)
+class PostListView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-class PostByUserView(generics.GenericAPIView):
-    def get(self, request, postauthor):
-        post_collection = get_collection('post')
-        posts = []
-        for post in post_collection.find({'postauthor':postauthor}):
-            posts.append({
-                'postindex': str(post.get('postindex')),
-                'posttitle': post.get('posttitle'),
-                'postauthor': str(post.get('postauthor_id')),  # Assuming you store author's id
-                'postdescription': post.get('postdescription'),
-                'posttag': post.get('posttag'),
-            })
-        return Response(posts)
+class PostByUserView(generics.ListAPIView):
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        postauthor = self.kwargs['postauthor']
+        return Post.objects.filter(postauthor=postauthor)
 
 class SubmitPostView(generics.GenericAPIView):
     serializer_class = PostSerializer
@@ -58,8 +41,8 @@ class SubmitPostView(generics.GenericAPIView):
 class UpdatePostView(generics.GenericAPIView):
     serializer_class = PostSerializer
 
-    def put(self, request, id, *args, **kwargs):
-        post_to_update = get_object_or_404(Post, id=id)
+    def put(self, request, postindex, *args, **kwargs):
+        post_to_update = get_object_or_404(Post, pk=postindex)
         serializer = self.get_serializer(post_to_update, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -67,7 +50,7 @@ class UpdatePostView(generics.GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class DeletePostView(generics.GenericAPIView):
-    def delete(self, request, id, *args, **kwargs):
-        post_to_delete = get_object_or_404(Post, id=id)
+    def delete(self, request, postindex, *args, **kwargs):
+        post_to_delete = get_object_or_404(Post, pk=postindex)
         post_to_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

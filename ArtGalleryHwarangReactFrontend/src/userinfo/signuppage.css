@@ -26,9 +26,15 @@
 }
 
 .signupbutton {
-    background-color: #DDDDDD;
+    background-color: #EEEEEE;
     border-color: #DDDDDD;
     border-radius: 8px;
     margin: 4px;
     padding: 4px;
+}
+
+#errorbox {
+    background-color: #FFFFFF;
+    color: 'red'; 
+    margin: '10px'
 }

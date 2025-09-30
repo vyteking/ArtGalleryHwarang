@@ -1,24 +1,30 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './postview.css';
-import { useClassNames } from '../base';
+import { useClassNames, GetServerAPIAddress } from '../base';
+import session from '../session.tsx';
 
 // A component to display a single reply
 function Reply({ reply }) {
+    const getClassNames = useClassNames();
+
     return (
-        <div className="reply">
+        <div id="reply" className={getClassNames()}>
             <p><strong>{reply.replyauthor.username || 'Anonymous'}:</strong></p>
             <p>{reply.replycontent}</p>
         </div>
     );
 }
 
-function PostViewer({ postindex }) {
+function PostViewer() {
+    const { postindex } = useParams();
     const [post, setPost] = useState(null);
     const [replies, setReplies] = useState([]);
     const [newReply, setNewReply] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const getClassNames = useClassNames();
+     const { showMessage } = useMessagebox();
 
     useEffect(() => {
         if (!postindex) return;
@@ -28,8 +34,8 @@ function PostViewer({ postindex }) {
             try {
                 // Fetch post and replies concurrently
                 const [postResponse, repliesResponse] = await Promise.all([
-                    fetch(`/api/p/${postindex}/`), // Assuming this is your post detail endpoint
-                    fetch(`/api/r/posts/${postindex}/replies/`)
+                    fetch(GetServerAPIAddress('p', `${postindex}`)), // Assuming this is your post detail endpoint
+                    fetch(GetServerAPIAddress('r', `posts/${postindex}/replies/`))
                 ]);
 
                 if (!postResponse.ok || !repliesResponse.ok) {
@@ -57,9 +63,9 @@ function PostViewer({ postindex }) {
 
         try {
             // This is a placeholder for your auth token
-            const authToken = localStorage.getItem('authToken'); 
+            const authToken = session.getAuthToken(); 
 
-            const response = await fetch(`/api/r/posts/${postindex}/replies/`, {
+            const response = await fetch(GetServerAPIAddress('r', `posts/${postindex}/replies/`), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,14 +127,14 @@ function PostViewer({ postindex }) {
             {/* Replies Section */}
             <div id="PostReplies" className={getClassNames()}>
                 <h3>Replies</h3>
-                <div className="replies-list">
+                <div id="replies-list" className={getClassNames()}>
                     {replies.length > 0 ? (
                         replies.map(reply => <Reply key={reply.replyindex} reply={reply} />)
                     ) : (
                         <p>No replies yet.</p>
                     )}
                 </div>
-                <form onSubmit={handleReplySubmit} className="reply-form">
+                <form id="reply-form" onSubmit={handleReplySubmit} className={getClassNames()}>
                     <textarea
                         value={newReply}
                         onChange={(e) => setNewReply(e.target.value)}

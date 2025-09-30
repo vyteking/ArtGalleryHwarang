@@ -5,9 +5,9 @@ import uuid
 
 class ShareRange(models.IntegerChoices):
     PUBLIC = 16
-    CLOSE_FRIENDS = 8
-    FOLLOWERS = 4
-    FOLLOWING = 2
+    FOLLOWERS = 8
+    FOLLOWING = 4
+    CLOSE_FRIENDS = 2
 
 class MiniStickerPackage(models.Model):
     mini_sticker_package_index = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)

@@ -4,50 +4,23 @@ from .models import Postcontent, Blogcontent, Image2D, Object3D
 class BlogcontentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blogcontent
-        fields = ['blogcontext']
+        fields = '__all__'
 
 class Image2DSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image2D
-        fields = ['imagefile', 'description']
+        fields = '__all__'
 
 class Object3DSerializer(serializers.ModelSerializer):
     class Meta:
         model = Object3D
-        fields = ['objectfile', 'description']
+        fields = '__all__'
 
 class PostcontentSerializer(serializers.ModelSerializer):
-    # This field will dynamically serialize the related content object
-    # based on its type.
-    content_object = serializers.SerializerMethodField()
+    blogcontent = BlogcontentSerializer(many=True, read_only=True)
+    image2d = Image2DSerializer(many=True, read_only=True)
+    object3d = Object3DSerializer(many=True, read_only=True)
 
     class Meta:
         model = Postcontent
-        fields = ['postcontentindex', 'postcontenttag', 'content_object']
-
-    def get_content_object(self, obj):
-        """
-        This method checks the 'postcontenttag' and uses the
-        appropriate serializer for the related content object.
-        """
-        tag = obj.postcontenttag
-        if tag == 'blog':
-            # Assuming you have a related_name='blogcontent' on the ForeignKey
-            # or you can access it via blogcontent_set
-            content = Blogcontent.objects.get(postcontentindex=obj.postcontentindex)
-            return BlogcontentSerializer(content).data
-        elif tag == 'image2d':
-            content = Image2D.objects.get(postcontentindex=obj.postcontentindex)
-            return Image2DSerializer(content).data
-        elif tag == 'object3d':
-            content = Object3D.objects.get(postcontentindex=obj.postcontentindex)
-            return Object3DSerializer(content).data
-        return None
-
-    def to_representation(self, instance):
-        """
-        This ensures that when reading data, the content_object is included.
-        """
-        ret = super().to_representation(instance)
-        ret['content_object'] = self.get_content_object(instance)
-        return ret
+        fields = ('postcontentindex', 'postindex', 'postcontenttag', 'blogcontent', 'image2d', 'object3d')

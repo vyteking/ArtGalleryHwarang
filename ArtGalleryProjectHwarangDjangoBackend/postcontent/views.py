@@ -1,30 +1,27 @@
 from rest_framework import generics, status
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from utils import get_collection
-from django.shortcuts import get_object_or_404
-from .models import Postcontent
-from .serializers import PostcontentSerializer
+from .models import Postcontent, Blogcontent, Image2D, Object3D
+from .serializers import PostcontentSerializer, BlogcontentSerializer, Image2DSerializer, Object3DSerializer
 
-# Create your views here.
-class PostContentView(APIView):
-    def get(self, request):
-        post_collection = get_collection('postcontent')
-
-class SubmitPostContentView(generics.GenericAPIView):
+class PostContentView(generics.ListAPIView):
     serializer_class = PostcontentSerializer
 
-    def post(self, request, *args, **kwargs):
-        try:
-            postsubmission = Postcontent.objects.create(
-                # postcontentindex=
-            )
-            return Response({"message": "Post content submitted successfully"}, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+    def get_queryset(self):
+        postindex = self.kwargs['postindex']
+        return Postcontent.objects.filter(postindex=postindex)
 
-class DeletePostView(generics.GenericAPIView):
-    def delete(self, request, id, *args, **kwargs):
-        post_to_delete = get_object_or_404(Postcontent, id=id)
-        post_to_delete.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class SubmitPostContentView(generics.CreateAPIView):
+    serializer_class = PostcontentSerializer
+
+class DeletePostContentView(generics.DestroyAPIView):
+    queryset = Postcontent.objects.all()
+    lookup_field = 'postcontentindex'
+
+class SubmitBlogcontentView(generics.CreateAPIView):
+    serializer_class = BlogcontentSerializer
+
+class SubmitImage2DView(generics.CreateAPIView):
+    serializer_class = Image2DSerializer
+
+class SubmitObject3DView(generics.CreateAPIView):
+    serializer_class = Object3DSerializer

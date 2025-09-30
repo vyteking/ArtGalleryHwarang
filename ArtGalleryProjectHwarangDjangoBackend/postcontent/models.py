@@ -3,6 +3,20 @@ import uuid
 from post.models import Post as Hwarangpost
 
 # Create your models here.
+class Rating(models.IntegerChoices):
+    EXPLICIT = 3
+    QUESTIONABLE = 2
+    MILD = 1
+    GENERAL = 0
+
+class ShowRange(models.IntegerChoices):
+    PUBLIC = 16
+    FOLLOWERS = 8
+    FOLLOWING = 4
+    CLOSE_FRIENDS = 2
+    PATRONS = 1
+    PRIVATE = 0
+
 class Postcontent(models.Model):
     postcontentindex = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
     postindex = models.ForeignKey(Hwarangpost, on_delete=models.CASCADE, editable=False)

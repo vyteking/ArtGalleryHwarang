@@ -29,8 +29,10 @@ function Messagebox() {
             <div id='messagestring' className={getClassNames("")}>
                 {messagebox.message}
             </div>
-            <div>
-                <button onClick={hideMessage}>Close</button>
+            <div id="messageboxoptions" className={getClassNames("flowtype1")}>
+                <div id="messageboxbuttons">
+                    <button onClick={hideMessage}>Close</button>
+                </div>
             </div>
         </div>
     );

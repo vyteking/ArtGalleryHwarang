@@ -117,7 +117,10 @@
             "prev_post":"",
             "next_post":"",
             "btn_Modify":"",
-            "btn_Delete":""
+            "btn_Delete":"",
+            "loading_post":"",
+            "post_not_found":"",
+            "post_error":""
         },
         "posteditor":{
             "lbl_title":"",
@@ -131,7 +134,11 @@
             "btn_Cancel":""
         },
         "replieslist":{
-            "lbl_Replies":""
+            "lbl_Replies":"",
+            "reply_submission_error":""
+        },
+        "systemerror":{
+            "network_error":""
         }
     },
     "plural_forms_template": {

@@ -8,4 +8,17 @@
 #messagebox {
     background-color: #ffffff;
     border-color: #bbbbbb;
+    border-radius: 8px;
+}
+
+#messageboxoptions {
+    background-color: #ffffff;
+    width:100%;
+}
+
+#messageboxbuttons {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
