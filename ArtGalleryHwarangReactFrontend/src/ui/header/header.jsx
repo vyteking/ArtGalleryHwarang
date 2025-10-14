@@ -15,7 +15,7 @@ function Usericon() {
     return (Loginusericon);
 }
 
-function Header() {
+function Header({ toggleSidebar }) {
     const [isHeaderUserInfoVisible, setHeaderUserInfoVisibility] = useState(false);
     const getClassNames = useClassNames();
     const toggleInfoBox = () => {
@@ -26,7 +26,7 @@ function Header() {
         <header id="headertag" className={getClassNames("layout")}>
             header
             <div id="headerDiv" className={getClassNames("flexboxtype0")}>
-                <div id="menubuttonDiv" className={getClassNames()}>
+                <div id="menubuttonDiv" className={getClassNames()} onClick={toggleSidebar}>
                     Menu<img src=""/>
                 </div>
                 <div id="headertitle" className={getClassNames()}>
