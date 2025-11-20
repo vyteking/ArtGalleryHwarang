@@ -11,8 +11,8 @@
     },
     "Texts":{
         "common":{
-            "OK":"예",
-            "Yes":"네",
+            "OK":"네",
+            "Yes":"예",
             "No":"아니요",
             "Confirm":"확인",
             "Cancel":"취소", 
@@ -21,17 +21,29 @@
             "Reset":"초기화"
         },
         "statistic":{
+            "posts": {
+                "other":"게시글"
+            },
             "following": {
                 "other":"팔로잉"
             },
             "followers": {
                 "other":"팔로워"
+            },
+            "Replies": {
+                "other":"덧글"
             }
         },
+        "sidebar0":{
+            "mainpage":"첫화면",
+            "hot":"인기",
+            "random_user_page":"임의사용자",
+            "random_submission":"임의작품"
+        },
         "userinfo":{
-            "userindex1st":"사용자색인1번째", 
-            "userindex2nd":"사용자색인2번째", 
-            "userindex3rd":"사용자색인3번째", 
+            "userindex1st":"사용자색인 1번째", 
+            "userindex2nd":"사용자색인 2번째", 
+            "userindex3rd":"사용자색인 3번째", 
             "userID":"아이디",
             "userpassword":"암호",
             "userpassword2nd":"2차암호",
@@ -86,6 +98,30 @@
             "theme":"테마", 
             "language":"언어",
             "enable_vertical_direction":"세로쓰기 활성화"
+        },
+        "postview":{
+            "prev_post":"이전게시물",
+            "next_post":"다음게시물",
+            "btn_Modify":"수정",
+            "btn_Delete":"삭제",
+            "loading_post":"게시물 불러오는중",
+            "post_not_found":"게시물 없음",
+            "post_error":"게시오류: "
+        },
+        "posteditor":{
+            "lbl_title":"제목",
+            "tbx_title_Placeholder":"제목을 여기에 입력하세요. ",
+            "lbl_uploadfile":"올릴 파일",
+            "txt_description_Placeholder":"설명",
+            "lbl_tags":"태그",
+            "tbx_tags_Placeholder":"태그를 여기에 입력하세요. ",
+            "btn_Submit":"올리기",
+            "btn_Reset":"초기화",
+            "btn_Cancel":"취소"
+        },
+        "replieslist":{
+            "lbl_Replies":"덧글",
+            "reply_submission_error":"덧글올리기에 오류가 발생했습니다. "
         }
     }
 }

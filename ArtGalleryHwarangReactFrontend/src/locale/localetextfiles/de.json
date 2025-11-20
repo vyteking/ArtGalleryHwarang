@@ -21,13 +21,28 @@
             "Reset":"Zurücksetzen"
         },
         "statistic":{
+            "posts": {
+                "one":"Beitrag",
+                "other":"Beitrage"
+            },
             "following": {
+                "one":"Gefolgt",
                 "other":"Gefolgt"
             },
             "followers": {
                 "one":"Nachfolger(in)",
                 "other":"Nachfolger(inne)n"
+            },
+            "Replies": {
+                "one":"Antwort",
+                "other":"Antworten"
             }
+        },
+        "sidebar0":{
+            "mainpage":"Hauptseite",
+            "hot":"Hot",
+            "random_user_page":"Zufälliger Benutzer",
+            "random_submission":"Zufälliger Beitrag"
         },
         "userinfo":{
             "userindex1st":"1. Benutzerindex", 
@@ -87,6 +102,30 @@
             "theme":"Thema", 
             "language":"Sprachen",
             "enable_vertical_direction":"Vertikalrichtung ermüglichen"
+        },
+        "postview":{
+            "prev_post":"Vorheriger Beitrag",
+            "next_post":"Nächster Beitrag",
+            "btn_Modify":"Bearbeiten",
+            "btn_Delete":"Löschen",
+            "loading_post":"Beitrag laden",
+            "post_not_found":"Seite nicht gefunden",
+            "post_error":"Beitrags-Fehler"
+        },
+        "posteditor":{
+            "lbl_title":"Beitrags-Editor",
+            "tbx_title_Placeholder":"Gib den Titel ein hier. ",
+            "lbl_uploadfile":"Datei hochladen",
+            "txt_description_Placeholder":"Beschreibung",
+            "lbl_tags":"Hashtag(s)",
+            "tbx_tags_Placeholder":"Gib die Hashtags ein hier. ",
+            "btn_Submit":"Vorlegen",
+            "btn_Reset":"Zurücksetzen",
+            "btn_Cancel":"Abbrechen"
+        },
+        "replieslist":{
+            "lbl_Replies":"Antworten",
+            "reply_submission_error":"Antwortenbeitragsfehler ausgetreten. "
         }
     }
 }

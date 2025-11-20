@@ -54,6 +54,12 @@
                 "other":""
             }
         },
+        "sidebar0":{
+            "mainpage":"",
+            "hot":"",
+            "random_user_page":"",
+            "random_submission":""
+        },
         "userinfo":{
             "userindex1st":"", 
             "userindex2nd":"", 

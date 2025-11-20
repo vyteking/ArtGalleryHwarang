@@ -1,0 +1,15 @@
+#menulist .menuitem {
+    list-style-type: none;
+}
+
+.menulist .ltr-ttb {
+    width: 100%;
+}
+
+.menuitem {
+    padding:15px;
+}
+
+.bright-white .menuitem:hover {
+    background-color: #f0f0f0;;
+}

@@ -21,13 +21,28 @@
             "Reset":"Reset"
         },
         "statistic":{
+            "posts": {
+                "one":"post",
+                "other":"posts"
+            },
             "following": {
+                "one":"following",
                 "other":"following"
             },
             "followers": {
                 "one":"follower",
                 "other":"followers"
+            },
+            "Replies": {
+                "one":"reply",
+                "other":"replies"
             }
+        },
+        "sidebar0":{
+            "mainpage":"Main Page",
+            "hot":"Hot",
+            "random_user_page":"Random User",
+            "random_submission":"Random Post"
         },
         "userinfo":{
             "userindex1st":"1st User Index", 
@@ -87,6 +102,30 @@
             "theme":"Theme", 
             "language":"Language",
             "enable_vertical_direction":"Enable Vertical Direction"
+        },
+        "postview":{
+            "prev_post":"Previous Post",
+            "next_post":"Next Post",
+            "btn_Modify":"Modify",
+            "btn_Delete":"Delete",
+            "loading_post":"Loading Post",
+            "post_not_found":"Page Not Found",
+            "post_error":"Post Error"
+        },
+        "posteditor":{
+            "lbl_title":"Post Editor",
+            "tbx_title_Placeholder":"Insert the title here. ",
+            "lbl_uploadfile":"Upload File(s)",
+            "txt_description_Placeholder":"Description",
+            "lbl_tags":"Tag(s)",
+            "tbx_tags_Placeholder":"Insert tags here. ",
+            "btn_Submit":"Submit",
+            "btn_Reset":"Reset",
+            "btn_Cancel":"Cancel"
+        },
+        "replieslist":{
+            "lbl_Replies":"Replies",
+            "reply_submission_error":"Reply post error occured. "
         }
     }
 }

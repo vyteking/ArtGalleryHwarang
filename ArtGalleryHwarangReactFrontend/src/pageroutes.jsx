@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 
 // Pages List
 import Homepage from './home/homepage';
+import Trending from './home/trending';
 import Loginpage from './userinfo/loginpage';
 import Signuppage from './userinfo/signuppage';
 import PersonalPage from './userinfo/personalpage';
@@ -15,15 +16,18 @@ function PageRoutes() {
   return (
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/hot" element={<Trending />} />
         <Route path="/login" element={<Loginpage />} />
         <Route path="/signup" element={<Signuppage />} />
         <Route path="/u/:userindex1st" element={<PersonalPage />} />
         <Route path="/u/:userindex1st/info" element={<UserInfoPage />} />
+        <Route path="/u/random" element={<Homepage />} />
         <Route path="/u/:userindex1st/following" element={<FollowingList />} />
         <Route path="/u/:userindex1st/followers" element={<FollowersList />} />
         <Route path="/p/:postindex" element={<PostView />} />
         <Route path="/p/:postindex/edit" element={<PostEditor />} />
         <Route path="/newpost" element={<PostEditor />} />
+        <Route path="/p/random" element={<Homepage />} />
         <Route path="*" element={<Navigate to="/" />} />  {/* Redirection of the incorrect path/ 잘못된 경로 리디렉션 */}
       </Routes>
   );

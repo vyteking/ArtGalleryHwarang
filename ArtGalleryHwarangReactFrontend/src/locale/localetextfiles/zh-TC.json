@@ -21,12 +21,24 @@
             "Reset":"初始化"
         },
         "statistic":{
+            "posts": {
+                "other":"貼子"
+            },
             "following": {
                 "other":"跟隨中"
             },
             "followers": {
                 "other":"跟隨者"
+            },
+            "Replies": {
+                "other":"評論"
             }
+        },
+        "sidebar0":{
+            "mainpage":"主頁",
+            "hot":"熱門",
+            "random_user_page":"隨機帳戶",
+            "random_submission":"隨機貼子"
         },
         "userinfo":{
             "userindex1st":"第一索引", 
@@ -86,6 +98,30 @@
             "theme":"主題", 
             "language":"語言",
             "enable_vertical_direction":"活化縱書"
+        },
+        "postview":{
+            "prev_post":"上一個貼子",
+            "next_post":"下一個貼子",
+            "btn_Modify":"修改",
+            "btn_Delete":"刪除",
+            "loading_post":"貼子",
+            "post_not_found":"貼子沒找到",
+            "post_error":"發布錯誤"
+        },
+        "posteditor":{
+            "lbl_title":"標題",
+            "tbx_title_Placeholder":"請在這裏輸入標題。",
+            "lbl_uploadfile":"上載文檔",
+            "txt_description_Placeholder":"描述",
+            "lbl_tags":"標簽",
+            "tbx_tags_Placeholder":"請在這裏輸入標簽。",
+            "btn_Submit":"發布",
+            "btn_Reset":"初始化",
+            "btn_Cancel":"取消"
+        },
+        "replieslist":{
+            "lbl_Replies":"回答",
+            "reply_submission_error":"回答發布錯誤"
         }
     }
 }

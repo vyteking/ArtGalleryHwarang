@@ -21,6 +21,12 @@
             "Reset":"Сброс"
         },
         "statistic":{
+            "posts": {
+                "one":"пост",
+                "few":"поста",
+                "many":"постов",
+                "other":"посты"
+            },
             "following": {
                 "one":"подписка",
                 "few":"подписки",
@@ -32,7 +38,19 @@
                 "few":"подписчика",
                 "many":"подписчиков",
                 "other":"подписчики"
+            }, 
+            "Replies": {
+                "one":"ответ",
+                "few":"ответа",
+                "many":"ответов",
+                "other":"ответы"
             }
+        },
+        "sidebar0":{
+            "mainpage":"Главная страница",
+            "hot":"Горячие",
+            "random_user_page":"Случайный пользователь",
+            "random_submission":"Случайный пост"
         },
         "userinfo":{
             "userindex1st":"1-ый индекс пользователя", 
@@ -92,6 +110,30 @@
             "theme":"Тема", 
             "language":"Язык",
             "enable_vertical_direction":"Позвопить вертикальное направление"
+        },
+        "postview":{
+            "prev_post":"Предыдущий пост",
+            "next_post":"Следующий пост",
+            "btn_Modify":"Изменить",
+            "btn_Delete":"Удалить",
+            "loading_post":"Загрузка поста",
+            "post_not_found":"Страница не найдена",
+            "post_error":"Ошибка поста"
+        },
+        "posteditor":{
+            "lbl_title":"Редактор постов",
+            "tbx_title_Placeholder":"Вставьте здесь заголовок. ",
+            "lbl_uploadfile":"Загрузить файл(ы)",
+            "txt_description_Placeholder":"Описание",
+            "lbl_tags":"Теги",
+            "tbx_tags_Placeholder":"Введите теги здесь. ",
+            "btn_Submit":"Отправить",
+            "btn_Reset":"Сброс",
+            "btn_Cancel":"Отмена"
+        },
+        "replieslist":{
+            "lbl_Replies":"Ответы",
+            "reply_submission_error":"Произошла ошибка при отправке ответа. "
         }
     }
 }

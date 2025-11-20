@@ -21,12 +21,24 @@
             "Reset":"初始化"
         },
         "statistic":{
+            "posts": {
+                "other":"贴子"
+            },
             "following": {
-                "other":"关注中"
+                "other":"跟随中"
             },
             "followers": {
-                "other":"关注者"
+                "other":"跟随者"
+            },
+            "Replies": {
+                "other":"评论"
             }
+        },
+        "sidebar0":{
+            "mainpage":"主页",
+            "hot":"热门",
+            "random_user_page":"随机账户",
+            "random_submission":"随机贴子"
         },
         "userinfo":{
             "userindex1st":"第一索引", 
@@ -86,6 +98,30 @@
             "theme":"主题", 
             "language":"语言",
             "enable_vertical_direction":"活化纵书"
+        },
+        "postview":{
+            "prev_post":"上一个贴子",
+            "next_post":"下一个贴子",
+            "btn_Modify":"修改",
+            "btn_Delete":"删除",
+            "loading_post":"贴子",
+            "post_not_found":"贴子没找到",
+            "post_error":"发布错误"
+        },
+        "posteditor":{
+            "lbl_title":"标题",
+            "tbx_title_Placeholder":"请在这里输入标题。",
+            "lbl_uploadfile":"上载文档",
+            "txt_description_Placeholder":"描述",
+            "lbl_tags":"标签",
+            "tbx_tags_Placeholder":"请在这里输入标签。",
+            "btn_Submit":"发布",
+            "btn_Reset":"初始化",
+            "btn_Cancel":"取消"
+        },
+        "replieslist":{
+            "lbl_Replies":"回答",
+            "reply_submission_error":"回答发布错误"
         }
     }
 }

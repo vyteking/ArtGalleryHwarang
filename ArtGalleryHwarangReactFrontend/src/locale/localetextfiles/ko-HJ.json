@@ -11,8 +11,8 @@
     },
     "Texts":{
         "common":{
-            "OK":"예",
-            "Yes":"네",
+            "OK":"네",
+            "Yes":"예",
             "No":"아니요",
             "Confirm":"確認",
             "Cancel":"取消", 
@@ -21,12 +21,24 @@
             "Reset":"初期化"
         },
         "statistic":{
+            "posts": {
+                "other":"揭示글"
+            },
             "following": {
                 "other":"팔로잉"
             },
             "followers": {
                 "other":"팔로워"
+            },
+            "Replies": {
+                "other":"덧글"
             }
+        },
+        "sidebar0":{
+            "mainpage":"첫畵面",
+            "hot":"人氣",
+            "random_user_page":"任意使用者",
+            "random_submission":"任意作品"
         },
         "userinfo":{
             "userindex1st":"使用者索引１", 
@@ -86,6 +98,30 @@
             "theme":"테마", 
             "language":"言語",
             "enable_vertical_direction":"세로쓰기活成化"
+        },
+        "postview":{
+            "prev_post":"以前揭示物",
+            "next_post":"다음揭示物",
+            "btn_Modify":"修正",
+            "btn_Delete":"削除",
+            "loading_post":"揭示物불러오는中",
+            "post_not_found":"揭示物없음",
+            "post_error":"揭示誤謬: "
+        },
+        "posteditor":{
+            "lbl_title":"題目",
+            "tbx_title_Placeholder":"題目을여기에入力하세요。",
+            "lbl_uploadfile":"올릴파일",
+            "txt_description_Placeholder":"說明",
+            "lbl_tags":"태그",
+            "tbx_tags_Placeholder":"태그를여기에入力하세요。",
+            "btn_Submit":"올리기",
+            "btn_Reset":"初期化",
+            "btn_Cancel":"取消"
+        },
+        "replieslist":{
+            "lbl_Replies":"덧글",
+            "reply_submission_error":"덧글올리기에誤謬가發生했습니다。"
         }
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import base from '../base';
+import base, { useClassNames } from '../base';
 import './homepage.css';
 
 import { useLocale } from '../locale/localeoptions';
@@ -9,6 +9,7 @@ function Homepage() {
     const [ loggedInUsers, setLoggedInUsers ] = useState([]);
     const { currentUserSession, setCurrentUserSession } = useState();
     const navigate = useNavigate();
+    const getClassNames = useClassNames();
 
     useEffect(() => {
         const users = base.session.GetLoginUsers();
@@ -42,7 +43,7 @@ function Homepage() {
     }
 
     return (
-        <div id="HomeDiv">
+        <div id="HomeDiv" className={getClassNames("")}>
             {loggedInUsers.length > 0 ? (
                 <div>
                     <h2>Logged In Users:</h2>

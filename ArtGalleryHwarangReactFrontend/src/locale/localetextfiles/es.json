@@ -21,6 +21,10 @@
             "Reset":"Reajustar"
         },
         "statistic":{
+            "posts": {
+                "one":"publicación",
+                "other":"publicaciones"
+            },
             "following": {
                 "one":"seguido",
                 "other":"seguidos"
@@ -28,7 +32,17 @@
             "followers": {
                 "one":"seguidor",
                 "other":"seguidores"
+            },
+            "Replies": {
+                "one":"respuesta",
+                "other":"respuestas"
             }
+        },
+        "sidebar0":{
+            "mainpage":"Página principal",
+            "hot":"Popular",
+            "random_user_page":"Usuario aleatorio",
+            "random_submission":"Publicación aleatoria"
         },
         "userinfo":{
             "userindex1st":"1o índice de usuario", 
@@ -88,6 +102,30 @@
             "theme":"Tema", 
             "language":"Idioma",
             "enable_vertical_direction":"Activar la dirección vertical"
+        },
+        "postview":{
+            "prev_post":"Publicación anterior",
+            "next_post":"Publicación siguente",
+            "btn_Modify":"Modificar",
+            "btn_Delete":"Borrar",
+            "loading_post":"Cargando la publicación",
+            "post_not_found":"Página no encontrada",
+            "post_error":"Error de publicación"
+        },
+        "posteditor":{
+            "lbl_title":"Editor de publicación",
+            "tbx_title_Placeholder":"Inserta el título aquí. ",
+            "lbl_uploadfile":"Subir el archivo",
+            "txt_description_Placeholder":"Descripción",
+            "lbl_tags":"Etiqueta(s)",
+            "tbx_tags_Placeholder":"Inserta etiquetas aquí. ",
+            "btn_Submit":"Presentar",
+            "btn_Reset":"Restablecer",
+            "btn_Cancel":"Cancelar"
+        },
+        "replieslist":{
+            "lbl_Replies":"Respuestas",
+            "reply_submission_error":"Error de las respuestas de publicación ocurrió. "
         }
     }
 }

@@ -21,12 +21,24 @@
             "Reset":"初期化"
         },
         "statistic":{
+            "posts": {
+                "other":"ポスト"
+            },
             "following": {
                 "other":"フォロー中"
             },
             "followers": {
                 "other":"フォロワー"
+            },
+            "Replies": {
+                "other":"コメント"
             }
+        },
+        "sidebar0":{
+            "mainpage":"メインページ",
+            "hot":"人気",
+            "random_user_page":"ランダムユーザー",
+            "random_submission":"ランダム作品"
         },
         "userinfo":{
             "userindex1st":"ユーザー索引１", 
@@ -86,6 +98,30 @@
             "theme":"テーマ", 
             "language":"言語",
             "enable_vertical_direction":"縦書き活性化"
+        },
+        "postview":{
+            "prev_post":"前のポスト",
+            "next_post":"次のポスト",
+            "btn_Modify":"修正",
+            "btn_Delete":"削除",
+            "loading_post":"ポストロード中",
+            "post_not_found":"ポストなし",
+            "post_error":"揭示エラー"
+        },
+        "posteditor":{
+            "lbl_title":"タイトル",
+            "tbx_title_Placeholder":"タイトルをここに入力してください。",
+            "lbl_uploadfile":"上げるファイル",
+            "txt_description_Placeholder":"説明",
+            "lbl_tags":"タグ",
+            "tbx_tags_Placeholder":"タグをここに入力してください。",
+            "btn_Submit":"上げる",
+            "btn_Reset":"初期化",
+            "btn_Cancel":"取り消し"
+        },
+        "replieslist":{
+            "lbl_Replies":"コメント",
+            "reply_submission_error":"コメント添付にエラーが発生しました。"
         }
     }
 }
