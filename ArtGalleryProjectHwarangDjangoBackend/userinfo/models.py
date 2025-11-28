@@ -91,16 +91,16 @@ class UserUISetup(models.Model):
     
 # User Following Statistics and Info
 class UserFollowing(models.Model):
-    following = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='followers')
-    followed_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='following')
+    following = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='following')
+    followed_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='followed_by')
     follow_date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = (('following', 'followed_by'),)
 
 class UserCloseFriend(models.Model):
-    friend = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='followers')
-    friend_request_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='following')
+    friend = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='friend')
+    friend_request_by = models.ForeignKey(UserInfo, on_delete=models.CASCADE, related_name='friend_request_by')
     befriend_date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:

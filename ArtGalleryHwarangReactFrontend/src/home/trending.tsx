@@ -5,7 +5,8 @@ import './trending.css'
 
 // Loads trending posts from the server
 function TrendingPosts() {
-    
+    const ls = {};
+    return ls;
 }
 
 // Shows up the visual list of the trending posts after loading them through `TrendingPosts`
@@ -15,7 +16,9 @@ function TrendingPostsList() {
 
     return () => {
         <div id="trendingpostslist" className={getClassNames("")}>
-
+            <div id="trendingpostitem">
+                
+            </div>
         </div>
     };
 }

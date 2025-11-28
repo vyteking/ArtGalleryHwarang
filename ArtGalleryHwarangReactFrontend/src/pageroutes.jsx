@@ -11,6 +11,7 @@ import UserInfoPage from './userinfo/userinfopage';
 import { FollowingList, FollowersList } from './userinfo/following_followers';
 import PostView from './post/postview';
 import PostEditor from './post/posteditor';
+import { SessionManager, LogoutUser, LogoutAll } from './session';
 
 function PageRoutes() {
   return (
@@ -18,6 +19,9 @@ function PageRoutes() {
         <Route path="/" element={<Homepage />} />
         <Route path="/hot" element={<Trending />} />
         <Route path="/login" element={<Loginpage />} />
+        <Route path="/ssn" element={<SessionManager />} />
+        <Route path="/ssn/logout/:userindex1st" element={<LogoutUser />} /> {/* Logout for a single session */}
+        <Route path="/ssn/logout/all" element={<LogoutAll />} />
         <Route path="/signup" element={<Signuppage />} />
         <Route path="/u/:userindex1st" element={<PersonalPage />} />
         <Route path="/u/:userindex1st/info" element={<UserInfoPage />} />

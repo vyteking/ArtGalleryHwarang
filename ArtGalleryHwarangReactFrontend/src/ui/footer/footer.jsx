@@ -13,6 +13,7 @@ function Localelist() {
             <select
                 id="localelist"
                 name="localelist"
+                className={getClassNames("")}
                 value={selectedLocale}
                 onChange={(e) => {
                     const val = e.target.value;
@@ -34,15 +35,15 @@ function Footer() {
     return (
         <footer id="footertag" className={getClassNames("layout")}>
             <div id='footerDiv' className={getClassNames("")}>
-                <div id="displayoptionDiv" className={getClassNames("")}>
+                <span id="displayoptionDiv" className={getClassNames("footerobject")}>
                     displayoption
-                </div>
-                <div id="footerdatetimeDiv" className={getClassNames("")}>
+                </span>
+                <span id="footerdatetimeDiv" className={getClassNames("footerobject")}>
                     datetime
-                </div>
-                <div id="localeDiv" className={getClassNames("")}>
+                </span>
+                <span id="localeDiv" className={getClassNames("footerobject")}>
                     <Localelist />
-                </div>
+                </span>
             </div>
         </footer>
     )

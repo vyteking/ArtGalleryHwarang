@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <Header toggleSidebar={toggleSidebar0} />
+      <Header toggleSidebar={toggleSidebar0} toggleUserInfoBox={toggleUserInfoBox} />
       <UserInfoBox />
       <MainWin isSidebarVisible={isSidebar0Visible} />
       <Messagebox />

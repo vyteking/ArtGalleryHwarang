@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import './header.css'
+// import '../orientation/orientationoptions'
 import Base, { useClassNames } from '../../base'
-import Headeruserstatusbox from '../../userinfo/headeruserstatusbox'
-
-function DisplayHeaderUserInfoStatusBox() {
-}
 
 function Usericon() {
     let loginuser = Base.session.loginaccounts;
@@ -15,26 +12,24 @@ function Usericon() {
     return (Loginusericon);
 }
 
-function Header({ toggleSidebar }) {
-    const [isHeaderUserInfoVisible, setHeaderUserInfoVisibility] = useState(false);
+function Header({ toggleSidebar, toggleUserInfoBox }) {
     const getClassNames = useClassNames();
-    const toggleInfoBox = () => {
-        setHeaderUserInfoVisibility(!isHeaderUserInfoVisible);
-    }
 
     return (
         <header id="headertag" className={getClassNames("layout")}>
             header
-            <div id="headerDiv" className={getClassNames("flexboxtype0")}>
-                <div id="menubuttonDiv" className={getClassNames()} onClick={toggleSidebar}>
-                    Menu<img src=""/>
-                </div>
-                <div id="headertitle" className={getClassNames()}>
-                    <Link to="/">Title</Link>
-                </div>
-                <div id="headeruserinfoDiv" className={getClassNames()} onClick={toggleInfoBox}>
+            <div id="headerDiv" className={getClassNames("flexboxtype1")}>
+                <span id="menubuttonspan" className={getClassNames("headerobject")} onClick={toggleSidebar}>
+                    Menu<img id="menuImg" src=""/>
+                </span>
+                <span id="headercentre" className={getClassNames("headerobject")}>
+                    <span id="headertitle" className={getClassNames("headerobject")}>
+                        <Link to="/">Title<img id="titleImg" src=""/></Link>
+                    </span>
+                </span>
+                <span id="headeruserinfospan" className={getClassNames("headerobject")} onClick={toggleUserInfoBox}>
                     <Usericon/>
-                </div>
+                </span>
             </div>
         </header>
     )

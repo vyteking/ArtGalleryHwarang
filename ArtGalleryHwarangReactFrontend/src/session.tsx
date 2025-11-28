@@ -1,20 +1,23 @@
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+
 let loginaccounts = [];
 
 //current user
 let currentUser;
 
 // Function to get the index of the current user from localStorage
-function getCurrentUserIndex() {
+export function getCurrentUserIndex() {
     return localStorage.getItem('currentUserIndex');
 }
 
 // Function to set the index of the current user in localStorage
-function setCurrentUserIndex(userIndex) {
+export function setCurrentUserIndex(userIndex) {
     localStorage.setItem('currentUserIndex', userIndex);
 }
 
 // List of login users
-function GetLoginUsers() {
+export function GetLoginUsers() {
     const storedAccounts = localStorage.getItem('loginaccounts');
     
     // Check if storedAccounts is null or undefined
@@ -33,7 +36,7 @@ function GetLoginUsers() {
     }
 }
 
-function ResetLoginSessions() {
+export function ResetLoginSessions() {
     localStorage.removeItem('loginaccounts');
     localStorage.removeItem('currentUserIndex');
     console.log(loginaccounts);
@@ -41,7 +44,7 @@ function ResetLoginSessions() {
 }
 
 // Function to add a user to the login accounts when they log in
-function UserLogin(loginuser) {
+export function UserLogin(loginuser) {
     if (loginuser && loginuser.user_index_1st) {
         const existing = GetLoginUsers();
         const isAlreadyLoggedIn = existing.some(user => user.user_index_1st === loginuser.user_index_1st);
@@ -62,19 +65,20 @@ function UserLogin(loginuser) {
 }
 
 // Function to remove a user from the login accounts when they log out
-function UserLogout(logoutuser) {
+export function UserLogout(logoutuser) {
     const existing = GetLoginUsers();
     console.log("Existing users before logout:", existing);
     console.log("User to logout:", logoutuser);
+    const logoutUserIndex = parseInt(logoutuser.user_index_1st, 10);
 
-    const updated = existing.filter(user => user.user_index_1st !== logoutuser.user_index_1st);
+    const updated = existing.filter(user => user.user_index_1st !== logoutUserIndex);
     console.log("login sessions after logout: ", updated);
     
     localStorage.setItem('loginaccounts', JSON.stringify(updated));
     localStorage.removeItem(`token_${logoutuser.user_index_1st}`);
 
     // If the logged-out user was the current user, clear the current user index
-    if (getCurrentUserIndex() === logoutuser.user_index_1st) {
+    if (String(getCurrentUserIndex()) === String(logoutuser.user_index_1st)) {
         localStorage.removeItem('currentUserIndex');
         // If there are other users logged in, make the first one the new current user
         if (updated.length > 0) {
@@ -83,16 +87,17 @@ function UserLogout(logoutuser) {
     }
 }
 
-function GetCurrentLoginSession() {
+export function GetCurrentLoginSession() {
     const currentUserIndex = getCurrentUserIndex();
     if (!currentUserIndex) {
         return null;
     }
     const accounts = GetLoginUsers();
-    return accounts.find(user => user.user_index_1st === currentUserIndex) || null;
+    // Use == to compare string from currentUserIndex with number from accounts
+    return accounts.find(user => user.user_index_1st == currentUserIndex) || null;
 }
 
-function getAuthToken() {
+export function getAuthToken() {
     const currentUser = GetCurrentLoginSession();
     if (!currentUser) {
         return null;
@@ -100,18 +105,46 @@ function getAuthToken() {
     return localStorage.getItem(`token_${currentUser.user_index_1st}`);
 }
 
-function SwitchLoginSession(user) {
+export function SwitchLoginSession(user) {
     if (user && user.user_index_1st) {
         setCurrentUserIndex(user.user_index_1st);
     }
 }
 
-export default {
-    GetLoginUsers, 
-    ResetLoginSessions, 
-    GetCurrentLoginSession,
-    SwitchLoginSession,
-    UserLogin, 
-    UserLogout,
-    getAuthToken
-};
+// Placeholder component for handling session-related logic.
+export function SessionManager() {
+  // For now, this component will just redirect to the homepage.
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    navigate('/');
+  }, [navigate]);
+
+  return null;
+}
+
+// Component for handling single user logout.
+export function LogoutUser() {
+  const { userindex1st } = useParams();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    UserLogout({ user_index_1st: userindex1st });
+    console.log(`Logging out user: ${userindex1st}`);
+    navigate('/');
+  }, [userindex1st, navigate]);
+
+  return null;
+}
+
+// Component for handling logout from all accounts.
+export function LogoutAll() {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    ResetLoginSessions();
+    console.log('Logging out of all accounts.');
+    navigate('/');
+  }, [navigate]);
+
+  return null;
+}
