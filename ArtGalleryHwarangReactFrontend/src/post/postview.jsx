@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './postview.css';
 import { useClassNames, GetServerAPIAddress } from '../base';
-import session from '../session.tsx';
+import * as session from '../authsession.tsx';
 
 // A component to display a single reply
 function Reply({ reply }) {

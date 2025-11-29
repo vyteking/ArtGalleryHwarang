@@ -4,12 +4,14 @@ import base, { useClassNames } from '../base';
 import './homepage.css';
 
 import { useLocale } from '../locale/localeoptions';
+import { GetLocaleTexts } from '../locale/localeslist';
 
 function Homepage() {
     const [ loggedInUsers, setLoggedInUsers ] = useState([]);
     const { currentUserSession, setCurrentUserSession } = useState();
     const navigate = useNavigate();
     const getClassNames = useClassNames();
+    const localeTxt = GetLocaleTexts();
 
     useEffect(() => {
         const users = base.session.GetLoginUsers();

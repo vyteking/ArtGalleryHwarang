@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import './posteditor.css';
-import { GetServerAPIAddress } from '../base';
-import session from '../session.tsx';
+import { GetServerAPIAddress, useClassNames } from '../base';
+import * as session from '../authsession.tsx';
 import axios from 'axios';
 
 function PostEditor() {
@@ -13,6 +13,7 @@ function PostEditor() {
     const [imagePreviews, setImagePreviews] = useState([]);
     const [postError, setPostError] = useState(null);
 
+    const getClassNames = useClassNames();
     const { postId } = useParams();
     const navigate = useNavigate();
     const isEditing = Boolean(postId);
@@ -73,7 +74,7 @@ function PostEditor() {
                     Authorization: `Token ${token}`
                 }
             });
-            navigate(`/post/${response.data.id}`);
+            navigate(`/p/${response.data.id}`);
         } catch (error) {
             console.error('Error submitting post:', error);
             setPostError('Failed to submit post.');
@@ -85,7 +86,7 @@ function PostEditor() {
     };
 
     return (
-        <div className="post-editor-container">
+        <div className={getClassNames("post-editor-container")}>
             <h1 className="editor-title">{isEditing ? 'Edit Post' : 'Create New Post'}</h1>
             <form className="post-editor-form" onSubmit={handleSubmit}>
                 <div className="form-group">

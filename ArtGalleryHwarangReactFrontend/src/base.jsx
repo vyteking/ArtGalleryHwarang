@@ -1,6 +1,6 @@
 import orientationoptions from './ui/orientation/orientationoptions.jsx';
 import themeoptions from './theme/themeoptions.jsx'
-import session from './session.tsx'
+import * as session from './authsession.tsx'
 import { LocaleProvider, useLocale } from './locale/localeoptions.jsx';
 import { useTheme } from './theme/themeoptions.jsx';
 
