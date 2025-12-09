@@ -6,6 +6,7 @@ import { useLocale } from '../../locale/localeoptions';
 
 function Localelist() {
     const locales = GetLocalesList();
+    const getClassNames = useClassNames();
     const { currentLocale, setLocale } = useLocale();
     const [selectedLocale, setSelectedLocale] = useState(currentLocale.LocaleInfo.code);
     const getClassNames = useClassNames();

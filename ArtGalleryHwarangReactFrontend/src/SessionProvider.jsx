@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { GetCurrentLoginSession, UserLogin, UserLogout } from './session';
+import { GetCurrentLoginSession, UserLogin, UserLogout } from './authsession';
 
 // 1. Create the context
 const SessionContext = createContext(null);

@@ -11,7 +11,7 @@ import UserInfoPage from './userinfo/userinfopage';
 import { FollowingList, FollowersList } from './userinfo/following_followers';
 import PostView from './post/postview';
 import PostEditor from './post/posteditor';
-import { SessionManager, LogoutUser, LogoutAll } from './session';
+import { SessionManager, LogoutUser, LogoutAll } from './authsession.tsx';
 
 function PageRoutes() {
   return (

@@ -48,6 +48,14 @@
                 "many":"",
                 "other":""
             },
+            "users": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            },
             "Replies": {
                 "zero":"",
                 "one":"",

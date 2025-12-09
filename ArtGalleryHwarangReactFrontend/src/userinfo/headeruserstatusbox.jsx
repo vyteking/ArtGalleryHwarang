@@ -1,11 +1,11 @@
-// import UserSession from '../session.tsx'
 import { Link, useNavigate } from 'react-router-dom';
-import { useClassNames } from '../base.jsx';
+import { useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions.jsx';
 import * as session from '../session';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 
 import './headeruserstatusbox.css'
+import { Component } from 'react';
 
 const isLoggedOn = false;
 
@@ -15,7 +15,7 @@ function GainUserInfo(usersession) {
 }
 
 //User info box when the user is logged in
-function loginuserinfobox(usersession) {
+function Loginuserinfobox(usersession) {
     const getClassNames = useClassNames();
     const { localeTxt } = useLocale();
 
@@ -58,7 +58,7 @@ function loginuserinfobox(usersession) {
 }
 
 //User info box when the session is logged out
-function userinfoboxWhileNonLoggedIn() {
+function UserinfoboxWhileNonLoggedIn() {
     const getClassNames = useClassNames();
     const { localeTxt } = useLocale();
 
@@ -94,8 +94,8 @@ function userinfoboxWhileNonLoggedIn() {
 
 function UserInfoBox({usersession}) {
     const userinfo = GainUserInfo(usersession);
-    if (isLoggedOn && usersession !== null && usersession !== undefined) return loginuserinfobox(usersession);
-    else return userinfoboxWhileNonLoggedIn;
+    if (isLoggedOn && usersession !== null && usersession !== undefined) return Loginuserinfobox(usersession);
+    else return UserinfoboxWhileNonLoggedIn();
 }
 
 export default UserInfoBox;

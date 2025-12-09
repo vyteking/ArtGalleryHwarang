@@ -27,7 +27,7 @@ function App() {
   return (
     <div className={getClassNames('App')}>
       <Header toggleSidebar={toggleSidebar0} toggleUserInfoBox={toggleUserInfoBox} />
-      <UserInfoBox />
+      <UserInfoBox usersession={Base.session} />
       <MainWin isSidebarVisible={isSidebar0Visible} />
       <Messagebox />
       <Footer />
