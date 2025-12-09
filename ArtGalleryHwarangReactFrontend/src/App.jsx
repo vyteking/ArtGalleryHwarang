@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react"
 import './App.css';
 import './ui/orientation/orientationstyles.css'; // Import the existing CSS
 
-import { useClassNames } from './base'; // Import useClassNames hook
+import session, { useClassNames } from "./base";
 
 import Header from './ui/header/header'
 import UserInfoBox from "./userinfo/headeruserstatusbox"
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className={getClassNames('App')}>
       <Header toggleSidebar={toggleSidebar0} toggleUserInfoBox={toggleUserInfoBox} />
-      <UserInfoBox usersession={Base.session} />
+      <UserInfoBox usersession={session} />
       <MainWin isSidebarVisible={isSidebar0Visible} />
       <Messagebox />
       <Footer />
