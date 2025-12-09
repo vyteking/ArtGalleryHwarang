@@ -10,6 +10,9 @@
         "dateformat":"dd/MM/yyyy"
     },
     "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
         "common":{
             "OK":"OK",
             "Yes":"Yes",
@@ -38,11 +41,35 @@
                 "other":"replies"
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} post",
+                "other":"{{count}} posts"
+            },
+            "following": {
+                "one":"{{count}} following",
+                "other":"{{count}} following"
+            },
+            "followers": {
+                "one":"{{count}} follower",
+                "other":"{{count}} followers"
+            },
+            "Replies": {
+                "one":"{{count}} reply",
+                "other":"{{count}} replies"
+            }
+        },
+        "header":{
+            "menu":"Menu"
+        },
         "sidebar0":{
             "mainpage":"Main Page",
             "hot":"Hot",
             "random_user_page":"Random User",
             "random_submission":"Random Post"
+        },
+        "footer":{
+            "displayoptions":"Display Options"
         },
         "userinfo":{
             "userindex1st":"1st User Index", 

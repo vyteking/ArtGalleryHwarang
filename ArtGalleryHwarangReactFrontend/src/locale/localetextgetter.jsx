@@ -1,15 +1,19 @@
 import { useLocale } from './localeoptions';
+import i18next from 'i18next';
+import { Trans, useTranslation } from 'react-i18next'
+
+export function getPluralForm( {name} ) {
+  
+}
+
 
 export function GetDir() {
-  const { localeinfo } = useLocale();
-  return localeinfo?.direction;
+  const { direction } = useLocale();
+  return direction;
 }
 
-export function GetText(txt) {
-  const { text } = useLocale();
-}
-
+// Kept for compatibility if you use it to get a whole section
 export function useLang(section) {
-  const { texts } = useLocale();
+  const { localeTxt: texts } = useLocale();
   return texts?.[section] || {};
 }

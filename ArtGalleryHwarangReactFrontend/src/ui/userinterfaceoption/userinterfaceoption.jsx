@@ -1,17 +1,30 @@
-import Base, { useClassNames, GetServerAPIAddress } from '../../base'
+import { useClassNames } from '../../base'
 
 import './userinterfaceoption.css'
 
 import { useLocale } from '../../locale/localeoptions';
+import { useOrientation } from '../orientation/OrientationContext';
+import { isSupportingVerticalText } from '../orientation/orientationoptions';
 
 const VerticalLayoutOption = () => {
-    const { localeTxt } = useLocale();
-    return localeTxt.isSupportingVerticalText ? (
+    const { direction, localeTxt } = useLocale();
+    const { isVertical, toggleVertical } = useOrientation();
+
+    if (!isSupportingVerticalText(direction)) {
+        return null;
+    }
+
+    return (
         <div id="EnableVerticalLayout">
-            <input type="checkbox" id="CheckboxEnableVerticalLayout"/>
-            <label htmlFor="CheckboxEnableVerticalLayout">{localeTxt.Texts.Userinterfaceoptions.enable_vertical_direction}</label>
+            <input 
+                type="checkbox" 
+                id="CheckboxEnableVerticalLayout"
+                checked={isVertical}
+                onChange={toggleVertical}
+            />
+            <label htmlFor="CheckboxEnableVerticalLayout">{localeTxt.Texts.userinterfaceoptions.enable_vertical_direction}</label>
         </div>
-    ) : null; // Return null if the condition is false
+    );
 };
 
 function Userinterfaceoptionwindow() {
@@ -30,7 +43,7 @@ function Userinterfaceoptionwindow() {
         <div id="UIOptionDiv" className={getClassNames("box")}>
             <div id="UIOptionTable" className={getClassNames("layout")}>
                     <div>
-                        <div>{localeTxt.Texts.Userinterfaceoptions.language}</div>
+                        <div>{localeTxt.Texts.userinterfaceoptions.language}</div>
                         <div></div>
                     </div>
                     <VerticalLayoutOption />

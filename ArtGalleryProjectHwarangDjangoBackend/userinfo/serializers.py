@@ -8,9 +8,7 @@ class UserInfoSerializer(serializers.ModelSerializer):
         fields = ('user_index_1st', 'user_id', 'user_password', 'user_status', 'user_level', 'user_join_date')
         read_only_fields = ('user_index_1st', 'user_status', 'user_level', 'user_join_date')
         extra_kwargs = {
-            'user_password': {'write_only': True},
-            'user_index_2nd': {'write_only': True},
-            'user_index_3rd': {'write_only': True},
+            'user_password': {'write_only': True}
         }
 
     def create(self, validated_data):

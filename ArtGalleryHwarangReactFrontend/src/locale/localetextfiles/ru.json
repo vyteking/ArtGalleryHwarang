@@ -10,6 +10,9 @@
         "dateformat":"dd/MM/yyyy"
     },
     "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
         "common":{
             "OK":"OK",
             "Yes":"Да",
@@ -22,35 +25,41 @@
         },
         "statistic":{
             "posts": {
-                "one":"пост",
-                "few":"поста",
-                "many":"постов",
+                "one":"{{count}} пост",
+                "few":"{{count}} поста",
+                "many":"{{count}} постов",
                 "other":"посты"
             },
             "following": {
-                "one":"подписка",
-                "few":"подписки",
-                "many":"подписок",
+                "one":"{{count}} подписка",
+                "few":"{{count}} подписки",
+                "many":"{{count}} подписок",
                 "other":"подписки"
             },
             "followers": {
-                "one":"подписчик",
-                "few":"подписчика",
-                "many":"подписчиков",
+                "one":"{{count}} подписчик",
+                "few":"{{count}} подписчика",
+                "many":"{{count}} подписчиков",
                 "other":"подписчики"
             }, 
             "Replies": {
-                "one":"ответ",
-                "few":"ответа",
-                "many":"ответов",
+                "one":"{{count}} ответ",
+                "few":"{{count}} ответа",
+                "many":"{{count}} ответов",
                 "other":"ответы"
             }
+        },
+        "header":{
+            "menu":"Меню"
         },
         "sidebar0":{
             "mainpage":"Главная страница",
             "hot":"Горячие",
             "random_user_page":"Случайный пользователь",
             "random_submission":"Случайный пост"
+        },
+        "footer":{
+            "displayoptions":"Параметры отображения"
         },
         "userinfo":{
             "userindex1st":"1-ый индекс пользователя", 

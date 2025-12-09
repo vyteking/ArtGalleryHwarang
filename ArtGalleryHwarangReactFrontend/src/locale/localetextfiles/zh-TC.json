@@ -10,6 +10,9 @@
         "dateformat":"yyyy/MM/dd"
     },
     "Texts":{
+        "webinfo":{
+            "name":"花廊"
+        },
         "common":{
             "OK":"是",
             "Yes":"是",
@@ -34,11 +37,31 @@
                 "other":"評論"
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "other":"{{count}} 貼子"
+            },
+            "following": {
+                "other":"{{count}} 跟隨中"
+            },
+            "followers": {
+                "other":"{{count}} 跟隨者"
+            },
+            "Replies": {
+                "other":"{{count}} 評論"
+            }
+        },
+        "header":{
+            "menu":"選單"
+        },
         "sidebar0":{
             "mainpage":"主頁",
             "hot":"熱門",
             "random_user_page":"隨機帳戶",
             "random_submission":"隨機貼子"
+        },
+        "footer":{
+            "displayoptions":"顯示選項"
         },
         "userinfo":{
             "userindex1st":"第一索引", 

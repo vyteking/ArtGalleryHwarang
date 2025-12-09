@@ -1,18 +1,21 @@
 import './orientationstyles.css'
 
-let isSupportingVerticalText;
-let isVertical;
+export function isSupportingVerticalText(direction) {
+    return direction === 2 || direction === 3;
+}
 
-function GetDir(direction) {
-    isSupportingVerticalText = (direction & 2) === 1;
+export function getDir(direction, isVertical) {
     let dir;
-    if (isSupportingVerticalText && isVertical) {
+    if (isSupportingVerticalText(direction) && isVertical) {
         switch (direction) {
             case 2:
                 dir = 'ttb-ltr';
                 break;
             case 3:
                 dir = 'ttb-rtl';
+                break;
+            default:
+                dir = 'ltr-ttb';
                 break;
         }
     }
@@ -26,15 +29,10 @@ function GetDir(direction) {
             case 2:
                 dir = 'rtl-ttb';
                 break;
+            default:
+                dir = 'ltr-ttb';
+                break;
         }
     }
     return dir;
-}
-
-function SwitchVerticalMode(setVertical) {
-    if (isSupportingVerticalText) isVertical = setVertical;
-}
-
-export default {
-    GetDir, SwitchVerticalMode
 }

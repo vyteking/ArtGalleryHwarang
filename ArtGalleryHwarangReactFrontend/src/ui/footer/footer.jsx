@@ -8,6 +8,7 @@ function Localelist() {
     const locales = GetLocalesList();
     const { currentLocale, setLocale } = useLocale();
     const [selectedLocale, setSelectedLocale] = useState(currentLocale.LocaleInfo.code);
+    const getClassNames = useClassNames();
 
     return (
             <select

@@ -10,6 +10,9 @@
         "dateformat":"dd.MM.yyyy"
     },
     "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
         "common":{
             "OK":"OK",
             "Yes":"Ja",
@@ -23,26 +26,50 @@
         "statistic":{
             "posts": {
                 "one":"Beitrag",
-                "other":"Beitrage"
+                "other":"Beiträge"
             },
             "following": {
-                "one":"Gefolgt",
-                "other":"Gefolgt"
+                "one":"folgend",
+                "other":"folgend"
             },
             "followers": {
-                "one":"Nachfolger(in)",
-                "other":"Nachfolger(inne)n"
+                "one":"Follower",
+                "other":"Follower"
             },
             "Replies": {
                 "one":"Antwort",
                 "other":"Antworten"
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} Beitrag",
+                "other":"{{count}} Beiträge"
+            },
+            "following": {
+                "one":"{{count}} folgend",
+                "other":"{{count}} folgend"
+            },
+            "followers": {
+                "one":"{{count}} Follower",
+                "other":"{{count}} Follower"
+            },
+            "Replies": {
+                "one":"{{count}} Antwort",
+                "other":"{{count}} Antworten"
+            }
+        },
+        "header":{
+            "menu":"Menü"
+        },
         "sidebar0":{
             "mainpage":"Hauptseite",
             "hot":"Hot",
             "random_user_page":"Zufälliger Benutzer",
             "random_submission":"Zufälliger Beitrag"
+        },
+        "footer":{
+            "displayoptions":"Anzeigeoption"
         },
         "userinfo":{
             "userindex1st":"1. Benutzerindex", 

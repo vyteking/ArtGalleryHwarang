@@ -1,7 +1,9 @@
-import UserSession from '../session.tsx'
+// import UserSession from '../session.tsx'
 import { Link, useNavigate } from 'react-router-dom';
-import { useClassNames } from '../../base';
+import { useClassNames } from '../base.jsx';
 import { useLocale } from '../locale/localeoptions.jsx';
+import * as session from '../session';
+import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 
 import './headeruserstatusbox.css'
 

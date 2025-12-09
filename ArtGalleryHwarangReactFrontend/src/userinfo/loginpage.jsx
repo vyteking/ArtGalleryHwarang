@@ -6,6 +6,7 @@ import './loginpage.css';
 
 import base, { useClassNames, GetServerAPIAddress } from '../base';
 import { useLocale } from '../locale/localeoptions';
+import { useSession } from '../SessionProvider';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 
 function Loginpage() {
@@ -15,6 +16,7 @@ function Loginpage() {
 
     const navigate = useNavigate();
     const { localeTxt } = useLocale();
+    const { login } = useSession();
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -32,7 +34,7 @@ function Loginpage() {
             const loginaddress = GetServerAPIAddress('u', 'api/login');
             const response = await axios.post(loginaddress, logindata);
             console.log("Login Success:", response.data);
-            base.session.UserLogin(response.data);
+            login(response.data);
             navigate(`/u/${response.data.user_index_1st}`);
         } catch (error) {
             console.error("Error creating post:", error);

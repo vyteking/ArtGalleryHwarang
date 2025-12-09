@@ -10,6 +10,9 @@
         "dateformat":"dd/MM/yyyy"
     },
     "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
         "common":{
             "OK":"OK",
             "Yes":"Oui",
@@ -22,27 +25,51 @@
         },
         "statistic":{
             "posts": {
-                "one":"poste",
-                "other":"postes"
+                "one":"publication",
+                "other":"publications"
             },
             "following": {
-                "one":"suivi(e)",
-                "other":"suivi(e)s"
+                "one":"suivante",
+                "other":"suivantes"
             },
             "followers": {
-                "one":"abonné(e)",
-                "other":"abonné(e)s"
+                "one":"abonné",
+                "other":"abonnés"
             },
             "Replies": {
                 "one":"réponse",
                 "other":"réponses"
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} publication",
+                "other":"{{count}} publications"
+            },
+            "following": {
+                "one":"{{count}} suivante",
+                "other":"{{count}} suivantes"
+            },
+            "followers": {
+                "one":"{{count}} abonné",
+                "other":"{{count}} abonnés"
+            },
+            "Replies": {
+                "one":"{{count}} réponse",
+                "other":"{{count}} réponses"
+            }
+        },
+        "header":{
+            "menu":"Menu"
+        },
         "sidebar0":{
             "mainpage":"Page d'accueil",
             "hot":"Populaire",
             "random_user_page":"Utilisateur aléatoire",
             "random_submission":"Poste aléatoire"
+        },
+        "footer":{
+            "displayoptions":"Option d'affichage"
         },
         "userinfo":{
             "userindex1st":"1er indice d'utilisateur", 

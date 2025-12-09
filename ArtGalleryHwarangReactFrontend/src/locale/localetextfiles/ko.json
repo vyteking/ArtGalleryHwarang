@@ -10,6 +10,9 @@
         "dateformat":"yyyy/MM/dd"
     },
     "Texts":{
+        "webinfo":{
+            "name":"화랑"
+        },
         "common":{
             "OK":"네",
             "Yes":"예",
@@ -34,11 +37,31 @@
                 "other":"덧글"
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "other":"{{count}} 게시글"
+            },
+            "following": {
+                "other":"{{count}} 팔로잉"
+            },
+            "followers": {
+                "other":"{{count}} 팔로워"
+            },
+            "Replies": {
+                "other":"{{count}} 덧글"
+            }
+        },
+        "header":{
+            "menu":"메뉴"
+        },
         "sidebar0":{
             "mainpage":"첫화면",
             "hot":"인기",
             "random_user_page":"임의사용자",
             "random_submission":"임의작품"
+        },
+        "footer":{
+            "displayoptions":"표시설정"
         },
         "userinfo":{
             "userindex1st":"사용자색인 1번째", 

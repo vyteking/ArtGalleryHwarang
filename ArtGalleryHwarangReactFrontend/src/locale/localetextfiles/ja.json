@@ -10,19 +10,22 @@
         "dateformat":"yyyy/MM/dd"
     },
     "Texts":{
+        "webinfo":{
+            "name":"花廊"
+        },
         "common":{
-            "OK":"はい",
+            "OK":"OK",
             "Yes":"はい",
             "No":"いいえ",
             "Confirm":"確認",
             "Cancel":"取り消し", 
-            "Open":"開ける", 
+            "Open":"開く", 
             "Close":"閉じる",
-            "Reset":"初期化"
+            "Reset":"リセット"
         },
         "statistic":{
             "posts": {
-                "other":"ポスト"
+                "other":"投稿"
             },
             "following": {
                 "other":"フォロー中"
@@ -31,97 +34,117 @@
                 "other":"フォロワー"
             },
             "Replies": {
-                "other":"コメント"
+                "other":"返信"
             }
+        },
+        "statistic_with_count":{
+            "posts": {
+                "other":"{{count}} 投稿"
+            },
+            "following": {
+                "other":"{{count}} フォロー中"
+            },
+            "followers": {
+                "other":"{{count}} フォロワー"
+            },
+            "Replies": {
+                "other":"{{count}} 返信"
+            }
+        },
+        "header":{
+            "menu":"メニュー"
         },
         "sidebar0":{
             "mainpage":"メインページ",
             "hot":"人気",
             "random_user_page":"ランダムユーザー",
-            "random_submission":"ランダム作品"
+            "random_submission":"ランダム投稿"
+        },
+        "footer":{
+            "displayoptions":"表示オプション"
         },
         "userinfo":{
-            "userindex1st":"ユーザー索引１", 
-            "userindex2nd":"ユーザー索引２", 
-            "userindex3rd":"ユーザー索引３", 
-            "userID":"ユーザー名",
+            "userindex1st":"第一ユーザー索引", 
+            "userindex2nd":"第二ユーザー索引", 
+            "userindex3rd":"第三ユーザー索引", 
+            "userID":"ユーザーID",
             "userpassword":"パスワード",
-            "userpassword2nd":"二次パスワード",
-            "userstatus":"ユーザー状態",
+            "userpassword2nd":"第二パスワード",
+            "userstatus":"ユーザーステータス",
             "userlevel":"ユーザーレベル",
-            "userjoindate":"サインイン日付",
-            "useremail":"メールアドレス",
+            "userjoindate":"登録日付",
+            "useremail":"Eメール",
             "userphonenumber":"電話番号",
-            "username":"名前",
-            "userdescription":"自己紹介"
+            "username":"ユーザー名",
+            "userdescription":"説明"
         },
         "useroptions":{
             "Login":"ログイン",
             "Logout":"ログアウト",
             "SignUp":"新規登録",
-            "notification":"お知らせ",
-            "directmessage":"ダイレクトメッセージ"
+            "notification":"通知",
+            "directmessage":"DM"
         },
         "login":{
             "scr_Login":"ログイン",
             "lbl_userId":"ユーザーID",
             "lbl_userPW":"パスワード",
-            "tbx_userId_Placeholder":"ユーザー名をここに入力してください。",
-            "tbx_userPW_Placeholder":"パスワードをここに入力してください。",
+            "tbx_userId_Placeholder":"ここにユーザーIDを入力してください",
+            "tbx_userPW_Placeholder":"ここにパスワードを入力してください",
             "btn_Login":"ログイン",
             "btn_Signup":"新規登録",
-            "btn_reset":"初期化"
+            "btn_reset":"リセット"
         }, 
         "signup":{
             "scr_SignUp":"新規登録",
-            "lbl_UserId":"ユーザー名",
-            "tbx_UserId_Placeholder":"ユーザー名をここに入力してください。",
-            "lbl_ConfirmUserID":"ユーザー名確認",
-            "tbx_ConfirmUserID_Placeholder":"ユーザー名をここに再入力してください。",
+            "lbl_UserId":"ユーザーID",
+            "tbx_UserId_Placeholder":"ここにユーザーIDを入力してください",
+            "lbl_ConfirmUserID":"ユーザーIDを確認",
+            "tbx_ConfirmUserID_Placeholder":"ここにユーザーIDをもう一度入力してください",
             "lbl_UserPW":"パスワード",
-            "tbx_UserPW_Placeholder":"パスワードをここに入力してください。",
-            "lbl_ConfirmUserPW":"パスワード確認",
-            "tbx_ConfirmUserPW_Placeholder":"パスワードをここに再入力してください。",
+            "tbx_UserPW_Placeholder":"ここにパスワードを入力してください",
+            "lbl_ConfirmUserPW":"パスワードを確認",
+            "tbx_ConfirmUserPW_Placeholder":"ここにパスワードをもう一度入力してください",
             "btn_GoBack":"戻る",
-            "btn_Reset":"初期化",
+            "btn_Reset":"リセット",
             "btn_Signup":"新規登録"
         },
         "userstatus":{
-            "SuspendedUser":"停止ユーザー",
+            "SuspendedUser":"利用停止中のユーザー",
             "NormalUser":"一般ユーザー",
             "Admin":"管理者",
             "Developer":"開発者",
-            "ProjectManager":"プロジェクトマネジャー",
-            "Founder":"設立者"
+            "ProjectManager":"プロジェクトマネージャー",
+            "Founder":"創設者"
         },
         "userinterfaceoptions":{
             "theme":"テーマ", 
             "language":"言語",
-            "enable_vertical_direction":"縦書き活性化"
+            "enable_vertical_direction":"縦書きを有効にする"
         },
         "postview":{
-            "prev_post":"前のポスト",
-            "next_post":"次のポスト",
+            "prev_post":"前の投稿",
+            "next_post":"次の投稿",
             "btn_Modify":"修正",
             "btn_Delete":"削除",
-            "loading_post":"ポストロード中",
-            "post_not_found":"ポストなし",
-            "post_error":"揭示エラー"
+            "loading_post":"投稿を読み込み中",
+            "post_not_found":"ページが見つかりません",
+            "post_error":"投稿エラー"
         },
         "posteditor":{
-            "lbl_title":"タイトル",
-            "tbx_title_Placeholder":"タイトルをここに入力してください。",
-            "lbl_uploadfile":"上げるファイル",
+            "lbl_title":"投稿エディター",
+            "tbx_title_Placeholder":"ここにタイトルを入力してください",
+            "lbl_uploadfile":"ファイルをアップロード",
             "txt_description_Placeholder":"説明",
             "lbl_tags":"タグ",
-            "tbx_tags_Placeholder":"タグをここに入力してください。",
-            "btn_Submit":"上げる",
-            "btn_Reset":"初期化",
+            "tbx_tags_Placeholder":"ここにタグを入力してください",
+            "btn_Submit":"投稿",
+            "btn_Reset":"リセット",
             "btn_Cancel":"取り消し"
         },
         "replieslist":{
-            "lbl_Replies":"コメント",
-            "reply_submission_error":"コメント添付にエラーが発生しました。"
+            "lbl_Replies":"返信",
+            "reply_submission_error":"返信の投稿中にエラーが発生しました"
         }
     }
 }

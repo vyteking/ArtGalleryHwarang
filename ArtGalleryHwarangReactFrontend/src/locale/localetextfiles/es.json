@@ -10,6 +10,9 @@
         "dateformat":"dd/MM/yyyy"
     },
     "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
         "common":{
             "OK":"OK",
             "Yes":"Sí",
@@ -26,8 +29,8 @@
                 "other":"publicaciones"
             },
             "following": {
-                "one":"seguido",
-                "other":"seguidos"
+                "one":"siguiente",
+                "other":"siguientes"
             },
             "followers": {
                 "one":"seguidor",
@@ -38,11 +41,35 @@
                 "other":"respuestas"
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} publicación",
+                "other":"{{count}} publicaciones"
+            },
+            "following": {
+                "one":"{{count}} siguiente",
+                "other":"{{count}} siguientes"
+            },
+            "followers": {
+                "one":"{{count}} seguidor",
+                "other":"{{count}} seguidores"
+            },
+            "Replies": {
+                "one":"{{count}} respuesta",
+                "other":"{{count}} respuestas"
+            }
+        },
+        "header":{
+            "menu":"Menú"
+        },
         "sidebar0":{
             "mainpage":"Página principal",
             "hot":"Popular",
             "random_user_page":"Usuario aleatorio",
             "random_submission":"Publicación aleatoria"
+        },
+        "footer":{
+            "displayoptions":"Opción de visualización"
         },
         "userinfo":{
             "userindex1st":"1o índice de usuario", 

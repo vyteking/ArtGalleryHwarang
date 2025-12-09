@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import './posteditor.css';
 import { GetServerAPIAddress } from '../base';
-import session from '../session.tsx';
+import * as session from '../session';
+import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import axios from 'axios';
 
 function PostEditor() {

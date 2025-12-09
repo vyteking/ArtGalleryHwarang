@@ -10,6 +10,9 @@
         "dateformat":"yyyy-MM-dd"
     },
     "Texts":{
+        "webinfo":{
+            "name":""
+        },
         "common":{
             "OK":"",
             "Yes":"",
@@ -54,11 +57,51 @@
                 "other":""
             }
         },
+        "statistic_with_count":{
+            "posts": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            },
+            "following": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            },
+            "followers": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            },
+            "Replies": {
+                "zero":"",
+                "one":"",
+                "two":"",
+                "few":"",
+                "many":"",
+                "other":""
+            }
+        },
+        "header":{
+            "menu":""
+        },
         "sidebar0":{
             "mainpage":"",
             "hot":"",
             "random_user_page":"",
             "random_submission":""
+        },
+        "footer":{
+            "displayoptions":""
         },
         "userinfo":{
             "userindex1st":"", 

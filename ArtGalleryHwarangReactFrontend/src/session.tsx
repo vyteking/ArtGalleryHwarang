@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 let loginaccounts = [];
 
-//current user
+// Current user
 let currentUser;
 
 // Function to get the index of the current user from localStorage
@@ -16,7 +16,7 @@ export function setCurrentUserIndex(userIndex) {
     localStorage.setItem('currentUserIndex', userIndex);
 }
 
-// List of login users
+// List of logged-in users
 export function GetLoginUsers() {
     const storedAccounts = localStorage.getItem('loginaccounts');
     
@@ -69,10 +69,9 @@ export function UserLogout(logoutuser) {
     const existing = GetLoginUsers();
     console.log("Existing users before logout:", existing);
     console.log("User to logout:", logoutuser);
-    const logoutUserIndex = parseInt(logoutuser.user_index_1st, 10);
-
-    const updated = existing.filter(user => user.user_index_1st !== logoutUserIndex);
-    console.log("login sessions after logout: ", updated);
+    // Compare user_index_1st directly as UUIDs are strings
+    const updated = existing.filter(user => user.user_index_1st !== logoutuser.user_index_1st);
+    console.log("Logged-in sessions after logout: ", updated);
     
     localStorage.setItem('loginaccounts', JSON.stringify(updated));
     localStorage.removeItem(`token_${logoutuser.user_index_1st}`);
@@ -93,7 +92,7 @@ export function GetCurrentLoginSession() {
         return null;
     }
     const accounts = GetLoginUsers();
-    // Use == to compare string from currentUserIndex with number from accounts
+    // Use == to compare string from currentUserIndex with string from accounts
     return accounts.find(user => user.user_index_1st == currentUserIndex) || null;
 }
 
