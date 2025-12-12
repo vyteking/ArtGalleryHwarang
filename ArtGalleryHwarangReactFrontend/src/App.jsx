@@ -10,10 +10,13 @@ import UserInfoBox from "./userinfo/headeruserstatusbox"
 import MainWin from './ui/mainwin'
 import Messagebox from './ui/messagebox/messagebox'
 import Footer from './ui/footer/footer'
+import UserInterfaceOption from "./ui/userinterfaceoption/userinterfaceoption"; // Import UserInterfaceOption
 
 function App() {
   const [isSidebar0Visible, setSidebar0Visibility] = useState(false);
   const [isUserInfoBoxVisible, setUserInfoBoxVisibility] = useState(false);
+  const [isDisplayOptionVisible, setDisplayOptionVisibility] = useState(false);
+  const {isDateTimeScreenVisible, setDateTimeScreenVisibility} = useState(false);
   const getClassNames = useClassNames();
 
   const toggleSidebar0 = () => {
@@ -24,13 +27,18 @@ function App() {
     setUserInfoBoxVisibility(!isUserInfoBoxVisible);
   }
 
+  const toggleDisplayOptionBox = () => {
+    setDisplayOptionVisibility(!isDisplayOptionVisible);
+  }
+
   return (
     <div className={getClassNames('App')}>
       <Header toggleSidebar={toggleSidebar0} toggleUserInfoBox={toggleUserInfoBox} />
       <UserInfoBox usersession={session} />
       <MainWin isSidebarVisible={isSidebar0Visible} />
       <Messagebox />
-      <Footer />
+      <Footer toggleDisplayOption={toggleDisplayOptionBox}/>
+      {isDisplayOptionVisible && <UserInterfaceOption toggleVisibility={toggleDisplayOptionBox} />}
     </div>
   );
 }

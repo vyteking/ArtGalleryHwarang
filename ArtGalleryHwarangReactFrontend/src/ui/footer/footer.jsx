@@ -31,16 +31,16 @@ function Localelist() {
     )
 }
 
-function Footer() {
+function Footer({ toggleDisplayOption, toggleDateTime }) {
     const getClassNames = useClassNames();
     return (
         <footer id="footertag" className={getClassNames("layout")}>
             <div id='footerDiv' className={getClassNames("")}>
-                <span id="displayoptionDiv" className={getClassNames("footerobject")}>
+                <button id="displayoptionDiv" className={getClassNames("footerobject")} onClick={toggleDisplayOption}>
                     displayoption
-                </span>
-                <span id="footerdatetimeDiv" className={getClassNames("footerobject")}>
-                    datetime
+                </button>
+                <span id="footerdatetimeDiv" className={getClassNames("footerobject")} onClick={toggleDateTime}>
+                    {/* <Time value={this.state.now} format="DD/MM/YYYY"/> */}datetime
                 </span>
                 <span id="localeDiv" className={getClassNames("footerobject")}>
                     <Localelist />

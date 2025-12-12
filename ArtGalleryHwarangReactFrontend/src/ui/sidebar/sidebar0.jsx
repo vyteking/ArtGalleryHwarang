@@ -8,7 +8,7 @@ function Sidebar0() {
     const {localeTxt} = useLocale();
 
     return <div id="sidebar0" className={getClassNames("layout")}>
-        <ul id="menulist" className={getClassNames("")}>
+        <ul id="menulist" className={getClassNames("divide-y")}>
             <Link to="/"><li className={getClassNames("menuitem")}>{localeTxt.sidebar0.mainpage}</li></Link>
             <Link to="/hot"><li className={getClassNames("menuitem")}>{localeTxt.sidebar0.hot}</li></Link>
             <Link to="/u/random"><li className={getClassNames("menuitem")}>{localeTxt.sidebar0.random_user_page}</li></Link>

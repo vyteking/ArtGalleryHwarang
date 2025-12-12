@@ -7,7 +7,9 @@ import { useOrientation } from '../orientation/OrientationContext';
 import { isSupportingVerticalText } from '../orientation/orientationoptions';
 
 const VerticalLayoutOption = () => {
-    const { direction, localeTxt } = useLocale();
+    const { direction } = useLocale();
+    const { localeTxt } = useLocale();
+    const getClassNames = useClassNames();
     const { isVertical, toggleVertical } = useOrientation();
 
     if (!isSupportingVerticalText(direction)) {
@@ -15,41 +17,46 @@ const VerticalLayoutOption = () => {
     }
 
     return (
-        <div id="EnableVerticalLayout">
+        <div id="EnableVerticalLayout" className={getClassNames("")}>
             <input 
                 type="checkbox" 
                 id="CheckboxEnableVerticalLayout"
                 checked={isVertical}
                 onChange={toggleVertical}
             />
-            <label htmlFor="CheckboxEnableVerticalLayout">{localeTxt.Texts.userinterfaceoptions.enable_vertical_direction}</label>
+            <label htmlFor="CheckboxEnableVerticalLayout">{localeTxt.userinterfaceoptions.enable_vertical_direction}</label>
         </div>
     );
 };
 
-function Userinterfaceoptionwindow() {
+function Userinterfaceoptionwindow({ toggleVisibility }) {
     const { localeTxt } = useLocale();
     const getClassNames = useClassNames();
 
     const saveUIOption = () => {
-
+        // Future implementation: save options
+        toggleVisibility(); // Close window on save for now
     }
 
     const closeUIOptWin = () => {
-
+        toggleVisibility(); // Call the function passed from App.jsx
     }
 
     return (
         <div id="UIOptionDiv" className={getClassNames("box")}>
             <div id="UIOptionTable" className={getClassNames("layout")}>
-                    <div>
-                        <div>{localeTxt.Texts.userinterfaceoptions.language}</div>
-                        <div></div>
+                    <div className={getClassNames("")}>
+                        <div className={getClassNames("")}>{localeTxt.userinterfaceoptions.language}</div>
+                        <div className={getClassNames("")}></div>
                     </div>
                     <VerticalLayoutOption />
-                    <div>
-                        <button onClick={saveUIOption}>{localeTxt.Texts.common.OK}</button>
-                        <button onClick={closeUIOptWin}>{localeTxt.Texts.common.Cancel}</button>
+                    <div className={getClassNames("")}>
+                        <div className={getClassNames("")}>{localeTxt.userinterfaceoptions.theme}</div>
+                        <div className={getClassNames("")}></div>
+                    </div>
+                    <div className={getClassNames("")}>
+                        <button className={getClassNames("")} onClick={saveUIOption}>{localeTxt.common.OK}</button>
+                        <button className={getClassNames("")} onClick={closeUIOptWin}>{localeTxt.common.Cancel}</button>
                     </div>
             </div>
         </div>

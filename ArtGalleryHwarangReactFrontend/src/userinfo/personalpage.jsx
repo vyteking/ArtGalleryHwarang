@@ -6,14 +6,21 @@ import { useLocale } from '../locale/localeoptions';
 import './personalpage.css';
 
 function PersonalPage() {
-    const { userindex1st } = useParams();
-    const [ user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
-
     const { localeTxt } = useLocale();
     const getClassNames = useClassNames();
+
+    const [loading, setLoading] = useState(true);
+
+    const [ user, setUser ] = useState(null);
+    const { userindex1st } = useParams();
+
+    const { userMedia, setUserMedia } = useState(null);
+    const { profilePix, setProfilePix } = useState(null);
+    const { headerImg, setHeaderImg } = useState(null);
+
+    const [error, setError] = useState(null);
+    const { displaycontext, setDisplayContext } = useState(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -37,26 +44,38 @@ function PersonalPage() {
     }, [userindex1st]);
 
     if (loading) {
-        return <div>{"Loading user data..."}</div>;
+        setDisplayContext(<div>{"Loading user data..."}</div>);
+        return <div id="PersonalPage" className={getClassNames("layout")}>{displaycontext}</div>;
     }
 
     if (error) {
-        return <div>error: {error}</div>;
+        setDisplayContext(<div>error: {error}</div>);
+        return <div id="PersonalPage" className={getClassNames("layout")}>{displaycontext}</div>;
     }
 
     if (!user) {
-        return <div>{"User not found."}</div>;
+        setDisplayContext(<div>{"User not found."}</div>);
+        return <div id="PersonalPage" className={getClassNames("layout")}>{displaycontext}</div>;
+    } 
+
+    if (!userMedia) {
+        setProfilePix(<div id="greyIcon" className={getClassNames("ProfilePic ImageIcon")}></div>);
+        setHeaderImg(<div id="greyBG" className={getClassNames("Header Background")}></div>);
+    } else {
+        setProfilePix(<img className={getClassNames("ProfilePic ImageIcon")} src={userMedia.user_profile_pic} />);
+        setHeaderImg(<img className={getClassNames("Header Background")} src={userMedia.user_header_image} />);
     }
 
     const RedirectPost = () => {
         navigate("/newpost");
     };
 
-    return (
+    setDisplayContext(() => {
         <div id="PersonalPage" className={getClassNames("layout")}>
             <div id="Profile" className={getClassNames("")}>
-                <div id="ProfilePic" className={getClassNames("")}>
+                <div id="ProfilePic" className={getClassNames("ImageIcon")}>
                     {/* Placeholder for profile picture */}
+                    {headerImg}
                 </div>
                 <div id="UserName" className={getClassNames("")}>
                     {user.user_id} ({user.user_index_1st})
@@ -72,7 +91,8 @@ function PersonalPage() {
                 {/* Placeholder for user's gallery */}
             </div>
         </div>
-    );
+    });
+    return displaycontext;
 }
 
 export default PersonalPage;

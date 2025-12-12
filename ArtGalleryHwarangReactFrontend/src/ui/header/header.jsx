@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import './header.css'
-// import '../orientation/orientationoptions'
+
+import { useLocale } from '../../locale/localeoptions';
 import { useClassNames } from '../../base'
 import { useSession } from '../../SessionProvider';
 
@@ -28,13 +29,13 @@ function Usericon() {
 
 function Header({ toggleSidebar, toggleUserInfoBox }) {
     const getClassNames = useClassNames();
+    const { localeTxt } = useLocale();
 
     return (
         <header id="headertag" className={getClassNames("layout")}>
-            header
             <div id="headerDiv" className={getClassNames("flexboxtype1")}>
                 <button id="menubuttonspan" className={getClassNames("headerobject")} onClick={toggleSidebar}>
-                    Menu<img id="menuImg" src=""/>
+                    {/* {localeTxt.header.menu} */}<img id="menuImg" src=""/>
                 </button>
                 <span id="headercentre" className={getClassNames("headerobject")}>
                     <span id="headertitle" className={getClassNames("headerobject")}>

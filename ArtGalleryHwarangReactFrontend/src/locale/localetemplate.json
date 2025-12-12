@@ -165,6 +165,10 @@
             "ProjectManager":"",
             "Founder":""
         },
+        "userinfopage":{
+            "loading_user_info":"",
+            "user_not_found":""
+        },
         "userinterfaceoptions":{
             "theme":"", 
             "language":"",
@@ -195,7 +199,9 @@
             "reply_submission_error":""
         },
         "systemerror":{
-            "network_error":""
+            "error":"",
+            "network_error":"",
+            "page_not_found":""
         }
     },
     "plural_forms_template": {
