@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import './i18n';
-import App from './App';
+import { App } from './App'; // Changed from default import to named import
 import { LocaleProvider } from './locale/localeoptions';
 import { ThemeProvider } from './theme/themeoptions';
 import { SessionProvider } from './SessionProvider';

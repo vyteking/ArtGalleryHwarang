@@ -12,17 +12,22 @@ function Usericon() {
     if (currentUser) {
         // Logged in: Link to user's page with an icon/image
         return (
-            <Link to={`/u/${currentUser.user_index_1st}`}>
+            <div id="Loginusericon" title={currentUser.user_id} >
                 {/* You can put a user avatar here. For now, a placeholder. */}
-                <div id="Loginusericon" title={currentUser.user_id} />
-            </Link>
+                {/* <Link to={`/u/${currentUser.user_index_1st}`}>
+                    <div id="">
+
+                    </div>
+                </Link> */}
+            </div>
         );
     } else {
         // Logged out: Link to login page with a generic icon
         return (
-            <Link to="/login">
-                <div id="UnloggedUserIcon" />
-            </Link>
+            <div id="UnloggedUserIcon" >
+                {/* <Link to="/login">
+                </Link> */}
+            </div>
         );
     }
 }

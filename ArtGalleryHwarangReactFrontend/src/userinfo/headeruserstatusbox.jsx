@@ -1,60 +1,52 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions.jsx';
-import * as session from '../session';
-import { useMessagebox } from '../ui/messagebox/messageboxcontext';
+import { useSession } from '../SessionProvider';
 
 import './headeruserstatusbox.css'
-import { Component } from 'react';
-
-const isLoggedOn = false;
-
-//Gain user information from the database
-function GainUserInfo(usersession) {
-    return null;
-}
 
 //User info box when the user is logged in
-function Loginuserinfobox(usersession) {
+function Loginuserinfobox() {
     const getClassNames = useClassNames();
     const { localeTxt } = useLocale();
+    const { currentUser, logout } = useSession();
 
     const navigate = useNavigate();
 
-    const RedirectSwitchSession = () => {
-        navigate('/ssn');
-    };
-
-    const RedirectLogout = () => {
-        navigate('/ssn/logout/:userindex1st');
+    const handleLogout = () => {
+        // Assuming logout function handles the logic
+        logout();
+        navigate('/');
     };
 
     const RedirectUserInfo = () => {
-        navigate('/u/:userindex1st');
+        if(currentUser) {
+            navigate(`/u/${currentUser.user_index_1st}`);
+        }
     };
 
-    return () => {  
-        <div className={getClassNames("box")}>
+    return (  
+        <div className={getClassNames("topbox")}>
             <div className={getClassNames("")}>
                 <div className={getClassNames("")}><button className={getClassNames("")}>not.</button><button className={getClassNames("")}>DM</button></div>
-                <div className={getClassNames("")}><button className={getClassNames("")} onClick={RedirectSwitchSession}>Switchaccount</button><button className={getClassNames("")}>loginextra</button></div>
+                <div className={getClassNames("")}><button className={getClassNames("")}>Switchaccount</button><button className={getClassNames("")}>loginextra</button></div>
             </div>
             <div className={getClassNames("")}>
-                <div className={getClassNames("")}>usericon</div>
+                <div className={getClassNames("")} onClick={RedirectUserInfo} style={{cursor: 'pointer'}}>usericon</div>
             </div>
             <div className={getClassNames("")}>
-                <div className={getClassNames("")}>username</div>
+                <div className={getClassNames("")} onClick={RedirectUserInfo} style={{cursor: 'pointer'}}>{currentUser?.user_id}</div>
             </div>
             <div className={getClassNames("")}>
                 <div className={getClassNames("")}>followings</div>
                 <div className={getClassNames("")}>followers</div>
             </div>
             <div className={getClassNames("")}>
-                <div className={getClassNames("")}><button className={getClassNames("")}>userinfopage</button></div>
-                <div className={getClassNames("")}><button className={getClassNames("")} onClick={RedirectLogout}>logout</button></div>
+                <div className={getClassNames("")}><button className={getClassNames("")} onClick={RedirectUserInfo}>userinfopage</button></div>
+                <div className={getClassNames("")}><button className={getClassNames("")} onClick={handleLogout}>logout</button></div>
             </div>
         </div>
-    };
+    );
 }
 
 //User info box when the session is logged out
@@ -72,8 +64,8 @@ function UserinfoboxWhileNonLoggedIn() {
         navigate("/signup");
     };
 
-    return () => {  
-        <div id="loginbox" className={getClassNames("box")}>
+    return (  
+        <div id="loginbox" className={getClassNames("topbox")}>
             <div className={getClassNames("")}>
                 <Link to='/login'><div id="LogoutUserIcon" className={getClassNames("")}>logoutusericon</div></Link>
             </div>
@@ -81,21 +73,25 @@ function UserinfoboxWhileNonLoggedIn() {
                 <Link to='/login'><div id="PleaseLogin" className={getClassNames("")}>please login</div></Link>
             </div>
             <div className={getClassNames("")}>
-                <Link><div id="ForgotID" className={getClassNames("")}>forgot id</div></Link>
-                <div id="ForgotPW" className={getClassNames("")}><Link></Link>forgot password</div>
+                <Link to=''><div id="ForgotID" className={getClassNames("")}>forgot id</div></Link>
+                <div id="ForgotPW" className={getClassNames("")}><Link to=''></Link>forgot password</div>
             </div>
             <div className={getClassNames("")}>
-                <div className={getClassNames("")}><button id="Signup" className={getClassNames("")} onClick={RedirectSignup}>signup</button></div>
-                <div className={getClassNames("")}><button id="login" className={getClassNames("")} onClick={RedirectLogin}>login</button></div>
+                <span className={getClassNames("")}><button id="Signup" className={getClassNames("")} onClick={RedirectSignup}>signup</button></span>
+                <span className={getClassNames("")}><button id="login" className={getClassNames("")} onClick={RedirectLogin}>login</button></span>
             </div>
         </div>
-    };
+    );
 }
 
-function UserInfoBox({usersession}) {
-    const userinfo = GainUserInfo(usersession);
-    if (isLoggedOn && usersession !== null && usersession !== undefined) return Loginuserinfobox(usersession);
-    else return UserinfoboxWhileNonLoggedIn();
+function UserInfoBox({ }) {
+    const { currentUser } = useSession();
+    if (currentUser) {
+        return <Loginuserinfobox />;
+    }
+    else {
+        return <UserinfoboxWhileNonLoggedIn />;
+    }
 }
 
 export default UserInfoBox;

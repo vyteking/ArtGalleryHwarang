@@ -17,7 +17,7 @@ function MainWin({isSidebarVisible, winToView, loginusersession}) {
     // return (theMain);
     return (
         <div className="main-container">
-            {isSidebarVisible && <Sidebar0 />}
+            <Sidebar0 isVisible={isSidebarVisible} />
             <div id="mainDiv" className={getClassNames('layout')}><PageRoutes/></div>
         </div>
     );
