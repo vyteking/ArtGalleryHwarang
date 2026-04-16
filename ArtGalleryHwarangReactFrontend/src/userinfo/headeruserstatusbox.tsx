@@ -2,10 +2,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { useSession } from '../SessionProvider';
+import type { SessionUser } from '../session';
+import './headeruserstatusbox.css';
 
-import './headeruserstatusbox.css'
+interface AccountEntryProps {
+    user: SessionUser;
+    isCurrent: boolean;
+    onSwitch: (user: SessionUser) => void;
+    onLogout: (user: SessionUser) => void;
+}
 
-function AccountEntry({ user, isCurrent, onSwitch, onLogout }) {
+function AccountEntry({ user, isCurrent, onSwitch, onLogout }: AccountEntryProps) {
     const getClassNames = useClassNames();
 
     return (
@@ -36,7 +43,7 @@ function Loginuserinfobox() {
     const { currentUser, accounts, logout, switchAccount } = useSession();
     const navigate = useNavigate();
 
-    const handleLogout = (user) => {
+    const handleLogout = (user: SessionUser) => {
         logout(user);
         const remaining = accounts.filter(a => String(a.user_index_1st) !== String(user.user_index_1st));
         if (remaining.length === 0) {

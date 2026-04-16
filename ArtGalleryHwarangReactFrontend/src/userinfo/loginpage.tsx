@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
-
+import axios from 'axios';
 import './loginpage.css';
 
-import base, { useClassNames, GetServerAPIAddress } from '../base';
+import { useClassNames, GetServerAPIAddress } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { useSession } from '../SessionProvider';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
@@ -18,38 +17,34 @@ function Loginpage() {
     const { localeTxt } = useLocale();
     const { login } = useSession();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission behavior
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-        // Basic validation for non-empty fields (though empty string is handled by === below)
         if (!userID || !userPW) {
             showMessage(localeTxt.login.error_AllFieldsRequired || 'All fields are required.', 'error');
             return;
         }
 
         const logindata = { user_id: userID, user_password: userPW };
-        //axios
-        e.preventDefault();
         try {
             const loginaddress = GetServerAPIAddress('u', 'api/login');
             const response = await axios.post(loginaddress, logindata);
-            console.log("Login Success:", response.data);
+            if (import.meta.env.DEV) console.error('Login error:', response.data);
             login(response.data);
             navigate(`/u/${response.data.user_index_1st}`);
         } catch (error) {
-            console.error("Error creating post:", error);
-            showMessage('Could not connect to the server. Please try again later. \nError: '+error, 'error');
+            if (import.meta.env.DEV) console.error('Login error:', error);
+            showMessage('Could not connect to the server. Please try again later.', 'error');
         }
     };
 
-    // Handler for the reset button
     const handleReset = () => {
         setUserID('');
         setUserPW('');
     };
 
     const RedirectSignup = () => {
-        navigate("/signup");
+        navigate('/signup');
     };
 
     return (
@@ -61,7 +56,6 @@ function Loginpage() {
                             <th colSpan={3}><h2 id="logintitle" className="logintitle">{localeTxt.login.scr_Login}</h2></th>
                         </tr>
                     </thead>
-                    {/* Corrected classname to className */}
                     <tbody id="logintablebody" className="logintable">
                         <tr className="logintablerow">
                             <td className="logintablecolumn"><label htmlFor="userIDInput" className='tablelabel'>{localeTxt.login.lbl_userId}</label></td>

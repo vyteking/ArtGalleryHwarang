@@ -1,16 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './galleryview.css';
 import { GetServerAPIAddress } from '../base';
 
-function PostBar({ post }) {
+interface Post {
+    postindex: string | number;
+    posttitle: string;
+    postauthor: string | number;
+    postdate: string;
+}
+
+interface GalleryGridViewProps {
+    origin?: string;
+    page?: number;
+    columns?: number;
+}
+
+interface GalleryListViewProps {
+    origin?: string;
+    page?: number;
+}
+
+function PostBar({ post }: { post: Post }) {
     return (
         <Link to={`/p/${post.postindex}`}>
             <div id="postbarview">
                 <div id="postimage">
-                    {/* You might want to have an image URL in your post data */}
-                    <img src={"image link here"}  alt={post.posttitle} />
+                    <img src={"image link here"} alt={post.posttitle} />
                 </div>
                 <div id="postoption">
                     <Link to={`/u/${post.postauthor}`}>
@@ -29,7 +46,7 @@ function PostBar({ post }) {
     );
 }
 
-function PostGrid({ post }) {
+function PostGrid({ post }: { post: Post }) {
     return (
         <Link to={`/p/${post.postindex}`}>
             <div id="postgridview">
@@ -52,10 +69,10 @@ function PostGrid({ post }) {
     );
 }
 
-function GalleryGridView({origin, page, columns}) {
-    const [posts, setPosts] = useState([]);
+function GalleryGridView({ origin, page, columns }: GalleryGridViewProps) {
+    const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -63,11 +80,11 @@ function GalleryGridView({origin, page, columns}) {
                 setLoading(true);
                 setError(null);
                 const postsAddress = GetServerAPIAddress('p', 'api/posts');
-                const response = await axios.get(postsAddress);
+                const response = await axios.get<Post[]>(postsAddress);
                 setPosts(response.data);
             } catch (err) {
-                console.error("Error fetching posts:", err);
-                setError("Failed to load posts.");
+                if (import.meta.env.DEV) console.error('Error fetching posts:', err);
+                setError('Failed to load posts.');
             } finally {
                 setLoading(false);
             }
@@ -76,13 +93,8 @@ function GalleryGridView({origin, page, columns}) {
         fetchPosts();
     }, []);
 
-    if (loading) {
-        return <div>Loading posts...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+    if (loading) return <div>Loading posts...</div>;
+    if (error)   return <div>Error: {error}</div>;
 
     return (
         <div id="gallerygridview">
@@ -93,28 +105,22 @@ function GalleryGridView({origin, page, columns}) {
     );
 }
 
-function GalleryListView({origin, page}) {
-    const [posts, setPosts] = useState([]);
+function GalleryListView({ origin, page }: GalleryListViewProps) {
+    const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
                 setLoading(true);
                 setError(null);
-                const listorigin = '';
-                if (origin === undefined || origin === null) {
-                    listorigin = 'api/posts';
-                } else {
-                    listorigin = 'u:'+{origin,postauthor};
-                }
                 const postsAddress = GetServerAPIAddress('p', 'api/posts');
-                const response = await axios.get(postsAddress);
+                const response = await axios.get<Post[]>(postsAddress);
                 setPosts(response.data);
             } catch (err) {
-                console.error("Error fetching posts:", err);
-                setError("Failed to load posts.");
+                if (import.meta.env.DEV) console.error('Error fetching posts:', err);
+                setError('Failed to load posts.');
             } finally {
                 setLoading(false);
             }
@@ -123,13 +129,8 @@ function GalleryListView({origin, page}) {
         fetchPosts();
     }, []);
 
-    if (loading) {
-        return <div>Loading posts...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+    if (loading) return <div>Loading posts...</div>;
+    if (error)   return <div>Error: {error}</div>;
 
     return (
         <div id="gallerylistview">

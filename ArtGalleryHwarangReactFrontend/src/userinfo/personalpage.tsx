@@ -1,21 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import base, { GetServerAPIAddress, useClassNames } from '../base';
+import { GetServerAPIAddress, useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import './personalpage.css';
 
+interface UserMedia {
+    user_profile_pic?: string;
+    user_header_image?: string;
+}
+
+interface UserData {
+    user_index_1st: string | number;
+    user_id: string;
+    media?: UserMedia;
+}
+
 function PersonalPage() {
-    const navigate = useNavigate();
     const { localeTxt } = useLocale();
     const getClassNames = useClassNames();
 
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null);
-    const [userMedia, setUserMedia] = useState(null);
-    const [error, setError] = useState(null);
+    const [user, setUser] = useState<UserData | null>(null);
+    const [userMedia, setUserMedia] = useState<UserMedia | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
-    const { userindex1st } = useParams();
+    const { userindex1st } = useParams<{ userindex1st: string }>();
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -23,12 +33,12 @@ function PersonalPage() {
                 setLoading(true);
                 setError(null);
                 const userDetailAddress = GetServerAPIAddress('u', `${userindex1st}`);
-                const response = await axios.get(userDetailAddress);
+                const response = await axios.get<UserData>(userDetailAddress);
                 setUser(response.data);
-                setUserMedia(response.data.media || null);
+                setUserMedia(response.data.media ?? null);
             } catch (err) {
-                console.error("Error fetching user data:", err);
-                setError("Failed to load user data.");
+                if (import.meta.env.DEV) console.error('Error fetching user data:', err);
+                setError('Failed to load user data.');
             } finally {
                 setLoading(false);
             }
@@ -47,17 +57,9 @@ function PersonalPage() {
         ? <img className={getClassNames("Header Background")} src={userMedia.user_header_image} alt="Header" />
         : <div id="greyBG" className={getClassNames("Header Background")}></div>;
 
-    if (loading) {
-        return <div id="PersonalPage" className={getClassNames("layout")}><div>Loading user data...</div></div>;
-    }
-
-    if (error) {
-        return <div id="PersonalPage" className={getClassNames("layout")}><div>Error: {error}</div></div>;
-    }
-
-    if (!user) {
-        return <div id="PersonalPage" className={getClassNames("layout")}><div>User not found.</div></div>;
-    }
+    if (loading) return <div id="PersonalPage" className={getClassNames("layout")}><div>Loading user data...</div></div>;
+    if (error)   return <div id="PersonalPage" className={getClassNames("layout")}><div>Error: {error}</div></div>;
+    if (!user)   return <div id="PersonalPage" className={getClassNames("layout")}><div>User not found.</div></div>;
 
     return (
         <div id="PersonalPage" className={getClassNames("layout")}>
@@ -79,7 +81,6 @@ function PersonalPage() {
                 </div>
             </div>
             <div id="UserGallery" className={getClassNames("")}>
-                {/* User's posts/gallery will be rendered here */}
             </div>
         </div>
     );

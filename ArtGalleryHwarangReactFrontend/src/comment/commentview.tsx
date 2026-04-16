@@ -1,8 +1,13 @@
-import './commentview.css'
+import './commentview.css';
+import { useClassNames } from '../base';
 
-import Base, { useClassNames } from '../base'
+interface CommentViewerProps {
+    postindex: string | number;
+    commentauthorindex: string | number;
+    commentindex: string | number;
+}
 
-function CommentViewer({postindex, commentauthorindex, commentindex}) {
+function CommentViewer({ postindex, commentauthorindex, commentindex }: CommentViewerProps) {
     const getClassNames = useClassNames();
     return (
         <div id="commentviewer" className={getClassNames("")}>

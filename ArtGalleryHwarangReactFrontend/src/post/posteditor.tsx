@@ -1,27 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './posteditor.css';
-import { GetServerAPIAddress } from '../base';
+import { GetServerAPIAddress, useClassNames } from '../base';
 import * as session from '../session';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import axios from 'axios';
+
+interface PostData {
+    title: string;
+    description: string;
+    tags?: string[];
+}
 
 function PostEditor() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [tags, setTags] = useState('');
-    const [files, setFiles] = useState([]);
-    const [imagePreviews, setImagePreviews] = useState([]);
-    const [postError, setPostError] = useState(null);
+    const [files, setFiles] = useState<File[]>([]);
+    const [imagePreviews, setImagePreviews] = useState<string[]>([]);
+    const [postError, setPostError] = useState<string | null>(null);
 
     const getClassNames = useClassNames();
-    const { postId } = useParams();
+    const { postId } = useParams<{ postId: string }>();
     const navigate = useNavigate();
     const isEditing = Boolean(postId);
 
     useEffect(() => {
         if (isEditing) {
-            axios.get(GetServerAPIAddress('p', `${postId}`))
+            axios.get<PostData>(GetServerAPIAddress('p', `${postId}`))
                 .then(response => {
                     const post = response.data;
                     setTitle(post.title);
@@ -29,25 +35,22 @@ function PostEditor() {
                     if (post.tags) {
                         setTags(post.tags.join(', '));
                     }
-                    // Note: File fetching for edits is not implemented in this snippet.
-                    // You would need a way to get existing files and display them.
                 })
-                .catch(error => {
-                    console.error('Error fetching post:', error);
+                .catch((error) => {
+                    if (import.meta.env.DEV) console.error('Error fetching post:', error);
                     setPostError('Failed to load post data.');
                 });
         }
     }, [isEditing, postId]);
 
-    const handleFileChange = (e) => {
-        const selectedFiles = Array.from(e.target.files);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFiles = Array.from(e.target.files ?? []);
         setFiles(selectedFiles);
-
         const newImagePreviews = selectedFiles.map(file => URL.createObjectURL(file));
         setImagePreviews(newImagePreviews);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setPostError(null);
 
@@ -77,13 +80,13 @@ function PostEditor() {
             });
             navigate(`/p/${response.data.id}`);
         } catch (error) {
-            console.error('Error submitting post:', error);
+            if (import.meta.env.DEV) console.error('Error submitting post:', error);
             setPostError('Failed to submit post.');
         }
     };
 
     const handleCancel = () => {
-        navigate(-1); // Go back to the previous page
+        navigate(-1);
     };
 
     return (
@@ -111,7 +114,7 @@ function PostEditor() {
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         placeholder="Tell us about your art"
-                        rows="6"
+                        rows={6}
                         required
                     />
                 </div>

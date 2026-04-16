@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import base, { useClassNames } from '../base';
 import './homepage.css';
 
 import { useLocale } from '../locale/localeoptions';
 import { GetLocaleTexts } from '../locale/localeslist';
+import type { SessionUser } from '../session';
 
 function Homepage() {
-    const [ loggedInUsers, setLoggedInUsers ] = useState([]);
-    const { currentUserSession, setCurrentUserSession } = useState();
+    const [loggedInUsers, setLoggedInUsers] = useState<SessionUser[]>([]);
     const navigate = useNavigate();
     const getClassNames = useClassNames();
     const localeTxt = GetLocaleTexts();
@@ -19,29 +19,20 @@ function Homepage() {
     }, []);
 
     function RefreshPage() {
-        window.location.reload(false);
+        window.location.reload();
     }
 
     const RedirectPost = () => {
-        navigate("/newpost");
+        navigate('/newpost');
     };
 
-    function Logout(logoutuser) {
-        try {
-            base.session.UserLogout(logoutuser);
-            //RefreshPage();
-        } catch (ex) {
-            console.error(ex);
-        }
+    function Logout(logoutuser: SessionUser) {
+        base.session.UserLogout(logoutuser);
     }
 
     function LogoutAll() {
-        try {
-            base.session.ResetLoginSessions();
-            RefreshPage();
-        } catch (ex) {
-            console.error(ex);
-        }
+        base.session.ResetLoginSessions();
+        RefreshPage();
     }
 
     return (

@@ -1,10 +1,9 @@
-import React, { useState, Component } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
-
+import axios from 'axios';
 import './signuppage.css';
 
-import base, { GetServerAPIAddress } from '../base';
+import { GetServerAPIAddress } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 
@@ -15,50 +14,37 @@ function Signuppage() {
     const [signupUserPWInput, setSignupUserPWInput] = useState('');
     const [confirmSignupUserPWInput, setConfirmSignupUserPWInput] = useState('');
     const { showMessage } = useMessagebox();
-
     const { localeTxt } = useLocale();
 
-    const handleSignup = async (event) => { // Accept the event object
-        event.preventDefault(); // Prevent default form submission
+    const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
 
-        // Basic validation for non-empty fields (though empty string is handled by === below)
         if (!signupUserIDInput || !confirmSignupUserIDInput || !signupUserPWInput || !confirmSignupUserPWInput) {
             showMessage(localeTxt.signup.error_AllFieldsRequired || 'All fields are required.');
             return;
         }
 
-        // Check if user IDs match
         if (signupUserIDInput !== confirmSignupUserIDInput) {
             showMessage(localeTxt.signup.error_UserIDsMismatch || 'User IDs do not match.');
             return;
         }
 
-        // Check if passwords match
         if (signupUserPWInput !== confirmSignupUserPWInput) {
             showMessage(localeTxt.signup.error_PasswordsMismatch || 'Passwords do not match.');
             return;
         }
 
-        //axios
-        event.preventDefault();
         try {
-            const signupdata = {user_id: signupUserIDInput, user_password: signupUserPWInput};
-
+            const signupdata = { user_id: signupUserIDInput, user_password: signupUserPWInput };
             const signupaddress = GetServerAPIAddress('u', 'api/signup');
-            const response = await axios.post(signupaddress, signupdata);
+            await axios.post(signupaddress, signupdata);
             navigate('/login');
         } catch (error) {
-            console.error("Error creating post:", error);
-            showMessage('Could not connect to the server. Please try again later. Error: '+error);
+            if (import.meta.env.DEV) console.error('Signup error:', error);
+            showMessage('Could not connect to the server. Please try again later.');
         }
-
-        // You would typically call an API here:
-        // base.api.signup(signupUserIDInput, signupUserPWInput)
-        //    .then(response => { /* handle success */ })
-        //    .catch(err => { setError(err.message); });
     };
 
-    // Handler for the reset button
     const handleReset = () => {
         setSignupUserIDInput('');
         setConfirmSignupUserIDInput('');
@@ -68,7 +54,7 @@ function Signuppage() {
     };
 
     return (
-        <div id="signupDiv" className="layout" ><form id="signupform" className="layout" onSubmit={handleSignup}> {/* onSubmit on the form */}
+        <div id="signupDiv" className="layout"><form id="signupform" className="layout" onSubmit={handleSignup}>
             <table id="signuptable" className="signuptable">
                 <thead className="signuptable">
                     <tr>
@@ -82,13 +68,10 @@ function Signuppage() {
                         </label>
                     </td>
                     <td className="signuptable">
-                        <input
-                            id="tbx_UserId_Placeholder"
-                            className="inputbox"
-                            type="text"
+                        <input id="tbx_UserId_Placeholder" className="inputbox" type="text"
                             placeholder={localeTxt.signup.tbx_UserId_Placeholder}
-                            value={signupUserIDInput} // Controlled component
-                            onChange={(e) => setSignupUserIDInput(e.target.value)} // Update state on change
+                            value={signupUserIDInput}
+                            onChange={(e) => setSignupUserIDInput(e.target.value)}
                         />
                     </td>
                 </tr>
@@ -99,10 +82,7 @@ function Signuppage() {
                         </label>
                     </td>
                     <td className="signuptable">
-                        <input
-                            id="tbx_ConfirmUserID_Placeholder"
-                            className="inputbox"
-                            type="text"
+                        <input id="tbx_ConfirmUserID_Placeholder" className="inputbox" type="text"
                             placeholder={localeTxt.signup.tbx_ConfirmUserID_Placeholder}
                             value={confirmSignupUserIDInput}
                             onChange={(e) => setConfirmSignupUserIDInput(e.target.value)}
@@ -116,10 +96,7 @@ function Signuppage() {
                         </label>
                     </td>
                     <td className="signuptable">
-                        <input
-                            id="tbx_UserPW_Placeholder"
-                            className="inputbox"
-                            type="password"
+                        <input id="tbx_UserPW_Placeholder" className="inputbox" type="password"
                             placeholder={localeTxt.signup.tbx_UserPW_Placeholder}
                             value={signupUserPWInput}
                             onChange={(e) => setSignupUserPWInput(e.target.value)}
@@ -133,10 +110,7 @@ function Signuppage() {
                         </label>
                     </td>
                     <td className="signuptable">
-                        <input
-                            id="tbx_ConfirmUserPW_Placeholder"
-                            className="inputbox"
-                            type="password"
+                        <input id="tbx_ConfirmUserPW_Placeholder" className="inputbox" type="password"
                             placeholder={localeTxt.signup.tbx_ConfirmUserPW_Placeholder}
                             value={confirmSignupUserPWInput}
                             onChange={(e) => setConfirmSignupUserPWInput(e.target.value)}
@@ -145,20 +119,12 @@ function Signuppage() {
                 </tr></tbody>
             </table>
             <div id="signupbuttonlist" className="flowtype1">
-                {/* button type="submit" will trigger onSubmit on the form */}
-                <button type="submit" className="signupbutton">
-                    {localeTxt.signup.btn_Signup}
-                </button>
-                {/* Reset button should have its own click handler or rely on type="reset" */}
-                <button type="reset" className="signupbutton" onClick={handleReset}>
-                    {localeTxt.signup.btn_Reset}
-                </button>
-                <button type="button" className="signupbutton">
-                    {localeTxt.signup.btn_GoBack}
-                </button>
+                <button type="submit" className="signupbutton">{localeTxt.signup.btn_Signup}</button>
+                <button type="reset" className="signupbutton" onClick={handleReset}>{localeTxt.signup.btn_Reset}</button>
+                <button type="button" className="signupbutton">{localeTxt.signup.btn_GoBack}</button>
             </div>
         </form></div>
-    )
-};
+    );
+}
 
 export default Signuppage;

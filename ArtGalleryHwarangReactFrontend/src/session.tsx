@@ -85,7 +85,9 @@ export function UserLogin(loginuser: SessionUser) {
     const isAlreadyLoggedIn = existing.some((user) => String(user.user_index_1st) === targetId);
 
     if (!isAlreadyLoggedIn) {
-        existing.push(loginuser);
+        // Strip token from the account object — token is stored separately under TOKEN_PREFIX
+        const { token: _token, ...accountData } = loginuser;
+        existing.push(accountData as SessionUser);
         localStorage.setItem(STORAGE_KEY.ACCOUNTS, JSON.stringify(existing));
         
         // 첫 번째 사용자가 로그인하면 현재 사용자로 설정
@@ -169,7 +171,6 @@ export function LogoutUser() {
   useEffect(() => {
     if (userindex1st) {
         UserLogout({ user_index_1st: userindex1st });
-        console.log(`Logging out user: ${userindex1st}`);
     }
     navigate('/');
   }, [userindex1st, navigate]);
@@ -182,7 +183,6 @@ export function LogoutAll() {
 
   useEffect(() => {
     ResetLoginSessions();
-    console.log('모든 계정 로그아웃.');
     navigate('/');
   }, [navigate]);
 

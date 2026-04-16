@@ -5,7 +5,7 @@ import { useLocale } from './locale/localeoptions';
 import { useTheme } from './theme/themeoptions';
 import { useOrientation } from './ui/orientation/OrientationContext';
 
-const serveraddress = "http://localhost:8000/";
+const serveraddress = import.meta.env.VITE_API_URL ?? "http://localhost:8000/";
 
 export function GetServerAPIAddress(type: string, submitvalue: string = ''): string {
     return serveraddress + type + '/' + submitvalue;

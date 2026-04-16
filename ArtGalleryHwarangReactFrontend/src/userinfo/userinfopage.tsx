@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import base, { useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
+import type { SessionUser } from '../session';
 import './userinfopage.css';
 
 function Userinfopage() {
-    const [loggedInUsers, setLoggedInUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [loggedInUsers, setLoggedInUsers] = useState<SessionUser[]>([]);
+    const [selectedUser, setSelectedUser] = useState<SessionUser | null>(null);
 
     const { localeTxt } = useLocale();
     const getClassNames = useClassNames();
@@ -28,7 +29,7 @@ function Userinfopage() {
                             <button
                                 key={user.user_index_1st}
                                 onClick={() => setSelectedUser(user)}
-                                className={selectedUser && selectedUser.user_index_1st === user.user_index_1st ? 'selected' : ''}
+                                className={selectedUser?.user_index_1st === user.user_index_1st ? 'selected' : ''}
                             >
                                 {user.user_id}
                             </button>

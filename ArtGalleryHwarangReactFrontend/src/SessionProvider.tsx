@@ -37,10 +37,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         refreshState();
     };
 
-    // Sync state when localStorage changes in another tab
+    // Sync state when session-related localStorage keys change in another tab
     useEffect(() => {
-        window.addEventListener('storage', refreshState);
-        return () => window.removeEventListener('storage', refreshState);
+        const handleStorage = (e: StorageEvent) => {
+            if (e.key === null || e.key === 'loginaccounts' || e.key === 'currentUserIndex' || e.key?.startsWith('token_')) {
+                refreshState();
+            }
+        };
+        window.addEventListener('storage', handleStorage);
+        return () => window.removeEventListener('storage', handleStorage);
     }, []);
 
     return (

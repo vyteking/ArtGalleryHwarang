@@ -1,19 +1,29 @@
-# Frontend
-ArtGalleryHwarangReactFrontend/node_modules
+# === General / OS ===
+.DS_Store
+Thumbs.db
+*.log
 
-# Django Backend — secrets & runtime artifacts
-ArtGalleryProjectHwarangDjangoBackend/.env
-ArtGalleryProjectHwarangDjangoBackend/db.sqlite3
-ArtGalleryProjectHwarangDjangoBackend/*.pyproj.user
+# === Secret / Environment ===
+.env
+.env.*
+!.env.example
 
-# Python cache
+# === Python / Django ===
 **/__pycache__/
 **/*.pyc
 **/*.pyo
+db.sqlite3
+ArtGalleryProjectHwarangDjangoBackend/*.pyproj.user
+ArtGalleryProjectHwarangDjangoBackend/media/
+ArtGalleryProjectHwarangDjangoBackend/static/
 
-# Django migrations
-ArtGalleryProjectHwarangDjangoBackend/app/migrations
-ArtGalleryProjectHwarangDjangoBackend/post/migrations
-ArtGalleryProjectHwarangDjangoBackend/postcontent/migrations
-ArtGalleryProjectHwarangDjangoBackend/reply/migrations
-ArtGalleryProjectHwarangDjangoBackend/userinfo/migrations
+# === Frontend / Node ===
+node_modules/
+ArtGalleryHwarangReactFrontend/build/
+ArtGalleryHwarangReactFrontend/dist/
+.eslintcache
+
+# === Migrations (Correct Way) ===
+# We do NOT ignore .py migration files. 
+# We only ignore the pycache within them.
+**/migrations/__pycache__/
