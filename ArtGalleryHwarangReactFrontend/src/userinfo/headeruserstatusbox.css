@@ -1,12 +1,172 @@
+/* ── User info dropdown panel ────────────────────────────────── */
 .topbox {
     position: fixed;
-    top: 50px; /* Adjust this value based on the actual height of your header */
-    right: 10px;
+    top: calc(var(--header-height, 50px) + var(--sp-2));
+    right: var(--sp-3);
     width: 300px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
     z-index: 1000;
-    padding: 10px;
-    border-radius: 8px;
+    padding: var(--sp-3);
+    overflow: hidden;
+}
+
+/* Actions row (notifications, DM) */
+.topbox__actions {
+    display: flex;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-3);
+    padding-bottom: var(--sp-3);
+    border-bottom: 1px solid var(--c-border);
+}
+.topbox__actions button {
+    flex: 1;
+    background-color: var(--c-surface);
+    color: var(--c-text-2);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-2) var(--sp-3);
+}
+.topbox__actions button:hover {
+    background-color: var(--c-surface-2);
+    color: var(--c-text);
+}
+
+/* Current user row */
+.topbox__current-user {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-2) var(--sp-2);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--sp-2);
+}
+.topbox__current-user:hover { background-color: var(--c-surface); }
+
+.topbox__initial {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-base);
+    font-weight: var(--fw-bold);
+    flex-shrink: 0;
+}
+
+.topbox__username {
+    font-size: var(--text-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--c-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Account list */
+.topbox__accounts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+    max-height: 180px;
+    overflow-y: auto;
+    margin-bottom: var(--sp-3);
+}
+
+/* Footer buttons */
+.topbox__footer {
+    display: flex;
+    gap: var(--sp-2);
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--c-border);
+}
+.topbox__footer button {
+    flex: 1;
+    background-color: transparent;
+    color: var(--c-text-2);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-2) var(--sp-3);
+}
+.topbox__footer button:hover {
+    background-color: var(--c-accent-subtle);
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+}
+
+/* ── Account entry row ──────────────────────────────────────── */
+.account-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-sm);
+    background-color: var(--c-bg);
+    border: 1px solid transparent;
+    transition: background-color var(--t-base), border-color var(--t-base);
+}
+.account-entry:hover { background-color: var(--c-surface); }
+
+.account-entry--active {
+    background-color: var(--c-accent-subtle);
+    border-color: var(--c-accent-subtle);
+}
+
+.account-entry__info {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    flex: 1;
+    min-width: 0;
+}
+
+.account-entry__initial {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: var(--fw-bold);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+.account-entry--active .account-entry__initial { opacity: 1; }
+
+.account-entry__id {
+    font-size: var(--text-sm);
+    color: var(--c-text-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.account-entry--active .account-entry__id { color: var(--c-accent); font-weight: var(--fw-medium); }
+
+.account-entry__badge { font-weight: var(--fw-bold); margin-left: var(--sp-1); }
+
+.account-entry__logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--c-text-3);
+    font-size: var(--text-xs);
+    padding: var(--sp-1) var(--sp-2);
+    border-radius: var(--radius-xs);
+    transition: background-color var(--t-base), color var(--t-base);
+    flex-shrink: 0;
+}
+.account-entry__logout:hover {
+    background-color: var(--c-danger-subtle);
+    color: var(--c-danger);
 }

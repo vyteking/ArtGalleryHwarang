@@ -1,0 +1,113 @@
+/* ============================================================
+ * Responsive Layout — ArtGalleryHwarang
+ *
+ * Breakpoints:
+ *   Mobile  : < 768px
+ *   Tablet  : 768px – 1199px
+ *   Desktop : ≥ 1200px
+ *
+ * NOTE: Rules here assume horizontal writing modes (ltr-ttb,
+ * rtl-ttb). Vertical writing mode overrides (ttb-ltr, ttb-rtl)
+ * live in orientationstyles.css and take precedence via the
+ * .App.ttb-* parent selector.
+ * ============================================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+    --header-height: 50px;
+    --footer-height: 48px;
+    --sidebar-width: 250px;
+}
+
+/* --- Global box model reset --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* --- App shell: column flex so header/main/footer stack correctly --- */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* --- Push all page content below the fixed header --- */
+.main-container {
+    padding-top: var(--header-height);
+    flex: 1;
+}
+
+/* Replace hardcoded 100vh with auto so mobile chrome doesn't clip content */
+#mainDiv {
+    height: auto;
+    min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+}
+
+/* ============================================================
+ * Desktop (≥ 1200px)
+ * Sidebar is pinned (sticky in flex flow) and always visible.
+ * Main content sits alongside it.
+ * ============================================================ */
+@media (min-width: 1200px) {
+    .main-container {
+        align-items: flex-start;
+    }
+
+    #sidebar0 {
+        position: sticky;
+        top: var(--header-height);
+        height: calc(100dvh - var(--header-height));
+        transform: none;       /* always visible regardless of JS toggle */
+        overflow-y: auto;
+        flex-shrink: 0;
+        z-index: auto;
+    }
+
+    #mainDiv {
+        flex: 1;
+        min-width: 0;          /* prevent flex child overflow */
+    }
+}
+
+/* ============================================================
+ * Tablet (768px – 1199px)
+ * Sidebar stays as overlay (slide-in behaviour unchanged).
+ * Main content is full width.
+ * ============================================================ */
+@media (min-width: 768px) and (max-width: 1199px) {
+    #mainDiv {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+ * Mobile (< 768px)
+ * Compact header, full-width dropdown, stacked footer.
+ * ============================================================ */
+@media (max-width: 767px) {
+    .headerobject {
+        padding: 6px;
+    }
+
+    /* User info dropdown stretches full width */
+    .topbox {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        border-radius: 0 0 8px 8px;
+        max-height: calc(100dvh - var(--header-height));
+        overflow-y: auto;
+    }
+
+    /* Footer items wrap and center on small screens */
+    #footerDiv {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 0;
+    }
+}

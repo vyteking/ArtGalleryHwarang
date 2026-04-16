@@ -8,5 +8,7 @@ class Post(models.Model):
     posttitle = models.CharField(null=False, max_length=255)
     postauthor = models.ForeignKey(Hwaranguserinfo, on_delete=models.CASCADE, editable=False)
     postdescription = models.TextField()
-    posttag = models.CharField(max_length=255)
+    posttag = models.CharField(max_length=255, blank=True)
     isInPublic = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

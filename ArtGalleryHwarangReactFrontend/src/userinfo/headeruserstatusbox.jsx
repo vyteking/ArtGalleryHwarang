@@ -5,93 +5,113 @@ import { useSession } from '../SessionProvider';
 
 import './headeruserstatusbox.css'
 
-//User info box when the user is logged in
+function AccountEntry({ user, isCurrent, onSwitch, onLogout }) {
+    const getClassNames = useClassNames();
+
+    return (
+        <div className={getClassNames(`account-entry${isCurrent ? ' account-entry--active' : ''}`)}>
+            <div
+                className={getClassNames("account-entry__info")}
+                onClick={() => !isCurrent && onSwitch(user)}
+                style={{ cursor: isCurrent ? 'default' : 'pointer' }}
+            >
+                <span className={getClassNames("account-entry__initial")}>
+                    {user.user_id?.charAt(0).toUpperCase()}
+                </span>
+                <span className={getClassNames("account-entry__id")}>
+                    {user.user_id}
+                    {isCurrent && <span className={getClassNames("account-entry__badge")}> ✓</span>}
+                </span>
+            </div>
+            <button className={getClassNames("account-entry__logout")} onClick={() => onLogout(user)}>
+                ✕
+            </button>
+        </div>
+    );
+}
+
 function Loginuserinfobox() {
     const getClassNames = useClassNames();
     const { localeTxt } = useLocale();
-    const { currentUser, logout } = useSession();
-
+    const { currentUser, accounts, logout, switchAccount } = useSession();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        // Assuming logout function handles the logic
-        logout();
-        navigate('/');
+    const handleLogout = (user) => {
+        logout(user);
+        const remaining = accounts.filter(a => String(a.user_index_1st) !== String(user.user_index_1st));
+        if (remaining.length === 0) {
+            navigate('/');
+        }
     };
 
-    const RedirectUserInfo = () => {
-        if(currentUser) {
+    const handleGoToProfile = () => {
+        if (currentUser) {
             navigate(`/u/${currentUser.user_index_1st}`);
         }
     };
 
-    return (  
+    return (
         <div className={getClassNames("topbox")}>
-            <div className={getClassNames("")}>
-                <div className={getClassNames("")}><button className={getClassNames("")}>not.</button><button className={getClassNames("")}>DM</button></div>
-                <div className={getClassNames("")}><button className={getClassNames("")}>Switchaccount</button><button className={getClassNames("")}>loginextra</button></div>
+            <div className={getClassNames("topbox__actions")}>
+                <button className={getClassNames("")}>{localeTxt.useroptions.notification}</button>
+                <button className={getClassNames("")}>{localeTxt.useroptions.directmessage}</button>
             </div>
-            <div className={getClassNames("")}>
-                <div className={getClassNames("")} onClick={RedirectUserInfo} style={{cursor: 'pointer'}}>usericon</div>
+
+            <div className={getClassNames("topbox__current-user")} onClick={handleGoToProfile} style={{ cursor: 'pointer' }}>
+                <span className={getClassNames("topbox__initial")}>
+                    {currentUser?.user_id?.charAt(0).toUpperCase()}
+                </span>
+                <span className={getClassNames("topbox__username")}>{currentUser?.user_id}</span>
             </div>
-            <div className={getClassNames("")}>
-                <div className={getClassNames("")} onClick={RedirectUserInfo} style={{cursor: 'pointer'}}>{currentUser?.user_id}</div>
+
+            <div className={getClassNames("topbox__accounts")}>
+                {accounts.map(account => (
+                    <AccountEntry
+                        key={account.user_index_1st}
+                        user={account}
+                        isCurrent={String(account.user_index_1st) === String(currentUser?.user_index_1st)}
+                        onSwitch={switchAccount}
+                        onLogout={handleLogout}
+                    />
+                ))}
             </div>
-            <div className={getClassNames("")}>
-                <div className={getClassNames("")}>followings</div>
-                <div className={getClassNames("")}>followers</div>
-            </div>
-            <div className={getClassNames("")}>
-                <div className={getClassNames("")}><button className={getClassNames("")} onClick={RedirectUserInfo}>userinfopage</button></div>
-                <div className={getClassNames("")}><button className={getClassNames("")} onClick={handleLogout}>logout</button></div>
+
+            <div className={getClassNames("topbox__footer")}>
+                <button className={getClassNames("")} onClick={() => navigate('/login')}>
+                    {localeTxt.useroptions.add_account}
+                </button>
+                <button className={getClassNames("")} onClick={() => navigate(`/u/${currentUser?.user_index_1st}/info`)}>
+                    {localeTxt.useroptions.settings}
+                </button>
             </div>
         </div>
     );
 }
 
-//User info box when the session is logged out
 function UserinfoboxWhileNonLoggedIn() {
     const getClassNames = useClassNames();
     const { localeTxt } = useLocale();
-
     const navigate = useNavigate();
 
-    const RedirectLogin = () => {
-        navigate("/login");
-    };
-
-    const RedirectSignup = () => {
-        navigate("/signup");
-    };
-
-    return (  
+    return (
         <div id="loginbox" className={getClassNames("topbox")}>
             <div className={getClassNames("")}>
-                <Link to='/login'><div id="LogoutUserIcon" className={getClassNames("")}>logoutusericon</div></Link>
+                <Link to='/login'><div id="LogoutUserIcon" className={getClassNames("")}></div></Link>
             </div>
             <div className={getClassNames("")}>
-                <Link to='/login'><div id="PleaseLogin" className={getClassNames("")}>please login</div></Link>
+                <Link to='/login'><div id="PleaseLogin" className={getClassNames("")}>{localeTxt.useroptions.Login}</div></Link>
             </div>
-            <div className={getClassNames("")}>
-                <Link to=''><div id="ForgotID" className={getClassNames("")}>forgot id</div></Link>
-                <div id="ForgotPW" className={getClassNames("")}><Link to=''></Link>forgot password</div>
-            </div>
-            <div className={getClassNames("")}>
-                <span className={getClassNames("")}><button id="Signup" className={getClassNames("")} onClick={RedirectSignup}>signup</button></span>
-                <span className={getClassNames("")}><button id="login" className={getClassNames("")} onClick={RedirectLogin}>login</button></span>
+            <div className={getClassNames("topbox__footer")}>
+                <span className={getClassNames("")}><button id="Signup" className={getClassNames("")} onClick={() => navigate('/signup')}>{localeTxt.useroptions.SignUp}</button></span>
+                <span className={getClassNames("")}><button id="login" className={getClassNames("")} onClick={() => navigate('/login')}>{localeTxt.useroptions.Login}</button></span>
             </div>
         </div>
     );
 }
 
-function UserInfoBox({ }) {
+function UserInfoBox() {
     const { currentUser } = useSession();
-    if (currentUser) {
-        return <Loginuserinfobox />;
-    }
-    else {
-        return <UserinfoboxWhileNonLoggedIn />;
-    }
+    return currentUser ? <Loginuserinfobox /> : <UserinfoboxWhileNonLoggedIn />;
 }
 
 export default UserInfoBox;

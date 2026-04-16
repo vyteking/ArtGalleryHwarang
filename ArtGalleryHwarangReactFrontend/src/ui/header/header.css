@@ -1,44 +1,101 @@
 #headertag {
-    /*position:absolute;*/
-    position:fixed;
-    background-color: rgba(254, 254, 254, 1);
-    border-style: solid;
-    border-width: 1px;
-    border-color: #999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height, 50px);
+    z-index: 1000;
+
+    background-color: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+    /* Subtle glass effect on scroll */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--c-bg) 90%, transparent);
 }
 
 #headerDiv {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    height: 100%;
+    padding: 0 var(--sp-4);
+}
+
+/* ── Header objects ─────────────────────────────────────────── */
+.headerobject {
+    padding: var(--sp-2);
+    display: flex;
     align-items: center;
 }
 
-.headerobject {
-    /*position:absolute;*/
-    padding:10px;
-}
-
+/* Menu toggle button */
 #menubuttonspan {
-    /*position:absolute;
-    top:10px;
-    padding:10px;*/
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--c-text-2);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--t-base);
+    padding: 0;
+}
+#menubuttonspan:hover {
+    background-color: var(--c-surface);
+    color: var(--c-text);
 }
 
-#headercentre.rtl-ttb {
-    /* width:100%; */
+/* Site title */
+#headertitle a {
+    font-size: var(--text-lg);
+    font-weight: var(--fw-bold);
+    color: var(--c-text);
+    letter-spacing: -0.02em;
 }
+#headertitle a:hover { color: var(--c-accent); }
 
-#headercentre.ltr-ttb {
-    /* width:100%; */
-}
-
+/* User icon in header */
 #headeruserinfospan {
-    /*position:absolute;
-    padding:10px;*/
+    background: none;
+    border: none;
+    padding: var(--sp-1);
+    border-radius: var(--radius-full);
+    cursor: pointer;
 }
+#headeruserinfospan:hover { background-color: var(--c-surface); }
 
+/* Logged-in avatar: filled circle with initial */
+#Loginusericon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+    transition: opacity var(--t-base);
+}
+#Loginusericon:hover { opacity: 0.85; }
+
+/* Logged-out icon: grey circle */
 #UnloggedUserIcon {
-    width: 30px;
-    height: 30px;
-    background-color: rgba(187, 187, 187, 1);
-};
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-surface-2);
+    border: 1.5px solid var(--c-border);
+    transition: border-color var(--t-base);
+}
+#UnloggedUserIcon:hover { border-color: var(--c-border-2); }
+
+/* Orientation overrides */
+#headertag.ltr-ttb, #headertag.rtl-ttb { top: 0; width: 100%; height: var(--header-height, 50px); }
+#headertag.ttb-ltr { left: 0; height: 100%; width: var(--header-height, 50px); }
+#headertag.ttb-rtl { right: 0; height: 100%; width: var(--header-height, 50px); }

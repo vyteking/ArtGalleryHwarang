@@ -1,24 +1,55 @@
+/* ── Message box (modal / toast) ─────────────────────────────── */
 .box {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2000;
+    width: 100%;
+    max-width: 400px;
+    padding: var(--sp-4);
 }
 
 #messagebox {
-    background-color: #ffffff;
-    border-color: #bbbbbb;
-    border-radius: 8px;
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    padding: var(--sp-6);
+}
+
+#messagestring {
+    font-size: var(--text-base);
+    color: var(--c-text);
+    line-height: var(--lh-normal);
+    margin-bottom: var(--sp-5);
+    white-space: pre-line;  /* respect \n in error messages */
 }
 
 #messageboxoptions {
-    background-color: #ffffff;
-    width:100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #messageboxbuttons {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    position: static;
+    transform: none;
+    display: flex;
+    gap: var(--sp-2);
+}
+
+#messageboxbuttons button {
+    font-size: var(--text-sm);
+    font-weight: var(--fw-semibold);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-2) var(--sp-5);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    border: none;
+    transition: background-color var(--t-base), box-shadow var(--t-base);
+}
+#messageboxbuttons button:hover {
+    background-color: var(--c-accent-hover);
+    box-shadow: var(--shadow-sm);
 }

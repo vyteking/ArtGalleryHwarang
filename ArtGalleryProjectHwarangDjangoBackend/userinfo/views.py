@@ -1,15 +1,20 @@
-from .models import *
-from .serializers import *
-import utils
+from .models import UserInfo, UserFollowing, UserCloseFriend
+from .serializers import UserInfoSerializer, PublicUserInfoSerializer
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from rest_framework import generics, status
+from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+
+
+class IsUserSelf(permissions.BasePermission):
+    """Allow access only to the user themselves."""
+    def has_object_permission(self, request, view, obj):
+        return obj == request.user
 
 class SignupView(generics.CreateAPIView):
     queryset = UserInfo.objects.all()
@@ -39,28 +44,19 @@ class UserPageView(generics.RetrieveAPIView):
     serializer_class = PublicUserInfoSerializer
     lookup_field = 'user_index_1st'
 
-class UserDetailView(generics.RetrieveAPIView):
-    queryset = UserInfo.objects.all()
-    serializer_class = PublicUserInfoSerializer
-    lookup_field = 'user_index_1st'
+# UserDetailView is intentionally the same as UserPageView — kept for URL compatibility.
+UserDetailView = UserPageView
 
 class UserUpdateView(generics.UpdateAPIView):
     queryset = UserInfo.objects.all()
-    serializer_class = PublicUserInfoSerializer
+    serializer_class = UserInfoSerializer
+    permission_classes = [IsAuthenticated, IsUserSelf]
     lookup_field = 'user_index_1st'
 
-class UserDeletionView(generics.RetrieveAPIView):
-    def delete(self, request, pk):
-        user_index_1st = request.data.get('user_index_1st')
-        try:
-            user = UserInfo.objects.get(user_index_1st=user_index_1st)
-            result = utils.get_collection("userinfo").delete_one("user_index_1st", user.user_index_1st)
-            if result.deleted_count == 0:
-                return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        except UserInfo.DoesNotExist:
-            pass
-        return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+class UserDeletionView(generics.DestroyAPIView):
+    queryset = UserInfo.objects.all()
+    permission_classes = [IsAuthenticated, IsUserSelf]
+    lookup_field = 'user_index_1st'
 
 class FollowUserView(APIView):
     permission_classes = [IsAuthenticated]
@@ -138,7 +134,7 @@ class FollowersListView(APIView):
         except UserInfo.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        follower_relations = user.followers.all()
+        follower_relations = user.followed_by.all()
         follower_users = [relation.followed_by for relation in follower_relations]
         serializer = PublicUserInfoSerializer(follower_users, many=True)
         return Response(serializer.data)

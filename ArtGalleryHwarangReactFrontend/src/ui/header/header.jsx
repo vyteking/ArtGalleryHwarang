@@ -10,24 +10,16 @@ function Usericon() {
     const { currentUser } = useSession();
 
     if (currentUser) {
-        // Logged in: Link to user's page with an icon/image
         return (
-            <div id="Loginusericon" title={currentUser.user_id} >
-                {/* You can put a user avatar here. For now, a placeholder. */}
-                {/* <Link to={`/u/${currentUser.user_index_1st}`}>
-                    <div id="">
-
-                    </div>
-                </Link> */}
+            <div id="Loginusericon" title={currentUser.user_id}>
+                {currentUser.user_id?.charAt(0).toUpperCase()}
             </div>
         );
     } else {
-        // Logged out: Link to login page with a generic icon
         return (
-            <div id="UnloggedUserIcon" >
-                {/* <Link to="/login">
-                </Link> */}
-            </div>
+            <Link to="/login">
+                <div id="UnloggedUserIcon" title="Login" />
+            </Link>
         );
     }
 }

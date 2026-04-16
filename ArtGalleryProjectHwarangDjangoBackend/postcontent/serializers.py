@@ -23,4 +23,9 @@ class PostcontentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Postcontent
-        fields = ('postcontentindex', 'postindex', 'postcontenttag', 'blogcontent', 'image2d', 'object3d')
+        fields = (
+            'postcontentindex', 'postindex', 'postcontenttag',
+            'rating', 'show_range', 'created_at', 'updated_at',
+            'blogcontent', 'image2d', 'object3d',
+        )
+        read_only_fields = ('postcontentindex', 'created_at', 'updated_at')

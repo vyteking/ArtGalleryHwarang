@@ -83,7 +83,9 @@
             "Logout":"로그아웃",
             "SignUp":"會員加入",
             "notification":"알림",
-            "directmessage":"直接메세지"
+            "directmessage":"直接메세지",
+            "add_account":"＋ 計定追加",
+            "settings":"設定" 
         },
         "login":{
             "scr_Login":"로그인",
@@ -93,7 +95,8 @@
             "tbx_userPW_Placeholder":"暗號를여기에入力하세요。",
             "btn_Login":"로그인",
             "btn_Signup":"會員加入",
-            "btn_reset":"初期化"
+            "btn_reset":"初期化",
+            "error_AllFieldsRequired":"모든項目을入力해주세요。"
         }, 
         "signup":{
             "scr_SignUp":"會員加入",
@@ -107,7 +110,10 @@
             "tbx_ConfirmUserPW_Placeholder":"暗號를여기에再入力하세요。",
             "btn_GoBack":"뒤로가기",
             "btn_Reset":"初期化",
-            "btn_Signup":"會員加入"
+            "btn_Signup":"會員加入",
+            "error_AllFieldsRequired":"모든항목을入力해주세요。",
+            "error_UserIDsMismatch":"아이디가一致하지않습니다。",
+            "error_PasswordsMismatch":"暗號가一致하지않습니다。"
         },
         "userstatus":{
             "SuspendedUser":"停止使用者",

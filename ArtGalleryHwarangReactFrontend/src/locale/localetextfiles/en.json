@@ -91,7 +91,9 @@
             "Logout":"Logout",
             "SignUp":"Sign Up",
             "notification":"Notification",
-            "directmessage":"DM"
+            "directmessage":"DM",
+            "add_account":"+ Add account",
+            "settings":"Settings"
         },
         "login":{
             "scr_Login":"Login",
@@ -101,7 +103,8 @@
             "tbx_userPW_Placeholder":"Insert your password here. ",
             "btn_Login":"Login",
             "btn_Signup":"Sign up",
-            "btn_reset":"Reset"
+            "btn_reset":"Reset",
+            "error_AllFieldsRequired":"All fields are required."
         }, 
         "signup":{
             "scr_SignUp":"Sign up",
@@ -115,7 +118,10 @@
             "tbx_ConfirmUserPW_Placeholder":"Repeat your password here. ",
             "btn_GoBack":"Go Back",
             "btn_Reset":"Reset",
-            "btn_Signup":"Sign Up"
+            "btn_Signup":"Sign Up",
+            "error_AllFieldsRequired":"All fields are required.",
+            "error_UserIDsMismatch":"User IDs do not match.",
+            "error_PasswordsMismatch":"Passwords do not match."
         },
         "userstatus":{
             "SuspendedUser":"Suspended User",

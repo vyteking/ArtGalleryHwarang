@@ -1,51 +1,45 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { GetCurrentLoginSession, UserLogin, UserLogout } from './session';
+import { GetCurrentLoginSession, GetLoginUsers, UserLogin, UserLogout, SwitchLoginSession } from './session';
 
-// 1. Create the context
 const SessionContext = createContext(null);
 
-// 2. Create the Provider component
 export function SessionProvider({ children }) {
+    const [accounts, setAccounts] = useState(GetLoginUsers());
     const [currentUser, setCurrentUser] = useState(GetCurrentLoginSession());
 
-    // Function to wrap the original UserLogin and update the state
-    const login = (userData) => {
-        UserLogin(userData);
+    const refreshState = () => {
+        setAccounts(GetLoginUsers());
         setCurrentUser(GetCurrentLoginSession());
     };
 
-    // Function to wrap the original UserLogout and update the state
-    const logout = (user) => {
-        UserLogout(user);
-        setCurrentUser(null); // Set to null immediately
+    const login = (userData) => {
+        UserLogin(userData);
+        refreshState();
     };
 
-    // This effect listens for changes in localStorage that might happen in other tabs
-    useEffect(() => {
-        const handleStorageChange = () => {
-            setCurrentUser(GetCurrentLoginSession());
-        };
+    const logout = (user) => {
+        UserLogout(user || currentUser);
+        refreshState();
+    };
 
-        window.addEventListener('storage', handleStorageChange);
-        return () => {
-            window.removeEventListener('storage', handleStorageChange);
-        };
+    const switchAccount = (user) => {
+        SwitchLoginSession(user);
+        refreshState();
+    };
+
+    // Sync state when localStorage changes in another tab
+    useEffect(() => {
+        window.addEventListener('storage', refreshState);
+        return () => window.removeEventListener('storage', refreshState);
     }, []);
 
-    const value = {
-        currentUser,
-        login,
-        logout
-    };
-
     return (
-        <SessionContext.Provider value={value}>
+        <SessionContext.Provider value={{ currentUser, accounts, login, logout, switchAccount }}>
             {children}
         </SessionContext.Provider>
     );
 }
 
-// 3. Create a custom hook for easy access to the context
 export function useSession() {
     const context = useContext(SessionContext);
     if (!context) {

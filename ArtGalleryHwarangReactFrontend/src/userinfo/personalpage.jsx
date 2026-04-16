@@ -11,16 +11,11 @@ function PersonalPage() {
     const getClassNames = useClassNames();
 
     const [loading, setLoading] = useState(true);
-
-    const [ user, setUser ] = useState(null);
-    const { userindex1st } = useParams();
-
-    const { userMedia, setUserMedia } = useState(null);
-    const { profilePix, setProfilePix } = useState(null);
-    const { headerImg, setHeaderImg } = useState(null);
-
+    const [user, setUser] = useState(null);
+    const [userMedia, setUserMedia] = useState(null);
     const [error, setError] = useState(null);
-    const { displaycontext, setDisplayContext } = useState(null);
+
+    const { userindex1st } = useParams();
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -30,6 +25,7 @@ function PersonalPage() {
                 const userDetailAddress = GetServerAPIAddress('u', `${userindex1st}`);
                 const response = await axios.get(userDetailAddress);
                 setUser(response.data);
+                setUserMedia(response.data.media || null);
             } catch (err) {
                 console.error("Error fetching user data:", err);
                 setError("Failed to load user data.");
@@ -43,56 +39,50 @@ function PersonalPage() {
         }
     }, [userindex1st]);
 
+    const profilePic = userMedia?.user_profile_pic
+        ? <img className={getClassNames("ProfilePic ImageIcon")} src={userMedia.user_profile_pic} alt="Profile" />
+        : <div id="greyIcon" className={getClassNames("ProfilePic ImageIcon")}></div>;
+
+    const headerImg = userMedia?.user_header_image
+        ? <img className={getClassNames("Header Background")} src={userMedia.user_header_image} alt="Header" />
+        : <div id="greyBG" className={getClassNames("Header Background")}></div>;
+
     if (loading) {
-        setDisplayContext(<div>{"Loading user data..."}</div>);
-        return <div id="PersonalPage" className={getClassNames("layout")}>{displaycontext}</div>;
+        return <div id="PersonalPage" className={getClassNames("layout")}><div>Loading user data...</div></div>;
     }
 
     if (error) {
-        setDisplayContext(<div>error: {error}</div>);
-        return <div id="PersonalPage" className={getClassNames("layout")}>{displaycontext}</div>;
+        return <div id="PersonalPage" className={getClassNames("layout")}><div>Error: {error}</div></div>;
     }
 
     if (!user) {
-        setDisplayContext(<div>{"User not found."}</div>);
-        return <div id="PersonalPage" className={getClassNames("layout")}>{displaycontext}</div>;
-    } 
-
-    if (!userMedia) {
-        setProfilePix(<div id="greyIcon" className={getClassNames("ProfilePic ImageIcon")}></div>);
-        setHeaderImg(<div id="greyBG" className={getClassNames("Header Background")}></div>);
-    } else {
-        setProfilePix(<img className={getClassNames("ProfilePic ImageIcon")} src={userMedia.user_profile_pic} />);
-        setHeaderImg(<img className={getClassNames("Header Background")} src={userMedia.user_header_image} />);
+        return <div id="PersonalPage" className={getClassNames("layout")}><div>User not found.</div></div>;
     }
 
-    const RedirectPost = () => {
-        navigate("/newpost");
-    };
-
-    setDisplayContext(() => {
+    return (
         <div id="PersonalPage" className={getClassNames("layout")}>
+            <div id="ProfileHeader" className={getClassNames("")}>
+                {headerImg}
+            </div>
             <div id="Profile" className={getClassNames("")}>
                 <div id="ProfilePic" className={getClassNames("ImageIcon")}>
-                    {/* Placeholder for profile picture */}
-                    {headerImg}
+                    {profilePic}
                 </div>
                 <div id="UserName" className={getClassNames("")}>
                     {user.user_id} ({user.user_index_1st})
                 </div>
                 <div id="Following" className={getClassNames("")}>
-                    {"following"}
+                    following
                 </div>
                 <div id="Followers" className={getClassNames("")}>
-                    {"followers"}
+                    followers
                 </div>
             </div>
             <div id="UserGallery" className={getClassNames("")}>
-                {/* Placeholder for user's gallery */}
+                {/* User's posts/gallery will be rendered here */}
             </div>
         </div>
-    });
-    return displaycontext;
+    );
 }
 
 export default PersonalPage;

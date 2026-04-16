@@ -1,14 +1,28 @@
+/* App shell */
 .App {
-  text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
+/* .layout is used as a generic page-content wrapper.
+   Override the old "place-items: center" grid — that centred
+   everything and broke most page layouts. Page-specific
+   centering is handled per-component. */
 .layout {
-  display: grid;
-  place-items: center;
+    width: 100%;
 }
 
-.text-hoz-ctr-ver-ctr {
-  text-align: center;
-  place-items: center;
-  place-content: center;
+/* Flex row utility used in header */
+.flexboxtype1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Horizontal flow (used by buttons row in login/signup) */
+.flowtype1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
 }

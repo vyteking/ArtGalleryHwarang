@@ -35,7 +35,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'post',
     'postcontent',
     'reply',
+    'sticker',
 ]
 
 AUTH_USER_MODEL = 'userinfo.UserInfo'
@@ -86,7 +87,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/app/templates/layout.html',
+            os.path.join(BASE_DIR, 'templates'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -111,7 +112,18 @@ DATABASES = {
     }
 }
 
-MONGO_URI = env('MONGO_URI')
+MONGO_URI = env('MONGO_URI', default='')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+}
 
 # Post Upload
 POST_FOLDER_NAME = 'p'

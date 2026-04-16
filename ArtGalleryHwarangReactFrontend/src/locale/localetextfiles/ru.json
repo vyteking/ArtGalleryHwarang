@@ -81,7 +81,9 @@
             "Logout":"Выход",
             "SignUp":"Зарегистрироваться",
             "notification":"Уведомление",
-            "directmessage":"ПС"
+            "directmessage":"ПС",
+            "add_account":"+ Добавить аккаунт",
+            "settings":"Настройки"
         },
         "login":{
             "scr_Login":"Вход",
@@ -91,7 +93,8 @@
             "tbx_userPW_Placeholder":"Вот вставить твой пароль. ",
             "btn_Login":"Вход",
             "btn_Signup":"Зарегистрироваться",
-            "btn_reset":"Сброс"
+            "btn_reset":"Сброс",
+            "error_AllFieldsRequired":"Все поля обязательны для заполнения."
         }, 
         "signup":{
             "scr_SignUp":"Регистрация",
@@ -105,7 +108,10 @@
             "tbx_ConfirmUserPW_Placeholder":"Вот повторить твой пароль. ",
             "btn_GoBack":"Пойти",
             "btn_Reset":"Сброс",
-            "btn_Signup":"Зарегистрироваться"
+            "btn_Signup":"Зарегистрироваться",
+            "error_AllFieldsRequired":"Все поля обязательны для заполнения.",
+            "error_UserIDsMismatch":"Идентификаторы пользователей не совпадают.",
+            "error_PasswordsMismatch":"Пароли не совпадают."
         },
         "userstatus":{
             "SuspendedUser":"Отстраненный пользователь",

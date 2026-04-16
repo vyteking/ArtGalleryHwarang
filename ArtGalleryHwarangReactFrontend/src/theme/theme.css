@@ -1,9 +1,14 @@
+/* Theme classes.
+   Background and text colour are driven by the CSS custom
+   properties defined in design-system.css. The fallback values
+   keep things working even if design-system.css loads late. */
+
 .bright-white {
-    background-color: #ffffff;
-    color: #222222;
+    background-color: var(--c-bg, #ffffff);
+    color: var(--c-text, #111827);
 }
 
 .darky-black {
-    background-color: #222222;
-    color: #eeeeee;
+    background-color: var(--c-bg, #0d0f14);
+    color: var(--c-text, #f1f3f9);
 }

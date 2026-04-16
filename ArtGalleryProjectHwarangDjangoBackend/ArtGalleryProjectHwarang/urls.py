@@ -29,4 +29,5 @@ urlpatterns = [
     path('p/', include('post.urls')),
     path('c/', include('postcontent.urls')),
     path('r/', include('reply.urls')),
+    path('s/', include('sticker.urls')),
 ]

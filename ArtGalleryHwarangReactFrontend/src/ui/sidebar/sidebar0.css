@@ -1,32 +1,49 @@
 #sidebar0 {
     position: fixed;
-    top: 50px; /* Assuming header height is 50px */
+    top: var(--header-height, 50px);
     left: 0;
-    width: 250px; /* Or whatever width you want */
-    height: calc(100vh - 50px); /* Full height minus header */
-    background-color: white;
-    border-right: 1px solid #ccc;
+    width: var(--sidebar-width, 250px);
+    height: calc(100dvh - var(--header-height, 50px));
+    background-color: var(--c-bg);
+    border-right: 1px solid var(--c-border);
     transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--t-slow);
     z-index: 900;
+    overflow-y: auto;
+    padding: var(--sp-3) 0;
 }
 
 #sidebar0.visible {
     transform: translateX(0);
+    box-shadow: var(--shadow-lg);
 }
 
-#menulist .menuitem {
-    list-style-type: none;
+/* Nav list */
+#menulist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.menulist .ltr-ttb {
-    width: 100%;
-}
-
+/* Nav items */
 .menuitem {
-    padding:15px;
+    display: block;
+    padding: var(--sp-3) var(--sp-5);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    color: var(--c-text-2);
+    border-radius: var(--radius-sm);
+    margin: 0 var(--sp-2);
+    cursor: pointer;
+    transition: background-color var(--t-base), color var(--t-base);
+}
+.menuitem:hover {
+    background-color: var(--c-accent-subtle);
+    color: var(--c-accent);
 }
 
-.bright-white .menuitem:hover {
-    background-color: #f0f0f0;;
+/* Links wrapping menu items */
+#menulist a {
+    color: inherit;
+    text-decoration: none;
 }

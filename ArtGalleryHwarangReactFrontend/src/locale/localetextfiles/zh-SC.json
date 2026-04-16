@@ -83,7 +83,9 @@
             "Logout":"退出",
             "SignUp":"注册",
             "notification":"通知",
-            "directmessage":"直接讯信"
+            "directmessage":"直接讯信",
+            "add_account":"＋ 添加账户",
+            "settings":"设置"
         },
         "login":{
             "scr_Login":"登绿",
@@ -93,7 +95,8 @@
             "tbx_userPW_Placeholder":"请在这里输入密码。",
             "btn_Login":"登绿",
             "btn_Signup":"注册",
-            "btn_reset":"初始化"
+            "btn_reset":"初始化",
+            "error_AllFieldsRequired":"请填写所有栏位。"
         }, 
         "signup":{
             "scr_SignUp":"注册",
@@ -107,7 +110,10 @@
             "tbx_ConfirmUserPW_Placeholder":"请在这里再次输入密码。",
             "btn_GoBack":"返回",
             "btn_Reset":"初始化",
-            "btn_Signup":"注册"
+            "btn_Signup":"注册",
+            "error_AllFieldsRequired":"请填写所有栏位。",
+            "error_UserIDsMismatch":"用户名不匹配。",
+            "error_PasswordsMismatch":"密码不匹配。"
         },
         "userstatus":{
             "SuspendedUser":"停止用户名",

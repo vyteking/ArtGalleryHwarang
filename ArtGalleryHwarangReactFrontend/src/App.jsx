@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react"
 
+import './design-system.css';
 import './App.css';
-import './ui/orientation/orientationstyles.css'; // Import the existing CSS
+import './responsive.css';
+import './ui/orientation/orientationstyles.css';
 
 import Header from './ui/header/header'
 import UserInfoBox from "./userinfo/headeruserstatusbox"
@@ -15,7 +17,7 @@ export function App() {
   const [isSidebar0Visible, setSidebar0Visibility] = useState(false);
   const [isUserInfoBoxVisible, setUserInfoBoxVisibility] = useState(false);
   const [isDisplayOptionVisible, setDisplayOptionVisibility] = useState(false);
-  const {isDateTimeScreenVisible, setDateTimeScreenVisibility} = useState(false);
+  const [isDateTimeScreenVisible, setDateTimeScreenVisibility] = useState(false);
   const getClassNames = useClassNames();
 
   const toggleSidebar0 = () => {

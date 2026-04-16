@@ -91,7 +91,9 @@
             "Logout":"Abmelden",
             "SignUp":"Registrieren",
             "notification":"Benachrichtigung",
-            "directmessage":"DN"
+            "directmessage":"DN",
+            "add_account":"+ Konto hinzufügen",
+            "settings":"Einstellungen"
         },
         "login":{
             "scr_Login":"Anmeldung",
@@ -101,7 +103,8 @@
             "tbx_userPW_Placeholder":"Gib dein Passwort ein hier. ",
             "btn_Login":"Anmelden",
             "btn_Signup":"Registrieren",
-            "btn_reset":"Zurücksetzen"
+            "btn_reset":"Zurücksetzen",
+            "error_AllFieldsRequired":"Alle Felder sind erforderlich."
         }, 
         "signup":{
             "scr_SignUp":"Registrierung",
@@ -115,7 +118,10 @@
             "tbx_ConfirmUserPW_Placeholder":"Wiederhole dein Passwort hier. ",
             "btn_GoBack":"Zurückgehen",
             "btn_Reset":"Zurücksetzen",
-            "btn_Signup":"Registrieren"
+            "btn_Signup":"Registrieren",
+            "error_AllFieldsRequired":"Alle Felder sind erforderlich.",
+            "error_UserIDsMismatch":"Benutzer-IDs stimmen nicht überein.",
+            "error_PasswordsMismatch":"Passwörter stimmen nicht überein."
         },
         "userstatus":{
             "SuspendedUser":"Gesperrter Benutzer",

@@ -91,7 +91,9 @@
             "Logout":"Deconectarse",
             "SignUp":"Registrarse",
             "notification":"Notificación",
-            "directmessage":"MD"
+            "directmessage":"MD",
+            "add_account":"+ Agregar cuenta",
+            "settings":"Configuración"
         },
         "login":{
             "scr_Login":"Inicio de sesión",
@@ -101,7 +103,8 @@
             "tbx_userPW_Placeholder":"Inserta tu contraseña aquí. ",
             "btn_Login":"Entrar",
             "btn_Signup":"Registrarse",
-            "btn_reset":"Reajustar"
+            "btn_reset":"Reajustar",
+            "error_AllFieldsRequired":"Todos los campos son obligatorios."
         }, 
         "signup":{
             "scr_SignUp":"Inscripción",
@@ -115,7 +118,10 @@
             "tbx_ConfirmUserPW_Placeholder":"Repite tu contraseña aquí. ",
             "btn_GoBack":"Volver",
             "btn_Reset":"Reajustar",
-            "btn_Signup":"Registrarse"
+            "btn_Signup":"Registrarse",
+            "error_AllFieldsRequired":"Todos los campos son obligatorios.",
+            "error_UserIDsMismatch":"Los IDs de usuario no coinciden.",
+            "error_PasswordsMismatch":"Las contraseñas no coinciden."
         },
         "userstatus":{
             "SuspendedUser":"Usuario suspendido",

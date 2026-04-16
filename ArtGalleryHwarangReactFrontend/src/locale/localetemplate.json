@@ -131,7 +131,9 @@
             "Logout":"",
             "SignUp":"",
             "notification":"",
-            "directmessage":""
+            "directmessage":"",
+            "add_account":"",
+            "settings":""
         },
         "login":{
             "scr_Login":"",
@@ -141,7 +143,8 @@
             "tbx_userPW_Placeholder":"",
             "btn_Login":"",
             "btn_Signup":"",
-            "btn_reset":""
+            "btn_reset":"",
+            "error_AllFieldsRequired":""
         }, 
         "signup":{
             "scr_SignUp":"",
@@ -155,7 +158,10 @@
             "tbx_ConfirmUserPW_Placeholder":"",
             "btn_GoBack":"",
             "btn_Reset":"",
-            "btn_Signup":""
+            "btn_Signup":"",
+            "error_AllFieldsRequired":"",
+            "error_UserIDsMismatch":"",
+            "error_PasswordsMismatch":""
         },
         "userstatus":{
             "SuspendedUser":"",

@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.hashers import make_password
 
 class UserInfoManager(BaseUserManager):
     def create_user(self, user_id, password=None, **extra_fields):
@@ -55,6 +56,15 @@ class UserInfo(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'user_id'
     REQUIRED_FIELDS = []
 
+    def set_password(self, raw_password):
+        """Hash and store the primary password into user_password."""
+        self.user_password = make_password(raw_password)
+        self._password = raw_password
+
+    def set_secondary_password(self, raw_password):
+        """Hash and store the secondary password into user_password_2nd."""
+        self.user_password_2nd = make_password(raw_password) if raw_password else None
+
     def __str__(self):
         return self.user_id
 
@@ -65,7 +75,9 @@ class UserAdditionalInfo(models.Model):
     user_phone_number = models.CharField(max_length=15, null=True)  # Use CharField for phone numbers
     username = models.CharField(max_length=255, null=True)
     user_alt_name = models.CharField(max_length=255, null=True)
-    user_description = models.TextField()
+    user_description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.username or "No Name"
@@ -73,8 +85,9 @@ class UserAdditionalInfo(models.Model):
 # Media submission of the user such as profile pic, header, etc.
 class UserMediaSubmission(models.Model):
     user_info_index_1st = models.ForeignKey(UserInfo, on_delete=models.CASCADE, primary_key=True)
-    user_profile_pic = models.ImageField(upload_to='profile_pics/')
-    user_header_image = models.ImageField(upload_to='header_images/')
+    user_profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    user_header_image = models.ImageField(upload_to='header_images/', null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.user_info_index_1st}"
@@ -85,6 +98,7 @@ class UserUISetup(models.Model):
     setup_locale = models.CharField(max_length=16, default='en-GB')
     enable_vertical_mode = models.BooleanField(default=False) #Vertical writing mode for vertical-writing-supporting languages like Chinese, Korean, Japanese, Mongolian, etc.
     setup_theme = models.CharField(max_length=255, null=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.user_info_index_1st}"

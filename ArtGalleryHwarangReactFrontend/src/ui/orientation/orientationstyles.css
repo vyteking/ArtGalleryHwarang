@@ -117,8 +117,8 @@
 }
 
 /*
- * 3. Top-to-Bottom Right-to-Left Text Orientation. 
- * Chinese, Korean, Japanese, Khitan, Jurchen, and so on. 
+ * 3. Top-to-Bottom Right-to-Left Text Orientation.
+ * Chinese, Korean, Japanese, Khitan, Jurchen, and so on.
  */
 
 .ttb-rtl {
@@ -134,4 +134,92 @@
 #footertag.ttb-rtl {
     left: 0px;
     height: 100%;
+}
+
+/* ============================================================
+ * Vertical writing mode layout corrections
+ *
+ * In vertical modes the header and footer are on the sides,
+ * not the top/bottom. The responsive.css padding-top rule
+ * must be overridden with side padding instead.
+ *
+ * --header-height is reused as "header thickness" (the narrow
+ * dimension) in both horizontal and vertical modes.
+ * ============================================================ */
+
+/* --- TTB-LTR (Mongolian): header LEFT, footer RIGHT --- */
+.App.ttb-ltr .main-container {
+    padding-top: 0;
+    padding-left: var(--header-height, 50px);
+    padding-right: var(--footer-height, 48px);
+    flex-direction: column;
+}
+
+.App.ttb-ltr #sidebar0 {
+    top: 0;
+    left: var(--header-height, 50px);
+    height: 100dvh;
+}
+
+/* Desktop pinned sidebar disabled in vertical mode */
+@media (min-width: 1200px) {
+    .App.ttb-ltr #sidebar0 {
+        position: fixed;
+        transform: translateX(-100%);
+    }
+    .App.ttb-ltr #sidebar0.visible {
+        transform: translateX(0);
+    }
+}
+
+.App.ttb-ltr .topbox {
+    top: 0;
+    left: var(--header-height, 50px);
+    right: auto;
+}
+
+/* --- TTB-RTL (CJK): header RIGHT, footer LEFT --- */
+.App.ttb-rtl .main-container {
+    padding-top: 0;
+    padding-right: var(--header-height, 50px);
+    padding-left: var(--footer-height, 48px);
+    flex-direction: column;
+}
+
+.App.ttb-rtl #sidebar0 {
+    top: 0;
+    left: auto;
+    right: var(--header-height, 50px);
+    height: 100dvh;
+    transform: translateX(100%);  /* slides in from the right */
+}
+.App.ttb-rtl #sidebar0.visible {
+    transform: translateX(0);
+}
+
+/* Desktop pinned sidebar disabled in vertical mode */
+@media (min-width: 1200px) {
+    .App.ttb-rtl #sidebar0 {
+        position: fixed;
+        transform: translateX(100%);
+    }
+    .App.ttb-rtl #sidebar0.visible {
+        transform: translateX(0);
+    }
+}
+
+.App.ttb-rtl .topbox {
+    top: 0;
+    right: var(--header-height, 50px);
+    left: auto;
+}
+
+/* Mobile: vertical-mode dropdown spans between header and footer sides */
+@media (max-width: 767px) {
+    .App.ttb-ltr .topbox,
+    .App.ttb-rtl .topbox {
+        left: var(--header-height, 50px) !important;
+        right: var(--footer-height, 48px) !important;
+        width: auto !important;
+    }
 }

@@ -83,7 +83,9 @@
             "Logout":"ログアウト",
             "SignUp":"新規登録",
             "notification":"通知",
-            "directmessage":"DM"
+            "directmessage":"DM",
+            "add_account":"＋ アカウント追加",
+            "settings":"設定"
         },
         "login":{
             "scr_Login":"ログイン",
@@ -93,7 +95,8 @@
             "tbx_userPW_Placeholder":"ここにパスワードを入力してください",
             "btn_Login":"ログイン",
             "btn_Signup":"新規登録",
-            "btn_reset":"リセット"
+            "btn_reset":"リセット",
+            "error_AllFieldsRequired":"すべての項目を入力してください。"
         }, 
         "signup":{
             "scr_SignUp":"新規登録",
@@ -107,7 +110,10 @@
             "tbx_ConfirmUserPW_Placeholder":"ここにパスワードをもう一度入力してください",
             "btn_GoBack":"戻る",
             "btn_Reset":"リセット",
-            "btn_Signup":"新規登録"
+            "btn_Signup":"新規登録",
+            "error_AllFieldsRequired":"すべての項目を入力してください。",
+            "error_UserIDsMismatch":"ユーザーIDが一致しません。",
+            "error_PasswordsMismatch":"パスワードが一致しません。"
         },
         "userstatus":{
             "SuspendedUser":"利用停止中のユーザー",

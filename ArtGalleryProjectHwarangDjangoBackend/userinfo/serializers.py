@@ -15,8 +15,10 @@ class UserInfoSerializer(serializers.ModelSerializer):
         validated_data['user_password'] = make_password(validated_data['user_password'])
         return super(UserInfoSerializer, self).create(validated_data)
     
-    def update(self, validated_data):
-        return super(UserInfoSerializer, self).update(validated_data)
+    def update(self, instance, validated_data):
+        if 'user_password' in validated_data:
+            validated_data['user_password'] = make_password(validated_data['user_password'])
+        return super(UserInfoSerializer, self).update(instance, validated_data)
 
 class PublicUserInfoSerializer(serializers.ModelSerializer):
     class Meta:
