@@ -1,7 +1,15 @@
 #footertag {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: var(--c-bg);
     border-top: 1px solid var(--c-border);
     min-height: var(--footer-height, 48px);
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--c-bg) 90%, transparent);
 }
 
 #footerDiv {
@@ -48,6 +56,86 @@
 #localelist:hover { border-color: var(--c-border-2); }
 
 /* Orientation overrides */
-#footertag.ltr-ttb, #footertag.rtl-ttb { bottom: 0; width: 100%; }
-#footertag.ttb-ltr { right: 0; height: 100%; width: var(--footer-height, 48px); }
-#footertag.ttb-rtl { left: 0; height: 100%; width: var(--footer-height, 48px); }
+#footertag.ltr-ttb,
+#footertag.rtl-ttb {
+    bottom: 0; left: 0; right: 0; top: auto;
+    width: 100%; height: auto;
+}
+
+/* TTB-LTR (Mongolian): footer on RIGHT side */
+#footertag.ttb-ltr {
+    top: 0; bottom: 0; right: 0; left: auto;
+    width: var(--footer-height, 48px); height: 100%;
+    writing-mode: horizontal-tb;
+    border-top: none;
+    border-left: 1px solid var(--c-border);
+}
+
+/* TTB-RTL (CJK): footer on LEFT side */
+#footertag.ttb-rtl {
+    top: 0; bottom: 0; left: 0; right: auto;
+    width: var(--footer-height, 48px); height: 100%;
+    writing-mode: horizontal-tb;
+    border-top: none;
+    border-right: 1px solid var(--c-border);
+}
+
+/* ── Footer in TTB (vertical) modes ────────────────────────────
+   getClassNames() stamps every child with the ttb-* class which
+   sets writing-mode: vertical-*. Structural elements (footerDiv)
+   need horizontal-tb so flexbox stacks correctly; text elements
+   should be vertical so they read top-to-bottom in the side panel;
+   the <select> must stay horizontal-tb or it breaks entirely.
+   ──────────────────────────────────────────────────────────── */
+
+/* 1. Reset ALL descendants to horizontal so layout works */
+#footertag.ttb-ltr *,
+#footertag.ttb-rtl * {
+    writing-mode: horizontal-tb;
+    direction: ltr;
+}
+
+/* 2. Stack items in the narrow vertical strip */
+#footertag.ttb-ltr #footerDiv,
+#footertag.ttb-rtl #footerDiv {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--sp-4) var(--sp-1);
+    max-width: none;
+    gap: var(--sp-2);
+}
+
+/* 3. Re-apply vertical text to text-only elements so they read top-to-bottom */
+#footertag.ttb-rtl #displayoptionDiv,
+#footertag.ttb-rtl #footerdatetimeDiv {
+    writing-mode: vertical-rl;
+    direction: rtl;
+}
+
+#footertag.ttb-ltr #displayoptionDiv,
+#footertag.ttb-ltr #footerdatetimeDiv {
+    writing-mode: vertical-lr;
+    direction: ltr;
+}
+
+/* 4. Language <select> — apply vertical writing mode with explicit sizing.
+   The selected text rotates vertically; the dropdown popup still opens
+   horizontally, which is the normal browser behaviour. */
+#footertag.ttb-rtl #localelist {
+    writing-mode: vertical-rl;
+    direction: rtl;
+    width: calc(var(--footer-height, 48px) - 8px);
+    height: auto;
+    max-width: none;
+    padding: var(--sp-1) 2px;
+}
+
+#footertag.ttb-ltr #localelist {
+    writing-mode: vertical-lr;
+    direction: ltr;
+    width: calc(var(--footer-height, 48px) - 8px);
+    height: auto;
+    max-width: none;
+    padding: var(--sp-1) 2px;
+}

@@ -1,19 +1,29 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
+import type { ReactNode } from 'react';
 
-const OrientationContext = createContext();
+interface OrientationContextValue {
+    isVertical: boolean;
+    toggleVertical: () => void;
+}
 
-export const useOrientation = () => useContext(OrientationContext);
+const OrientationContext = createContext<OrientationContextValue | null>(null);
 
-export const OrientationProvider = ({ children }) => {
-  const [isVertical, setIsVertical] = useState(false);
+export const useOrientation = (): OrientationContextValue => {
+    const ctx = useContext(OrientationContext);
+    if (!ctx) throw new Error('useOrientation must be used within an OrientationProvider');
+    return ctx;
+};
 
-  const toggleVertical = () => {
-    setIsVertical(prev => !prev);
-  };
+export const OrientationProvider = ({ children }: { children: ReactNode }) => {
+    const [isVertical, setIsVertical] = useState(false);
 
-  return (
-    <OrientationContext.Provider value={{ isVertical, toggleVertical }}>
-      {children}
-    </OrientationContext.Provider>
-  );
+    const toggleVertical = () => {
+        setIsVertical(prev => !prev);
+    };
+
+    return (
+        <OrientationContext.Provider value={{ isVertical, toggleVertical }}>
+            {children}
+        </OrientationContext.Provider>
+    );
 };

@@ -1,21 +1,29 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
+import type { ReactNode } from 'react';
 import './theme.css';
 
-const ThemeContext = createContext();
+export type ThemeName = 'bright-white' | 'darky-black';
 
-export function getTheme() {
-    return localStorage.getItem('theme') || 'bright-white';
+interface ThemeContextValue {
+    theme: ThemeName;
+    toggleTheme: () => void;
 }
 
-function GetThemeClass(themename) {
+const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+export function getTheme(): ThemeName {
+    return (localStorage.getItem('theme') as ThemeName) || 'bright-white';
+}
+
+function GetThemeClass(themename: ThemeName): string {
     return themename;
 }
 
-export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState(getTheme());
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+    const [theme, setTheme] = useState<ThemeName>(getTheme());
 
     const toggleTheme = () => {
-        const newTheme = theme === 'bright-white' ? 'darky-black' : 'bright-white';
+        const newTheme: ThemeName = theme === 'bright-white' ? 'darky-black' : 'bright-white';
         setTheme(newTheme);
         localStorage.setItem('theme', newTheme);
     };
@@ -27,7 +35,11 @@ export const ThemeProvider = ({ children }) => {
     );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextValue => {
+    const ctx = useContext(ThemeContext);
+    if (!ctx) throw new Error('useTheme must be used within a ThemeProvider');
+    return ctx;
+};
 
 export default {
     GetThemeClass

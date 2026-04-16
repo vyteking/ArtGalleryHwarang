@@ -8,24 +8,29 @@ import locale_ko from './localetextfiles/ko.json'
 import locale_ru from './localetextfiles/ru.json'
 import locale_zh_SC from './localetextfiles/zh-SC.json'
 import locale_zh_TC from './localetextfiles/zh-TC.json'
+import type { LocaleData } from './locale.types'
 
-const localeMap = new Map([
-    [locale_de.LocaleInfo.code, locale_de],
-    [locale_en.LocaleInfo.code, locale_en],
-    [locale_es.LocaleInfo.code, locale_es],
-    [locale_fr.LocaleInfo.code, locale_fr],
-    [locale_ja.LocaleInfo.code, locale_ja],
-    [locale_ko_HJ.LocaleInfo.code, locale_ko_HJ],
-    [locale_ko.LocaleInfo.code, locale_ko],
-    [locale_ru.LocaleInfo.code, locale_ru],
-    [locale_zh_SC.LocaleInfo.code, locale_zh_SC],
-    [locale_zh_TC.LocaleInfo.code, locale_zh_TC],
+const localeMap = new Map<string, LocaleData>([
+    [locale_de.LocaleInfo.code,    locale_de    as unknown as LocaleData],
+    [locale_en.LocaleInfo.code,    locale_en    as unknown as LocaleData],
+    [locale_es.LocaleInfo.code,    locale_es    as unknown as LocaleData],
+    [locale_fr.LocaleInfo.code,    locale_fr    as unknown as LocaleData],
+    [locale_ja.LocaleInfo.code,    locale_ja    as unknown as LocaleData],
+    [locale_ko_HJ.LocaleInfo.code, locale_ko_HJ as unknown as LocaleData],
+    [locale_ko.LocaleInfo.code,    locale_ko    as unknown as LocaleData],
+    [locale_ru.LocaleInfo.code,    locale_ru    as unknown as LocaleData],
+    [locale_zh_SC.LocaleInfo.code, locale_zh_SC as unknown as LocaleData],
+    [locale_zh_TC.LocaleInfo.code, locale_zh_TC as unknown as LocaleData],
 ]);
 
-export function GetLocalesList() {
-    return new Map([...localeMap.entries()].map(([code, data]) => [code, data.LocaleInfo.name]).sort((a, b) => a[1].localeCompare(b[1])));
+export function GetLocalesList(): Map<string, string> {
+    return new Map(
+        [...localeMap.entries()]
+            .map(([code, data]) => [code, data.LocaleInfo.name] as [string, string])
+            .sort((a, b) => a[1].localeCompare(b[1]))
+    );
 }
 
-export function GetLocaleTexts(code) {
-    return localeMap.get(code) || locale_en;
+export function GetLocaleTexts(code: string): LocaleData {
+    return localeMap.get(code) ?? (locale_en as unknown as LocaleData);
 }

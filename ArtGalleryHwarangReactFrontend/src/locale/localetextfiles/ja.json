@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"OK",
+            "OK_Confirm_btn":"確認",
             "Yes":"はい",
             "No":"いいえ",
             "Confirm":"確認",
@@ -124,7 +125,9 @@
             "Founder":"創設者"
         },
         "userinterfaceoptions":{
-            "theme":"テーマ", 
+            "theme":"テーマ",
+            "theme_light":"明るい",
+            "theme_dark":"暗い",
             "language":"言語",
             "enable_vertical_direction":"縦書きを有効にする"
         },

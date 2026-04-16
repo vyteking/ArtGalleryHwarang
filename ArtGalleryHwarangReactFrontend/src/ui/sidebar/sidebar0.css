@@ -47,3 +47,18 @@
     color: inherit;
     text-decoration: none;
 }
+
+/* In vertical writing modes the sidebar and every child also get the ttb-*
+   orientation class via getClassNames(), which sets writing-mode: vertical-*.
+   Override the sidebar and all its descendants back to horizontal. */
+#sidebar0.ttb-ltr,
+#sidebar0.ttb-rtl {
+    writing-mode: horizontal-tb;
+    direction: ltr;
+}
+
+#sidebar0.ttb-ltr *,
+#sidebar0.ttb-rtl * {
+    writing-mode: horizontal-tb;
+    direction: ltr;
+}

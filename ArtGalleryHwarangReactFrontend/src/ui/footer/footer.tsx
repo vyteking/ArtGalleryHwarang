@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import './footer.css'
-import { useClassNames } from '../../base'
+import './footer.css';
+import { useClassNames } from '../../base';
 import { GetLocalesList } from '../../locale/localeslist';
 import { useLocale } from '../../locale/localeoptions';
 
-// Format a Date using the locale's dateformat pattern (dd/MM/yyyy etc.)
-function formatDate(date, pattern) {
+function formatDate(date: Date, pattern: string): string {
     const dd   = String(date.getDate()).padStart(2, '0');
     const MM   = String(date.getMonth() + 1).padStart(2, '0');
     const yyyy = String(date.getFullYear());
@@ -15,7 +14,7 @@ function formatDate(date, pattern) {
         .replace('yyyy', yyyy);
 }
 
-function formatTime(date) {
+function formatTime(date: Date): string {
     const HH = String(date.getHours()).padStart(2, '0');
     const mm = String(date.getMinutes()).padStart(2, '0');
     const ss = String(date.getSeconds()).padStart(2, '0');
@@ -24,7 +23,7 @@ function formatTime(date) {
 
 function DateTime() {
     const { currentLocale } = useLocale();
-    const datePattern = currentLocale?.format?.dateformat ?? 'yyyy-MM-dd';
+    const datePattern = currentLocale.format.dateformat;
 
     const [now, setNow] = useState(new Date());
 
@@ -43,20 +42,15 @@ function DateTime() {
 function Localelist() {
     const locales = GetLocalesList();
     const { currentLocale, setLocale } = useLocale();
-    const [selectedLocale, setSelectedLocale] = useState(currentLocale.LocaleInfo.code);
     const getClassNames = useClassNames();
 
     return (
         <select
             id="localelist"
             name="localelist"
-            className={getClassNames("")}
-            value={selectedLocale}
-            onChange={(e) => {
-                const val = e.target.value;
-                setSelectedLocale(val);
-                setLocale(val);
-            }}
+            className={getClassNames('')}
+            value={currentLocale.LocaleInfo.code}
+            onChange={(e) => setLocale(e.target.value)}
         >
             {[...locales.entries()].map(([code, name]) => (
                 <option className="localelistitem" key={code} value={code}>
@@ -67,18 +61,25 @@ function Localelist() {
     );
 }
 
-function Footer({ toggleDisplayOption, toggleDateTime }) {
+interface FooterProps {
+    toggleDisplayOption: () => void;
+    toggleDateTime: () => void;
+}
+
+function Footer({ toggleDisplayOption, toggleDateTime }: FooterProps) {
+    const { localeTxt } = useLocale();
     const getClassNames = useClassNames();
+
     return (
-        <footer id="footertag" className={getClassNames("layout")}>
-            <div id='footerDiv' className={getClassNames("")}>
-                <button id="displayoptionDiv" className={getClassNames("footerobject")} onClick={toggleDisplayOption}>
-                    displayoption
+        <footer id="footertag" className={getClassNames('layout')}>
+            <div id="footerDiv" className={getClassNames('')}>
+                <button id="displayoptionDiv" className={getClassNames('footerobject')} onClick={toggleDisplayOption}>
+                    {localeTxt.footer.displayoptions}
                 </button>
-                <span className={getClassNames("footerobject")} onClick={toggleDateTime} style={{ cursor: 'pointer' }}>
+                <span className={getClassNames('footerobject')} onClick={toggleDateTime} style={{ cursor: 'pointer' }}>
                     <DateTime />
                 </span>
-                <span id="localeDiv" className={getClassNames("footerobject")}>
+                <span id="localeDiv" className={getClassNames('footerobject')}>
                     <Localelist />
                 </span>
             </div>

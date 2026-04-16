@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"OK",
+            "OK_Confirm_btn":"OK",
             "Yes":"Ja",
             "No":"Nein",
             "Confirm":"Bestätigen",
@@ -132,7 +133,9 @@
             "Founder":"Gründer"
         },
         "userinterfaceoptions":{
-            "theme":"Thema", 
+            "theme":"Thema",
+            "theme_light":"Hell",
+            "theme_dark":"Dunkel",
             "language":"Sprachen",
             "enable_vertical_direction":"Vertikalrichtung ermüglichen"
         },

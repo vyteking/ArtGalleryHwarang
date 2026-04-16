@@ -1,38 +1,25 @@
 import './orientationstyles.css'
 
-export function isSupportingVerticalText(direction) {
+export type Direction = 0 | 1 | 2 | 3;
+export type OrientationClass = 'ltr-ttb' | 'rtl-ttb' | 'ttb-ltr' | 'ttb-rtl';
+
+export function isSupportingVerticalText(direction: Direction): boolean {
     return direction === 2 || direction === 3;
 }
 
-export function getDir(direction, isVertical) {
-    let dir;
+export function getDir(direction: Direction, isVertical: boolean): OrientationClass {
     if (isSupportingVerticalText(direction) && isVertical) {
         switch (direction) {
-            case 2:
-                dir = 'ttb-ltr';
-                break;
-            case 3:
-                dir = 'ttb-rtl';
-                break;
-            default:
-                dir = 'ltr-ttb';
-                break;
+            case 2: return 'ttb-ltr';
+            case 3: return 'ttb-rtl';
+            default: return 'ltr-ttb';
         }
     }
-    else {
-        switch (direction) {
-            case 0:
-            case 3:
-                dir = 'ltr-ttb';
-                break;
-            case 1:
-            case 2:
-                dir = 'rtl-ttb';
-                break;
-            default:
-                dir = 'ltr-ttb';
-                break;
-        }
+    switch (direction) {
+        case 0:
+        case 3: return 'ltr-ttb';
+        case 1:
+        case 2: return 'rtl-ttb';
+        default: return 'ltr-ttb';
     }
-    return dir;
 }

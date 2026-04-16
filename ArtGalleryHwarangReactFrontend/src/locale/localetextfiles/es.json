@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"OK",
+            "OK_Confirm_btn":"OK",
             "Yes":"Sí",
             "No":"No",
             "Confirm":"Confirmar",
@@ -132,7 +133,9 @@
             "Founder":"Fundador"
         },
         "userinterfaceoptions":{
-            "theme":"Tema", 
+            "theme":"Tema",
+            "theme_light":"Claro",
+            "theme_dark":"Oscuro",
             "language":"Idioma",
             "enable_vertical_direction":"Activar la dirección vertical"
         },

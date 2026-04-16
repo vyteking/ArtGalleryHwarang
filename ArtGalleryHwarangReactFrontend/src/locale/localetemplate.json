@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"",
+            "OK_Confirm_btn":"",
             "Yes":"",
             "No":"",
             "Confirm":"",
@@ -176,7 +177,9 @@
             "user_not_found":""
         },
         "userinterfaceoptions":{
-            "theme":"", 
+            "theme":"",
+            "theme_light":"",
+            "theme_dark":"",
             "language":"",
             "enable_vertical_direction":""
         },

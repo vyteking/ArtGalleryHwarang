@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"네",
+            "OK_Confirm_btn":"確認",
             "Yes":"예",
             "No":"아니요",
             "Confirm":"確認",
@@ -124,7 +125,9 @@
             "Founder":"設立者"
         },
         "userinterfaceoptions":{
-            "theme":"테마", 
+            "theme":"테마",
+            "theme_light":"밝게",
+            "theme_dark":"어둡게",
             "language":"言語",
             "enable_vertical_direction":"세로쓰기活成化"
         },

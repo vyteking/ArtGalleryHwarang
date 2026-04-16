@@ -2,6 +2,17 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 // ---------------------------------------------------------
+// 타입 정의
+// ---------------------------------------------------------
+
+export interface SessionUser {
+    user_index_1st: string | number;
+    user_id?: string;
+    token?: string;
+    [key: string]: unknown;
+}
+
+// ---------------------------------------------------------
 // 상수 및 헬퍼 함수 (전역 변수 제거 및 안전한 처리)
 // ---------------------------------------------------------
 
@@ -35,7 +46,7 @@ export function getCurrentUserIndex() {
 }
 
 // 현재 사용자 인덱스 설정
-export function setCurrentUserIndex(userIndex: String) {
+export function setCurrentUserIndex(userIndex: string | number) {
     if (userIndex !== null && userIndex !== undefined) {
         localStorage.setItem(STORAGE_KEY.CURRENT_INDEX, String(userIndex));
     } else {
@@ -65,14 +76,13 @@ export function ResetLoginSessions() {
 }
 
 // 로그인 처리 (사용자 추가)
-export function UserLogin(loginuser: any) {
+export function UserLogin(loginuser: SessionUser) {
     if (!loginuser || !loginuser.user_index_1st) return;
 
-    const existing = getStoredAccounts();
-    // ID 비교 시 문자열로 변환하여 타입 불일치 방지
+    const existing: SessionUser[] = getStoredAccounts();
     const targetId = String(loginuser.user_index_1st);
-    
-    const isAlreadyLoggedIn = existing.some((user: { user_index_1st: any; }) => String(user.user_index_1st) === targetId);
+
+    const isAlreadyLoggedIn = existing.some((user) => String(user.user_index_1st) === targetId);
 
     if (!isAlreadyLoggedIn) {
         existing.push(loginuser);
@@ -91,14 +101,13 @@ export function UserLogin(loginuser: any) {
 }
 
 // 로그아웃 처리 (특정 사용자 제거)
-export function UserLogout(logoutuser: any) {
+export function UserLogout(logoutuser: SessionUser) {
     if (!logoutuser || !logoutuser.user_index_1st) return;
 
-    const existing = getStoredAccounts();
-    const logoutId = String(logoutuser.user_index_1st); // 문자열로 안전하게 변환
+    const existing: SessionUser[] = getStoredAccounts();
+    const logoutId = String(logoutuser.user_index_1st);
 
-    // 해당 사용자 제외하고 필터링
-    const updated = existing.filter((user: { user_index_1st: any; }) => String(user.user_index_1st) !== logoutId);
+    const updated = existing.filter((user) => String(user.user_index_1st) !== logoutId);
     
     // 스토리지 업데이트
     localStorage.setItem(STORAGE_KEY.ACCOUNTS, JSON.stringify(updated));
@@ -120,9 +129,8 @@ export function GetCurrentLoginSession() {
     const currentIndex = getCurrentUserIndex();
     if (!currentIndex) return null;
     
-    const accounts = getStoredAccounts();
-    // 문자열로 변환하여 비교 (가장 중요)
-    return accounts.find((user: { user_index_1st: any; }) => String(user.user_index_1st) === currentIndex) || null;
+    const accounts: SessionUser[] = getStoredAccounts();
+    return accounts.find((user) => String(user.user_index_1st) === currentIndex) ?? null;
 }
 
 // 현재 사용자의 인증 토큰 가져오기
@@ -135,7 +143,7 @@ export function getAuthToken() {
 }
 
 // 사용자 전환
-export function SwitchLoginSession(user: any) {
+export function SwitchLoginSession(user: SessionUser) {
     if (user && user.user_index_1st) {
         setCurrentUserIndex(user.user_index_1st);
     }

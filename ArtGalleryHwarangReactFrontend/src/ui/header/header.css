@@ -95,7 +95,48 @@
 }
 #UnloggedUserIcon:hover { border-color: var(--c-border-2); }
 
+/* ── Header in TTB (vertical) modes ────────────────────────────
+   1. Reset all descendants to horizontal so the flex strip lays
+      out correctly.
+   2. Re-apply vertical text only to the site title so it reads
+      top-to-bottom.
+   3. Icon buttons stay horizontal (they're icons, not text).
+   ──────────────────────────────────────────────────────────── */
+#headertag.ttb-ltr *,
+#headertag.ttb-rtl * {
+    writing-mode: horizontal-tb;
+    direction: ltr;
+}
+
+#headertag.ttb-rtl #headertitle a {
+    writing-mode: vertical-rl;
+    direction: rtl;
+}
+
+#headertag.ttb-ltr #headertitle a {
+    writing-mode: vertical-lr;
+    direction: ltr;
+}
+
 /* Orientation overrides */
-#headertag.ltr-ttb, #headertag.rtl-ttb { top: 0; width: 100%; height: var(--header-height, 50px); }
-#headertag.ttb-ltr { left: 0; height: 100%; width: var(--header-height, 50px); }
-#headertag.ttb-rtl { right: 0; height: 100%; width: var(--header-height, 50px); }
+#headertag.ltr-ttb,
+#headertag.rtl-ttb {
+    top: 0; left: 0; right: 0; bottom: auto;
+    width: 100%; height: var(--header-height, 50px);
+}
+
+#headertag.ttb-ltr {
+    top: 0; bottom: 0; left: 0; right: auto;
+    width: var(--header-height, 50px); height: 100%;
+    writing-mode: horizontal-tb;
+    border-bottom: none;
+    border-right: 1px solid var(--c-border);
+}
+
+#headertag.ttb-rtl {
+    top: 0; bottom: 0; right: 0; left: auto;
+    width: var(--header-height, 50px); height: 100%;
+    writing-mode: horizontal-tb;
+    border-bottom: none;
+    border-left: 1px solid var(--c-border);
+}

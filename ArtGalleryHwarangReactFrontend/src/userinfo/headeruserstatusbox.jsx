@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useClassNames } from '../base';
-import { useLocale } from '../locale/localeoptions.jsx';
+import { useLocale } from '../locale/localeoptions';
 import { useSession } from '../SessionProvider';
 
 import './headeruserstatusbox.css'

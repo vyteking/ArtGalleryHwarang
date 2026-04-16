@@ -104,7 +104,7 @@
 .ttb-ltr {
     direction: ltr;
     writing-mode: vertical-lr;
-};
+}
 
 #headertag.ttb-ltr {
     left: 0px;
@@ -124,7 +124,7 @@
 .ttb-rtl {
     direction: rtl;
     writing-mode: vertical-rl;
-};
+}
 
 #headertag.ttb-rtl {
     right: 0px;
@@ -150,9 +150,14 @@
 /* --- TTB-LTR (Mongolian): header LEFT, footer RIGHT --- */
 .App.ttb-ltr .main-container {
     padding-top: 0;
+    padding-bottom: 0;
     padding-left: var(--header-height, 50px);
     padding-right: var(--footer-height, 48px);
     flex-direction: column;
+}
+
+.App.ttb-ltr #mainDiv {
+    min-height: 100dvh;
 }
 
 .App.ttb-ltr #sidebar0 {
@@ -181,9 +186,14 @@
 /* --- TTB-RTL (CJK): header RIGHT, footer LEFT --- */
 .App.ttb-rtl .main-container {
     padding-top: 0;
+    padding-bottom: 0;
     padding-right: var(--header-height, 50px);
     padding-left: var(--footer-height, 48px);
     flex-direction: column;
+}
+
+.App.ttb-rtl #mainDiv {
+    min-height: 100dvh;
 }
 
 .App.ttb-rtl #sidebar0 {

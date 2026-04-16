@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"OK",
+            "OK_Confirm_btn":"OK",
             "Yes":"Да",
             "No":"Нет",
             "Confirm":"Подтверждение",
@@ -122,7 +123,9 @@
             "Founder":"Основатель"
         },
         "userinterfaceoptions":{
-            "theme":"Тема", 
+            "theme":"Тема",
+            "theme_light":"Светлый",
+            "theme_dark":"Тёмный",
             "language":"Язык",
             "enable_vertical_direction":"Позвопить вертикальное направление"
         },

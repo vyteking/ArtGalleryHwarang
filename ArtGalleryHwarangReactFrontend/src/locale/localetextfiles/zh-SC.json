@@ -15,6 +15,7 @@
         },
         "common":{
             "OK":"是",
+            "OK_Confirm_btn":"确认",
             "Yes":"是",
             "No":"否",
             "Confirm":"确认",
@@ -124,7 +125,9 @@
             "Founder":"创始人"
         },
         "userinterfaceoptions":{
-            "theme":"主题", 
+            "theme":"主题",
+            "theme_light":"亮色",
+            "theme_dark":"暗色",
             "language":"语言",
             "enable_vertical_direction":"活化纵书"
         },
