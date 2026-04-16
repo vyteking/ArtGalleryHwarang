@@ -1,13 +1,19 @@
+# Frontend
 ArtGalleryHwarangReactFrontend/node_modules
-ArtGalleryProjectHwarangDjangoBackend/__pycache__
-ArtGalleryProjectHwarangDjangoBackend/app/__pycache__
-ArtGalleryProjectHwarangDjangoBackend/post/__pycache__
-ArtGalleryProjectHwarangDjangoBackend/postcontent/__pycache__
-ArtGalleryProjectHwarangDjangoBackend/reply/__pycache__
-ArtGalleryProjectHwarangDjangoBackend/userinfo/__pycache__
+
+# Django Backend — secrets & runtime artifacts
+ArtGalleryProjectHwarangDjangoBackend/.env
+ArtGalleryProjectHwarangDjangoBackend/db.sqlite3
+ArtGalleryProjectHwarangDjangoBackend/*.pyproj.user
+
+# Python cache
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+# Django migrations
 ArtGalleryProjectHwarangDjangoBackend/app/migrations
 ArtGalleryProjectHwarangDjangoBackend/post/migrations
 ArtGalleryProjectHwarangDjangoBackend/postcontent/migrations
 ArtGalleryProjectHwarangDjangoBackend/reply/migrations
 ArtGalleryProjectHwarangDjangoBackend/userinfo/migrations
-ArtGalleryProjectHwarangDjangoBackend/ArtGalleryProjectHwarang/__pycache__
