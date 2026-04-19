@@ -16,9 +16,7 @@ function Usericon() {
         );
     }
     return (
-        <Link to="/login">
-            <div id="UnloggedUserIcon" title="Login" />
-        </Link>
+        <div id="UnloggedUserIcon" title="Login" />
     );
 }
 

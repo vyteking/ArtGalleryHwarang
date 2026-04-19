@@ -19,6 +19,7 @@ class IsUserSelf(permissions.BasePermission):
 class SignupView(generics.CreateAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = UserInfoSerializer
+    permission_classes = [permissions.AllowAny]
 
 @method_decorator(csrf_exempt, name='dispatch')
 class LoginView(generics.GenericAPIView):

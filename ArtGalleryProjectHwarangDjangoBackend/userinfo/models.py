@@ -50,6 +50,7 @@ class UserInfo(AbstractBaseUser, PermissionsMixin):
     user_status = models.SmallIntegerField(choices=UserStatus.choices, default=UserStatus.NORMAL_USER)
     user_level = models.SmallIntegerField(choices=UserLevel.choices, default=UserLevel.UNRANKED_USER)
     user_join_date = models.DateTimeField(auto_now_add=True)
+    is_staff = models.BooleanField(default=False)
 
     objects = UserInfoManager()
 
