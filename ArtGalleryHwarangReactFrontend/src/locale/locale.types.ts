@@ -133,21 +133,35 @@ export interface LocaleTexts {
         loading_post: string;
         post_not_found: string;
         post_error: string;
+        unknown_author: string;
+        more_from_artist: string;
+        post_contents_placeholder: string;
     };
     posteditor: {
         lbl_title: string;
+        scr_EditPost: string;
+        lbl_post_title: string;
         tbx_title_Placeholder: string;
+        lbl_description: string;
         lbl_uploadfile: string;
         txt_description_Placeholder: string;
         lbl_tags: string;
         tbx_tags_Placeholder: string;
         btn_Submit: string;
+        btn_Update: string;
         btn_Reset: string;
         btn_Cancel: string;
+        error_login_required: string;
+        error_load_failed: string;
+        error_submit_failed: string;
     };
     replieslist: {
         lbl_Replies: string;
         reply_submission_error: string;
+        no_replies: string;
+        anonymous: string;
+        tbx_reply_Placeholder: string;
+        btn_submit_reply: string;
     };
     userinfopage?: {
         loading_user_info: string;

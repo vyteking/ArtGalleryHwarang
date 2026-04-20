@@ -53,19 +53,50 @@
 .form-control::placeholder { color: var(--c-text-3); }
 textarea.form-control { resize: vertical; min-height: 140px; }
 
-/* File input */
-input[type="file"].form-control {
-    padding: var(--sp-2);
+/* ── File drop zone ───────────────────────────────────────── */
+.file-drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    padding: var(--sp-8) var(--sp-4);
+    border: 2px dashed var(--c-border);
+    border-radius: var(--radius-md);
+    background-color: var(--c-bg-subtle);
     cursor: pointer;
+    transition: border-color var(--t-base), background-color var(--t-base);
+}
+.file-drop-zone:hover,
+.file-drop-zone.dragging {
+    border-color: var(--c-accent);
+    background-color: var(--c-accent-subtle);
 }
 
-/* Image previews */
+.file-drop-icon {
+    font-size: var(--text-2xl);
+    color: var(--c-text-3);
+}
+.file-drop-zone.dragging .file-drop-icon { color: var(--c-accent); }
+
+.file-drop-label {
+    font-size: var(--text-sm);
+    color: var(--c-text-3);
+}
+.file-drop-zone.dragging .file-drop-label { color: var(--c-accent); }
+
+/* ── Image previews ───────────────────────────────────────── */
 .image-previews {
     display: flex;
     flex-wrap: wrap;
     gap: var(--sp-3);
     margin-top: var(--sp-3);
 }
+
+.image-preview-wrapper {
+    position: relative;
+}
+
 .image-preview {
     width: 100px;
     height: 100px;
@@ -73,7 +104,87 @@ input[type="file"].form-control {
     border-radius: var(--radius-sm);
     border: 1px solid var(--c-border);
     box-shadow: var(--shadow-xs);
+    display: block;
 }
+
+.image-remove-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-danger);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--t-fast);
+}
+.image-preview-wrapper:hover .image-remove-btn { opacity: 1; }
+
+/* ── Tag input ────────────────────────────────────────────── */
+.tag-input-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--c-bg);
+    cursor: text;
+    transition: border-color var(--t-base), box-shadow var(--t-base);
+    min-height: 44px;
+}
+.tag-input-box:focus-within {
+    border-color: var(--c-accent);
+    box-shadow: 0 0 0 3px var(--c-accent-subtle);
+}
+
+.editor-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-1);
+    background-color: var(--c-accent-subtle);
+    color: var(--c-accent);
+    font-size: var(--text-xs);
+    font-weight: var(--fw-medium);
+    padding: 2px var(--sp-2);
+    border-radius: var(--radius-full);
+}
+
+.tag-remove-btn {
+    background: none;
+    border: none;
+    color: var(--c-accent);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity var(--t-fast);
+}
+.tag-remove-btn:hover { opacity: 1; }
+
+.tag-text-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--text-sm);
+    color: var(--c-text);
+    min-width: 120px;
+    flex: 1;
+    padding: 0;
+    width: auto;
+}
+.tag-text-input::placeholder { color: var(--c-text-3); }
 
 /* Error banner */
 .error-message {

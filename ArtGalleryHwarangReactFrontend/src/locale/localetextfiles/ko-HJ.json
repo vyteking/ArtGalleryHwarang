@@ -138,22 +138,36 @@
             "btn_Delete":"削除",
             "loading_post":"揭示物불러오는中",
             "post_not_found":"揭示物없음",
-            "post_error":"揭示誤謬: "
+            "post_error":"揭示誤謬: ",
+            "unknown_author":"알수없는作家",
+            "more_from_artist":"이作家의다른作品",
+            "post_contents_placeholder":"揭示物內容이여기에標示됩니다。"
         },
         "posteditor":{
-            "lbl_title":"題目",
+            "lbl_title":"새揭示物올리기",
+            "scr_EditPost":"揭示物修正",
+            "lbl_post_title":"題目",
             "tbx_title_Placeholder":"題目을여기에入力하세요。",
+            "lbl_description":"說明",
             "lbl_uploadfile":"올릴파일",
-            "txt_description_Placeholder":"說明",
+            "txt_description_Placeholder":"作品에대해說明해주세요",
             "lbl_tags":"태그",
-            "tbx_tags_Placeholder":"태그를여기에入力하세요。",
+            "tbx_tags_Placeholder":"例：그림、抽象、現代",
             "btn_Submit":"올리기",
+            "btn_Update":"修正하기",
             "btn_Reset":"初期化",
-            "btn_Cancel":"取消"
+            "btn_Cancel":"取消",
+            "error_login_required":"揭示物을올리려면로그인해야합니다。",
+            "error_load_failed":"揭示物데이터를불러오지못했습니다。",
+            "error_submit_failed":"揭示物올리기에失敗했습니다。"
         },
         "replieslist":{
             "lbl_Replies":"덧글",
-            "reply_submission_error":"덧글올리기에誤謬가發生했습니다。"
+            "reply_submission_error":"덧글올리기에誤謬가發生했습니다。",
+            "no_replies":"아직덧글이없습니다。첫번째로달아보세요！",
+            "anonymous":"匿名",
+            "tbx_reply_Placeholder":"덧글을여기에入力하세요…",
+            "btn_submit_reply":"덧글올리기"
         }
     }
 }

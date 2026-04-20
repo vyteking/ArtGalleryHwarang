@@ -32,10 +32,30 @@ class Blogcontent(models.Model):
 
 class Image2D(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='image2d')
-    imagefile = models.ImageField()
+    imagefile = models.ImageField(upload_to='image2d/')
     description = models.TextField()
+
+class Animation2D(models.Model):
+    postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='animation2d')
+    animationfile = models.FileField(upload_to='animation/')
+    animationformat = models.CharField(max_length=63, blank=True)
+    description = models.TextField(blank=True)
+
 
 class Object3D(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='object3d')
-    objectfile = models.FileField()
+    objectfile = models.FileField(upload_to='object3d/')
     description = models.TextField()
+
+class Audio(models.Model):
+    postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='audio')
+    audiofile = models.FileField(upload_to='audio/')
+    duration = models.PositiveIntegerField(null=True, blank=True)
+    description = models.TextField(blank=True)
+
+class Video(models.Model):
+    postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='video')
+    videofile = models.FileField(upload_to='video/', blank=True)
+    embed_url = models.URLField(max_length=511, blank=True)
+    duration = models.PositiveIntegerField(null=True, blank=True)
+    description = models.TextField(blank=True)

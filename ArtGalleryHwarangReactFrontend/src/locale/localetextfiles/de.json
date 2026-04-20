@@ -146,22 +146,36 @@
             "btn_Delete":"Löschen",
             "loading_post":"Beitrag laden",
             "post_not_found":"Seite nicht gefunden",
-            "post_error":"Beitrags-Fehler"
+            "post_error":"Beitrags-Fehler",
+            "unknown_author":"Unbekannter Autor",
+            "more_from_artist":"Mehr von diesem Künstler",
+            "post_contents_placeholder":"Beitragsinhalt wird hier angezeigt."
         },
         "posteditor":{
-            "lbl_title":"Beitrags-Editor",
+            "lbl_title":"Neuen Beitrag erstellen",
+            "scr_EditPost":"Beitrag bearbeiten",
+            "lbl_post_title":"Titel",
             "tbx_title_Placeholder":"Gib den Titel ein hier. ",
+            "lbl_description":"Beschreibung",
             "lbl_uploadfile":"Datei hochladen",
-            "txt_description_Placeholder":"Beschreibung",
+            "txt_description_Placeholder":"Erzähle uns von deiner Kunst",
             "lbl_tags":"Hashtag(s)",
-            "tbx_tags_Placeholder":"Gib die Hashtags ein hier. ",
-            "btn_Submit":"Vorlegen",
+            "tbx_tags_Placeholder":"z.B. Malerei, abstrakt, modern",
+            "btn_Submit":"Beitrag erstellen",
+            "btn_Update":"Beitrag aktualisieren",
             "btn_Reset":"Zurücksetzen",
-            "btn_Cancel":"Abbrechen"
+            "btn_Cancel":"Abbrechen",
+            "error_login_required":"Du musst eingeloggt sein, um zu posten.",
+            "error_load_failed":"Beitragsdaten konnten nicht geladen werden.",
+            "error_submit_failed":"Beitrag konnte nicht gesendet werden."
         },
         "replieslist":{
             "lbl_Replies":"Antworten",
-            "reply_submission_error":"Antwortenbeitragsfehler ausgetreten. "
+            "reply_submission_error":"Antwortenbeitragsfehler ausgetreten. ",
+            "no_replies":"Noch keine Antworten. Sei der Erste!",
+            "anonymous":"Anonym",
+            "tbx_reply_Placeholder":"Schreibe eine Antwort…",
+            "btn_submit_reply":"Antwort senden"
         }
     }
 }

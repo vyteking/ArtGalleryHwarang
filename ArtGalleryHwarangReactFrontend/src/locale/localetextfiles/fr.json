@@ -146,22 +146,36 @@
             "btn_Delete":"Supprimer",
             "loading_post":"Chargement de la poste",
             "post_not_found":"Page Non trouvée",
-            "post_error":"Erreur de publication"
+            "post_error":"Erreur de publication",
+            "unknown_author":"Auteur inconnu",
+            "more_from_artist":"Plus de cet artiste",
+            "post_contents_placeholder":"Le contenu de la publication s'affichera ici."
         },
         "posteditor":{
-            "lbl_title":"Editeur de poste",
+            "lbl_title":"Créer une nouvelle publication",
+            "scr_EditPost":"Modifier la publication",
+            "lbl_post_title":"Titre",
             "tbx_title_Placeholder":"Insérez le titre ici. ",
+            "lbl_description":"Description",
             "lbl_uploadfile":"Télécharger le(s) fichier(s)",
-            "txt_description_Placeholder":"Description",
+            "txt_description_Placeholder":"Parlez-nous de votre art",
             "lbl_tags":"Tag(s)",
-            "tbx_tags_Placeholder":"Insérez les tags ici. ",
-            "btn_Submit":"Présenter",
+            "tbx_tags_Placeholder":"ex. peinture, abstrait, moderne",
+            "btn_Submit":"Créer la publication",
+            "btn_Update":"Mettre à jour",
             "btn_Reset":"Réinitialiser",
-            "btn_Cancel":"Annuler"
+            "btn_Cancel":"Annuler",
+            "error_login_required":"Vous devez être connecté pour publier.",
+            "error_load_failed":"Impossible de charger les données de la publication.",
+            "error_submit_failed":"Échec de la soumission de la publication."
         },
         "replieslist":{
             "lbl_Replies":"Réponses",
-            "reply_submission_error":"Erreur des réponses de poste s'est produite. "
+            "reply_submission_error":"Erreur des réponses de poste s'est produite. ",
+            "no_replies":"Pas encore de réponses. Soyez le premier !",
+            "anonymous":"Anonyme",
+            "tbx_reply_Placeholder":"Écrivez une réponse…",
+            "btn_submit_reply":"Soumettre la réponse"
         }
     }
 }

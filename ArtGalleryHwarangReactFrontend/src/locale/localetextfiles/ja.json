@@ -138,22 +138,36 @@
             "btn_Delete":"削除",
             "loading_post":"投稿を読み込み中",
             "post_not_found":"ページが見つかりません",
-            "post_error":"投稿エラー"
+            "post_error":"投稿エラー",
+            "unknown_author":"不明な作者",
+            "more_from_artist":"このアーティストの他の投稿",
+            "post_contents_placeholder":"投稿内容がここに表示されます。"
         },
         "posteditor":{
-            "lbl_title":"投稿エディター",
+            "lbl_title":"新規投稿",
+            "scr_EditPost":"投稿を編集",
+            "lbl_post_title":"タイトル",
             "tbx_title_Placeholder":"ここにタイトルを入力してください",
+            "lbl_description":"説明",
             "lbl_uploadfile":"ファイルをアップロード",
-            "txt_description_Placeholder":"説明",
+            "txt_description_Placeholder":"作品について説明してください",
             "lbl_tags":"タグ",
-            "tbx_tags_Placeholder":"ここにタグを入力してください",
-            "btn_Submit":"投稿",
+            "tbx_tags_Placeholder":"例：絵画、抽象、モダン",
+            "btn_Submit":"投稿する",
+            "btn_Update":"更新する",
             "btn_Reset":"リセット",
-            "btn_Cancel":"取り消し"
+            "btn_Cancel":"取り消し",
+            "error_login_required":"投稿するにはログインが必要です。",
+            "error_load_failed":"投稿データの読み込みに失敗しました。",
+            "error_submit_failed":"投稿の送信に失敗しました。"
         },
         "replieslist":{
             "lbl_Replies":"返信",
-            "reply_submission_error":"返信の投稿中にエラーが発生しました"
+            "reply_submission_error":"返信の投稿中にエラーが発生しました",
+            "no_replies":"まだ返信がありません。最初に投稿してみましょう！",
+            "anonymous":"匿名",
+            "tbx_reply_Placeholder":"返信をここに入力してください…",
+            "btn_submit_reply":"返信を投稿"
         }
     }
 }

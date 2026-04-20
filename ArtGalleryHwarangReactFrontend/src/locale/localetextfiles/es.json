@@ -146,22 +146,36 @@
             "btn_Delete":"Borrar",
             "loading_post":"Cargando la publicación",
             "post_not_found":"Página no encontrada",
-            "post_error":"Error de publicación"
+            "post_error":"Error de publicación",
+            "unknown_author":"Autor desconocido",
+            "more_from_artist":"Más de este artista",
+            "post_contents_placeholder":"El contenido de la publicación se mostrará aquí."
         },
         "posteditor":{
-            "lbl_title":"Editor de publicación",
+            "lbl_title":"Crear nueva publicación",
+            "scr_EditPost":"Editar publicación",
+            "lbl_post_title":"Título",
             "tbx_title_Placeholder":"Inserta el título aquí. ",
+            "lbl_description":"Descripción",
             "lbl_uploadfile":"Subir el archivo",
-            "txt_description_Placeholder":"Descripción",
+            "txt_description_Placeholder":"Cuéntanos sobre tu arte",
             "lbl_tags":"Etiqueta(s)",
-            "tbx_tags_Placeholder":"Inserta etiquetas aquí. ",
-            "btn_Submit":"Presentar",
+            "tbx_tags_Placeholder":"p.ej. pintura, abstracto, moderno",
+            "btn_Submit":"Crear publicación",
+            "btn_Update":"Actualizar publicación",
             "btn_Reset":"Restablecer",
-            "btn_Cancel":"Cancelar"
+            "btn_Cancel":"Cancelar",
+            "error_login_required":"Debes iniciar sesión para publicar.",
+            "error_load_failed":"No se pudieron cargar los datos de la publicación.",
+            "error_submit_failed":"No se pudo enviar la publicación."
         },
         "replieslist":{
             "lbl_Replies":"Respuestas",
-            "reply_submission_error":"Error de las respuestas de publicación ocurrió. "
+            "reply_submission_error":"Error de las respuestas de publicación ocurrió. ",
+            "no_replies":"Aún no hay respuestas. ¡Sé el primero!",
+            "anonymous":"Anónimo",
+            "tbx_reply_Placeholder":"Escribe una respuesta…",
+            "btn_submit_reply":"Enviar respuesta"
         }
     }
 }

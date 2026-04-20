@@ -136,22 +136,36 @@
             "btn_Delete":"Удалить",
             "loading_post":"Загрузка поста",
             "post_not_found":"Страница не найдена",
-            "post_error":"Ошибка поста"
+            "post_error":"Ошибка поста",
+            "unknown_author":"Неизвестный автор",
+            "more_from_artist":"Больше от этого художника",
+            "post_contents_placeholder":"Содержимое поста будет отображаться здесь."
         },
         "posteditor":{
-            "lbl_title":"Редактор постов",
+            "lbl_title":"Создать новый пост",
+            "scr_EditPost":"Редактировать пост",
+            "lbl_post_title":"Заголовок",
             "tbx_title_Placeholder":"Вставьте здесь заголовок. ",
+            "lbl_description":"Описание",
             "lbl_uploadfile":"Загрузить файл(ы)",
-            "txt_description_Placeholder":"Описание",
+            "txt_description_Placeholder":"Расскажите нам о своём искусстве",
             "lbl_tags":"Теги",
-            "tbx_tags_Placeholder":"Введите теги здесь. ",
-            "btn_Submit":"Отправить",
+            "tbx_tags_Placeholder":"напр. живопись, абстракция, модерн",
+            "btn_Submit":"Создать пост",
+            "btn_Update":"Обновить пост",
             "btn_Reset":"Сброс",
-            "btn_Cancel":"Отмена"
+            "btn_Cancel":"Отмена",
+            "error_login_required":"Для публикации необходимо войти в систему.",
+            "error_load_failed":"Не удалось загрузить данные поста.",
+            "error_submit_failed":"Не удалось отправить пост."
         },
         "replieslist":{
             "lbl_Replies":"Ответы",
-            "reply_submission_error":"Произошла ошибка при отправке ответа. "
+            "reply_submission_error":"Произошла ошибка при отправке ответа. ",
+            "no_replies":"Ответов пока нет. Будьте первым!",
+            "anonymous":"Аноним",
+            "tbx_reply_Placeholder":"Напишите ответ…",
+            "btn_submit_reply":"Отправить ответ"
         }
     }
 }

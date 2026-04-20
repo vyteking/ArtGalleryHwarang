@@ -190,22 +190,36 @@
             "btn_Delete":"",
             "loading_post":"",
             "post_not_found":"",
-            "post_error":""
+            "post_error":"",
+            "unknown_author":"",
+            "more_from_artist":"",
+            "post_contents_placeholder":""
         },
         "posteditor":{
             "lbl_title":"",
+            "scr_EditPost":"",
+            "lbl_post_title":"",
             "tbx_title_Placeholder":"",
+            "lbl_description":"",
             "lbl_uploadfile":"",
             "txt_description_Placeholder":"",
             "lbl_tags":"",
             "tbx_tags_Placeholder":"",
             "btn_Submit":"",
+            "btn_Update":"",
             "btn_Reset":"",
-            "btn_Cancel":""
+            "btn_Cancel":"",
+            "error_login_required":"",
+            "error_load_failed":"",
+            "error_submit_failed":""
         },
         "replieslist":{
             "lbl_Replies":"",
-            "reply_submission_error":""
+            "reply_submission_error":"",
+            "no_replies":"",
+            "anonymous":"",
+            "tbx_reply_Placeholder":"",
+            "btn_submit_reply":""
         },
         "systemerror":{
             "error":"",

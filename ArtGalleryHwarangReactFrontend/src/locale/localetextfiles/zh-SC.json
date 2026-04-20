@@ -138,22 +138,36 @@
             "btn_Delete":"删除",
             "loading_post":"贴子",
             "post_not_found":"贴子没找到",
-            "post_error":"发布错误"
+            "post_error":"发布错误",
+            "unknown_author":"未知作者",
+            "more_from_artist":"该作者的更多作品",
+            "post_contents_placeholder":"贴子内容将在这里显示。"
         },
         "posteditor":{
-            "lbl_title":"标题",
+            "lbl_title":"发布新贴子",
+            "scr_EditPost":"编辑贴子",
+            "lbl_post_title":"标题",
             "tbx_title_Placeholder":"请在这里输入标题。",
+            "lbl_description":"描述",
             "lbl_uploadfile":"上载文档",
-            "txt_description_Placeholder":"描述",
+            "txt_description_Placeholder":"请介绍您的作品",
             "lbl_tags":"标签",
-            "tbx_tags_Placeholder":"请在这里输入标签。",
+            "tbx_tags_Placeholder":"例：绘画、抽象、现代",
             "btn_Submit":"发布",
+            "btn_Update":"更新",
             "btn_Reset":"初始化",
-            "btn_Cancel":"取消"
+            "btn_Cancel":"取消",
+            "error_login_required":"发布贴子需要先登录。",
+            "error_load_failed":"贴子数据加载失败。",
+            "error_submit_failed":"贴子发布失败。"
         },
         "replieslist":{
             "lbl_Replies":"回答",
-            "reply_submission_error":"回答发布错误"
+            "reply_submission_error":"回答发布错误",
+            "no_replies":"暂时没有评论。快来第一个评论吧！",
+            "anonymous":"匿名",
+            "tbx_reply_Placeholder":"在这里输入评论…",
+            "btn_submit_reply":"提交评论"
         }
     }
 }

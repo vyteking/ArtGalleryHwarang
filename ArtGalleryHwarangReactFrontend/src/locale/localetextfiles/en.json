@@ -146,22 +146,36 @@
             "btn_Delete":"Delete",
             "loading_post":"Loading Post",
             "post_not_found":"Page Not Found",
-            "post_error":"Post Error"
+            "post_error":"Post Error",
+            "unknown_author":"Unknown Author",
+            "more_from_artist":"More from this artist",
+            "post_contents_placeholder":"Post content will render here."
         },
         "posteditor":{
-            "lbl_title":"Post Editor",
+            "lbl_title":"Create New Post",
+            "scr_EditPost":"Edit Post",
+            "lbl_post_title":"Title",
             "tbx_title_Placeholder":"Insert the title here. ",
+            "lbl_description":"Description",
             "lbl_uploadfile":"Upload File(s)",
-            "txt_description_Placeholder":"Description",
+            "txt_description_Placeholder":"Tell us about your art",
             "lbl_tags":"Tag(s)",
-            "tbx_tags_Placeholder":"Insert tags here. ",
-            "btn_Submit":"Submit",
+            "tbx_tags_Placeholder":"e.g., painting, abstract, modern",
+            "btn_Submit":"Create Post",
+            "btn_Update":"Update Post",
             "btn_Reset":"Reset",
-            "btn_Cancel":"Cancel"
+            "btn_Cancel":"Cancel",
+            "error_login_required":"You must be logged in to post.",
+            "error_load_failed":"Failed to load post data.",
+            "error_submit_failed":"Failed to submit post."
         },
         "replieslist":{
             "lbl_Replies":"Replies",
-            "reply_submission_error":"Reply post error occured. "
+            "reply_submission_error":"Reply post error occured. ",
+            "no_replies":"No replies yet. Be the first!",
+            "anonymous":"Anonymous",
+            "tbx_reply_Placeholder":"Write a reply…",
+            "btn_submit_reply":"Submit Reply"
         }
     }
 }
