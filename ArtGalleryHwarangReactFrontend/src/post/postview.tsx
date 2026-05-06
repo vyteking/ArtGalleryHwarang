@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './postview.css';
 import { useClassNames, GetServerAPIAddress } from '../base';
 import * as session from '../session';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import { useLang } from '../locale/localetextgetter';
+import axios from 'axios';
 
 interface PostAuthor {
     username: string;
@@ -13,7 +14,7 @@ interface PostAuthor {
 interface Post {
     title: string;
     description: string;
-    tags?: string[];
+    tags: string[]; 
     author?: PostAuthor;
 }
 
@@ -43,14 +44,18 @@ function ReplyItem({ reply }: { reply: Reply }) {
 }
 
 function PostViewer() {
+    const navigate = useNavigate();
+
     const { postindex } = useParams<{ postindex: string }>();
     const [post, setPost] = useState<Post | null>(null);
     const [replies, setReplies] = useState<Reply[]>([]);
     const [newReply, setNewReply] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
     const getClassNames = useClassNames();
     const { showMessage } = useMessagebox();
+    
     const tv = useLang('postview');
     const tr = useLang('replieslist');
 
@@ -61,19 +66,11 @@ function PostViewer() {
             setLoading(true);
             try {
                 const [postResponse, repliesResponse] = await Promise.all([
-                    fetch(GetServerAPIAddress('p', `${postindex}`)),
-                    fetch(GetServerAPIAddress('r', `posts/${postindex}/replies/`))
+                    axios.get<Post>(GetServerAPIAddress('p', `${postindex}`)),
+                    axios.get<Reply[]>(GetServerAPIAddress('r', `posts/${postindex}/replies/`))
                 ]);
-
-                if (!postResponse.ok || !repliesResponse.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const postData: Post = await postResponse.json();
-                const repliesData: Reply[] = await repliesResponse.json();
-
-                setPost(postData);
-                setReplies(repliesData);
+                setPost(postResponse.data);
+                setReplies(repliesResponse.data);
             } catch (err) {
                 if (import.meta.env.DEV) console.error('Error fetching post:', err);
                 setError((err as Error).message);
@@ -91,23 +88,30 @@ function PostViewer() {
 
         try {
             const authToken = session.getAuthToken();
-            const response = await fetch(GetServerAPIAddress('r', `posts/${postindex}/replies/`), {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${authToken}`
-                },
-                body: JSON.stringify({ replycontent: newReply })
-            });
-
-            if (!response.ok) throw new Error('Failed to post reply.');
-
-            const savedReply: Reply = await response.json();
-            setReplies([...replies, savedReply]);
+            const response = await axios.post<Reply>(
+                GetServerAPIAddress('r', `posts/${postindex}/replies/`),
+                { replycontent: newReply },
+                { headers: { Authorization: `Token ${authToken}` } }
+            );
+            setReplies([...replies, response.data]);
             setNewReply('');
         } catch (error) {
             if (import.meta.env.DEV) console.error('Error submitting reply:', error);
             showMessage('Failed to submit reply. Please try again.', 'error');
+        }
+    };
+
+// 삭제 처리 함수 예시 추가
+    const handleDelete = async () => {
+        //if (!window.confirm(tv.confirm_delete)) return;
+        try {
+            const authToken = session.getAuthToken();
+            await axios.delete(GetServerAPIAddress('p', `${postindex}/delete`), { // URL은 백엔드에 맞게 수정
+                headers: { Authorization: `Token ${authToken}` }
+            });
+            navigate('/'); // 삭제 후 목록으로 이동
+        } catch (err) {
+            showMessage('Delete failed', 'error');
         }
     };
 
@@ -130,7 +134,14 @@ function PostViewer() {
 
     return (
         <div id="postviewer" className={getClassNames('layout')}>
-
+            {/*<div id="PostOptions" className="post-options">
+                <button className="btn-secondary" onClick={() => navigate(`/p/${postindex}/edit`)}>
+                    {tv.btn_Modify}
+                </button>
+                <button className="btn-danger" onClick={handleDelete}>
+                    {tv.btn_Delete}
+                </button>
+            </div>*/}
             <aside id="AuthorInfo" className={getClassNames('card author-info')}>
                 <div id="AuthorProfile" className="author-profile">
                     <div id="AuthorProfilePic" className="author-avatar">
@@ -170,8 +181,8 @@ function PostViewer() {
                 )}
 
                 <div id="PostOptions" className="post-options">
-                    <button className="btn-secondary">{tv.btn_Modify}</button>
-                    <button className="btn-danger">{tv.btn_Delete}</button>
+                    <button className="btn-secondary"onClick={() => navigate(`/p/${postindex}/edit`)}>{tv.btn_Modify}</button>
+                    <button className="btn-danger"onClick={handleDelete}>{tv.btn_Delete}</button>
                 </div>
 
                 <section id="PostReplies" className={getClassNames('post-replies')}>

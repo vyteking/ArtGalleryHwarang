@@ -1,0 +1,16 @@
+.page-error-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-8);
+    width: 100%;
+}
+
+.page-error-fallback__text {
+    color: var(--c-danger);
+    background-color: var(--c-danger-subtle);
+    border: 1px solid var(--c-danger-border);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+}

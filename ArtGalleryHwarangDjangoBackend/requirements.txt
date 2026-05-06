@@ -1,0 +1,10 @@
+django>=4.2
+djangorestframework>=3.14.0
+django-environ>=0.11.0
+django-cors-headers>=4.0.0
+pillow>=11.3.0
+psycopg2-binary>=2.9.0
+motor>=3.3.0
+beanie>=1.26.0
+redis[asyncio]>=5.0.0
+elasticsearch-dsl[async]>=8.0.0

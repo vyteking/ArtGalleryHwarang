@@ -13,9 +13,9 @@ Thumbs.db
 **/*.pyc
 **/*.pyo
 db.sqlite3
-ArtGalleryProjectHwarangDjangoBackend/*.pyproj.user
-ArtGalleryProjectHwarangDjangoBackend/media/
-ArtGalleryProjectHwarangDjangoBackend/static/
+ArtGalleryHwarangDjangoBackend/*.pyproj.user
+ArtGalleryHwarangDjangoBackend/media/
+ArtGalleryHwarangDjangoBackend/static/
 
 # === Frontend / Node ===
 node_modules/

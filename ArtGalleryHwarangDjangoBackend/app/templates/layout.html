@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../layout.css" />
+    {% block headerstylesheet %}
+    {% include 'interface/header/headerstylesheet.html' %}
+    {% endblock %}
+    {% if vieworientation == 1 %}
+    <link rel="stylesheet" type="text/css" href="LR_TB.css" />
+    {% elif vieworientation == 2 %}
+    <link rel="stylesheet" type="text/css" href="RL_TB.css" />
+    {% elif vieworientation == 3 %}
+    {% if viewoption.verticalwriting == True %}
+    <link rel="stylesheet" type="text/css" href="TB_RL.css" />
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="LR_TB.css" />
+    {% endif %}
+    {% elif vieworientation == 4 %}
+    {% if viewoption.verticalwriting == True %}
+    <link rel="stylesheet" type="text/css" href="TB_LR.css" />
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="RL_TB.css" />
+    {% endif %}
+    {% endif %}
+</head>
+<body>
+    {% block header %}
+    {% include 'interface/header/header.html' %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+    {% block footer %}
+    {% include 'interface/footer/footer.html' %}
+    {% endblock %}
+</body>
+</html>

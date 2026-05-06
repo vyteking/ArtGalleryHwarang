@@ -1,0 +1,17 @@
+{% block header %}
+<header id="headertag" class="layout">
+    header
+    <div id="headerDiv" class="headerclass">
+        headerDiv
+        <div id="menubuttonDiv" class="headerclass">
+            menu
+        </div>
+        <div id="headertitle" class="headerclass">
+            title
+        </div>
+        {%block headeruserinfo%}
+        {% include "interface/header/headeruserinfo.html" %}
+        {%endblock%}
+    </div>
+</header>
+{% endblock %}

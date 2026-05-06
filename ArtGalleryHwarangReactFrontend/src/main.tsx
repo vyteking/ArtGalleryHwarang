@@ -9,6 +9,7 @@ import { ThemeProvider } from './theme/themeoptions';
 import { SessionProvider } from './SessionProvider';
 import { OrientationProvider } from './ui/orientation/OrientationContext';
 import { MessageboxProvider } from './ui/messagebox/messageboxcontext';
+import { ErrorBoundary, PageErrorFallback } from './ui/errorboundary/errorboundary';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <Router>
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                     <ThemeProvider>
                         <OrientationProvider>
                             <MessageboxProvider>
-                                <App />
+                                <ErrorBoundary fallback={<PageErrorFallback />}>
+                                    <App />
+                                </ErrorBoundary>
                             </MessageboxProvider>
                         </OrientationProvider>
                     </ThemeProvider>

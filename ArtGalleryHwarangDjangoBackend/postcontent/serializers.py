@@ -1,0 +1,36 @@
+from rest_framework import serializers
+from post.models import Post as Hwarangpost
+from .models import Postcontent, Blogcontent, Image2D, Object3D
+
+class BlogcontentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blogcontent
+        fields = '__all__'
+
+class Image2DSerializer(serializers.ModelSerializer):
+    postcontentindex = serializers.PrimaryKeyRelatedField(queryset=Postcontent.objects.all())
+    description = serializers.CharField(allow_blank=True)
+
+    class Meta:
+        model = Image2D
+        fields = '__all__'
+
+class Object3DSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Object3D
+        fields = '__all__'
+
+class PostcontentSerializer(serializers.ModelSerializer):
+    postindex = serializers.PrimaryKeyRelatedField(queryset=Hwarangpost.objects.all())
+    blogcontent = BlogcontentSerializer(many=True, read_only=True)
+    image2d = Image2DSerializer(many=True, read_only=True)
+    object3d = Object3DSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Postcontent
+        fields = (
+            'postcontentindex', 'postindex', 'postcontenttag',
+            'rating', 'show_range', 'created_at', 'updated_at',
+            'blogcontent', 'image2d', 'object3d',
+        )
+        read_only_fields = ('postcontentindex', 'created_at', 'updated_at')

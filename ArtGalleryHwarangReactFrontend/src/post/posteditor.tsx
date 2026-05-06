@@ -10,7 +10,7 @@ import axios from 'axios';
 interface PostData {
     title: string;
     description: string;
-    tags?: string[];
+    tags: string[];
 }
 
 interface FilePreview {
@@ -42,7 +42,7 @@ function PostEditor() {
                     const post = response.data;
                     setTitle(post.title);
                     setDescription(post.description);
-                    if (post.tags) setTags(post.tags);
+                    setTags(post.tags ?? []);
                 })
                 .catch((error) => {
                     if (import.meta.env.DEV) console.error('Error fetching post:', error);
@@ -98,6 +98,56 @@ function PostEditor() {
 
     const removeTag = (tag: string) => setTags(prev => prev.filter(t => t !== tag));
 
+    {/*const uploadImages = async (postindex: string, token: string) => {
+        for (const fp of filePreviews) {
+            const contentData = new FormData();
+            contentData.append('postindex', postindex);
+            const contentResponse = await axios.post(
+                GetServerAPIAddress('c', 'api/add'),
+                contentData,
+                { headers: { Authorization: `Token ${token}` } }
+            );
+            const postcontentindex: string = contentResponse.data.postcontentindex;
+
+            const imageData = new FormData();
+            imageData.append('postcontentindex', postcontentindex);
+            imageData.append('imagefile', fp.file);
+            imageData.append('description', '');
+            await axios.post(
+                GetServerAPIAddress('c', 'api/add/image2d'),
+                imageData,
+                { headers: { 'Content-Type': 'multipart/form-data', Authorization: `Token ${token}` } }
+            );
+        }
+    }; */}
+
+    // Upload all images at once (parallel processing)
+    const uploadImages = async (postindex: string, token: string) => {
+        // Upload all images at once (parallel processing)
+        const uploadPromises = filePreviews.map(async (fp) => {
+            const contentData = new FormData();
+            contentData.append('postindex', postindex);
+            const contentResponse = await axios.post(
+                GetServerAPIAddress('c', 'api/add'),
+                contentData,
+                { headers: { Authorization: `Token ${token}` } }
+            );
+            const postcontentindex: string = contentResponse.data.postcontentindex;
+
+            const imageData = new FormData();
+            imageData.append('postcontentindex', postcontentindex);
+            imageData.append('imagefile', fp.file);
+            imageData.append('description', '');
+            return axios.post(
+                GetServerAPIAddress('c', 'api/add/image2d'),
+                imageData,
+                { headers: { 'Content-Type': 'multipart/form-data', Authorization: `Token ${token}` } }
+            );
+        });
+
+        await Promise.all(uploadPromises);
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setPostError(null);
@@ -108,25 +158,20 @@ function PostEditor() {
             return;
         }
 
-        const formData = new FormData();
-        formData.append('posttitle', title);
-        formData.append('postdescription', description);
-        formData.append('posttag', tags.join(','));
-        filePreviews.forEach(fp => formData.append('images', fp.file));
-
         const url = isEditing
             ? GetServerAPIAddress('p', `${postId}/update`)
             : GetServerAPIAddress('p', 'api/submit');
         const method = isEditing ? 'put' : 'post';
 
         try {
-            const response = await axios[method](url, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Authorization: `Token ${token}`
-                }
+            const response = await axios[method](url, { title, description, tags }, {
+                headers: { Authorization: `Token ${token}` }
             });
-            navigate(`/p/${response.data.id}`);
+            const postindex: string = isEditing ? postId! : response.data.postindex;
+            if (filePreviews.length > 0) {
+                await uploadImages(postindex, token);
+            }
+            navigate(`/p/${postindex}`);
         } catch (error) {
             if (import.meta.env.DEV) console.error('Error submitting post:', error);
             setPostError(t.error_submit_failed);

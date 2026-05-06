@@ -26,28 +26,54 @@
         },
         "statistic":{
             "posts": {
+                "one":"пост",
+                "few":"поста",
+                "many":"постов",
+                "other":"поста"
+            },
+            "following": {
+                "one":"подписка",
+                "few":"подписки",
+                "many":"подписок",
+                "other":"подписки"
+            },
+            "followers": {
+                "one":"подписчик",
+                "few":"подписчика",
+                "many":"подписчиков",
+                "other":"подписчика"
+            },
+            "Replies": {
+                "one":"ответ",
+                "few":"ответа",
+                "many":"ответов",
+                "other":"ответа"
+            }
+        },
+        "statistic_with_count":{
+            "posts": {
                 "one":"{{count}} пост",
                 "few":"{{count}} поста",
                 "many":"{{count}} постов",
-                "other":"посты"
+                "other":"{{count}} поста"
             },
             "following": {
                 "one":"{{count}} подписка",
                 "few":"{{count}} подписки",
                 "many":"{{count}} подписок",
-                "other":"подписки"
+                "other":"{{count}} подписки"
             },
             "followers": {
                 "one":"{{count}} подписчик",
                 "few":"{{count}} подписчика",
                 "many":"{{count}} подписчиков",
-                "other":"подписчики"
-            }, 
+                "other":"{{count}} подписчика"
+            },
             "Replies": {
                 "one":"{{count}} ответ",
                 "few":"{{count}} ответа",
                 "many":"{{count}} ответов",
-                "other":"ответы"
+                "other":"{{count}} ответа"
             }
         },
         "header":{
