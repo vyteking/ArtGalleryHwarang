@@ -136,6 +136,7 @@ export interface LocaleTexts {
         unknown_author: string;
         more_from_artist: string;
         post_contents_placeholder: string;
+        confirm_delete: string;
     };
     posteditor: {
         lbl_title: string;

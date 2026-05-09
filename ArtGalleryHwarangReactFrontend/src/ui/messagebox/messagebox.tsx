@@ -1,6 +1,7 @@
 import './messagebox.css';
 import { useClassNames } from '../../base';
 import { useMessagebox } from './messageboxcontext';
+import { useLang } from '../../locale/localetextgetter';
 
 const Messageboxbuttons = Object.freeze({
     OK:     1,
@@ -19,10 +20,9 @@ const Messageboxbuttons = Object.freeze({
 function Messagebox() {
     const getClassNames = useClassNames();
     const { messagebox, hideMessage } = useMessagebox();
+    const t = useLang('common');
 
-    if (!messagebox.isOpen) {
-        return null;
-    }
+    if (!messagebox.isOpen) return null;
 
     return (
         <div id="messagebox" className={getClassNames('box')}>
@@ -31,7 +31,14 @@ function Messagebox() {
             </div>
             <div id="messageboxoptions" className={getClassNames('flowtype1')}>
                 <div id="messageboxbuttons">
-                    <button onClick={hideMessage}>Close</button>
+                    {messagebox.mode === 'confirm' ? (
+                        <>
+                            <button onClick={messagebox.onConfirm}>{t.OK_Confirm_btn}</button>
+                            <button onClick={messagebox.onCancel}>{t.Cancel}</button>
+                        </>
+                    ) : (
+                        <button onClick={hideMessage}>{t.Close}</button>
+                    )}
                 </div>
             </div>
         </div>

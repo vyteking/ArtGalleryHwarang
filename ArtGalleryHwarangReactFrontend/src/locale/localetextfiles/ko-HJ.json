@@ -141,7 +141,8 @@
             "post_error":"揭示誤謬: ",
             "unknown_author":"알수없는作家",
             "more_from_artist":"이作家의다른作品",
-            "post_contents_placeholder":"揭示物內容이여기에標示됩니다。"
+            "post_contents_placeholder":"揭示物內容이여기에標示됩니다。",
+            "confirm_delete":"揭示物을削除할가요？"
         },
         "posteditor":{
             "lbl_title":"새揭示物올리기",

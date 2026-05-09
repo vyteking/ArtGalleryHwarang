@@ -149,7 +149,8 @@
             "post_error":"Erreur de publication",
             "unknown_author":"Auteur inconnu",
             "more_from_artist":"Plus de cet artiste",
-            "post_contents_placeholder":"Le contenu de la publication s'affichera ici."
+            "post_contents_placeholder":"Le contenu de la publication s'affichera ici.",
+            "confirm_delete":"Supprimer la publication ?"
         },
         "posteditor":{
             "lbl_title":"Créer une nouvelle publication",

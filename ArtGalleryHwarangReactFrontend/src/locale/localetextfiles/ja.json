@@ -141,7 +141,8 @@
             "post_error":"投稿エラー",
             "unknown_author":"不明な作者",
             "more_from_artist":"このアーティストの他の投稿",
-            "post_contents_placeholder":"投稿内容がここに表示されます。"
+            "post_contents_placeholder":"投稿内容がここに表示されます。",
+            "confirm_delete":"投稿を削除しますか？"
         },
         "posteditor":{
             "lbl_title":"新規投稿",

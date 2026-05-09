@@ -8,14 +8,38 @@ import { useLang } from '../locale/localetextgetter';
 import axios from 'axios';
 
 interface PostAuthor {
+    user_index_1st: string;
     username: string;
 }
 
 interface Post {
     title: string;
     description: string;
-    tags: string[]; 
+    tags: string[];
     author?: PostAuthor;
+    prev_postindex: string | null;
+    next_postindex: string | null;
+}
+
+interface Image2D {
+    imagefile: string;
+    description: string;
+}
+
+interface BlogContent {
+    blogcontext: string;
+}
+
+interface Object3D {
+    objectfile: string;
+    description: string;
+}
+
+interface PostContent {
+    postcontentindex: string;
+    image2d: Image2D[];
+    blogcontent: BlogContent[];
+    object3d: Object3D[];
 }
 
 interface Reply {
@@ -48,13 +72,14 @@ function PostViewer() {
 
     const { postindex } = useParams<{ postindex: string }>();
     const [post, setPost] = useState<Post | null>(null);
+    const [postContents, setPostContents] = useState<PostContent[]>([]);
     const [replies, setReplies] = useState<Reply[]>([]);
     const [newReply, setNewReply] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     const getClassNames = useClassNames();
-    const { showMessage } = useMessagebox();
+    const { showMessage, showConfirm } = useMessagebox();
     
     const tv = useLang('postview');
     const tr = useLang('replieslist');
@@ -71,6 +96,11 @@ function PostViewer() {
                 ]);
                 setPost(postResponse.data);
                 setReplies(repliesResponse.data);
+
+                const contentsResponse = await axios.get<PostContent[]>(
+                    GetServerAPIAddress('c', `posts/${postindex}/`)
+                );
+                setPostContents(contentsResponse.data);
             } catch (err) {
                 if (import.meta.env.DEV) console.error('Error fetching post:', err);
                 setError((err as Error).message);
@@ -101,9 +131,8 @@ function PostViewer() {
         }
     };
 
-// 삭제 처리 함수 예시 추가
     const handleDelete = async () => {
-        //if (!window.confirm(tv.confirm_delete)) return;
+        if (!await showConfirm(tv.confirm_delete, 'warning')) return;
         try {
             const authToken = session.getAuthToken();
             await axios.delete(GetServerAPIAddress('p', `${postindex}/delete`), { // URL은 백엔드에 맞게 수정
@@ -159,13 +188,39 @@ function PostViewer() {
 
             <main className="post-main">
                 <nav id="PostHeader" className={getClassNames('post-header')}>
-                    <button id="PreviousPost" className="btn-ghost post-nav-btn">{tv.prev_post}</button>
+                    <button
+                        id="PreviousPost"
+                        className="btn-ghost post-nav-btn"
+                        onClick={() => post.prev_postindex && navigate(`/p/${post.prev_postindex}`)}
+                        disabled={!post.prev_postindex}
+                    >{tv.prev_post}</button>
                     <h1 id="PostTitle" className="post-title">{post.title}</h1>
-                    <button id="NextPost" className="btn-ghost post-nav-btn">{tv.next_post}</button>
+                    <button
+                        id="NextPost"
+                        className="btn-ghost post-nav-btn"
+                        onClick={() => post.next_postindex && navigate(`/p/${post.next_postindex}`)}
+                        disabled={!post.next_postindex}
+                    >{tv.next_post}</button>
                 </nav>
 
                 <section id="PostContents" className={getClassNames('card post-contents')}>
-                    <p className="post-contents-placeholder">{tv.post_contents_placeholder}</p>
+                    {postContents.length === 0 ? (
+                        <p className="post-contents-placeholder">{tv.post_contents_placeholder}</p>
+                    ) : (
+                        postContents.map(content => (
+                            <div key={content.postcontentindex} className="post-content-item">
+                                {content.blogcontent.map((b, i) => (
+                                    <p key={i} className="post-blog-content">{b.blogcontext}</p>
+                                ))}
+                                {content.image2d.map((img, i) => (
+                                    <img key={i} src={img.imagefile} alt={img.description} className="post-image" />
+                                ))}
+                                {content.object3d.map((obj, i) => (
+                                    <a key={i} href={obj.objectfile} className="post-object3d-link" download>{obj.description || obj.objectfile}</a>
+                                ))}
+                            </div>
+                        ))
+                    )}
                 </section>
 
                 <section id="PostDescription" className={getClassNames('post-description')}>
@@ -180,10 +235,12 @@ function PostViewer() {
                     </div>
                 )}
 
-                <div id="PostOptions" className="post-options">
-                    <button className="btn-secondary"onClick={() => navigate(`/p/${postindex}/edit`)}>{tv.btn_Modify}</button>
-                    <button className="btn-danger"onClick={handleDelete}>{tv.btn_Delete}</button>
-                </div>
+                {String(session.GetCurrentLoginSession()?.user_index_1st) === post.author?.user_index_1st && (
+                    <div id="PostOptions" className="post-options">
+                        <button className="btn-secondary" onClick={() => navigate(`/p/${postindex}/edit`)}>{tv.btn_Modify}</button>
+                        <button className="btn-danger" onClick={handleDelete}>{tv.btn_Delete}</button>
+                    </div>
+                )}
 
                 <section id="PostReplies" className={getClassNames('post-replies')}>
                     <h3 className="replies-heading">
