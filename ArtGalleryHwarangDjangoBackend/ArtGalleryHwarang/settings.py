@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -114,6 +115,9 @@ DATABASES = {
         'PASSWORD': env('DB_PASSWORD', default=''),
         'HOST': env('DB_HOST', default='localhost'),
         'PORT': env('DB_PORT', default='5432'),
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
 

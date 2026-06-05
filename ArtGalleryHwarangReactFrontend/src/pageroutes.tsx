@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Pages List
 import Homepage from './home/homepage';
-import Trending from './home/trending';
+import TrendingPostsList from './home/trending';
 import Loginpage from './userinfo/loginpage';
 import Signuppage from './userinfo/signuppage';
 import PersonalPage from './userinfo/personalpage';
@@ -16,7 +16,7 @@ function PageRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/hot" element={<Trending />} />
+            <Route path="/hot" element={<TrendingPostsList />} />
             <Route path="/login" element={<Loginpage />} />
             <Route path="/ssn" element={<SessionManager />} />
             <Route path="/ssn/logout/:userindex1st" element={<LogoutUser />} />

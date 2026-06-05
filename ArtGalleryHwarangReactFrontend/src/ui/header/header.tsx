@@ -37,7 +37,7 @@ function Header({ toggleSidebar, toggleUserInfoBox }: HeaderProps) {
                 </button>
                 <span id="headercentre" className={getClassNames('headerobject')}>
                     <span id="headertitle" className={getClassNames('headerobject')}>
-                        <Link to="/">Title<img id="titleImg" src="" /></Link>
+                        <Link to="/">{localeTxt.webinfo.name}<img id="titleImg" src="" /></Link>
                     </span>
                 </span>
                 <span id="headeruserinfospan" className={getClassNames('headerobject')} onClick={toggleUserInfoBox}>

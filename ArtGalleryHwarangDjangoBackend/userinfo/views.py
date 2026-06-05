@@ -24,6 +24,7 @@ class SignupView(generics.CreateAPIView):
 @method_decorator(csrf_exempt, name='dispatch')
 class LoginView(generics.GenericAPIView):
     serializer_class = UserInfoSerializer
+    permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
         user_id = request.data.get('user_id')
