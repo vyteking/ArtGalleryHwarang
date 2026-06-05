@@ -165,7 +165,8 @@
             "post_error":"Ошибка поста",
             "unknown_author":"Неизвестный автор",
             "more_from_artist":"Больше от этого художника",
-            "post_contents_placeholder":"Содержимое поста будет отображаться здесь."
+            "post_contents_placeholder":"Содержимое поста будет отображаться здесь.",
+            "confirm_delete":"Удалить пост?"
         },
         "posteditor":{
             "lbl_title":"Создать новый пост",

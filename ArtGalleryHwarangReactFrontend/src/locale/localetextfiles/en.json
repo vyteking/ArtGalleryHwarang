@@ -149,7 +149,8 @@
             "post_error":"Post Error",
             "unknown_author":"Unknown Author",
             "more_from_artist":"More from this artist",
-            "post_contents_placeholder":"Post content will render here."
+            "post_contents_placeholder":"Post content will render here.",
+            "confirm_delete":"Delete post?"
         },
         "posteditor":{
             "lbl_title":"Create New Post",

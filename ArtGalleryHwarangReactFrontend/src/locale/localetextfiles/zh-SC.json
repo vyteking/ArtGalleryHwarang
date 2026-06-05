@@ -141,7 +141,8 @@
             "post_error":"发布错误",
             "unknown_author":"未知作者",
             "more_from_artist":"该作者的更多作品",
-            "post_contents_placeholder":"贴子内容将在这里显示。"
+            "post_contents_placeholder":"贴子内容将在这里显示。",
+            "confirm_delete":"删除贴子？"
         },
         "posteditor":{
             "lbl_title":"发布新贴子",

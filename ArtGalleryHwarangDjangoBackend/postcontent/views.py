@@ -11,12 +11,17 @@ class IsPostContentOwner(permissions.BasePermission):
         return obj.postindex.postauthor == request.user
 
 
-class PostContentView(generics.ListAPIView):
+class PostContentView(generics.RetrieveAPIView):
+    queryset = Postcontent.objects.all()
+    serializer_class = PostcontentSerializer
+    lookup_field = 'postcontentindex'
+
+
+class PostContentListByPostView(generics.ListAPIView):
     serializer_class = PostcontentSerializer
 
     def get_queryset(self):
-        postcontentindex = self.kwargs['postcontentindex']
-        return Postcontent.objects.filter(postcontentindex=postcontentindex)
+        return Postcontent.objects.filter(postindex=self.kwargs['postindex'])
 
 
 class SubmitPostContentView(generics.CreateAPIView):

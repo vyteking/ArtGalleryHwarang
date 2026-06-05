@@ -149,7 +149,8 @@
             "post_error":"Beitrags-Fehler",
             "unknown_author":"Unbekannter Autor",
             "more_from_artist":"Mehr von diesem Künstler",
-            "post_contents_placeholder":"Beitragsinhalt wird hier angezeigt."
+            "post_contents_placeholder":"Beitragsinhalt wird hier angezeigt.",
+            "confirm_delete":"Beitrag löschen?"
         },
         "posteditor":{
             "lbl_title":"Neuen Beitrag erstellen",

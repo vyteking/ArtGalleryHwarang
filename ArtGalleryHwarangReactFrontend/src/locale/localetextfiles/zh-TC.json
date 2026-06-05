@@ -141,7 +141,8 @@
             "post_error":"發布錯誤",
             "unknown_author":"未知作者",
             "more_from_artist":"該作者的更多作品",
-            "post_contents_placeholder":"貼子內容將在這裏顯示。"
+            "post_contents_placeholder":"貼子內容將在這裏顯示。",
+            "confirm_delete":"刪除貼子？"
         },
         "posteditor":{
             "lbl_title":"發布新貼子",

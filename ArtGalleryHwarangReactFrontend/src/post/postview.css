@@ -108,6 +108,30 @@
     font-size: var(--text-sm);
 }
 
+.post-content-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+}
+
+.post-image {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+}
+
+.post-blog-content {
+    font-size: var(--text-base);
+    line-height: var(--lh-loose);
+    color: var(--c-text);
+    margin: 0;
+}
+
+.post-object3d-link {
+    font-size: var(--text-sm);
+    color: var(--c-accent);
+    text-decoration: underline;
+}
+
 /* ── Description ───────────────────────────────────────────── */
 .post-description {
     font-size: var(--text-base);

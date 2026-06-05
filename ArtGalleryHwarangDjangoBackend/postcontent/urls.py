@@ -3,6 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('api/add', SubmitPostContentView.as_view(), name='add-post-content'),
+    path('posts/<uuid:postindex>/', PostContentListByPostView.as_view(), name='post-content-list'),
     path('<uuid:postcontentindex>', PostContentView.as_view(), name='post-content'),
     path('<uuid:postcontentindex>/delete', DeletePostContentView.as_view(), name='delete-post-content'),
     path('api/add/blog', SubmitBlogcontentView.as_view(), name='add-blog-content'),
