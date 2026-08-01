@@ -169,6 +169,18 @@
             "anonymous":"익명",
             "tbx_reply_Placeholder":"덧글을 여기에 입력하세요…",
             "btn_submit_reply":"덧글 올리기"
+        },
+        "homepage":{
+            "welcome_back":"다시 오신 것을 환영합니다",
+            "lbl_accounts":"로그인된 계정",
+            "badge_current":"현재",
+            "btn_switch":"전환",
+            "btn_view_profile":"프로필 보기",
+            "btn_new_post":"새 게시물",
+            "btn_logout_all":"전체 로그아웃",
+            "confirm_logout_all":"이 기기의 모든 계정을 로그아웃할까요?",
+            "welcome_title":"화랑에 오신 것을 환영합니다",
+            "welcome_subtitle":"로그인하거나 계정을 만들어 작품을 공유하고 감상해 보세요."
         }
     }
 }

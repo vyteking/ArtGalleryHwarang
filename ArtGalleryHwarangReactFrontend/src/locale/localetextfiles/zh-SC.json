@@ -169,6 +169,18 @@
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"在这里输入评论…",
             "btn_submit_reply":"提交评论"
+        },
+        "homepage":{
+            "welcome_back":"欢迎回来",
+            "lbl_accounts":"已登录账号",
+            "badge_current":"当前",
+            "btn_switch":"切换",
+            "btn_view_profile":"查看主页",
+            "btn_new_post":"发布新贴子",
+            "btn_logout_all":"全部登出",
+            "confirm_logout_all":"要登出此设备上的所有账号吗？",
+            "welcome_title":"欢迎来到花郎",
+            "welcome_subtitle":"登录或注册账号，分享和探索艺术作品。"
         }
     }
 }

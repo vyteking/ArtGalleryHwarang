@@ -169,6 +169,18 @@
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"返信をここに入力してください…",
             "btn_submit_reply":"返信を投稿"
+        },
+        "homepage":{
+            "welcome_back":"おかえりなさい",
+            "lbl_accounts":"ログイン中のアカウント",
+            "badge_current":"現在",
+            "btn_switch":"切り替え",
+            "btn_view_profile":"プロフィールを見る",
+            "btn_new_post":"新規投稿",
+            "btn_logout_all":"すべてログアウト",
+            "confirm_logout_all":"この端末のすべてのアカウントからログアウトしますか？",
+            "welcome_title":"花郎へようこそ",
+            "welcome_subtitle":"ログインまたはアカウントを作成して、作品を共有・閲覧しましょう。"
         }
     }
 }

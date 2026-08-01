@@ -169,6 +169,18 @@
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"在這裏輸入評論…",
             "btn_submit_reply":"提交評論"
+        },
+        "homepage":{
+            "welcome_back":"歡迎回來",
+            "lbl_accounts":"已登錄賬號",
+            "badge_current":"當前",
+            "btn_switch":"切換",
+            "btn_view_profile":"查看主頁",
+            "btn_new_post":"發布新貼子",
+            "btn_logout_all":"全部登出",
+            "confirm_logout_all":"要登出此設備上的所有賬號嗎？",
+            "welcome_title":"歡迎來到花郎",
+            "welcome_subtitle":"登錄或註冊賬號，分享和探索藝術作品。"
         }
     }
 }

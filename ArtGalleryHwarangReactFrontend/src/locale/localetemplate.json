@@ -221,6 +221,18 @@
             "tbx_reply_Placeholder":"",
             "btn_submit_reply":""
         },
+        "homepage":{
+            "welcome_back":"",
+            "lbl_accounts":"",
+            "badge_current":"",
+            "btn_switch":"",
+            "btn_view_profile":"",
+            "btn_new_post":"",
+            "btn_logout_all":"",
+            "confirm_logout_all":"",
+            "welcome_title":"",
+            "welcome_subtitle":""
+        },
         "systemerror":{
             "error":"",
             "network_error":"",

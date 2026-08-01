@@ -164,6 +164,18 @@ export interface LocaleTexts {
         tbx_reply_Placeholder: string;
         btn_submit_reply: string;
     };
+    homepage: {
+        welcome_back: string;
+        lbl_accounts: string;
+        badge_current: string;
+        btn_switch: string;
+        btn_view_profile: string;
+        btn_new_post: string;
+        btn_logout_all: string;
+        confirm_logout_all: string;
+        welcome_title: string;
+        welcome_subtitle: string;
+    };
     userinfopage?: {
         loading_user_info: string;
         user_not_found: string;

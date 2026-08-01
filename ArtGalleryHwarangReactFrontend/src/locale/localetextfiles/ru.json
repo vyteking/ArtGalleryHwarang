@@ -193,6 +193,18 @@
             "anonymous":"Аноним",
             "tbx_reply_Placeholder":"Напишите ответ…",
             "btn_submit_reply":"Отправить ответ"
+        },
+        "homepage":{
+            "welcome_back":"С возвращением",
+            "lbl_accounts":"Вошедшие аккаунты",
+            "badge_current":"Текущий",
+            "btn_switch":"Переключить",
+            "btn_view_profile":"Просмотреть профиль",
+            "btn_new_post":"Новый пост",
+            "btn_logout_all":"Выйти из всех",
+            "confirm_logout_all":"Выйти из всех аккаунтов на этом устройстве?",
+            "welcome_title":"Добро пожаловать в Hwarang",
+            "welcome_subtitle":"Войдите или создайте аккаунт, чтобы делиться искусством и открывать новое."
         }
     }
 }

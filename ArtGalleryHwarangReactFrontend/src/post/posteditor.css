@@ -1,8 +1,18 @@
 /* ── Post editor ─────────────────────────────────────────────── */
 .post-editor-container {
-    max-width: var(--content-mid);
+    width: 100%;
+    max-width: 100%;
     margin: var(--sp-8) auto;
     padding: 0 var(--sp-4);
+    box-sizing: border-box;
+}
+
+/* Wide/landscape screens (width > height * 4/3): cap width and center with side margins.
+   Narrower screens (down to portrait): fill the available width instead. */
+@media (min-aspect-ratio: 4/3) {
+    .post-editor-container {
+        max-width: var(--content-mid);
+    }
 }
 
 .editor-title {

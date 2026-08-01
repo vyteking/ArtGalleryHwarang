@@ -198,18 +198,6 @@ function PostEditor() {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="description-textarea">{t.lbl_description}</label>
-                    <textarea
-                        id="description-textarea"
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                        placeholder={t.txt_description_Placeholder}
-                        rows={6}
-                        required
-                    />
-                </div>
-
-                <div className="form-group">
                     <label>{t.lbl_uploadfile}</label>
                     <div
                         className={`file-drop-zone${isDragging ? ' dragging' : ''}`}
@@ -246,6 +234,18 @@ function PostEditor() {
                             ))}
                         </div>
                     )}
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="description-textarea">{t.lbl_description}</label>
+                    <textarea
+                        id="description-textarea"
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        placeholder={t.txt_description_Placeholder}
+                        rows={6}
+                        required
+                    />
                 </div>
 
                 <div className="form-group">

@@ -169,6 +169,18 @@
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"덧글을여기에入力하세요…",
             "btn_submit_reply":"덧글올리기"
+        },
+        "homepage":{
+            "welcome_back":"다시오신것을歡迎합니다",
+            "lbl_accounts":"로그인된計定",
+            "badge_current":"現在",
+            "btn_switch":"轉換",
+            "btn_view_profile":"프로필보기",
+            "btn_new_post":"새揭示物",
+            "btn_logout_all":"全體로그아웃",
+            "confirm_logout_all":"이機器의모든計定을로그아웃할가요？",
+            "welcome_title":"花廊에오신것을歡迎합니다",
+            "welcome_subtitle":"로그인하거나計定을만들어作品을共有하고鑑賞해보세요。"
         }
     }
 }

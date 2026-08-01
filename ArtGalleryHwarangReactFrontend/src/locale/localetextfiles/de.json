@@ -177,6 +177,18 @@
             "anonymous":"Anonym",
             "tbx_reply_Placeholder":"Schreibe eine Antwort…",
             "btn_submit_reply":"Antwort senden"
+        },
+        "homepage":{
+            "welcome_back":"Willkommen zurück",
+            "lbl_accounts":"Angemeldete Konten",
+            "badge_current":"Aktuell",
+            "btn_switch":"Wechseln",
+            "btn_view_profile":"Profil ansehen",
+            "btn_new_post":"Neuer Beitrag",
+            "btn_logout_all":"Alle abmelden",
+            "confirm_logout_all":"Von allen Konten auf diesem Gerät abmelden?",
+            "welcome_title":"Willkommen bei Hwarang",
+            "welcome_subtitle":"Melde dich an oder erstelle ein Konto, um Kunst zu teilen und zu entdecken."
         }
     }
 }

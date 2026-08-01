@@ -1,0 +1,213 @@
+/* ── Home page ────────────────────────────────────────────────── */
+.home-page {
+    max-width: var(--content-mid);
+    margin: var(--sp-8) auto;
+    padding: 0 var(--sp-4);
+}
+
+/* ── Logged-in session card ──────────────────────────────────── */
+.home-session-card {
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+}
+
+.home-session-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+}
+
+.home-session-card__current {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    cursor: pointer;
+    min-width: 0;
+}
+
+.home-session-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-lg);
+    font-weight: var(--fw-bold);
+    flex-shrink: 0;
+}
+
+.home-session-card__meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.home-session-card__welcome {
+    font-size: var(--text-xs);
+    color: var(--c-text-3);
+}
+
+.home-session-card__username {
+    font-size: var(--text-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--c-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Account list */
+.home-session-card__accounts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+}
+
+.home-session-card__accounts-label {
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    color: var(--c-text-2);
+}
+
+.home-account-row {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-sm);
+    background-color: var(--c-bg-subtle);
+    border: 1px solid transparent;
+    transition: background-color var(--t-base), border-color var(--t-base);
+}
+.home-account-row--active {
+    background-color: var(--c-accent-subtle);
+    border-color: var(--c-accent-subtle);
+}
+
+.home-account-row__info {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    flex: 1;
+    min-width: 0;
+}
+
+.home-account-row__avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xs);
+    font-weight: var(--fw-bold);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+.home-account-row--active .home-account-row__avatar { opacity: 1; }
+
+.home-account-row__id {
+    font-size: var(--text-sm);
+    color: var(--c-text-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.home-account-row--active .home-account-row__id { color: var(--c-accent); font-weight: var(--fw-medium); }
+
+.home-account-row__badge {
+    margin-left: var(--sp-2);
+    font-size: var(--text-xs);
+    font-weight: var(--fw-semibold);
+    color: var(--c-accent);
+    background-color: var(--c-bg);
+    border-radius: var(--radius-full);
+    padding: 1px var(--sp-2);
+}
+
+.home-account-row__logout {
+    background: none;
+    color: var(--c-text-3);
+    font-size: var(--text-xs);
+    font-weight: var(--fw-medium);
+    padding: var(--sp-1) var(--sp-2);
+    border-radius: var(--radius-xs);
+    transition: background-color var(--t-base), color var(--t-base);
+    flex-shrink: 0;
+}
+.home-account-row__logout:hover {
+    background-color: var(--c-danger-subtle);
+    color: var(--c-danger);
+}
+
+/* Action buttons */
+.home-session-card__actions {
+    display: flex;
+    gap: var(--sp-3);
+    padding-top: var(--sp-2);
+    border-top: 1px solid var(--c-border);
+}
+.home-session-card__actions .btn-danger {
+    margin-left: auto;
+}
+
+/* ── Logged-out welcome card ─────────────────────────────────── */
+.home-welcome-card {
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--sp-8) var(--sp-6);
+    text-align: center;
+}
+
+.home-welcome-card__title {
+    font-size: var(--text-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--c-text);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--sp-2);
+}
+
+.home-welcome-card__subtitle {
+    font-size: var(--text-base);
+    color: var(--c-text-2);
+    margin-bottom: var(--sp-6);
+}
+
+.home-welcome-card__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-3);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 767px) {
+    .home-session-card__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .home-session-card__actions {
+        flex-wrap: wrap;
+    }
+    .home-session-card__actions .btn-danger {
+        margin-left: 0;
+    }
+
+    .home-welcome-card__actions {
+        flex-direction: column;
+    }
+}
