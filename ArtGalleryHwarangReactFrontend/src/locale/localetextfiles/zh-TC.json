@@ -168,7 +168,13 @@
             "no_replies":"暫時沒有評論。快來第一個評論吧！",
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"在這裏輸入評論…",
-            "btn_submit_reply":"提交評論"
+            "btn_submit_reply":"提交評論",
+            "btn_edit":"編輯",
+            "btn_delete":"刪除",
+            "btn_save":"儲存",
+            "confirm_delete_reply":"刪除這條評論？",
+            "error_edit_failed":"評論更新失敗。",
+            "error_delete_failed":"評論刪除失敗。"
         },
         "homepage":{
             "welcome_back":"歡迎回來",

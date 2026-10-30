@@ -219,7 +219,13 @@
             "no_replies":"",
             "anonymous":"",
             "tbx_reply_Placeholder":"",
-            "btn_submit_reply":""
+            "btn_submit_reply":"",
+            "btn_edit":"",
+            "btn_delete":"",
+            "btn_save":"",
+            "confirm_delete_reply":"",
+            "error_edit_failed":"",
+            "error_delete_failed":""
         },
         "homepage":{
             "welcome_back":"",

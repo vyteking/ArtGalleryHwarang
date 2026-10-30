@@ -168,7 +168,13 @@
             "no_replies":"아직 덧글이 없습니다. 첫 번째로 달아보세요!",
             "anonymous":"익명",
             "tbx_reply_Placeholder":"덧글을 여기에 입력하세요…",
-            "btn_submit_reply":"덧글 올리기"
+            "btn_submit_reply":"덧글 올리기",
+            "btn_edit":"수정",
+            "btn_delete":"삭제",
+            "btn_save":"저장",
+            "confirm_delete_reply":"이 덧글을 삭제할까요?",
+            "error_edit_failed":"덧글 수정에 실패했습니다.",
+            "error_delete_failed":"덧글 삭제에 실패했습니다."
         },
         "homepage":{
             "welcome_back":"다시 오신 것을 환영합니다",

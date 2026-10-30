@@ -6,6 +6,9 @@ import * as session from '../session';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import { useLang } from '../locale/localetextgetter';
 import axios from 'axios';
+import CommentViewer from '../comment/commentview';
+import CommentEditor from '../comment/commenteditor';
+import type { CommentData } from '../comment/commentview';
 
 interface PostAuthor {
     user_index_1st: string;
@@ -42,39 +45,13 @@ interface PostContent {
     object3d: Object3D[];
 }
 
-interface Reply {
-    replyindex: string | number;
-    replycontent: string;
-    replyauthor: { username?: string };
-}
-
-function ReplyItem({ reply }: { reply: Reply }) {
-    const getClassNames = useClassNames();
-    const t = useLang('replieslist');
-
-    return (
-        <div className={getClassNames('reply-item card')}>
-            <div className="reply-author">
-                <div className="reply-avatar">
-                    {(reply.replyauthor.username?.[0] ?? t.anonymous[0]).toUpperCase()}
-                </div>
-                <strong className="reply-username">
-                    {reply.replyauthor.username || t.anonymous}
-                </strong>
-            </div>
-            <p className="reply-content">{reply.replycontent}</p>
-        </div>
-    );
-}
-
 function PostViewer() {
     const navigate = useNavigate();
 
     const { postindex } = useParams<{ postindex: string }>();
     const [post, setPost] = useState<Post | null>(null);
     const [postContents, setPostContents] = useState<PostContent[]>([]);
-    const [replies, setReplies] = useState<Reply[]>([]);
-    const [newReply, setNewReply] = useState('');
+    const [replies, setReplies] = useState<CommentData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -92,7 +69,7 @@ function PostViewer() {
             try {
                 const [postResponse, repliesResponse] = await Promise.all([
                     axios.get<Post>(GetServerAPIAddress('p', `${postindex}`)),
-                    axios.get<Reply[]>(GetServerAPIAddress('r', `posts/${postindex}/replies/`))
+                    axios.get<CommentData[]>(GetServerAPIAddress('r', `posts/${postindex}/replies/`))
                 ]);
                 setPost(postResponse.data);
                 setReplies(repliesResponse.data);
@@ -112,23 +89,16 @@ function PostViewer() {
         fetchPostAndReplies();
     }, [postindex]);
 
-    const handleReplySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (!newReply.trim()) return;
+    const handleReplyCreated = (comment: CommentData) => {
+        setReplies(prev => [...prev, comment]);
+    };
 
-        try {
-            const authToken = session.getAuthToken();
-            const response = await axios.post<Reply>(
-                GetServerAPIAddress('r', `posts/${postindex}/replies/`),
-                { replycontent: newReply },
-                { headers: { Authorization: `Token ${authToken}` } }
-            );
-            setReplies([...replies, response.data]);
-            setNewReply('');
-        } catch (error) {
-            if (import.meta.env.DEV) console.error('Error submitting reply:', error);
-            showMessage('Failed to submit reply. Please try again.', 'error');
-        }
+    const handleReplyUpdated = (comment: CommentData) => {
+        setReplies(prev => prev.map(r => r.replyindex === comment.replyindex ? comment : r));
+    };
+
+    const handleReplyDeleted = (replyindex: string) => {
+        setReplies(prev => prev.filter(r => r.replyindex !== replyindex));
     };
 
     const handleDelete = async () => {
@@ -249,23 +219,22 @@ function PostViewer() {
 
                     <div id="replies-list" className="replies-list">
                         {replies.length > 0 ? (
-                            replies.map(reply => <ReplyItem key={reply.replyindex} reply={reply} />)
+                            replies.map(reply => (
+                                <CommentViewer
+                                    key={reply.replyindex}
+                                    comment={reply}
+                                    onUpdated={handleReplyUpdated}
+                                    onDeleted={handleReplyDeleted}
+                                />
+                            ))
                         ) : (
                             <p className="replies-empty">{tr.no_replies}</p>
                         )}
                     </div>
 
-                    <form id="reply-form" onSubmit={handleReplySubmit} className="reply-form">
-                        <textarea
-                            value={newReply}
-                            onChange={(e) => setNewReply(e.target.value)}
-                            placeholder={tr.tbx_reply_Placeholder}
-                            rows={3}
-                        />
-                        <div className="reply-form-actions">
-                            <button type="submit" className="btn-primary">{tr.btn_submit_reply}</button>
-                        </div>
-                    </form>
+                    {postindex && (
+                        <CommentEditor mode="create" postindex={postindex} onCreated={handleReplyCreated} />
+                    )}
                 </section>
             </main>
         </div>

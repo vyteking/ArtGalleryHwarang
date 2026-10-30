@@ -168,7 +168,13 @@
             "no_replies":"まだ返信がありません。最初に投稿してみましょう！",
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"返信をここに入力してください…",
-            "btn_submit_reply":"返信を投稿"
+            "btn_submit_reply":"返信を投稿",
+            "btn_edit":"編集",
+            "btn_delete":"削除",
+            "btn_save":"保存",
+            "confirm_delete_reply":"この返信を削除しますか？",
+            "error_edit_failed":"返信の更新に失敗しました。",
+            "error_delete_failed":"返信の削除に失敗しました。"
         },
         "homepage":{
             "welcome_back":"おかえりなさい",

@@ -176,7 +176,13 @@
             "no_replies":"No replies yet. Be the first!",
             "anonymous":"Anonymous",
             "tbx_reply_Placeholder":"Write a reply…",
-            "btn_submit_reply":"Submit Reply"
+            "btn_submit_reply":"Submit Reply",
+            "btn_edit":"Edit",
+            "btn_delete":"Delete",
+            "btn_save":"Save",
+            "confirm_delete_reply":"Delete this reply?",
+            "error_edit_failed":"Failed to update reply.",
+            "error_delete_failed":"Failed to delete reply."
         },
         "homepage":{
             "welcome_back":"Welcome back",

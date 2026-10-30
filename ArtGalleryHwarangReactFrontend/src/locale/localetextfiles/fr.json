@@ -176,7 +176,13 @@
             "no_replies":"Pas encore de réponses. Soyez le premier !",
             "anonymous":"Anonyme",
             "tbx_reply_Placeholder":"Écrivez une réponse…",
-            "btn_submit_reply":"Soumettre la réponse"
+            "btn_submit_reply":"Soumettre la réponse",
+            "btn_edit":"Modifier",
+            "btn_delete":"Supprimer",
+            "btn_save":"Enregistrer",
+            "confirm_delete_reply":"Supprimer cette réponse ?",
+            "error_edit_failed":"Échec de la mise à jour de la réponse.",
+            "error_delete_failed":"Échec de la suppression de la réponse."
         },
         "homepage":{
             "welcome_back":"Content de vous revoir",

@@ -176,7 +176,13 @@
             "no_replies":"Noch keine Antworten. Sei der Erste!",
             "anonymous":"Anonym",
             "tbx_reply_Placeholder":"Schreibe eine Antwort…",
-            "btn_submit_reply":"Antwort senden"
+            "btn_submit_reply":"Antwort senden",
+            "btn_edit":"Bearbeiten",
+            "btn_delete":"Löschen",
+            "btn_save":"Speichern",
+            "confirm_delete_reply":"Diese Antwort löschen?",
+            "error_edit_failed":"Antwort konnte nicht aktualisiert werden.",
+            "error_delete_failed":"Antwort konnte nicht gelöscht werden."
         },
         "homepage":{
             "welcome_back":"Willkommen zurück",

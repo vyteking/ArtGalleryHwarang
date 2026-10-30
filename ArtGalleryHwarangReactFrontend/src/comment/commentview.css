@@ -1,0 +1,97 @@
+/* ── Comment item ─────────────────────────────────────────────── */
+.comment-item {
+    padding: var(--sp-4);
+}
+
+.comment-item__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-2);
+}
+
+.comment-item__author {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    min-width: 0;
+}
+
+.comment-item__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background-color: var(--c-surface-2);
+    color: var(--c-text-2);
+    font-weight: var(--fw-bold);
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.comment-item__meta {
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.comment-item__username {
+    font-size: var(--text-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--c-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.comment-item__timestamp {
+    font-size: var(--text-xs);
+    color: var(--c-text-3);
+    white-space: nowrap;
+}
+
+.comment-item__content {
+    font-size: var(--text-sm);
+    color: var(--c-text-2);
+    line-height: var(--lh-normal);
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* ── Owner actions (edit / delete) ───────────────────────────── */
+.comment-item__owner-actions {
+    display: flex;
+    gap: var(--sp-1);
+    flex-shrink: 0;
+}
+
+.comment-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border-radius: var(--radius-sm);
+    color: var(--c-text-3);
+    transition: background-color var(--t-base), color var(--t-base);
+}
+.comment-icon-btn:hover {
+    background-color: var(--c-surface);
+    color: var(--c-text);
+}
+.comment-icon-btn--danger:hover {
+    background-color: var(--c-danger-subtle);
+    color: var(--c-danger);
+}
+
+.comment-icon {
+    width: 16px;
+    height: 16px;
+}

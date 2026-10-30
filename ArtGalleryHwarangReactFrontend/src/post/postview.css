@@ -208,57 +208,6 @@
     font-style: italic;
 }
 
-/* ── Reply item ────────────────────────────────────────────── */
-.reply-item {
-    padding: var(--sp-4);
-}
-
-.reply-author {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-2);
-    margin-bottom: var(--sp-2);
-}
-
-.reply-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: var(--radius-full);
-    background-color: var(--c-surface-2);
-    color: var(--c-text-2);
-    font-weight: var(--fw-bold);
-    font-size: var(--text-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.reply-username {
-    font-size: var(--text-sm);
-    font-weight: var(--fw-semibold);
-    color: var(--c-text);
-}
-
-.reply-content {
-    font-size: var(--text-sm);
-    color: var(--c-text-2);
-    line-height: var(--lh-normal);
-    margin: 0;
-}
-
-/* ── Reply form ────────────────────────────────────────────── */
-.reply-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-3);
-}
-
-.reply-form-actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
     #postviewer {

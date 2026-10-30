@@ -192,7 +192,13 @@
             "no_replies":"Ответов пока нет. Будьте первым!",
             "anonymous":"Аноним",
             "tbx_reply_Placeholder":"Напишите ответ…",
-            "btn_submit_reply":"Отправить ответ"
+            "btn_submit_reply":"Отправить ответ",
+            "btn_edit":"Изменить",
+            "btn_delete":"Удалить",
+            "btn_save":"Сохранить",
+            "confirm_delete_reply":"Удалить этот ответ?",
+            "error_edit_failed":"Не удалось обновить ответ.",
+            "error_delete_failed":"Не удалось удалить ответ."
         },
         "homepage":{
             "welcome_back":"С возвращением",

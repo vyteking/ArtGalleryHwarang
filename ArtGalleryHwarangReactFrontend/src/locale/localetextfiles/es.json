@@ -176,7 +176,13 @@
             "no_replies":"Aún no hay respuestas. ¡Sé el primero!",
             "anonymous":"Anónimo",
             "tbx_reply_Placeholder":"Escribe una respuesta…",
-            "btn_submit_reply":"Enviar respuesta"
+            "btn_submit_reply":"Enviar respuesta",
+            "btn_edit":"Editar",
+            "btn_delete":"Borrar",
+            "btn_save":"Guardar",
+            "confirm_delete_reply":"¿Borrar esta respuesta?",
+            "error_edit_failed":"No se pudo actualizar la respuesta.",
+            "error_delete_failed":"No se pudo borrar la respuesta."
         },
         "homepage":{
             "welcome_back":"Bienvenido de nuevo",

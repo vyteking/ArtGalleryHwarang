@@ -168,7 +168,13 @@
             "no_replies":"暂时没有评论。快来第一个评论吧！",
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"在这里输入评论…",
-            "btn_submit_reply":"提交评论"
+            "btn_submit_reply":"提交评论",
+            "btn_edit":"编辑",
+            "btn_delete":"删除",
+            "btn_save":"保存",
+            "confirm_delete_reply":"删除这条评论？",
+            "error_edit_failed":"评论更新失败。",
+            "error_delete_failed":"评论删除失败。"
         },
         "homepage":{
             "welcome_back":"欢迎回来",

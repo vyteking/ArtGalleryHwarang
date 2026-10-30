@@ -163,6 +163,12 @@ export interface LocaleTexts {
         anonymous: string;
         tbx_reply_Placeholder: string;
         btn_submit_reply: string;
+        btn_edit: string;
+        btn_delete: string;
+        btn_save: string;
+        confirm_delete_reply: string;
+        error_edit_failed: string;
+        error_delete_failed: string;
     };
     homepage: {
         welcome_back: string;

@@ -1,0 +1,30 @@
+/* ── Comment editor (create + inline edit) ───────────────────── */
+.comment-editor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+}
+
+/* Inline edit mode replaces a comment-item in place, so it borrows
+   the same card padding to line up visually with its siblings. */
+.comment-editor--inline {
+    padding: var(--sp-4);
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.comment-editor__textarea {
+    resize: vertical;
+}
+
+.comment-editor__actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-editor__buttons {
+    display: flex;
+    gap: var(--sp-2);
+}
