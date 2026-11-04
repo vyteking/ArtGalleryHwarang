@@ -2,6 +2,25 @@ from django.db import models
 import uuid
 from post.models import Post as Hwarangpost
 
+from django.utils.deconstruct import deconstructible
+
+@deconstructible
+class ContentUploadPath:
+
+    def __init__(self, folder):
+        self.folder = folder
+
+    def __call__(self, instance, filename):
+        post_id = instance.postcontentindex.postindex_id
+        content_id = instance.postcontentindex_id
+
+        return f'{post_id}/{content_id}/{self.folder}/{filename}'
+
+    def __eq__(self, other):
+        return (
+            isinstance(other, ContentUploadPath)
+            and self.folder == other.folder
+        )
 
 def _upload(folder):
     def fn(instance, filename):
@@ -37,40 +56,40 @@ class Postcontent(models.Model):
 
 class Blogcontent(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='blogcontent')
-    thumbnailimagefile = models.ImageField(upload_to=_upload('blogcontent/thumbnail'), blank=True)
+    thumbnailimagefile = models.ImageField(upload_to=ContentUploadPath('blogcontent/thumbnail'), blank=True)
     blogcontext = models.TextField()
 
 class Image2D(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='image2d')
-    imagefile = models.ImageField(upload_to=_upload('image2d'))
-    thumbnailimagefile = models.ImageField(upload_to=_upload('image2d/thumbnail'), blank=True)
+    imagefile = models.ImageField(upload_to=ContentUploadPath('image2d'))
+    thumbnailimagefile = models.ImageField(upload_to=ContentUploadPath('image2d/thumbnail'), blank=True)
     description = models.TextField()
 
 class Animation2D(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='animation2d')
-    animationfile = models.FileField(upload_to=_upload('animation2d'))
+    animationfile = models.FileField(upload_to=ContentUploadPath('animation2d'))
     animationformat = models.CharField(max_length=63, blank=True)
-    thumbnailimagefile = models.ImageField(upload_to=_upload('animation2d/thumbnail'), blank=True)
+    thumbnailimagefile = models.ImageField(upload_to=ContentUploadPath('animation2d/thumbnail'), blank=True)
     description = models.TextField(blank=True)
 
 class Object3D(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='object3d')
-    objectfile = models.FileField(upload_to=_upload('object3d'))
-    thumbnailimagefile = models.ImageField(upload_to=_upload('object3d/thumbnail'), blank=True)
+    objectfile = models.FileField(upload_to=ContentUploadPath('object3d'))
+    thumbnailimagefile = models.ImageField(upload_to=ContentUploadPath('object3d/thumbnail'), blank=True)
     description = models.TextField()
 
 class Audio(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='audio')
-    audiofile = models.FileField(upload_to=_upload('audio'))
+    audiofile = models.FileField(upload_to=ContentUploadPath('audio'))
     duration = models.PositiveIntegerField(null=True, blank=True)
-    thumbnailimagefile = models.ImageField(upload_to=_upload('audio/thumbnail'), blank=True)
-    albumimagefile = models.ImageField(upload_to=_upload('audio/albumthumbnail'), blank=True)
+    thumbnailimagefile = models.ImageField(upload_to=ContentUploadPath('audio/thumbnail'), blank=True)
+    albumimagefile = models.ImageField(upload_to=ContentUploadPath('audio/albumthumbnail'), blank=True)
     description = models.TextField(blank=True)
 
 class Video(models.Model):
     postcontentindex = models.ForeignKey(Postcontent, on_delete=models.CASCADE, editable=False, related_name='video')
-    videofile = models.FileField(upload_to=_upload('video'), blank=True)
+    videofile = models.FileField(upload_to=ContentUploadPath('video'), blank=True)
     embed_url = models.URLField(max_length=511, blank=True)
-    thumbnailimagefile = models.ImageField(upload_to=_upload('video/thumbnail'), blank=True)
+    thumbnailimagefile = models.ImageField(upload_to=ContentUploadPath('video/thumbnail'), blank=True)
     duration = models.PositiveIntegerField(null=True, blank=True)
     description = models.TextField(blank=True)

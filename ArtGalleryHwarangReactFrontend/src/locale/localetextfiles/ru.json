@@ -101,7 +101,8 @@
             "useremail":"Электронная почта",
             "userphonenumber":"Номер телефона",
             "username":"Имя пользователя",
-            "userdescription":"Описание"
+            "userdescription":"Описание",
+            "useraltname":"Альтернативное имя"
         },
         "useroptions":{
             "Login":"Вход",
@@ -138,7 +139,8 @@
             "btn_Signup":"Зарегистрироваться",
             "error_AllFieldsRequired":"Все поля обязательны для заполнения.",
             "error_UserIDsMismatch":"Идентификаторы пользователей не совпадают.",
-            "error_PasswordsMismatch":"Пароли не совпадают."
+            "error_PasswordsMismatch":"Пароли не совпадают.",
+            "error_UserIDExists":"Этот идентификатор пользователя уже используется."
         },
         "userstatus":{
             "SuspendedUser":"Отстраненный пользователь",
@@ -147,6 +149,37 @@
             "Developer":"Разработчик",
             "ProjectManager":"Менеджер проекта",
             "Founder":"Основатель"
+        },
+        "userlevel":{
+            "UnrankedUser":"Без ранга",
+            "BronzeUser":"Бронза",
+            "SilverUser":"Серебро",
+            "GoldUser":"Золото",
+            "PlatinumUser":"Платина"
+        },
+        "userinfopage":{
+            "loading_user_info":"Загрузка информации о пользователе...",
+            "user_not_found":"Пользователь не найден.",
+            "load_error":"Не удалось загрузить информацию о пользователе.",
+            "not_set":"Не указано",
+            "no_following":"Пока ни на кого не подписан.",
+            "no_followers":"Пока нет подписчиков."
+        },
+        "personalpage":{
+            "tab_all":"Все",
+            "tab_blogcontent":"Запись в блоге",
+            "tab_image2d":"2D-изображение",
+            "tab_animation2d":"2D-анимация",
+            "tab_object3d":"3D-работа",
+            "tab_audio":"Аудио",
+            "tab_video":"Видео",
+            "show_more":"Показать больше",
+            "show_less":"Показать меньше",
+            "no_submissions":"Публикаций пока нет.",
+            "load_more":"Загрузить ещё",
+            "loading_submissions":"Загрузка публикаций...",
+            "private":"Приватно",
+            "view_details":"Подробнее"
         },
         "userinterfaceoptions":{
             "theme":"Тема",

@@ -41,7 +41,12 @@ function Signuppage() {
             navigate('/login');
         } catch (error) {
             if (import.meta.env.DEV) console.error('Signup error:', error);
-            showMessage('Could not connect to the server. Please try again later.');
+            // The server rejects an already registered user ID with 400 and a user_id field error.
+            if (axios.isAxiosError(error) && error.response?.status === 400 && error.response.data?.user_id) {
+                showMessage(localeTxt.signup.error_UserIDExists || 'This user ID is already in use.');
+            } else {
+                showMessage('Could not connect to the server. Please try again later.');
+            }
         }
     };
 

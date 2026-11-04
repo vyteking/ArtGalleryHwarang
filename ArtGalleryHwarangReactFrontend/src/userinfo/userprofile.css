@@ -1,0 +1,83 @@
+/* ============================================================
+ * Shared profile styles — personal page, user info page & follow list dialog
+ *
+ * useClassNames() puts the theme class (.bright-white / .darky-black)
+ * on every element, and theme.css paints each of them with
+ * --c-bg / --c-text. Inside these pages the descendants are reset
+ * to transparent / inherit so only the page root and cards paint a
+ * background. Page rules are written as `.page-root .x` (two classes)
+ * so they always win over the single-class theme rules.
+ * ============================================================ */
+
+:is(.personal-page, .userinfo-page, .follow-modal) :is(.bright-white, .darky-black) {
+    background-color: transparent;
+    color: inherit;
+}
+
+:is(.personal-page, .userinfo-page, .follow-modal) .card {
+    background-color: var(--c-bg);
+}
+
+/* ── Avatar fallback (first letter of user ID) ─────────────── */
+:is(.personal-page, .userinfo-page, .follow-modal) .avatar-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--c-accent-subtle);
+    color: var(--c-accent);
+    font-weight: var(--fw-bold);
+}
+
+/* ── Status / level badges ─────────────────────────────────── */
+:is(.personal-page, .userinfo-page, .follow-modal) .profile-badge {
+    display: inline-block;
+    padding: 2px var(--sp-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-semibold);
+    background-color: var(--c-surface);
+    color: var(--c-text-2);
+    white-space: nowrap;
+}
+
+:is(.personal-page, .userinfo-page, .follow-modal) .status-SuspendedUser {
+    background-color: var(--c-danger-subtle);
+    color: var(--c-danger);
+}
+
+:is(.personal-page, .userinfo-page, .follow-modal) :is(.status-Admin, .status-Developer, .status-ProjectManager, .status-Founder) {
+    background-color: var(--c-accent-subtle);
+    color: var(--c-accent);
+}
+
+:is(.personal-page, .userinfo-page, .follow-modal) .level-BronzeUser   { background-color: #F3E3D3; color: #8A4B1C; }
+:is(.personal-page, .userinfo-page, .follow-modal) .level-SilverUser   { background-color: #E6E8EC; color: #4B5563; }
+:is(.personal-page, .userinfo-page, .follow-modal) .level-GoldUser     { background-color: #FBF0C9; color: #8A6A00; }
+:is(.personal-page, .userinfo-page, .follow-modal) .level-PlatinumUser { background-color: #DDF3F1; color: #0F6F68; }
+
+:is(.personal-page, .userinfo-page, .follow-modal) .level-BronzeUser.darky-black   { background-color: #3A2516; color: #E0A675; }
+:is(.personal-page, .userinfo-page, .follow-modal) .level-SilverUser.darky-black   { background-color: #2A2E3A; color: #C3C9D5; }
+:is(.personal-page, .userinfo-page, .follow-modal) .level-GoldUser.darky-black     { background-color: #3A3112; color: #E8C75A; }
+:is(.personal-page, .userinfo-page, .follow-modal) .level-PlatinumUser.darky-black { background-color: #123532; color: #7FD8CF; }
+
+/* ── Loading / error states ────────────────────────────────── */
+:is(.personal-page, .userinfo-page, .follow-modal) .profile-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-4);
+    min-height: 40dvh;
+    color: var(--c-text-2);
+}
+
+:is(.personal-page, .userinfo-page, .follow-modal) .profile-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--c-border);
+    border-top-color: var(--c-accent);
+    border-radius: var(--radius-full);
+    animation: profile-spin 0.8s linear infinite;
+}
+
+@keyframes profile-spin { to { transform: rotate(360deg); } }

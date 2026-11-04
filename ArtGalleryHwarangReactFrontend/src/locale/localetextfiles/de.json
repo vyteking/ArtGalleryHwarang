@@ -85,7 +85,8 @@
             "useremail":"E-Mail",
             "userphonenumber":"Telefonnummer",
             "username":"Name",
-            "userdescription":"Beschreibung"
+            "userdescription":"Beschreibung",
+            "useraltname":"Alternativer Name"
         },
         "useroptions":{
             "Login":"Anmelden",
@@ -122,7 +123,8 @@
             "btn_Signup":"Registrieren",
             "error_AllFieldsRequired":"Alle Felder sind erforderlich.",
             "error_UserIDsMismatch":"Benutzer-IDs stimmen nicht überein.",
-            "error_PasswordsMismatch":"Passwörter stimmen nicht überein."
+            "error_PasswordsMismatch":"Passwörter stimmen nicht überein.",
+            "error_UserIDExists":"Diese Benutzer-ID wird bereits verwendet."
         },
         "userstatus":{
             "SuspendedUser":"Gesperrter Benutzer",
@@ -131,6 +133,37 @@
             "Developer":"Entwickler",
             "ProjectManager":"Projektleiter",
             "Founder":"Gründer"
+        },
+        "userlevel":{
+            "UnrankedUser":"Ohne Rang",
+            "BronzeUser":"Bronze",
+            "SilverUser":"Silber",
+            "GoldUser":"Gold",
+            "PlatinumUser":"Platin"
+        },
+        "userinfopage":{
+            "loading_user_info":"Benutzerinformationen werden geladen...",
+            "user_not_found":"Benutzer nicht gefunden.",
+            "load_error":"Benutzerinformationen konnten nicht geladen werden.",
+            "not_set":"Nicht festgelegt",
+            "no_following":"Folgt noch niemandem.",
+            "no_followers":"Noch keine Follower."
+        },
+        "personalpage":{
+            "tab_all":"Alle",
+            "tab_blogcontent":"Blogbeitrag",
+            "tab_image2d":"2D-Bild",
+            "tab_animation2d":"2D-Animation",
+            "tab_object3d":"3D-Kunstwerk",
+            "tab_audio":"Audio",
+            "tab_video":"Video",
+            "show_more":"Mehr anzeigen",
+            "show_less":"Weniger anzeigen",
+            "no_submissions":"Noch keine Einreichungen.",
+            "load_more":"Mehr laden",
+            "loading_submissions":"Einreichungen werden geladen...",
+            "private":"Privat",
+            "view_details":"Details anzeigen"
         },
         "userinterfaceoptions":{
             "theme":"Thema",

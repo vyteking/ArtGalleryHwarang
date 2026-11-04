@@ -77,7 +77,8 @@
             "useremail":"전자우편",
             "userphonenumber":"전화번호",
             "username":"사용자이름",
-            "userdescription":"자기소개"
+            "userdescription":"자기소개",
+            "useraltname":"다른이름"
         },
         "useroptions":{
             "Login":"로그인",
@@ -114,7 +115,8 @@
             "btn_Signup":"회원가입",
             "error_AllFieldsRequired":"모든 항목을 입력해 주세요.",
             "error_UserIDsMismatch":"아이디가 일치하지 않습니다.",
-            "error_PasswordsMismatch":"암호가 일치하지 않습니다."
+            "error_PasswordsMismatch":"암호가 일치하지 않습니다.",
+            "error_UserIDExists":"이미 사용 중인 아이디입니다."
         },
         "userstatus":{
             "SuspendedUser":"정지사용자",
@@ -123,6 +125,37 @@
             "Developer":"개발자",
             "ProjectManager":"프로젝트관리자",
             "Founder":"설립자"
+        },
+        "userlevel":{
+            "UnrankedUser":"등급없음",
+            "BronzeUser":"브론즈",
+            "SilverUser":"실버",
+            "GoldUser":"골드",
+            "PlatinumUser":"플래티넘"
+        },
+        "userinfopage":{
+            "loading_user_info":"사용자 정보를 불러오는 중...",
+            "user_not_found":"사용자를 찾을 수 없습니다.",
+            "load_error":"사용자 정보를 불러오지 못했습니다.",
+            "not_set":"미설정",
+            "no_following":"아직 팔로우한 사용자가 없습니다.",
+            "no_followers":"아직 팔로워가 없습니다."
+        },
+        "personalpage":{
+            "tab_all":"전체",
+            "tab_blogcontent":"블로그 글",
+            "tab_image2d":"2D 이미지",
+            "tab_animation2d":"2D 애니메이션",
+            "tab_object3d":"3D 작품",
+            "tab_audio":"오디오",
+            "tab_video":"비디오",
+            "show_more":"더 보기",
+            "show_less":"접기",
+            "no_submissions":"아직 게시물이 없습니다.",
+            "load_more":"더 불러오기",
+            "loading_submissions":"게시물을 불러오는 중...",
+            "private":"비공개",
+            "view_details":"상세 정보"
         },
         "userinterfaceoptions":{
             "theme":"테마",

@@ -85,7 +85,8 @@
             "useremail":"E-Mail",
             "userphonenumber":"Phone Number",
             "username":"User Name",
-            "userdescription":"Description"
+            "userdescription":"Description",
+            "useraltname":"Alternative Name"
         },
         "useroptions":{
             "Login":"Login",
@@ -122,7 +123,8 @@
             "btn_Signup":"Sign Up",
             "error_AllFieldsRequired":"All fields are required.",
             "error_UserIDsMismatch":"User IDs do not match.",
-            "error_PasswordsMismatch":"Passwords do not match."
+            "error_PasswordsMismatch":"Passwords do not match.",
+            "error_UserIDExists":"This user ID is already in use."
         },
         "userstatus":{
             "SuspendedUser":"Suspended User",
@@ -131,6 +133,37 @@
             "Developer":"Developer",
             "ProjectManager":"Project Manager",
             "Founder":"Founder"
+        },
+        "userlevel":{
+            "UnrankedUser":"Unranked",
+            "BronzeUser":"Bronze",
+            "SilverUser":"Silver",
+            "GoldUser":"Gold",
+            "PlatinumUser":"Platinum"
+        },
+        "userinfopage":{
+            "loading_user_info":"Loading user info...",
+            "user_not_found":"User not found.",
+            "load_error":"Failed to load user info.",
+            "not_set":"Not set",
+            "no_following":"Not following anyone yet.",
+            "no_followers":"No followers yet."
+        },
+        "personalpage":{
+            "tab_all":"All",
+            "tab_blogcontent":"Blog Post",
+            "tab_image2d":"2D Image",
+            "tab_animation2d":"2D Animation",
+            "tab_object3d":"3D Artwork",
+            "tab_audio":"Audio",
+            "tab_video":"Video",
+            "show_more":"Show more",
+            "show_less":"Show less",
+            "no_submissions":"No submissions yet.",
+            "load_more":"Load more",
+            "loading_submissions":"Loading submissions...",
+            "private":"Private",
+            "view_details":"View details"
         },
         "userinterfaceoptions":{
             "theme":"Theme",

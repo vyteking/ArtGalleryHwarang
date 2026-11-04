@@ -77,7 +77,8 @@
             "useremail":"电子邮件",
             "userphonenumber":"电话号码",
             "username":"使用者名",
-            "userdescription":"介绍"
+            "userdescription":"介绍",
+            "useraltname":"别名"
         },
         "useroptions":{
             "Login":"登绿",
@@ -114,7 +115,8 @@
             "btn_Signup":"注册",
             "error_AllFieldsRequired":"请填写所有栏位。",
             "error_UserIDsMismatch":"用户名不匹配。",
-            "error_PasswordsMismatch":"密码不匹配。"
+            "error_PasswordsMismatch":"密码不匹配。",
+            "error_UserIDExists":"该用户名已被使用。"
         },
         "userstatus":{
             "SuspendedUser":"停止用户名",
@@ -123,6 +125,37 @@
             "Developer":"开发员",
             "ProjectManager":"项目管理者",
             "Founder":"创始人"
+        },
+        "userlevel":{
+            "UnrankedUser":"无等级",
+            "BronzeUser":"青铜",
+            "SilverUser":"白银",
+            "GoldUser":"黄金",
+            "PlatinumUser":"铂金"
+        },
+        "userinfopage":{
+            "loading_user_info":"正在加载用户信息...",
+            "user_not_found":"未找到用户。",
+            "load_error":"无法加载用户信息。",
+            "not_set":"未设置",
+            "no_following":"尚未关注任何人。",
+            "no_followers":"尚无粉丝。"
+        },
+        "personalpage":{
+            "tab_all":"全部",
+            "tab_blogcontent":"博客文章",
+            "tab_image2d":"2D图像",
+            "tab_animation2d":"2D动画",
+            "tab_object3d":"3D作品",
+            "tab_audio":"音频",
+            "tab_video":"视频",
+            "show_more":"显示更多",
+            "show_less":"收起",
+            "no_submissions":"暂无投稿。",
+            "load_more":"加载更多",
+            "loading_submissions":"正在加载投稿...",
+            "private":"私密",
+            "view_details":"查看详情"
         },
         "userinterfaceoptions":{
             "theme":"主题",

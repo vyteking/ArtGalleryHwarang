@@ -125,7 +125,8 @@
             "useremail":"",
             "userphonenumber":"",
             "username":"",
-            "userdescription":""
+            "userdescription":"",
+            "useraltname":""
         },
         "useroptions":{
             "Login":"",
@@ -162,7 +163,8 @@
             "btn_Signup":"",
             "error_AllFieldsRequired":"",
             "error_UserIDsMismatch":"",
-            "error_PasswordsMismatch":""
+            "error_PasswordsMismatch":"",
+            "error_UserIDExists":""
         },
         "userstatus":{
             "SuspendedUser":"",
@@ -172,9 +174,36 @@
             "ProjectManager":"",
             "Founder":""
         },
+        "userlevel":{
+            "UnrankedUser":"",
+            "BronzeUser":"",
+            "SilverUser":"",
+            "GoldUser":"",
+            "PlatinumUser":""
+        },
         "userinfopage":{
             "loading_user_info":"",
-            "user_not_found":""
+            "user_not_found":"",
+            "load_error":"",
+            "not_set":"",
+            "no_following":"",
+            "no_followers":""
+        },
+        "personalpage":{
+            "tab_all":"",
+            "tab_blogcontent":"",
+            "tab_image2d":"",
+            "tab_animation2d":"",
+            "tab_object3d":"",
+            "tab_audio":"",
+            "tab_video":"",
+            "show_more":"",
+            "show_less":"",
+            "no_submissions":"",
+            "load_more":"",
+            "loading_submissions":"",
+            "private":"",
+            "view_details":""
         },
         "userinterfaceoptions":{
             "theme":"",

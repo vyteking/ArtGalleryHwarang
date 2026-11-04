@@ -77,7 +77,8 @@
             "useremail":"電子郵件",
             "userphonenumber":"電話號碼",
             "username":"使用者名",
-            "userdescription":"介紹"
+            "userdescription":"介紹",
+            "useraltname":"別名"
         },
         "useroptions":{
             "Login":"登綠",
@@ -114,7 +115,8 @@
             "btn_Signup":"註冊",
             "error_AllFieldsRequired":"請填寫所有欄位。",
             "error_UserIDsMismatch":"用戶名不匹配。",
-            "error_PasswordsMismatch":"密碼不匹配。"
+            "error_PasswordsMismatch":"密碼不匹配。",
+            "error_UserIDExists":"該用戶名已被使用。"
         },
         "userstatus":{
             "SuspendedUser":"停止用戶名",
@@ -123,6 +125,37 @@
             "Developer":"開發員",
             "ProjectManager":"項目管理者",
             "Founder":"創始人"
+        },
+        "userlevel":{
+            "UnrankedUser":"無等級",
+            "BronzeUser":"青銅",
+            "SilverUser":"白銀",
+            "GoldUser":"黃金",
+            "PlatinumUser":"鉑金"
+        },
+        "userinfopage":{
+            "loading_user_info":"正在載入使用者資訊...",
+            "user_not_found":"找不到使用者。",
+            "load_error":"無法載入使用者資訊。",
+            "not_set":"未設定",
+            "no_following":"尚未追蹤任何人。",
+            "no_followers":"尚無追蹤者。"
+        },
+        "personalpage":{
+            "tab_all":"全部",
+            "tab_blogcontent":"部落格文章",
+            "tab_image2d":"2D圖像",
+            "tab_animation2d":"2D動畫",
+            "tab_object3d":"3D作品",
+            "tab_audio":"音訊",
+            "tab_video":"影片",
+            "show_more":"顯示更多",
+            "show_less":"收起",
+            "no_submissions":"暫無投稿。",
+            "load_more":"載入更多",
+            "loading_submissions":"正在載入投稿...",
+            "private":"私密",
+            "view_details":"查看詳情"
         },
         "userinterfaceoptions":{
             "theme":"主題",

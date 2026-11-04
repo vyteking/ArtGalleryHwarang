@@ -1,5 +1,5 @@
 from .models import UserInfo, UserFollowing, UserCloseFriend
-from .serializers import UserInfoSerializer, PublicUserInfoSerializer
+from .serializers import UserInfoSerializer, PublicUserInfoSerializer, UserProfileSerializer, UserSummarySerializer
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
@@ -46,8 +46,11 @@ class UserPageView(generics.RetrieveAPIView):
     serializer_class = PublicUserInfoSerializer
     lookup_field = 'user_index_1st'
 
-# UserDetailView is intentionally the same as UserPageView — kept for URL compatibility.
-UserDetailView = UserPageView
+# Full public profile for the user info page (additional info, media, follow counts).
+class UserDetailView(generics.RetrieveAPIView):
+    queryset = UserInfo.objects.select_related('useradditionalinfo', 'usermediasubmission')
+    serializer_class = UserProfileSerializer
+    lookup_field = 'user_index_1st'
 
 class UserUpdateView(generics.UpdateAPIView):
     queryset = UserInfo.objects.all()
@@ -123,9 +126,11 @@ class FollowingListView(APIView):
         except UserInfo.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        following_relations = user.following.all()
+        # Users this user follows: relations where this user is the follower (followed_by).
+        following_relations = UserFollowing.objects.filter(followed_by=user).select_related(
+            'following__useradditionalinfo', 'following__usermediasubmission')
         following_users = [relation.following for relation in following_relations]
-        serializer = PublicUserInfoSerializer(following_users, many=True)
+        serializer = UserSummarySerializer(following_users, many=True, context={'request': request})
         return Response(serializer.data)
 
 class FollowersListView(APIView):
@@ -136,7 +141,9 @@ class FollowersListView(APIView):
         except UserInfo.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        follower_relations = user.followed_by.all()
+        # Users following this user: relations where this user is the followed one (following).
+        follower_relations = UserFollowing.objects.filter(following=user).select_related(
+            'followed_by__useradditionalinfo', 'followed_by__usermediasubmission')
         follower_users = [relation.followed_by for relation in follower_relations]
-        serializer = PublicUserInfoSerializer(follower_users, many=True)
+        serializer = UserSummarySerializer(follower_users, many=True, context={'request': request})
         return Response(serializer.data)

@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 from .models import Post
-from .serializers import PostSerializer
+from .serializers import PostSerializer, PostGallerySerializer, GALLERY_CONTENT_TYPES
 
 
 class IsPostOwner(permissions.BasePermission):
@@ -26,11 +26,20 @@ class PostDetailView(generics.RetrieveAPIView):
 
 
 class PostByUserView(generics.ListAPIView):
-    serializer_class = PostSerializer
+    serializer_class = PostGallerySerializer
 
     def get_queryset(self):
         postauthor = self.kwargs['postauthor']
-        return Post.objects.filter(postauthor=postauthor).order_by('-created_at')
+        queryset = Post.objects.filter(postauthor=postauthor)
+        # Private posts are only listed for their author.
+        if str(self.request.user.pk) != str(postauthor):
+            queryset = queryset.filter(isInPublic=True)
+        # Optional submission type filter for the gallery tabs, e.g. ?type=image2d
+        content_type = self.request.query_params.get('type')
+        if content_type in GALLERY_CONTENT_TYPES:
+            queryset = queryset.filter(**{f'postcontent__{content_type}__isnull': False}).distinct()
+        prefetches = [f'postcontent_set__{content_type}' for content_type in GALLERY_CONTENT_TYPES]
+        return queryset.prefetch_related(*prefetches).order_by('-created_at')
 
 
 class SubmitPostView(generics.CreateAPIView):

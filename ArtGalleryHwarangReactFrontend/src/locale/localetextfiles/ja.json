@@ -77,7 +77,8 @@
             "useremail":"Eメール",
             "userphonenumber":"電話番号",
             "username":"ユーザー名",
-            "userdescription":"説明"
+            "userdescription":"説明",
+            "useraltname":"別名"
         },
         "useroptions":{
             "Login":"ログイン",
@@ -114,7 +115,8 @@
             "btn_Signup":"新規登録",
             "error_AllFieldsRequired":"すべての項目を入力してください。",
             "error_UserIDsMismatch":"ユーザーIDが一致しません。",
-            "error_PasswordsMismatch":"パスワードが一致しません。"
+            "error_PasswordsMismatch":"パスワードが一致しません。",
+            "error_UserIDExists":"このユーザーIDは既に使用されています。"
         },
         "userstatus":{
             "SuspendedUser":"利用停止中のユーザー",
@@ -123,6 +125,37 @@
             "Developer":"開発者",
             "ProjectManager":"プロジェクトマネージャー",
             "Founder":"創設者"
+        },
+        "userlevel":{
+            "UnrankedUser":"ランクなし",
+            "BronzeUser":"ブロンズ",
+            "SilverUser":"シルバー",
+            "GoldUser":"ゴールド",
+            "PlatinumUser":"プラチナ"
+        },
+        "userinfopage":{
+            "loading_user_info":"ユーザー情報を読み込み中...",
+            "user_not_found":"ユーザーが見つかりません。",
+            "load_error":"ユーザー情報を読み込めませんでした。",
+            "not_set":"未設定",
+            "no_following":"まだ誰もフォローしていません。",
+            "no_followers":"まだフォロワーがいません。"
+        },
+        "personalpage":{
+            "tab_all":"すべて",
+            "tab_blogcontent":"ブログ投稿",
+            "tab_image2d":"2Dイメージ",
+            "tab_animation2d":"2Dアニメーション",
+            "tab_object3d":"3Dアートワーク",
+            "tab_audio":"オーディオ",
+            "tab_video":"ビデオ",
+            "show_more":"もっと見る",
+            "show_less":"閉じる",
+            "no_submissions":"まだ投稿がありません。",
+            "load_more":"さらに読み込む",
+            "loading_submissions":"投稿を読み込み中...",
+            "private":"非公開",
+            "view_details":"詳細を見る"
         },
         "userinterfaceoptions":{
             "theme":"テーマ",

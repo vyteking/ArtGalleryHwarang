@@ -85,7 +85,8 @@
             "useremail":"Correo electrónico",
             "userphonenumber":"Número de teléfono",
             "username":"Nombre",
-            "userdescription":"Descripción"
+            "userdescription":"Descripción",
+            "useraltname":"Nombre alternativo"
         },
         "useroptions":{
             "Login":"Entrar",
@@ -122,7 +123,8 @@
             "btn_Signup":"Registrarse",
             "error_AllFieldsRequired":"Todos los campos son obligatorios.",
             "error_UserIDsMismatch":"Los IDs de usuario no coinciden.",
-            "error_PasswordsMismatch":"Las contraseñas no coinciden."
+            "error_PasswordsMismatch":"Las contraseñas no coinciden.",
+            "error_UserIDExists":"Este ID de usuario ya está en uso."
         },
         "userstatus":{
             "SuspendedUser":"Usuario suspendido",
@@ -131,6 +133,37 @@
             "Developer":"Desarrollador",
             "ProjectManager":"Gestor de proyectos",
             "Founder":"Fundador"
+        },
+        "userlevel":{
+            "UnrankedUser":"Sin rango",
+            "BronzeUser":"Bronce",
+            "SilverUser":"Plata",
+            "GoldUser":"Oro",
+            "PlatinumUser":"Platino"
+        },
+        "userinfopage":{
+            "loading_user_info":"Cargando información del usuario...",
+            "user_not_found":"Usuario no encontrado.",
+            "load_error":"No se pudo cargar la información del usuario.",
+            "not_set":"Sin definir",
+            "no_following":"Aún no sigue a nadie.",
+            "no_followers":"Aún no tiene seguidores."
+        },
+        "personalpage":{
+            "tab_all":"Todo",
+            "tab_blogcontent":"Entrada de blog",
+            "tab_image2d":"Imagen 2D",
+            "tab_animation2d":"Animación 2D",
+            "tab_object3d":"Obra 3D",
+            "tab_audio":"Audio",
+            "tab_video":"Vídeo",
+            "show_more":"Mostrar más",
+            "show_less":"Mostrar menos",
+            "no_submissions":"Aún no hay publicaciones.",
+            "load_more":"Cargar más",
+            "loading_submissions":"Cargando publicaciones...",
+            "private":"Privado",
+            "view_details":"Ver detalles"
         },
         "userinterfaceoptions":{
             "theme":"Tema",

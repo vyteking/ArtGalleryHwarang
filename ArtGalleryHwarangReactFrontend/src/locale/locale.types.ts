@@ -72,6 +72,7 @@ export interface LocaleTexts {
         userphonenumber: string;
         username: string;
         userdescription: string;
+        useraltname: string;
     };
     useroptions: {
         Login: string;
@@ -109,6 +110,7 @@ export interface LocaleTexts {
         error_AllFieldsRequired: string;
         error_UserIDsMismatch: string;
         error_PasswordsMismatch: string;
+        error_UserIDExists: string;
     };
     userstatus: {
         SuspendedUser: string;
@@ -117,6 +119,13 @@ export interface LocaleTexts {
         Developer: string;
         ProjectManager: string;
         Founder: string;
+    };
+    userlevel: {
+        UnrankedUser: string;
+        BronzeUser: string;
+        SilverUser: string;
+        GoldUser: string;
+        PlatinumUser: string;
     };
     userinterfaceoptions: {
         theme: string;
@@ -182,9 +191,29 @@ export interface LocaleTexts {
         welcome_title: string;
         welcome_subtitle: string;
     };
-    userinfopage?: {
+    userinfopage: {
         loading_user_info: string;
         user_not_found: string;
+        load_error: string;
+        not_set: string;
+        no_following: string;
+        no_followers: string;
+    };
+    personalpage: {
+        tab_all: string;
+        tab_blogcontent: string;
+        tab_image2d: string;
+        tab_animation2d: string;
+        tab_object3d: string;
+        tab_audio: string;
+        tab_video: string;
+        show_more: string;
+        show_less: string;
+        no_submissions: string;
+        load_more: string;
+        loading_submissions: string;
+        private: string;
+        view_details: string;
     };
     systemerror?: {
         error: string;

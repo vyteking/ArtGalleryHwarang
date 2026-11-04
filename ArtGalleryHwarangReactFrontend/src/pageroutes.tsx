@@ -22,11 +22,16 @@ function PageRoutes() {
             <Route path="/ssn/logout/:userindex1st" element={<LogoutUser />} />
             <Route path="/ssn/logout/all" element={<LogoutAll />} />
             <Route path="/signup" element={<Signuppage />} />
-            <Route path="/u/:userindex1st" element={<PersonalPage />} />
-            <Route path="/u/:userindex1st/info" element={<UserInfoPage />} />
+            {/* Following / followers open as a dialog over the personal page or the user info page */}
+            <Route path="/u/:userindex1st" element={<PersonalPage />}>
+                <Route path="following" element={<FollowingList />} />
+                <Route path="followers" element={<FollowersList />} />
+            </Route>
+            <Route path="/u/:userindex1st/info" element={<UserInfoPage />}>
+                <Route path="following" element={<FollowingList />} />
+                <Route path="followers" element={<FollowersList />} />
+            </Route>
             <Route path="/u/random" element={<Homepage />} />
-            <Route path="/u/:userindex1st/following" element={<FollowingList />} />
-            <Route path="/u/:userindex1st/followers" element={<FollowersList />} />
             <Route path="/p/:postindex" element={<PostView />} />
             <Route path="/p/:postindex/edit" element={<PostEditor />} />
             <Route path="/newpost" element={<PostEditor />} />

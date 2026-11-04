@@ -77,7 +77,8 @@
             "useremail":"電子郵便",
             "userphonenumber":"電話番號",
             "username":"使用者이름",
-            "userdescription":"自己紹介"
+            "userdescription":"自己紹介",
+            "useraltname":"別名"
         },
         "useroptions":{
             "Login":"로그인",
@@ -114,7 +115,8 @@
             "btn_Signup":"會員加入",
             "error_AllFieldsRequired":"모든항목을入力해주세요。",
             "error_UserIDsMismatch":"아이디가一致하지않습니다。",
-            "error_PasswordsMismatch":"暗號가一致하지않습니다。"
+            "error_PasswordsMismatch":"暗號가一致하지않습니다。",
+            "error_UserIDExists":"이미使用中인아이디입니다。"
         },
         "userstatus":{
             "SuspendedUser":"停止使用者",
@@ -123,6 +125,37 @@
             "Developer":"開發者",
             "ProjectManager":"企劃管理者",
             "Founder":"設立者"
+        },
+        "userlevel":{
+            "UnrankedUser":"無等級",
+            "BronzeUser":"銅級",
+            "SilverUser":"銀級",
+            "GoldUser":"金級",
+            "PlatinumUser":"白金級"
+        },
+        "userinfopage":{
+            "loading_user_info":"使用者情報를불러오는中...",
+            "user_not_found":"使用者를찾을수없습니다。",
+            "load_error":"使用者情報를불러오지못했습니다。",
+            "not_set":"未設定",
+            "no_following":"아직팔로우한使用者가없습니다。",
+            "no_followers":"아직팔로워가없습니다。"
+        },
+        "personalpage":{
+            "tab_all":"全體",
+            "tab_blogcontent":"블로그글",
+            "tab_image2d":"2D이미지",
+            "tab_animation2d":"2D애니메이션",
+            "tab_object3d":"3D作品",
+            "tab_audio":"오디오",
+            "tab_video":"비디오",
+            "show_more":"더보기",
+            "show_less":"접기",
+            "no_submissions":"아직揭示物이없습니다。",
+            "load_more":"더불러오기",
+            "loading_submissions":"揭示物을불러오는中...",
+            "private":"非公開",
+            "view_details":"詳細情報"
         },
         "userinterfaceoptions":{
             "theme":"테마",

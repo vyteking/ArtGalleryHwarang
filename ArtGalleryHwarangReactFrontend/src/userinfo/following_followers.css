@@ -1,0 +1,198 @@
+/* ============================================================
+ * Following / Followers dialog
+ *
+ * Rendered into document.body through a portal, above the header
+ * and sidebar (z 1000) but below message boxes (z 2000).
+ * Rules are scoped as `.follow-modal .x` so they beat the
+ * single-class theme rules (see userprofile.css).
+ * ============================================================ */
+
+div.follow-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-4);
+    font-family: var(--font-sans);
+    background-color: var(--c-overlay);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    animation: followlist-fade var(--t-base);
+}
+
+.follow-modal .followlist-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 440px;
+    max-height: min(640px, calc(100dvh - 2 * var(--sp-8)));
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    outline: none;
+    animation: followlist-pop var(--t-slow);
+}
+
+/* ── Header: tabs + close ──────────────────────────────────── */
+.follow-modal .followlist-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-2) 0 var(--sp-4);
+    border-bottom: 1px solid var(--c-border);
+}
+
+.follow-modal .followlist-tabs {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+.follow-modal .followlist-tab {
+    flex: 1;
+    padding: var(--sp-3) var(--sp-2);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: var(--c-text-2);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    text-align: center;
+    white-space: nowrap;
+    text-transform: capitalize;
+    transition: color var(--t-fast), border-color var(--t-fast);
+}
+
+.follow-modal .followlist-tab:hover {
+    color: var(--c-text);
+}
+
+.follow-modal .followlist-tab.active {
+    color: var(--c-accent);
+    border-bottom-color: var(--c-accent);
+    font-weight: var(--fw-semibold);
+}
+
+.follow-modal .followlist-close {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-full);
+    background: none;
+    color: var(--c-text-2);
+    font-size: var(--text-2xl);
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color var(--t-fast);
+}
+
+.follow-modal .followlist-close:hover {
+    background-color: var(--c-surface);
+    color: var(--c-text);
+}
+
+/* ── Body: user list ───────────────────────────────────────── */
+.follow-modal .followlist-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: var(--sp-2);
+}
+
+.follow-modal .followlist-state {
+    min-height: 160px;
+}
+
+.follow-modal .followlist-empty {
+    margin: 0;
+    padding: var(--sp-10) var(--sp-4);
+    color: var(--c-text-3);
+    font-size: var(--text-sm);
+    text-align: center;
+}
+
+.follow-modal .followlist-users {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.follow-modal .userbar {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-md);
+    color: var(--c-text);
+    transition: background-color var(--t-fast);
+}
+
+.follow-modal .userbar:hover {
+    background-color: var(--c-surface);
+}
+
+.follow-modal .userbar-avatar {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+}
+
+.follow-modal .userbar-names {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.follow-modal .userbar-name,
+.follow-modal .userbar-id {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.follow-modal .userbar-name {
+    font-weight: var(--fw-semibold);
+    font-size: var(--text-sm);
+}
+
+.follow-modal .userbar-id {
+    color: var(--c-text-3);
+    font-size: var(--text-xs);
+}
+
+@keyframes followlist-fade { from { opacity: 0; } }
+@keyframes followlist-pop  { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
+
+/* ============================================================
+ * Mobile (< 768px): dialog becomes a bottom sheet
+ * ============================================================ */
+@media (max-width: 767px) {
+    .follow-modal {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .follow-modal .followlist-dialog {
+        max-width: none;
+        max-height: 85dvh;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        border-bottom: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .follow-modal,
+    .follow-modal .followlist-dialog {
+        animation: none;
+    }
+}
