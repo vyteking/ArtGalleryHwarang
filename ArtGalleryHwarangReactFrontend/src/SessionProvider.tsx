@@ -1,7 +1,8 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { GetCurrentLoginSession, GetLoginUsers, UserLogin, UserLogout, SwitchLoginSession } from './session';
+import { GetCurrentLoginSession, GetLoginUsers, SESSION_CHANGED_EVENT, UserLogin, UserLogout, SwitchLoginSession } from './session';
 import type { SessionUser } from './session';
+import { revokeServerSession } from './api';
 
 interface SessionContextValue {
     currentUser: SessionUser | null;
@@ -14,42 +15,57 @@ interface SessionContextValue {
 const SessionContext = createContext<SessionContextValue | null>(null);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
-    const [accounts, setAccounts] = useState<SessionUser[]>(GetLoginUsers());
-    const [currentUser, setCurrentUser] = useState<SessionUser | null>(GetCurrentLoginSession());
+    const [accounts, setAccounts] = useState<SessionUser[]>(GetLoginUsers);
+    const [currentUser, setCurrentUser] = useState<SessionUser | null>(GetCurrentLoginSession);
 
-    const refreshState = () => {
+    const refreshState = useCallback(() => {
         setAccounts(GetLoginUsers());
         setCurrentUser(GetCurrentLoginSession());
-    };
+    }, []);
 
-    const login = (userData: SessionUser) => {
+    const login = useCallback((userData: SessionUser) => {
         UserLogin(userData);
         refreshState();
-    };
+    }, [refreshState]);
 
-    const logout = (user?: SessionUser | null) => {
-        UserLogout(user ?? currentUser ?? { user_index_1st: '' });
+    const logout = useCallback((user?: SessionUser | null) => {
+        const target = user ?? GetCurrentLoginSession();
+        if (!target) return;
+        // Revoke the token on the server. The account leaves this browser even if that request fails.
+        revokeServerSession(target.user_index_1st).catch((error) => {
+            if (import.meta.env.DEV) console.error('Logout error:', error);
+        });
+        UserLogout(target);
         refreshState();
-    };
+    }, [refreshState]);
 
-    const switchAccount = (user: SessionUser) => {
+    const switchAccount = useCallback((user: SessionUser) => {
         SwitchLoginSession(user);
         refreshState();
-    };
+    }, [refreshState]);
 
-    // Sync state when session-related localStorage keys change in another tab
     useEffect(() => {
+        // Sync state when session-related localStorage keys change in another tab
         const handleStorage = (e: StorageEvent) => {
-            if (e.key === null || e.key === 'loginaccounts' || e.key === 'currentUserIndex' || e.key?.startsWith('token_')) {
+            if (e.key === null || e.key === 'loginaccounts' || e.key === 'currentUserIndex') {
                 refreshState();
             }
         };
         window.addEventListener('storage', handleStorage);
-        return () => window.removeEventListener('storage', handleStorage);
-    }, []);
+        window.addEventListener(SESSION_CHANGED_EVENT, refreshState);
+        return () => {
+            window.removeEventListener('storage', handleStorage);
+            window.removeEventListener(SESSION_CHANGED_EVENT, refreshState);
+        };
+    }, [refreshState]);
+
+    const value = useMemo(
+        () => ({ currentUser, accounts, login, logout, switchAccount }),
+        [currentUser, accounts, login, logout, switchAccount],
+    );
 
     return (
-        <SessionContext.Provider value={{ currentUser, accounts, login, logout, switchAccount }}>
+        <SessionContext.Provider value={value}>
             {children}
         </SessionContext.Provider>
     );

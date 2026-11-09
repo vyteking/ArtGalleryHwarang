@@ -106,7 +106,8 @@
             "btn_Login":"Login",
             "btn_Signup":"Sign up",
             "btn_reset":"Reset",
-            "error_AllFieldsRequired":"All fields are required."
+            "error_AllFieldsRequired":"All fields are required.",
+            "error_InvalidCredentials":"Incorrect user ID or password."
         }, 
         "signup":{
             "scr_SignUp":"Sign up",
@@ -201,7 +202,9 @@
             "btn_Cancel":"Cancel",
             "error_login_required":"You must be logged in to post.",
             "error_load_failed":"Failed to load post data.",
-            "error_submit_failed":"Failed to submit post."
+            "error_submit_failed":"Failed to submit post.",
+            "error_invalid_file_type":"Only image files can be uploaded.",
+            "error_file_too_large":"Each file must be 25 MB or smaller."
         },
         "replieslist":{
             "lbl_Replies":"Replies",

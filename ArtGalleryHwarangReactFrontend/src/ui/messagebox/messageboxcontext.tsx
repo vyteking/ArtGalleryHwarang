@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useCallback, useState, useContext, useMemo } from 'react';
 import type { ReactNode } from 'react';
 
 export type MessageboxType = 'info' | 'warning' | 'error' | 'success';
@@ -30,15 +30,15 @@ export const MessageboxProvider = ({ children }: { children: ReactNode }) => {
         mode: 'alert',
     });
 
-    const showMessage = (message: string, type: MessageboxType = 'info') => {
+    const showMessage = useCallback((message: string, type: MessageboxType = 'info') => {
         setMessagebox({ isOpen: true, message, type, mode: 'alert' });
-    };
+    }, []);
 
-    const hideMessage = () => {
+    const hideMessage = useCallback(() => {
         setMessagebox(prev => ({ ...prev, isOpen: false }));
-    };
+    }, []);
 
-    const showConfirm = (message: string, type: MessageboxType = 'warning'): Promise<boolean> => {
+    const showConfirm = useCallback((message: string, type: MessageboxType = 'warning'): Promise<boolean> => {
         return new Promise((resolve) => {
             setMessagebox({
                 isOpen: true,
@@ -55,10 +55,15 @@ export const MessageboxProvider = ({ children }: { children: ReactNode }) => {
                 },
             });
         });
-    };
+    }, []);
+
+    const value = useMemo(
+        () => ({ messagebox, showMessage, hideMessage, showConfirm }),
+        [messagebox, showMessage, hideMessage, showConfirm],
+    );
 
     return (
-        <MessageboxContext.Provider value={{ messagebox, showMessage, hideMessage, showConfirm }}>
+        <MessageboxContext.Provider value={value}>
             {children}
         </MessageboxContext.Provider>
     );

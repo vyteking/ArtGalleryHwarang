@@ -1,7 +1,6 @@
 import time
 from django.template import loader
 from django.shortcuts import HttpResponse, render
-import utils
 
 # Create your views here.
 def Appview(request):

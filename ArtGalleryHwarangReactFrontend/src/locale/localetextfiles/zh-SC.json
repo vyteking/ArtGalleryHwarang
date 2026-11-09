@@ -98,7 +98,8 @@
             "btn_Login":"登绿",
             "btn_Signup":"注册",
             "btn_reset":"初始化",
-            "error_AllFieldsRequired":"请填写所有栏位。"
+            "error_AllFieldsRequired":"请填写所有栏位。",
+            "error_InvalidCredentials":"用户 ID 或密码不正确。"
         }, 
         "signup":{
             "scr_SignUp":"注册",
@@ -193,7 +194,9 @@
             "btn_Cancel":"取消",
             "error_login_required":"发布贴子需要先登录。",
             "error_load_failed":"贴子数据加载失败。",
-            "error_submit_failed":"贴子发布失败。"
+            "error_submit_failed":"贴子发布失败。",
+            "error_invalid_file_type":"只能上传图片文件。",
+            "error_file_too_large":"每个文件不得超过 25 MB。"
         },
         "replieslist":{
             "lbl_Replies":"回答",

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { publicApi } from '../api';
 import './loginpage.css';
 
 import { useClassNames, GetServerAPIAddress } from '../base';
@@ -28,13 +29,16 @@ function Loginpage() {
         const logindata = { user_id: userID, user_password: userPW };
         try {
             const loginaddress = GetServerAPIAddress('u', 'api/login');
-            const response = await axios.post(loginaddress, logindata);
-            if (import.meta.env.DEV) console.error('Login error:', response.data);
+            const response = await publicApi.post(loginaddress, logindata);
             login(response.data);
             navigate(`/u/${response.data.user_index_1st}`);
         } catch (error) {
             if (import.meta.env.DEV) console.error('Login error:', error);
-            showMessage('Could not connect to the server. Please try again later.', 'error');
+            if (axios.isAxiosError(error) && error.response?.status === 401) {
+                showMessage(localeTxt.login.error_InvalidCredentials, 'error');
+            } else {
+                showMessage('Could not connect to the server. Please try again later.', 'error');
+            }
         }
     };
 

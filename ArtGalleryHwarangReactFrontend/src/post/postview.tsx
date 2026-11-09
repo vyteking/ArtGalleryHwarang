@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './postview.css';
 import { useClassNames, GetServerAPIAddress } from '../base';
-import * as session from '../session';
+import { api, idSegment, isCancelled, isNotFound, safeMediaUrl } from '../api';
+import { useSession } from '../SessionProvider';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import { useLang } from '../locale/localetextgetter';
-import axios from 'axios';
 import CommentViewer from '../comment/commentview';
 import CommentEditor from '../comment/commenteditor';
 import type { CommentData } from '../comment/commentview';
@@ -53,10 +53,11 @@ function PostViewer() {
     const [postContents, setPostContents] = useState<PostContent[]>([]);
     const [replies, setReplies] = useState<CommentData[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState(false);
 
     const getClassNames = useClassNames();
     const { showMessage, showConfirm } = useMessagebox();
+    const { currentUser } = useSession();
     
     const tv = useLang('postview');
     const tr = useLang('replieslist');
@@ -64,29 +65,36 @@ function PostViewer() {
     useEffect(() => {
         if (!postindex) return;
 
+        // Cancelled when the user moves to another post, so a slow response cannot replace newer data.
+        const controller = new AbortController();
+        const { signal } = controller;
+
         const fetchPostAndReplies = async () => {
             setLoading(true);
+            setError(false);
+            setPost(null);
             try {
-                const [postResponse, repliesResponse] = await Promise.all([
-                    axios.get<Post>(GetServerAPIAddress('p', `${postindex}`)),
-                    axios.get<CommentData[]>(GetServerAPIAddress('r', `posts/${postindex}/replies/`))
+                const id = idSegment(postindex);
+                const [postResponse, repliesResponse, contentsResponse] = await Promise.all([
+                    api.get<Post>(GetServerAPIAddress('p', id), { signal }),
+                    api.get<CommentData[]>(GetServerAPIAddress('r', `posts/${id}/replies/`), { signal }),
+                    api.get<PostContent[]>(GetServerAPIAddress('c', `posts/${id}/`), { signal }),
                 ]);
                 setPost(postResponse.data);
                 setReplies(repliesResponse.data);
-
-                const contentsResponse = await axios.get<PostContent[]>(
-                    GetServerAPIAddress('c', `posts/${postindex}/`)
-                );
                 setPostContents(contentsResponse.data);
             } catch (err) {
+                if (isCancelled(err)) return;
                 if (import.meta.env.DEV) console.error('Error fetching post:', err);
-                setError((err as Error).message);
+                // A missing post falls through to the "not found" message below.
+                if (!isNotFound(err)) setError(true);
             } finally {
-                setLoading(false);
+                if (!signal.aborted) setLoading(false);
             }
         };
 
         fetchPostAndReplies();
+        return () => controller.abort();
     }, [postindex]);
 
     const handleReplyCreated = (comment: CommentData) => {
@@ -104,10 +112,7 @@ function PostViewer() {
     const handleDelete = async () => {
         if (!await showConfirm(tv.confirm_delete, 'warning')) return;
         try {
-            const authToken = session.getAuthToken();
-            await axios.delete(GetServerAPIAddress('p', `${postindex}/delete`), { // URL은 백엔드에 맞게 수정
-                headers: { Authorization: `Token ${authToken}` }
-            });
+            await api.delete(GetServerAPIAddress('p', `${idSegment(postindex)}/delete`));
             navigate('/'); // 삭제 후 목록으로 이동
         } catch (err) {
             showMessage('Delete failed', 'error');
@@ -122,7 +127,7 @@ function PostViewer() {
     );
     if (error) return (
         <div className={getClassNames('postview-state')}>
-            <p className="error-message">{tv.post_error}: {error}</p>
+            <p className="error-message">{tv.post_error}</p>
         </div>
     );
     if (!post) return (
@@ -183,11 +188,14 @@ function PostViewer() {
                                     <p key={i} className="post-blog-content">{b.blogcontext}</p>
                                 ))}
                                 {content.image2d.map((img, i) => (
-                                    <img key={i} src={img.imagefile} alt={img.description} className="post-image" />
+                                    <img key={i} src={img.imagefile} alt={img.description} className="post-image" loading="lazy" decoding="async" />
                                 ))}
-                                {content.object3d.map((obj, i) => (
-                                    <a key={i} href={obj.objectfile} className="post-object3d-link" download>{obj.description || obj.objectfile}</a>
-                                ))}
+                                {content.object3d.map((obj, i) => {
+                                    const href = safeMediaUrl(obj.objectfile);
+                                    return href && (
+                                        <a key={i} href={href} className="post-object3d-link" download>{obj.description || obj.objectfile}</a>
+                                    );
+                                })}
                             </div>
                         ))
                     )}
@@ -205,7 +213,7 @@ function PostViewer() {
                     </div>
                 )}
 
-                {String(session.GetCurrentLoginSession()?.user_index_1st) === post.author?.user_index_1st && (
+                {currentUser && String(currentUser.user_index_1st) === post.author?.user_index_1st && (
                     <div id="PostOptions" className="post-options">
                         <button className="btn-secondary" onClick={() => navigate(`/p/${postindex}/edit`)}>{tv.btn_Modify}</button>
                         <button className="btn-danger" onClick={handleDelete}>{tv.btn_Delete}</button>

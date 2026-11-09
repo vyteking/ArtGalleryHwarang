@@ -1,6 +1,3 @@
-import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-
 // ---------------------------------------------------------
 // 타입 정의
 // ---------------------------------------------------------
@@ -8,7 +5,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 export interface SessionUser {
     user_index_1st: string | number;
     user_id?: string;
-    token?: string;
     [key: string]: unknown;
 }
 
@@ -19,8 +15,11 @@ export interface SessionUser {
 const STORAGE_KEY = {
     ACCOUNTS: 'loginaccounts',
     CURRENT_INDEX: 'currentUserIndex',
-    TOKEN_PREFIX: 'token_'
+    LEGACY_TOKEN_PREFIX: 'token_'
 };
+
+// Fired in this tab when an account is removed from outside React (see evictAccount).
+export const SESSION_CHANGED_EVENT = 'hwarang:session-changed';
 
 // 로컬 스토리지에서 계정 목록을 안전하게 가져오는 내부 함수
 function getStoredAccounts() {
@@ -35,6 +34,18 @@ function getStoredAccounts() {
         return [];
     }
 }
+
+// Tokens now live in HttpOnly cookies. Accounts saved by the old version have no cookie,
+// so remove their tokens from storage and ask those users to log in again.
+function removeLegacyTokens() {
+    const legacyKeys = Object.keys(localStorage).filter((key) => key.startsWith(STORAGE_KEY.LEGACY_TOKEN_PREFIX));
+    if (legacyKeys.length === 0) return;
+    legacyKeys.forEach((key) => localStorage.removeItem(key));
+    localStorage.removeItem(STORAGE_KEY.ACCOUNTS);
+    localStorage.removeItem(STORAGE_KEY.CURRENT_INDEX);
+}
+
+removeLegacyTokens();
 
 // ---------------------------------------------------------
 // Export 함수들 (기존 로직 개선)
@@ -59,22 +70,6 @@ export function GetLoginUsers() {
     return getStoredAccounts();
 }
 
-// 모든 로그인 세션 초기화 (로그아웃)
-export function ResetLoginSessions() {
-    const accounts = getStoredAccounts();
-    // 저장된 토큰들도 모두 삭제
-    accounts.forEach((user: { user_index_1st: any; }) => {
-        if (user && user.user_index_1st) {
-            localStorage.removeItem(`${STORAGE_KEY.TOKEN_PREFIX}${user.user_index_1st}`);
-        }
-    });
-    localStorage.removeItem(STORAGE_KEY.ACCOUNTS);
-    localStorage.removeItem(STORAGE_KEY.CURRENT_INDEX);
-    
-    // 초기화된 빈 배열 저장
-    localStorage.setItem(STORAGE_KEY.ACCOUNTS, JSON.stringify([]));
-}
-
 // 로그인 처리 (사용자 추가)
 export function UserLogin(loginuser: SessionUser) {
     if (!loginuser || !loginuser.user_index_1st) return;
@@ -85,20 +80,13 @@ export function UserLogin(loginuser: SessionUser) {
     const isAlreadyLoggedIn = existing.some((user) => String(user.user_index_1st) === targetId);
 
     if (!isAlreadyLoggedIn) {
-        // Strip token from the account object — token is stored separately under TOKEN_PREFIX
-        const { token: _token, ...accountData } = loginuser;
-        existing.push(accountData as SessionUser);
+        existing.push(loginuser);
         localStorage.setItem(STORAGE_KEY.ACCOUNTS, JSON.stringify(existing));
-        
+
         // 첫 번째 사용자가 로그인하면 현재 사용자로 설정
         if (existing.length === 1) {
             setCurrentUserIndex(targetId);
         }
-    }
-
-    // 토큰 저장
-    if (loginuser.token) {
-        localStorage.setItem(`${STORAGE_KEY.TOKEN_PREFIX}${targetId}`, loginuser.token);
     }
 }
 
@@ -110,10 +98,9 @@ export function UserLogout(logoutuser: SessionUser) {
     const logoutId = String(logoutuser.user_index_1st);
 
     const updated = existing.filter((user) => String(user.user_index_1st) !== logoutId);
-    
+
     // 스토리지 업데이트
     localStorage.setItem(STORAGE_KEY.ACCOUNTS, JSON.stringify(updated));
-    localStorage.removeItem(`${STORAGE_KEY.TOKEN_PREFIX}${logoutId}`);
 
     // 만약 로그아웃하는 사용자가 '현재 선택된 사용자'였다면 처리
     const currentIndex = getCurrentUserIndex();
@@ -126,22 +113,19 @@ export function UserLogout(logoutuser: SessionUser) {
     }
 }
 
+// Removes an account whose session the server no longer accepts.
+export function evictAccount(userIndex: string) {
+    UserLogout({ user_index_1st: userIndex });
+    window.dispatchEvent(new Event(SESSION_CHANGED_EVENT));
+}
+
 // 현재 로그인된 세션(사용자 객체) 가져오기
 export function GetCurrentLoginSession() {
     const currentIndex = getCurrentUserIndex();
     if (!currentIndex) return null;
-    
+
     const accounts: SessionUser[] = getStoredAccounts();
     return accounts.find((user) => String(user.user_index_1st) === currentIndex) ?? null;
-}
-
-// 현재 사용자의 인증 토큰 가져오기
-export function getAuthToken() {
-    const currentUser = GetCurrentLoginSession();
-    if (!currentUser) {
-        return null;
-    }
-    return localStorage.getItem(`${STORAGE_KEY.TOKEN_PREFIX}${currentUser.user_index_1st}`);
 }
 
 // 사용자 전환
@@ -149,42 +133,4 @@ export function SwitchLoginSession(user: SessionUser) {
     if (user && user.user_index_1st) {
         setCurrentUserIndex(user.user_index_1st);
     }
-}
-
-// ---------------------------------------------------------
-// React 컴포넌트들
-// ---------------------------------------------------------
-
-export function SessionManager() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate('/');
-  }, [navigate]);
-
-  return null;
-}
-
-export function LogoutUser() {
-  const { userindex1st } = useParams();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (userindex1st) {
-        UserLogout({ user_index_1st: userindex1st });
-    }
-    navigate('/');
-  }, [userindex1st, navigate]);
-
-  return null;
-}
-
-export function LogoutAll() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    ResetLoginSessions();
-    navigate('/');
-  }, [navigate]);
-
-  return null;
 }

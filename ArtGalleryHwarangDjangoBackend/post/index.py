@@ -18,14 +18,15 @@ class PostIndex(AsyncDocument):
         }
 
     @classmethod
-    def from_post_document(cls, post) -> "PostIndex":
+    def from_post_document(cls, post: dict) -> "PostIndex":
+        """Build an index entry from a post document of the MongoDB `posts` collection."""
         return cls(
-            meta={"id": str(post.postindex)},
-            posttitle=post.posttitle,
-            postdescription=post.postdescription,
-            posttag=post.posttag,
-            author_id=str(post.author_id),
-            rating=max((c.rating for c in post.contents), default=0),
-            is_in_public=post.is_in_public,
-            created_at=post.created_at,
+            meta={"id": str(post["_id"])},
+            posttitle=post["posttitle"],
+            postdescription=post.get("postdescription", ""),
+            posttag=post.get("posttag", []),
+            author_id=str(post["author_id"]),
+            rating=max((c.get("rating", 0) for c in post.get("contents", [])), default=0),
+            is_in_public=post.get("is_in_public", True),
+            created_at=post["created_at"],
         )

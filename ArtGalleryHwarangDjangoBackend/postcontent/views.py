@@ -1,50 +1,87 @@
-from rest_framework import generics, permissions
-from .models import Postcontent, Blogcontent, Image2D, Object3D
-from .serializers import PostcontentSerializer, BlogcontentSerializer, Image2DSerializer, Object3DSerializer
+from rest_framework import generics, permissions, status
+from rest_framework.exceptions import PermissionDenied
+from rest_framework.response import Response
+
+from post.documents import get_post
+from . import documents
+from .serializers import (
+    PostcontentSerializer, BlogcontentSerializer, Image2DSerializer, Animation2DSerializer,
+    Object3DSerializer, AudioSerializer, VideoSerializer, with_postindex,
+)
 
 
-class IsPostContentOwner(permissions.BasePermission):
-    """Allow write access only to the author of the parent post."""
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        return obj.postindex.postauthor == request.user
+def require_post_owner(request, post):
+    if post['author_id'] != request.user.pk:
+        raise PermissionDenied('Only the author of the post can change its contents.')
 
 
 class PostContentView(generics.RetrieveAPIView):
-    queryset = Postcontent.objects.all()
     serializer_class = PostcontentSerializer
-    lookup_field = 'postcontentindex'
+
+    def get_object(self):
+        post, content = documents.get_post_with_content(self.kwargs['postcontentindex'])
+        return with_postindex(post['_id'], content)
 
 
 class PostContentListByPostView(generics.ListAPIView):
     serializer_class = PostcontentSerializer
+    # A post's contents come from one embedded array, and postview.tsx expects a plain list.
+    pagination_class = None
 
     def get_queryset(self):
-        return Postcontent.objects.filter(postindex=self.kwargs['postindex'])
+        post = get_post(self.kwargs['postindex'], {'contents': 1})
+        return [with_postindex(post['_id'], content) for content in post.get('contents', [])]
 
 
 class SubmitPostContentView(generics.CreateAPIView):
     serializer_class = PostcontentSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def perform_create(self, serializer):
+        post = get_post(serializer.validated_data['postindex'], {'author_id': 1})
+        require_post_owner(self.request, post)
+        serializer.save()
 
-class DeletePostContentView(generics.DestroyAPIView):
-    queryset = Postcontent.objects.all()
-    permission_classes = [permissions.IsAuthenticated, IsPostContentOwner]
-    lookup_field = 'postcontentindex'
+
+class DeletePostContentView(generics.GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self, request, *args, **kwargs):
+        post, content = documents.get_post_with_content(self.kwargs['postcontentindex'])
+        require_post_owner(request, post)
+        documents.delete_content(post['_id'], content)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class SubmitBlogcontentView(generics.CreateAPIView):
+class SubmitContentItemView(generics.CreateAPIView):
+    """Add an item (blog text, image, 3D object, ...) to an existing content of the user's own post."""
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        post, _content = documents.get_post_with_content(serializer.validated_data['postcontentindex'])
+        require_post_owner(self.request, post)
+        serializer.save(post_id=post['_id'])
+
+
+class SubmitBlogcontentView(SubmitContentItemView):
     serializer_class = BlogcontentSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
-class SubmitImage2DView(generics.CreateAPIView):
+class SubmitImage2DView(SubmitContentItemView):
     serializer_class = Image2DSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
-class SubmitObject3DView(generics.CreateAPIView):
+class SubmitAnimation2DView(SubmitContentItemView):
+    serializer_class = Animation2DSerializer
+
+
+class SubmitObject3DView(SubmitContentItemView):
     serializer_class = Object3DSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+
+class SubmitAudioView(SubmitContentItemView):
+    serializer_class = AudioSerializer
+
+
+class SubmitVideoView(SubmitContentItemView):
+    serializer_class = VideoSerializer

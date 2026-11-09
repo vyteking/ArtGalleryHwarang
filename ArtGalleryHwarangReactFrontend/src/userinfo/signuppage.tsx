@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { publicApi } from '../api';
 import './signuppage.css';
 
 import { GetServerAPIAddress } from '../base';
@@ -13,7 +14,7 @@ function Signuppage() {
     const [confirmSignupUserIDInput, setConfirmSignupUserIDInput] = useState('');
     const [signupUserPWInput, setSignupUserPWInput] = useState('');
     const [confirmSignupUserPWInput, setConfirmSignupUserPWInput] = useState('');
-    const { showMessage } = useMessagebox();
+    const { showMessage, hideMessage } = useMessagebox();
     const { localeTxt } = useLocale();
 
     const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -37,7 +38,7 @@ function Signuppage() {
         try {
             const signupdata = { user_id: signupUserIDInput, user_password: signupUserPWInput };
             const signupaddress = GetServerAPIAddress('u', 'api/signup');
-            await axios.post(signupaddress, signupdata);
+            await publicApi.post(signupaddress, signupdata);
             navigate('/login');
         } catch (error) {
             if (import.meta.env.DEV) console.error('Signup error:', error);
@@ -55,7 +56,7 @@ function Signuppage() {
         setConfirmSignupUserIDInput('');
         setSignupUserPWInput('');
         setConfirmSignupUserPWInput('');
-        showMessage('');
+        hideMessage();
     };
 
     return (

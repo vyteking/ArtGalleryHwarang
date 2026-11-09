@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 import './commentview.css';
 import { useClassNames, GetServerAPIAddress } from '../base';
-import * as session from '../session';
+import { api, idSegment } from '../api';
+import { useSession } from '../SessionProvider';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import { useLocale } from '../locale/localeoptions';
 import { useLang } from '../locale/localetextgetter';
-import axios from 'axios';
 import CommentEditor from './commenteditor';
 
 export interface CommentAuthor {
@@ -34,7 +34,7 @@ function CommentViewer({ comment, onUpdated, onDeleted }: CommentViewerProps) {
     const { currentLocale } = useLocale();
     const t = useLang('replieslist');
 
-    const currentUser = session.GetCurrentLoginSession();
+    const { currentUser } = useSession();
     const isOwner = Boolean(currentUser) &&
         String(currentUser?.user_index_1st) === String(comment.replyauthor.user_index_1st);
     const authorName = comment.replyauthor.user_id || t.anonymous;
@@ -48,10 +48,7 @@ function CommentViewer({ comment, onUpdated, onDeleted }: CommentViewerProps) {
     const handleDelete = async () => {
         if (!(await showConfirm(t.confirm_delete_reply, 'warning'))) return;
         try {
-            const token = session.getAuthToken();
-            await axios.delete(GetServerAPIAddress('r', `replies/${comment.replyindex}/`), {
-                headers: { Authorization: `Token ${token}` }
-            });
+            await api.delete(GetServerAPIAddress('r', `replies/${idSegment(comment.replyindex)}/`));
             onDeleted(comment.replyindex);
         } catch (error) {
             if (import.meta.env.DEV) console.error('Error deleting reply:', error);

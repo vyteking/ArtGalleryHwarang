@@ -106,7 +106,8 @@
             "btn_Login":"Anmelden",
             "btn_Signup":"Registrieren",
             "btn_reset":"Zurücksetzen",
-            "error_AllFieldsRequired":"Alle Felder sind erforderlich."
+            "error_AllFieldsRequired":"Alle Felder sind erforderlich.",
+            "error_InvalidCredentials":"Benutzer-ID oder Passwort ist falsch."
         }, 
         "signup":{
             "scr_SignUp":"Registrierung",
@@ -201,7 +202,9 @@
             "btn_Cancel":"Abbrechen",
             "error_login_required":"Du musst eingeloggt sein, um zu posten.",
             "error_load_failed":"Beitragsdaten konnten nicht geladen werden.",
-            "error_submit_failed":"Beitrag konnte nicht gesendet werden."
+            "error_submit_failed":"Beitrag konnte nicht gesendet werden.",
+            "error_invalid_file_type":"Es können nur Bilddateien hochgeladen werden.",
+            "error_file_too_large":"Jede Datei darf höchstens 25 MB groß sein."
         },
         "replieslist":{
             "lbl_Replies":"Antworten",

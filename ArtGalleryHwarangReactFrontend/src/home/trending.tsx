@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import base, { useClassNames } from '../base';
-import './trending.css'
+import { useClassNames } from '../base';
+import './trending.css';
 
-// Loads trending posts from the server
-function TrendingPosts() {
-    const ls = {};
-    return ls;
-}
-
-// Shows up the visual list of the trending posts after loading them through `TrendingPosts`
+// Placeholder until the trending posts API exists.
 function TrendingPostsList() {
-    const list = TrendingPosts();
     const getClassNames = useClassNames();
 
-    return () => {
-        <div id="trendingpostslist" className={getClassNames("")}>
-            <div id="trendingpostitem">
-                
-            </div>
+    return (
+        <div id="trendingpostslist" className={getClassNames('')}>
+            <div id="trendingpostitem" />
         </div>
-    };
+    );
 }
 
-export default {
-    TrendingPostsList
-};
+export default TrendingPostsList;

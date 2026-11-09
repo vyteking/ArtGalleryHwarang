@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useMemo } from 'react';
 import type { ReactNode } from 'react';
 
 interface OrientationContextValue {
@@ -17,12 +17,13 @@ export const useOrientation = (): OrientationContextValue => {
 export const OrientationProvider = ({ children }: { children: ReactNode }) => {
     const [isVertical, setIsVertical] = useState(false);
 
-    const toggleVertical = () => {
-        setIsVertical(prev => !prev);
-    };
+    const value = useMemo(() => ({
+        isVertical,
+        toggleVertical: () => setIsVertical(prev => !prev),
+    }), [isVertical]);
 
     return (
-        <OrientationContext.Provider value={{ isVertical, toggleVertical }}>
+        <OrientationContext.Provider value={value}>
             {children}
         </OrientationContext.Provider>
     );

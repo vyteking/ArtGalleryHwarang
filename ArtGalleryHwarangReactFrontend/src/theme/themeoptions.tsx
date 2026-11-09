@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useMemo } from 'react';
 import type { ReactNode } from 'react';
 import './theme.css';
 
@@ -20,16 +20,19 @@ function GetThemeClass(themename: ThemeName): string {
 }
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-    const [theme, setTheme] = useState<ThemeName>(getTheme());
+    const [theme, setTheme] = useState<ThemeName>(getTheme);
 
-    const toggleTheme = () => {
-        const newTheme: ThemeName = theme === 'bright-white' ? 'darky-black' : 'bright-white';
-        setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-    };
+    const value = useMemo(() => ({
+        theme,
+        toggleTheme: () => {
+            const newTheme: ThemeName = theme === 'bright-white' ? 'darky-black' : 'bright-white';
+            setTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        },
+    }), [theme]);
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={value}>
             {children}
         </ThemeContext.Provider>
     );

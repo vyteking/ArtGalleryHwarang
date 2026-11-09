@@ -1,0 +1,28 @@
+# The nginx image substitutes ${API_ORIGIN} at container start. Other $variables are left as they are.
+server {
+    listen 80;
+    root /usr/share/nginx/html;
+
+    # nginx drops inherited add_header lines in any block that has its own add_header,
+    # so these stay at server level and the locations below only use `expires`.
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob: ${API_ORIGIN}; media-src 'self' ${API_ORIGIN}; font-src 'self'; connect-src 'self' ${API_ORIGIN}; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Build output has hashed file names, so it can be cached for a long time.
+    location /assets/ {
+        expires 1y;
+        try_files $uri =404;
+    }
+
+    # index.html must always be revalidated so that new deployments are picked up.
+    location = /index.html {
+        expires -1;
+    }
+
+    # Single-page app: the client-side router handles every other path.
+    location / {
+        expires -1;
+        try_files $uri /index.html;
+    }
+}

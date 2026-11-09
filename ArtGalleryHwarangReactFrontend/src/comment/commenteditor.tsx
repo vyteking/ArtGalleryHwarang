@@ -3,10 +3,9 @@ import type { FormEvent } from 'react';
 import './commentview.css';
 import './commenteditor.css';
 import { useClassNames, GetServerAPIAddress } from '../base';
-import * as session from '../session';
+import { api, idSegment } from '../api';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import { useLang } from '../locale/localetextgetter';
-import axios from 'axios';
 import type { CommentData } from './commentview';
 
 interface CommentEditorCreateProps {
@@ -48,20 +47,17 @@ function CommentEditor(props: CommentEditorProps) {
 
         setSubmitting(true);
         try {
-            const token = session.getAuthToken();
             if (props.mode === 'create') {
-                const response = await axios.post<CommentData>(
-                    GetServerAPIAddress('r', `posts/${props.postindex}/replies/`),
-                    { replycontent: content },
-                    { headers: { Authorization: `Token ${token}` } }
+                const response = await api.post<CommentData>(
+                    GetServerAPIAddress('r', `posts/${idSegment(props.postindex)}/replies/`),
+                    { replycontent: content }
                 );
                 setContent('');
                 props.onCreated(response.data);
             } else {
-                const response = await axios.patch<CommentData>(
-                    GetServerAPIAddress('r', `replies/${props.commentindex}/`),
-                    { replycontent: content },
-                    { headers: { Authorization: `Token ${token}` } }
+                const response = await api.patch<CommentData>(
+                    GetServerAPIAddress('r', `replies/${idSegment(props.commentindex)}/`),
+                    { replycontent: content }
                 );
                 props.onSaved(response.data);
             }

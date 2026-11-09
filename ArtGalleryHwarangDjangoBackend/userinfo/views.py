@@ -1,5 +1,7 @@
 from .models import UserInfo, UserFollowing, UserCloseFriend
 from .serializers import UserInfoSerializer, PublicUserInfoSerializer, UserProfileSerializer, UserSummarySerializer
+from .authentication import auth_cookie_name, parse_account_header
+from django.conf import settings
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
 from django.views.decorators.csrf import csrf_exempt
@@ -34,12 +36,40 @@ class LoginView(generics.GenericAPIView):
             if check_password(user_password, user.user_password):
                 token, created = Token.objects.get_or_create(user=user)
                 serializer = UserInfoSerializer(user)
-                response_data = serializer.data
-                response_data['token'] = token.key
-                return Response(response_data, status=status.HTTP_200_OK)
+                response = Response(serializer.data, status=status.HTTP_200_OK)
+                # The token never reaches JavaScript, so a script injected into the page cannot steal it.
+                response.set_cookie(
+                    auth_cookie_name(user.pk),
+                    token.key,
+                    max_age=settings.AUTH_COOKIE_AGE,
+                    httponly=True,
+                    secure=settings.AUTH_COOKIE_SECURE,
+                    samesite=settings.AUTH_COOKIE_SAMESITE,
+                )
+                return response
         except UserInfo.DoesNotExist:
             pass
         return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+class LogoutView(APIView):
+    # Runs without authentication so that a stale cookie can still be cleared.
+    # Only the holder of the account's cookie can revoke its token.
+    authentication_classes = []
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        account = parse_account_header(request)
+        if account is None:
+            return Response({"error": "Invalid account"}, status=status.HTTP_400_BAD_REQUEST)
+
+        cookie_name = auth_cookie_name(account)
+        key = request.COOKIES.get(cookie_name)
+        if key:
+            Token.objects.filter(key=key, user_id=account).delete()
+
+        response = Response(status=status.HTTP_204_NO_CONTENT)
+        response.delete_cookie(cookie_name, samesite=settings.AUTH_COOKIE_SAMESITE)
+        return response
 
 class UserPageView(generics.RetrieveAPIView):
     queryset = UserInfo.objects.all()

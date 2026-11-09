@@ -49,7 +49,7 @@ const USER_LEVEL_KEYS: Record<number, keyof LocaleTexts['userlevel']> = {
 export function Avatar({ src, name, className }: { src: string | null; name: string; className: string }) {
     const getClassNames = useClassNames();
     if (src) {
-        return <img className={getClassNames(className)} src={src} alt={name} />;
+        return <img className={getClassNames(className)} src={src} alt={name} loading="lazy" decoding="async" />;
     }
     return (
         <div className={getClassNames(`${className} avatar-fallback`)} aria-hidden="true">

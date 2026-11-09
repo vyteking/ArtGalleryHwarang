@@ -1,60 +1,67 @@
 from rest_framework import serializers
-from .models import MiniStickerPackage, MiniSticker, LargeStickerPackage, LargeSticker
+
+from mongodb import StoredImageField
+from . import documents
+from .documents import LARGE, MINI, ShareRange
+
+SHARE_RANGE_CHOICES = [s.value for s in ShareRange]
 
 
-class MiniStickerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MiniSticker
-        fields = (
-            'mini_sticker_index',
-            'package',
-            'mini_sticker_name',
-            'mini_sticker_image_file',
-            'mini_sticker_upload_date_time',
-        )
-        read_only_fields = ('mini_sticker_index', 'mini_sticker_upload_date_time')
+class MiniStickerSerializer(serializers.Serializer):
+    mini_sticker_index = serializers.UUIDField(source='_id', read_only=True)
+    package = serializers.UUIDField(source='package_id', read_only=True)
+    mini_sticker_name = serializers.CharField(max_length=255)
+    mini_sticker_image_file = StoredImageField()
+    mini_sticker_upload_date_time = serializers.DateTimeField(read_only=True)
+
+    def create(self, validated_data):
+        return documents.create_sticker(MINI, validated_data.pop('package_id'), validated_data)
 
 
-class MiniStickerPackageSerializer(serializers.ModelSerializer):
-    stickers = MiniStickerSerializer(many=True, read_only=True)
+class MiniStickerPackageSerializer(serializers.Serializer):
+    mini_sticker_package_index = serializers.UUIDField(source='_id', read_only=True)
+    mini_sticker_package_name = serializers.CharField(max_length=255)
+    mini_sticker_package_image_file = StoredImageField()
+    share_range = serializers.ChoiceField(choices=SHARE_RANGE_CHOICES, default=ShareRange.PUBLIC.value)
+    mini_sticker_package_post_date_time = serializers.DateTimeField(read_only=True)
+    stickers = serializers.SerializerMethodField()
 
-    class Meta:
-        model = MiniStickerPackage
-        fields = (
-            'mini_sticker_package_index',
-            'mini_sticker_package_name',
-            'mini_sticker_package_image_file',
-            'share_range',
-            'mini_sticker_package_post_date_time',
-            'stickers',
-        )
-        read_only_fields = ('mini_sticker_package_index', 'mini_sticker_package_post_date_time')
+    def get_stickers(self, obj):
+        stickers = documents.stickers_of_package(MINI, obj['_id'])
+        return MiniStickerSerializer(stickers, many=True, context=self.context).data
 
+    def create(self, validated_data):
+        return documents.create_package(MINI, validated_data)
 
-class LargeStickerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = LargeSticker
-        fields = (
-            'large_sticker_index',
-            'package',
-            'large_sticker_name',
-            'large_sticker_image_file',
-            'large_sticker_upload_date_time',
-        )
-        read_only_fields = ('large_sticker_index', 'large_sticker_upload_date_time')
+    def update(self, instance, validated_data):
+        return documents.update_package(MINI, instance, validated_data)
 
 
-class LargeStickerPackageSerializer(serializers.ModelSerializer):
-    stickers = LargeStickerSerializer(many=True, read_only=True)
+class LargeStickerSerializer(serializers.Serializer):
+    large_sticker_index = serializers.UUIDField(source='_id', read_only=True)
+    package = serializers.UUIDField(source='package_id', read_only=True)
+    large_sticker_name = serializers.CharField(max_length=255)
+    large_sticker_image_file = StoredImageField()
+    large_sticker_upload_date_time = serializers.DateTimeField(read_only=True)
 
-    class Meta:
-        model = LargeStickerPackage
-        fields = (
-            'large_sticker_package_index',
-            'large_sticker_package_name',
-            'large_sticker_package_image_file',
-            'share_range',
-            'large_sticker_package_post_date_time',
-            'stickers',
-        )
-        read_only_fields = ('large_sticker_package_index', 'large_sticker_package_post_date_time')
+    def create(self, validated_data):
+        return documents.create_sticker(LARGE, validated_data.pop('package_id'), validated_data)
+
+
+class LargeStickerPackageSerializer(serializers.Serializer):
+    large_sticker_package_index = serializers.UUIDField(source='_id', read_only=True)
+    large_sticker_package_name = serializers.CharField(max_length=255)
+    large_sticker_package_image_file = StoredImageField()
+    share_range = serializers.ChoiceField(choices=SHARE_RANGE_CHOICES, default=ShareRange.PUBLIC.value)
+    large_sticker_package_post_date_time = serializers.DateTimeField(read_only=True)
+    stickers = serializers.SerializerMethodField()
+
+    def get_stickers(self, obj):
+        stickers = documents.stickers_of_package(LARGE, obj['_id'])
+        return LargeStickerSerializer(stickers, many=True, context=self.context).data
+
+    def create(self, validated_data):
+        return documents.create_package(LARGE, validated_data)
+
+    def update(self, instance, validated_data):
+        return documents.update_package(LARGE, instance, validated_data)

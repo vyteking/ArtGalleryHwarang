@@ -98,7 +98,8 @@
             "btn_Login":"ログイン",
             "btn_Signup":"新規登録",
             "btn_reset":"リセット",
-            "error_AllFieldsRequired":"すべての項目を入力してください。"
+            "error_AllFieldsRequired":"すべての項目を入力してください。",
+            "error_InvalidCredentials":"ユーザーIDまたはパスワードが正しくありません。"
         }, 
         "signup":{
             "scr_SignUp":"新規登録",
@@ -193,7 +194,9 @@
             "btn_Cancel":"取り消し",
             "error_login_required":"投稿するにはログインが必要です。",
             "error_load_failed":"投稿データの読み込みに失敗しました。",
-            "error_submit_failed":"投稿の送信に失敗しました。"
+            "error_submit_failed":"投稿の送信に失敗しました。",
+            "error_invalid_file_type":"アップロードできるのは画像ファイルのみです。",
+            "error_file_too_large":"各ファイルのサイズは25MB以下にしてください。"
         },
         "replieslist":{
             "lbl_Replies":"返信",

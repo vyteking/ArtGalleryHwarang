@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { api, idSegment } from '../api';
 import { GetServerAPIAddress, useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { usePluralForm } from '../locale/localetextgetter';
@@ -50,7 +50,7 @@ function FollowListModal({ kind }: { kind: FollowListKind }) {
             try {
                 setLoading(true);
                 setError(false);
-                const response = await axios.get<UserSummary[]>(GetServerAPIAddress('u', `${userindex1st}/${kind}`));
+                const response = await api.get<UserSummary[]>(GetServerAPIAddress('u', `${idSegment(userindex1st)}/${kind}`));
                 if (!cancelled) setUsers(response.data);
             } catch (err) {
                 if (import.meta.env.DEV) console.error(`Error fetching ${kind}:`, err);

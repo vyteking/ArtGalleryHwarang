@@ -1,14 +1,12 @@
 """
 ASGI config for ArtGalleryHwarang project.
-Initializes Beanie (MongoDB), Redis, and Elasticsearch on startup
-via the ASGI lifespan protocol.
+Initializes Redis and Elasticsearch on startup via the ASGI lifespan protocol.
+MongoDB is accessed synchronously through mongodb.py and needs no startup step.
 """
 
 import os
 from django.core.asgi import get_asgi_application
-from beanie import init_beanie
 from elasticsearch_dsl import async_connections
-from utils import get_mongo_db
 from ArtGalleryHwarang.cache import get_redis, close_redis
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ArtGalleryHwarang.settings')
@@ -16,20 +14,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ArtGalleryHwarang.settings')
 django_app = get_asgi_application()
 
 
-def get_beanie_documents():
-    from post.documents import Post
-    from reply.documents import Reply
-    return [Post, Reply]
-
-
 async def startup():
     from django.conf import settings
-
-    # MongoDB via Beanie
-    await init_beanie(
-        database=get_mongo_db(),
-        document_models=get_beanie_documents(),
-    )
 
     # Redis
     await get_redis()

@@ -106,7 +106,8 @@
             "btn_Login":"Entrar",
             "btn_Signup":"Registrarse",
             "btn_reset":"Reajustar",
-            "error_AllFieldsRequired":"Todos los campos son obligatorios."
+            "error_AllFieldsRequired":"Todos los campos son obligatorios.",
+            "error_InvalidCredentials":"El ID de usuario o la contraseña son incorrectos."
         }, 
         "signup":{
             "scr_SignUp":"Inscripción",
@@ -201,7 +202,9 @@
             "btn_Cancel":"Cancelar",
             "error_login_required":"Debes iniciar sesión para publicar.",
             "error_load_failed":"No se pudieron cargar los datos de la publicación.",
-            "error_submit_failed":"No se pudo enviar la publicación."
+            "error_submit_failed":"No se pudo enviar la publicación.",
+            "error_invalid_file_type":"Solo se pueden subir archivos de imagen.",
+            "error_file_too_large":"Cada archivo debe ocupar 25 MB como máximo."
         },
         "replieslist":{
             "lbl_Replies":"Respuestas",

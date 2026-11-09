@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
-import axios from 'axios';
-import base, { GetServerAPIAddress, useClassNames } from '../base';
+import { api, cssImageUrl, idSegment, isCancelled, isNotFound } from '../api';
+import { GetServerAPIAddress, useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { usePluralForm } from '../locale/localetextgetter';
 import { Avatar, StatusBadge, LevelBadge } from './userprofile';
@@ -10,17 +10,15 @@ import type { UserProfile } from './userprofile';
 import './userinfopage.css';
 
 function Userinfopage() {
-    const { userindex1st: routeUserIndex } = useParams<{ userindex1st: string }>();
+    const { userindex1st: userIndex } = useParams<{ userindex1st: string }>();
     const { localeTxt, currentLocale } = useLocale();
     const getClassNames = useClassNames();
     const plural = usePluralForm();
 
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [loadFailed, setLoadFailed] = useState(false);
 
-    // Fall back to the current login session when no user is given in the route.
-    const userIndex = routeUserIndex ?? base.session.GetCurrentLoginSession()?.user_index_1st;
     const pageTxt = localeTxt.userinfopage;
 
     useEffect(() => {
@@ -29,37 +27,42 @@ function Userinfopage() {
             return;
         }
 
+        const controller = new AbortController();
+        const { signal } = controller;
+
         const fetchProfile = async () => {
             try {
                 setLoading(true);
-                setError(null);
-                const response = await axios.get<UserProfile>(GetServerAPIAddress('u', `${userIndex}/info`));
+                setLoadFailed(false);
+                const response = await api.get<UserProfile>(
+                    GetServerAPIAddress('u', `${idSegment(userIndex)}/info`), { signal });
                 setProfile(response.data);
             } catch (err) {
+                if (isCancelled(err)) return;
                 if (import.meta.env.DEV) console.error('Error fetching user info:', err);
                 setProfile(null);
-                setError(axios.isAxiosError(err) && err.response?.status === 404
-                    ? pageTxt.user_not_found
-                    : pageTxt.load_error);
+                setLoadFailed(!isNotFound(err));
             } finally {
-                setLoading(false);
+                if (!signal.aborted) setLoading(false);
             }
         };
 
         fetchProfile();
-    }, [userIndex, pageTxt.user_not_found, pageTxt.load_error]);
+        return () => controller.abort();
+    }, [userIndex]);
 
-    if (loading || error || !profile) {
+    if (loading || loadFailed || !profile) {
         return (
             <div id="UserinfopageContainer" className={getClassNames('userinfo-page layout')}>
                 <div className={getClassNames('profile-state')}>
                     {loading && <div className={getClassNames('profile-spinner')} />}
-                    <p className={getClassNames('')}>{loading ? pageTxt.loading_user_info : (error ?? pageTxt.user_not_found)}</p>
+                    <p className={getClassNames('')}>{loading ? pageTxt.loading_user_info : (loadFailed ? pageTxt.load_error : pageTxt.user_not_found)}</p>
                 </div>
             </div>
         );
     }
 
+    const headerImage = cssImageUrl(profile.user_header_image);
     const notSet = <span className={getClassNames('userinfo-notset')}>{pageTxt.not_set}</span>;
     const joinDate = new Date(profile.user_join_date).toLocaleDateString(currentLocale.LocaleInfo.code, {
         year: 'numeric', month: 'long', day: 'numeric',
@@ -100,12 +103,10 @@ function Userinfopage() {
         <div id="UserinfopageContainer" className={getClassNames('userinfo-page layout')}>
             <section className={getClassNames('userinfo-hero card')}>
                 <div
-                    className={getClassNames(`userinfo-header${profile.user_header_image ? '' : ' userinfo-header-empty'}`)}
-                    style={profile.user_header_image
-                        ? { backgroundImage: `url("${profile.user_header_image}")` }
-                        : undefined}
+                    className={getClassNames(`userinfo-header${headerImage ? '' : ' userinfo-header-empty'}`)}
+                    style={headerImage ? { backgroundImage: headerImage } : undefined}
                     role="img"
-                    aria-label={profile.user_header_image ? `${profile.user_id} header` : undefined}
+                    aria-label={headerImage ? `${profile.user_id} header` : undefined}
                 />
                 <div className={getClassNames('userinfo-identity')}>
                     <Avatar

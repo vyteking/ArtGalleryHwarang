@@ -93,6 +93,7 @@ export interface LocaleTexts {
         btn_Signup: string;
         btn_reset: string;
         error_AllFieldsRequired: string;
+        error_InvalidCredentials: string;
     };
     signup: {
         scr_SignUp: string;
@@ -164,6 +165,8 @@ export interface LocaleTexts {
         error_login_required: string;
         error_load_failed: string;
         error_submit_failed: string;
+        error_invalid_file_type: string;
+        error_file_too_large: string;
     };
     replieslist: {
         lbl_Replies: string;

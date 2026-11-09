@@ -1,14 +1,12 @@
 from rest_framework import generics, permissions
-from .models import Reply
-from post.models import Post as HwarangPost
+
+from post.documents import get_post
+from . import documents
 from .serializers import ReplySerializer
 
-# Custom permission to only allow owners of an object to edit it.
+
 class IsOwnerOrReadOnly(permissions.BasePermission):
-    """
-    Custom permission to only allow owners of an object to edit it.
-    Assumes the model instance has an 'replyauthor' attribute.
-    """
+    """Only allow the author of a reply to edit or delete it."""
     def has_object_permission(self, request, view, obj):
         # Read permissions are allowed to any request,
         # so we'll always allow GET, HEAD or OPTIONS requests.
@@ -16,7 +14,7 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
 
         # Write permissions are only allowed to the author of the reply.
-        return obj.replyauthor == request.user
+        return obj['author_id'] == request.user.pk
 
 
 class ReplyListCreateView(generics.ListCreateAPIView):
@@ -25,29 +23,30 @@ class ReplyListCreateView(generics.ListCreateAPIView):
     """
     serializer_class = ReplySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # postview.tsx expects a plain list of replies.
+    pagination_class = None
 
     def get_queryset(self):
-        """
-        This view should return a list of all the replies
-        for the post as determined by the post_pk portion of the URL.
-        """
-        post_pk = self.kwargs['post_pk']
-        return Reply.objects.filter(post__pk=post_pk)
+        """Replies of the post named by the post_pk portion of the URL, oldest first."""
+        return documents.replies_of_post(self.kwargs['post_pk'])
 
     def perform_create(self, serializer):
-        """
-        This method is called when a new reply is created.
-        It associates the reply with the post from the URL and the logged-in user.
-        """
-        post_pk = self.kwargs['post_pk']
-        post = HwarangPost.objects.get(pk=post_pk)
-        serializer.save(replyauthor=self.request.user, post=post)
+        """Associate the new reply with the post from the URL and the logged-in user."""
+        post = get_post(self.kwargs['post_pk'], {'_id': 1})
+        serializer.save(author_id=self.request.user.pk, post_id=post['_id'])
 
 
 class ReplyRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     """
     View to retrieve, update, or delete a single reply.
     """
-    queryset = Reply.objects.all()
     serializer_class = ReplySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+    def get_object(self):
+        reply = documents.get_reply(self.kwargs['pk'])
+        self.check_object_permissions(self.request, reply)
+        return reply
+
+    def perform_destroy(self, instance):
+        documents.delete_reply(instance)

@@ -146,7 +146,8 @@
             "btn_Login":"",
             "btn_Signup":"",
             "btn_reset":"",
-            "error_AllFieldsRequired":""
+            "error_AllFieldsRequired":"",
+            "error_InvalidCredentials":""
         }, 
         "signup":{
             "scr_SignUp":"",
@@ -240,7 +241,9 @@
             "btn_Cancel":"",
             "error_login_required":"",
             "error_load_failed":"",
-            "error_submit_failed":""
+            "error_submit_failed":"",
+            "error_invalid_file_type":"",
+            "error_file_too_large":""
         },
         "replieslist":{
             "lbl_Replies":"",

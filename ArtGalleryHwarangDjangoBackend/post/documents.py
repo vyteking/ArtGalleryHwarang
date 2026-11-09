@@ -1,10 +1,20 @@
-from beanie import Document
-from pydantic import BaseModel, Field
-from uuid import UUID, uuid4
-from datetime import datetime
+"""
+Post documents in the MongoDB `posts` collection.
+
+    {
+        _id: UUID (postindex),
+        posttitle, postdescription: str,
+        author_id: UUID (UserInfo.user_index_1st in PostgreSQL),
+        posttag: [str],
+        is_in_public: bool,
+        contents: [content, ...],     # see postcontent/documents.py
+        created_at, updated_at: datetime,
+    }
+"""
+import uuid
 from enum import IntEnum
-from typing import Optional, Annotated, Union, Literal
-import pymongo
+
+from mongodb import POSTS, REPLIES, collection, delete_stored_files, find_or_404, now
 
 
 class Rating(IntEnum):
@@ -23,85 +33,86 @@ class ShowRange(IntEnum):
     PUBLIC = 16
 
 
-# Embedded content types — discriminated by content_type field
+# Content item lists embedded in each content, and the fields of each item that hold stored files.
+CONTENT_FILE_FIELDS = {
+    'blogcontent': ('thumbnailimagefile',),
+    'image2d': ('imagefile', 'thumbnailimagefile'),
+    'animation2d': ('animationfile', 'thumbnailimagefile'),
+    'object3d': ('objectfile', 'thumbnailimagefile'),
+    'audio': ('audiofile', 'thumbnailimagefile', 'albumimagefile'),
+    'video': ('videofile', 'thumbnailimagefile'),
+}
 
-class BlogContent(BaseModel):
-    content_type: Literal["blog"] = "blog"
-    blogtext: str
+NEWEST_FIRST = [('created_at', -1), ('_id', -1)]
 
-
-class Image2DContent(BaseModel):
-    content_type: Literal["image2d"] = "image2d"
-    file_url: str
-    description: str = ""
-
-
-class Animation2DContent(BaseModel):
-    content_type: Literal["animation2d"] = "animation2d"
-    file_url: str
-    animation_format: str = ""
-    description: str = ""
+# Posts are listed without their (possibly large) contents unless needed.
+WITHOUT_CONTENTS = {'contents': 0}
 
 
-class Object3DContent(BaseModel):
-    content_type: Literal["object3d"] = "object3d"
-    file_url: str
-    description: str = ""
+def get_post(postindex, projection=None):
+    return find_or_404(POSTS, {'_id': postindex}, projection)
 
 
-class AudioContent(BaseModel):
-    content_type: Literal["audio"] = "audio"
-    file_url: str
-    duration: Optional[int] = None
-    description: str = ""
+def create_post(author_id, data):
+    timestamp = now()
+    doc = {
+        '_id': uuid.uuid4(),
+        'posttitle': data['posttitle'],
+        'author_id': author_id,
+        'postdescription': data.get('postdescription', ''),
+        'posttag': list(data.get('posttag', [])),
+        'is_in_public': data.get('is_in_public', True),
+        'contents': [],
+        'created_at': timestamp,
+        'updated_at': timestamp,
+    }
+    collection(POSTS).insert_one(doc)
+    return doc
 
 
-class VideoContent(BaseModel):
-    content_type: Literal["video"] = "video"
-    file_url: str = ""
-    embed_url: str = ""
-    duration: Optional[int] = None
-    description: str = ""
+def update_post(post, data):
+    changes = {key: data[key] for key in ('posttitle', 'postdescription', 'posttag', 'is_in_public') if key in data}
+    changes['updated_at'] = now()
+    collection(POSTS).update_one({'_id': post['_id']}, {'$set': changes})
+    post.update(changes)
+    return post
 
 
-ContentData = Annotated[
-    Union[
-        BlogContent,
-        Image2DContent,
-        Animation2DContent,
-        Object3DContent,
-        AudioContent,
-        VideoContent,
-    ],
-    Field(discriminator="content_type"),
-]
+def adjacent_postindex(post, direction):
+    """postindex of the previous ('prev') or next ('next') post by creation time, or None.
+
+    Ties on created_at (MongoDB keeps milliseconds) are broken by _id, matching NEWEST_FIRST.
+    """
+    op, order = ('$lt', -1) if direction == 'prev' else ('$gt', 1)
+    query = {'$or': [
+        {'created_at': {op: post['created_at']}},
+        {'created_at': post['created_at'], '_id': {op: post['_id']}},
+    ]}
+    found = collection(POSTS).find_one(query, {'_id': 1}, sort=[('created_at', order), ('_id', order)])
+    return found['_id'] if found else None
 
 
-class PostContent(BaseModel):
-    postcontentindex: UUID = Field(default_factory=uuid4)
-    postcontenttag: str = ""
-    rating: Rating = Rating.GENERAL
-    show_range: ShowRange = ShowRange.PUBLIC
-    data: ContentData
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+def content_file_names(content):
+    return [
+        item.get(field)
+        for content_type, fields in CONTENT_FILE_FIELDS.items()
+        for item in content.get(content_type, [])
+        for field in fields
+    ]
 
 
-class Post(Document):
-    postindex: UUID = Field(default_factory=uuid4)
-    posttitle: str
-    author_id: UUID  # references UserInfo.user_index_1st in PostgreSQL
-    postdescription: str = ""
-    posttag: str = ""
-    is_in_public: bool = True
-    contents: list[PostContent] = []
-    created_at: datetime = Field(default_factory=datetime.utcnow)
-    updated_at: datetime = Field(default_factory=datetime.utcnow)
+def delete_posts(query):
+    """Delete matching posts, their replies and their uploaded files."""
+    posts = list(collection(POSTS).find(query, {'_id': 1, 'contents': 1}))
+    if not posts:
+        return
+    post_ids = [post['_id'] for post in posts]
+    collection(REPLIES).delete_many({'post_id': {'$in': post_ids}})
+    collection(POSTS).delete_many({'_id': {'$in': post_ids}})
+    delete_stored_files(
+        name for post in posts for content in post.get('contents', []) for name in content_file_names(content)
+    )
 
-    class Settings:
-        name = "posts"
-        indexes = [
-            pymongo.IndexModel([("author_id", pymongo.ASCENDING)]),
-            pymongo.IndexModel([("created_at", pymongo.DESCENDING)]),
-            pymongo.IndexModel([("posttag", pymongo.TEXT)]),
-        ]
+
+def delete_post(post):
+    delete_posts({'_id': post['_id']})

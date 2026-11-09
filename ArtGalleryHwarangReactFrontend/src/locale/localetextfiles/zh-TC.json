@@ -98,7 +98,8 @@
             "btn_Login":"登綠",
             "btn_Signup":"註冊",
             "btn_reset":"初始化",
-            "error_AllFieldsRequired":"請填寫所有欄位。"
+            "error_AllFieldsRequired":"請填寫所有欄位。",
+            "error_InvalidCredentials":"使用者 ID 或密碼不正確。"
         }, 
         "signup":{
             "scr_SignUp":"註冊",
@@ -193,7 +194,9 @@
             "btn_Cancel":"取消",
             "error_login_required":"發布貼子需要先登錄。",
             "error_load_failed":"貼子數據加載失敗。",
-            "error_submit_failed":"貼子發布失敗。"
+            "error_submit_failed":"貼子發布失敗。",
+            "error_invalid_file_type":"只能上傳圖片檔案。",
+            "error_file_too_large":"每個檔案不得超過 25 MB。"
         },
         "replieslist":{
             "lbl_Replies":"回答",

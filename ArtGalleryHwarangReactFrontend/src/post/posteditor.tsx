@@ -2,10 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './posteditor.css';
 import { GetServerAPIAddress, useClassNames } from '../base';
-import * as session from '../session';
+import { api, idSegment, isCancelled } from '../api';
+import { useSession } from '../SessionProvider';
 import { useMessagebox } from '../ui/messagebox/messageboxcontext';
 import { useLang } from '../locale/localetextgetter';
-import axios from 'axios';
+
+// Only image uploads exist so far. SVG is excluded because it can carry scripts.
+const MAX_FILE_SIZE_BYTES = 25 * 1024 * 1024;
+const isAllowedImage = (file: File) => file.type.startsWith('image/') && file.type !== 'image/svg+xml';
 
 interface PostData {
     title: string;
@@ -26,50 +30,74 @@ function PostEditor() {
     const [filePreviews, setFilePreviews] = useState<FilePreview[]>([]);
     const [isDragging, setIsDragging] = useState(false);
     const [postError, setPostError] = useState<string | null>(null);
+    const [submitting, setSubmitting] = useState(false);
 
     const getClassNames = useClassNames();
-    const { postId } = useParams<{ postId: string }>();
+    const { postindex: postId } = useParams<{ postindex: string }>();
     const navigate = useNavigate();
     const { showMessage } = useMessagebox();
+    const { currentUser } = useSession();
     const t = useLang('posteditor');
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const previewsRef = useRef<FilePreview[]>([]);
+    // Set once a new post exists, so retrying after a failed upload updates it instead of creating another.
+    const createdPostRef = useRef<string | null>(null);
+    // State only updates on the next render, which is too late to stop a second click right after the first.
+    const submitLockRef = useRef(false);
     const isEditing = Boolean(postId);
 
     useEffect(() => {
-        if (isEditing) {
-            axios.get<PostData>(GetServerAPIAddress('p', `${postId}`))
-                .then(response => {
-                    const post = response.data;
-                    setTitle(post.title);
-                    setDescription(post.description);
-                    setTags(post.tags ?? []);
-                })
-                .catch((error) => {
-                    if (import.meta.env.DEV) console.error('Error fetching post:', error);
-                    setPostError(t.error_load_failed);
-                });
-        }
+        if (!isEditing) return;
+        const controller = new AbortController();
+
+        const fetchPost = async () => {
+            try {
+                const response = await api.get<PostData>(
+                    GetServerAPIAddress('p', idSegment(postId)), { signal: controller.signal });
+                const post = response.data;
+                setTitle(post.title);
+                setDescription(post.description);
+                setTags(post.tags ?? []);
+            } catch (error) {
+                if (isCancelled(error)) return;
+                if (import.meta.env.DEV) console.error('Error fetching post:', error);
+                setPostError(t.error_load_failed);
+            }
+        };
+
+        fetchPost();
+        return () => controller.abort();
     }, [isEditing, postId]);
 
     useEffect(() => {
-        return () => {
-            filePreviews.forEach(fp => URL.revokeObjectURL(fp.url));
-        };
+        previewsRef.current = filePreviews;
     }, [filePreviews]);
 
+    // Release the remaining preview URLs only when leaving the page. Files removed earlier are released as they go.
+    useEffect(() => {
+        return () => {
+            previewsRef.current.forEach(fp => URL.revokeObjectURL(fp.url));
+        };
+    }, []);
+
     const addFiles = (incoming: File[]) => {
-        const newPreviews = incoming.map(file => ({
-            file,
-            url: URL.createObjectURL(file)
-        }));
+        if (incoming.some(file => !isAllowedImage(file))) {
+            showMessage(t.error_invalid_file_type, 'error');
+        } else if (incoming.some(file => file.size > MAX_FILE_SIZE_BYTES)) {
+            showMessage(t.error_file_too_large, 'error');
+        }
+        const newPreviews = incoming
+            .filter(file => isAllowedImage(file) && file.size <= MAX_FILE_SIZE_BYTES)
+            .map(file => ({
+                file,
+                url: URL.createObjectURL(file)
+            }));
         setFilePreviews(prev => [...prev, ...newPreviews]);
     };
 
-    const removeFile = (index: number) => {
-        setFilePreviews(prev => {
-            URL.revokeObjectURL(prev[index].url);
-            return prev.filter((_, i) => i !== index);
-        });
+    const removeFile = (target: FilePreview) => {
+        URL.revokeObjectURL(target.url);
+        setFilePreviews(prev => prev.filter(fp => fp !== target));
     };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,84 +126,67 @@ function PostEditor() {
 
     const removeTag = (tag: string) => setTags(prev => prev.filter(t => t !== tag));
 
-    {/*const uploadImages = async (postindex: string, token: string) => {
-        for (const fp of filePreviews) {
+    // Upload all images at once (parallel processing). Files that succeed leave the list,
+    // so a retry after a partial failure only sends the ones that are left.
+    const uploadImages = async (postindex: string) => {
+        const results = await Promise.allSettled(filePreviews.map(async (fp) => {
             const contentData = new FormData();
             contentData.append('postindex', postindex);
-            const contentResponse = await axios.post(
-                GetServerAPIAddress('c', 'api/add'),
-                contentData,
-                { headers: { Authorization: `Token ${token}` } }
-            );
+            const contentResponse = await api.post(GetServerAPIAddress('c', 'api/add'), contentData);
             const postcontentindex: string = contentResponse.data.postcontentindex;
 
             const imageData = new FormData();
             imageData.append('postcontentindex', postcontentindex);
             imageData.append('imagefile', fp.file);
             imageData.append('description', '');
-            await axios.post(
-                GetServerAPIAddress('c', 'api/add/image2d'),
-                imageData,
-                { headers: { 'Content-Type': 'multipart/form-data', Authorization: `Token ${token}` } }
-            );
-        }
-    }; */}
+            // Large files can take longer than the default request timeout.
+            await api.post(GetServerAPIAddress('c', 'api/add/image2d'), imageData, { timeout: 0 });
+        }));
 
-    // Upload all images at once (parallel processing)
-    const uploadImages = async (postindex: string, token: string) => {
-        // Upload all images at once (parallel processing)
-        const uploadPromises = filePreviews.map(async (fp) => {
-            const contentData = new FormData();
-            contentData.append('postindex', postindex);
-            const contentResponse = await axios.post(
-                GetServerAPIAddress('c', 'api/add'),
-                contentData,
-                { headers: { Authorization: `Token ${token}` } }
-            );
-            const postcontentindex: string = contentResponse.data.postcontentindex;
+        const uploaded = filePreviews.filter((_, i) => results[i].status === 'fulfilled');
+        uploaded.forEach(fp => URL.revokeObjectURL(fp.url));
+        setFilePreviews(prev => prev.filter(fp => !uploaded.includes(fp)));
 
-            const imageData = new FormData();
-            imageData.append('postcontentindex', postcontentindex);
-            imageData.append('imagefile', fp.file);
-            imageData.append('description', '');
-            return axios.post(
-                GetServerAPIAddress('c', 'api/add/image2d'),
-                imageData,
-                { headers: { 'Content-Type': 'multipart/form-data', Authorization: `Token ${token}` } }
-            );
-        });
-
-        await Promise.all(uploadPromises);
+        const failure = results.find((r): r is PromiseRejectedResult => r.status === 'rejected');
+        if (failure) throw failure.reason;
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (submitLockRef.current) return;
         setPostError(null);
 
-        const token = session.getAuthToken();
-        if (!token) {
+        if (!currentUser) {
             setPostError(t.error_login_required);
             return;
         }
 
-        const url = isEditing
-            ? GetServerAPIAddress('p', `${postId}/update`)
-            : GetServerAPIAddress('p', 'api/submit');
-        const method = isEditing ? 'put' : 'post';
+        const existingPost = postId ?? createdPostRef.current;
+        const payload = { title, description, tags };
 
+        submitLockRef.current = true;
+        setSubmitting(true);
         try {
-            const response = await axios[method](url, { title, description, tags }, {
-                headers: { Authorization: `Token ${token}` }
-            });
-            const postindex: string = isEditing ? postId! : response.data.postindex;
+            let postindex: string;
+            if (existingPost) {
+                postindex = idSegment(existingPost);
+                await api.put(GetServerAPIAddress('p', `${postindex}/update`), payload);
+            } else {
+                const response = await api.post(GetServerAPIAddress('p', 'api/submit'), payload);
+                postindex = idSegment(response.data.postindex);
+                createdPostRef.current = postindex;
+            }
             if (filePreviews.length > 0) {
-                await uploadImages(postindex, token);
+                await uploadImages(postindex);
             }
             navigate(`/p/${postindex}`);
         } catch (error) {
             if (import.meta.env.DEV) console.error('Error submitting post:', error);
             setPostError(t.error_submit_failed);
             showMessage(t.error_submit_failed, 'error');
+        } finally {
+            submitLockRef.current = false;
+            setSubmitting(false);
         }
     };
 
@@ -214,6 +225,7 @@ function PostEditor() {
                             ref={fileInputRef}
                             type="file"
                             onChange={handleFileChange}
+                            accept="image/*"
                             multiple
                             hidden
                         />
@@ -222,12 +234,12 @@ function PostEditor() {
                     {filePreviews.length > 0 && (
                         <div className="image-previews">
                             {filePreviews.map((fp, index) => (
-                                <div key={index} className="image-preview-wrapper">
+                                <div key={fp.url} className="image-preview-wrapper">
                                     <img src={fp.url} alt={`Preview ${index + 1}`} className="image-preview" />
                                     <button
                                         type="button"
                                         className="image-remove-btn"
-                                        onClick={() => removeFile(index)}
+                                        onClick={() => removeFile(fp)}
                                         aria-label="Remove file"
                                     >×</button>
                                 </div>
@@ -275,7 +287,7 @@ function PostEditor() {
                     <button type="button" className="btn-secondary" onClick={() => navigate(-1)}>
                         {t.btn_Cancel}
                     </button>
-                    <button type="submit" className="btn-primary">
+                    <button type="submit" className="btn-primary" disabled={submitting}>
                         {isEditing ? t.btn_Update : t.btn_Submit}
                     </button>
                 </div>

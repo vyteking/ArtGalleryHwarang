@@ -106,7 +106,8 @@
             "btn_Login":"Se connecter",
             "btn_Signup":"S'inscrire",
             "btn_reset":"Réinitialiser",
-            "error_AllFieldsRequired":"Tous les champs sont obligatoires."
+            "error_AllFieldsRequired":"Tous les champs sont obligatoires.",
+            "error_InvalidCredentials":"Identifiant ou mot de passe incorrect."
         }, 
         "signup":{
             "scr_SignUp":"Inscription",
@@ -201,7 +202,9 @@
             "btn_Cancel":"Annuler",
             "error_login_required":"Vous devez être connecté pour publier.",
             "error_load_failed":"Impossible de charger les données de la publication.",
-            "error_submit_failed":"Échec de la soumission de la publication."
+            "error_submit_failed":"Échec de la soumission de la publication.",
+            "error_invalid_file_type":"Seuls les fichiers image peuvent être téléversés.",
+            "error_file_too_large":"Chaque fichier doit faire 25 Mo au maximum."
         },
         "replieslist":{
             "lbl_Replies":"Réponses",

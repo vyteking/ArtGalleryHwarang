@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 import posixpath
 import environ
+from corsheaders.defaults import default_headers
 
 # Initialize environment variables
 env = environ.Env(
@@ -77,9 +78,16 @@ MIDDLEWARE = [
 
 frontendaddressexample = 'http://localhost:5173'
 
-CORS_ALLOWED_ORIGINS = [
-    frontendaddressexample
-]
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS', default=[frontendaddressexample])
+# The auth token is in a cookie, so cross-origin requests need credentials and the account header.
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = (*default_headers, 'x-hwarang-account')
+
+# Auth cookies (see userinfo/authentication.py).
+# The default SameSite=Lax needs the frontend and the API on the same site, e.g. a shared parent domain.
+AUTH_COOKIE_AGE = 60 * 60 * 24 * 30
+AUTH_COOKIE_SECURE = env.bool('AUTH_COOKIE_SECURE', default=not DEBUG)
+AUTH_COOKIE_SAMESITE = env('AUTH_COOKIE_SAMESITE', default='Lax')
 
 ROOT_URLCONF = 'ArtGalleryHwarang.urls'
 
@@ -121,8 +129,10 @@ DATABASES = {
     }
 }
 
-# MongoDB — for posts, replies, content documents via Beanie/Motor
+# MongoDB — posts (with their contents), replies and stickers, via PyMongo (see mongodb.py)
 MONGO_URI = env('MONGO_URI', default='mongodb://localhost:27017/hwarang')
+# Optional database name overriding the one in MONGO_URI
+MONGO_DB_NAME = env('MONGO_DB_NAME', default=None)
 
 # Redis — caching, rate limiting, pub/sub
 REDIS_URI = env('REDIS_URI', default='redis://localhost:6379/0')
@@ -132,6 +142,7 @@ ELASTICSEARCH_URI = env('ELASTICSEARCH_URI', default='http://localhost:9200')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'userinfo.authentication.AccountCookieAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [

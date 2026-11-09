@@ -1,8 +1,7 @@
-from rest_framework import generics, permissions, status
-from rest_framework.response import Response
-from rest_framework.exceptions import ValidationError
-from django.shortcuts import get_object_or_404
-from .models import Post
+from rest_framework import generics, permissions
+
+from mongodb import POSTS, MongoQuery, as_uuid
+from . import documents
 from .serializers import PostSerializer, PostGallerySerializer, GALLERY_CONTENT_TYPES
 
 
@@ -11,35 +10,45 @@ class IsPostOwner(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        return obj.postauthor == request.user
+        return obj['author_id'] == request.user.pk
+
+
+class PostObjectMixin:
+    """Look up the post document named by the URL's postindex and check object permissions."""
+    lookup_field = 'postindex'
+    post_projection = documents.WITHOUT_CONTENTS
+
+    def get_object(self):
+        post = documents.get_post(self.kwargs[self.lookup_field], self.post_projection)
+        self.check_object_permissions(self.request, post)
+        return post
 
 
 class PostListView(generics.ListAPIView):
-    queryset = Post.objects.order_by('-created_at')
     serializer_class = PostSerializer
 
+    def get_queryset(self):
+        return MongoQuery(POSTS, sort=documents.NEWEST_FIRST, projection=documents.WITHOUT_CONTENTS)
 
-class PostDetailView(generics.RetrieveAPIView):
-    queryset = Post.objects.all()
+
+class PostDetailView(PostObjectMixin, generics.RetrieveAPIView):
     serializer_class = PostSerializer
-    lookup_field = 'postindex'
 
 
 class PostByUserView(generics.ListAPIView):
     serializer_class = PostGallerySerializer
 
     def get_queryset(self):
-        postauthor = self.kwargs['postauthor']
-        queryset = Post.objects.filter(postauthor=postauthor)
+        postauthor = as_uuid(self.kwargs['postauthor'])
+        query = {'author_id': postauthor}
         # Private posts are only listed for their author.
-        if str(self.request.user.pk) != str(postauthor):
-            queryset = queryset.filter(isInPublic=True)
+        if self.request.user.pk != postauthor:
+            query['is_in_public'] = True
         # Optional submission type filter for the gallery tabs, e.g. ?type=image2d
         content_type = self.request.query_params.get('type')
         if content_type in GALLERY_CONTENT_TYPES:
-            queryset = queryset.filter(**{f'postcontent__{content_type}__isnull': False}).distinct()
-        prefetches = [f'postcontent_set__{content_type}' for content_type in GALLERY_CONTENT_TYPES]
-        return queryset.prefetch_related(*prefetches).order_by('-created_at')
+            query[f'contents.{content_type}.0'] = {'$exists': True}
+        return MongoQuery(POSTS, query, sort=documents.NEWEST_FIRST)
 
 
 class SubmitPostView(generics.CreateAPIView):
@@ -47,17 +56,17 @@ class SubmitPostView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(postauthor=self.request.user)
+        serializer.save(author_id=self.request.user.pk)
 
 
-class UpdatePostView(generics.UpdateAPIView):
-    queryset = Post.objects.all()
+class UpdatePostView(PostObjectMixin, generics.UpdateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated, IsPostOwner]
-    lookup_field = 'postindex'
 
 
-class DeletePostView(generics.DestroyAPIView):
-    queryset = Post.objects.all()
+class DeletePostView(PostObjectMixin, generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated, IsPostOwner]
-    lookup_field = 'postindex'
+    post_projection = {'author_id': 1}
+
+    def perform_destroy(self, instance):
+        documents.delete_post(instance)

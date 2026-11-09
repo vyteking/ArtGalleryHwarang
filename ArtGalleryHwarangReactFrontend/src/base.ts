@@ -4,12 +4,11 @@ import * as session from './session.tsx';
 import { useLocale } from './locale/localeoptions';
 import { useTheme } from './theme/themeoptions';
 import { useOrientation } from './ui/orientation/OrientationContext';
+import { API_BASE, GetServerAPIAddress } from './api';
 
-const serveraddress = import.meta.env.VITE_API_URL ?? "http://localhost:8000/";
+export { GetServerAPIAddress };
 
-export function GetServerAPIAddress(type: string, submitvalue: string = ''): string {
-    return serveraddress + type + '/' + submitvalue;
-}
+const serveraddress = API_BASE;
 
 export function useClassNames(): (localclassname: string) => string {
     const { direction } = useLocale();

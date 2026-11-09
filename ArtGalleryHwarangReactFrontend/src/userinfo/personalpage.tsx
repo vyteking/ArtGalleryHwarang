@@ -1,7 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
-import axios from 'axios';
-import base, { GetServerAPIAddress, useClassNames } from '../base';
+import { api, cssImageUrl, idSegment, isCancelled, isNotFound } from '../api';
+import { GetServerAPIAddress, useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { usePluralForm } from '../locale/localetextgetter';
 import type { LocaleTexts } from '../locale/locale.types';
@@ -37,9 +37,16 @@ function tabLabel(pageTxt: PageTexts, tab: GalleryTab): string {
     return pageTxt[`tab_${tab}`];
 }
 
-function authHeaders() {
-    const token = base.session.getAuthToken();
-    return token ? { Authorization: `Token ${token}` } : undefined;
+// Reads only the page number from the server's `next` link. The link itself is never requested,
+// so a wrong host in it (for example behind a proxy) cannot receive an authenticated request.
+function nextPageNumber(next: string | null): number | null {
+    if (!next) return null;
+    try {
+        const page = new URL(next, window.location.origin).searchParams.get('page');
+        return page && /^\d+$/.test(page) ? Number(page) : null;
+    } catch {
+        return null;
+    }
 }
 
 // Description clamped to a few lines, with a toggle shown only when the text overflows.
@@ -113,44 +120,54 @@ function GallerySection({ userIndex }: { userIndex: string }) {
 
     const [activeTab, setActiveTab] = useState<GalleryTab>('all');
     const [posts, setPosts] = useState<GalleryPost[]>([]);
-    const [nextPage, setNextPage] = useState<string | null>(null);
+    const [nextPage, setNextPage] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);
     const [loadingMore, setLoadingMore] = useState(false);
     const [error, setError] = useState(false);
+    // Shared with loadMore, so switching tabs also cancels a "load more" still in progress.
+    const requestController = useRef<AbortController | null>(null);
+
+    const typeParam = activeTab === 'all' ? {} : { type: activeTab };
 
     useEffect(() => {
-        let cancelled = false;
+        const controller = new AbortController();
+        const { signal } = controller;
+        requestController.current = controller;
+
         const fetchPosts = async () => {
             try {
                 setLoading(true);
                 setError(false);
-                const response = await axios.get<PaginatedResponse<GalleryPost>>(
-                    GetServerAPIAddress('p', `u/${userIndex}`),
-                    { params: activeTab === 'all' ? undefined : { type: activeTab }, headers: authHeaders() },
+                const response = await api.get<PaginatedResponse<GalleryPost>>(
+                    GetServerAPIAddress('p', `u/${idSegment(userIndex)}`),
+                    { params: activeTab === 'all' ? undefined : { type: activeTab }, signal },
                 );
-                if (cancelled) return;
                 setPosts(response.data.results);
-                setNextPage(response.data.next);
+                setNextPage(nextPageNumber(response.data.next));
             } catch (err) {
+                if (isCancelled(err)) return;
                 if (import.meta.env.DEV) console.error('Error fetching submissions:', err);
-                if (!cancelled) setError(true);
+                setError(true);
             } finally {
-                if (!cancelled) setLoading(false);
+                if (!signal.aborted) setLoading(false);
             }
         };
         fetchPosts();
-        return () => { cancelled = true; };
+        return () => controller.abort();
     }, [userIndex, activeTab]);
 
     const loadMore = async () => {
         if (!nextPage) return;
         try {
             setLoadingMore(true);
-            const response = await axios.get<PaginatedResponse<GalleryPost>>(nextPage, { headers: authHeaders() });
+            const response = await api.get<PaginatedResponse<GalleryPost>>(
+                GetServerAPIAddress('p', `u/${idSegment(userIndex)}`),
+                { params: { ...typeParam, page: nextPage }, signal: requestController.current?.signal },
+            );
             setPosts(prev => [...prev, ...response.data.results]);
-            setNextPage(response.data.next);
+            setNextPage(nextPageNumber(response.data.next));
         } catch (err) {
-            if (import.meta.env.DEV) console.error('Error fetching more submissions:', err);
+            if (import.meta.env.DEV && !isCancelled(err)) console.error('Error fetching more submissions:', err);
         } finally {
             setLoadingMore(false);
         }
@@ -219,39 +236,43 @@ function PersonalPage() {
 
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [loadFailed, setLoadFailed] = useState(false);
 
     const infoTxt = localeTxt.userinfopage;
     const pageTxt = localeTxt.personalpage;
 
     useEffect(() => {
         if (!userindex1st) return;
+        const controller = new AbortController();
+        const { signal } = controller;
+
         const fetchProfile = async () => {
             try {
                 setLoading(true);
-                setError(null);
-                const response = await axios.get<UserProfile>(GetServerAPIAddress('u', `${userindex1st}/info`));
+                setLoadFailed(false);
+                const response = await api.get<UserProfile>(
+                    GetServerAPIAddress('u', `${idSegment(userindex1st)}/info`), { signal });
                 setProfile(response.data);
             } catch (err) {
+                if (isCancelled(err)) return;
                 if (import.meta.env.DEV) console.error('Error fetching user data:', err);
                 setProfile(null);
-                setError(axios.isAxiosError(err) && err.response?.status === 404
-                    ? infoTxt.user_not_found
-                    : infoTxt.load_error);
+                setLoadFailed(!isNotFound(err));
             } finally {
-                setLoading(false);
+                if (!signal.aborted) setLoading(false);
             }
         };
         fetchProfile();
-    }, [userindex1st, infoTxt.user_not_found, infoTxt.load_error]);
+        return () => controller.abort();
+    }, [userindex1st]);
 
-    if (loading || error || !profile) {
+    if (loading || loadFailed || !profile) {
         return (
             <div id="PersonalPage" className={getClassNames('personal-page layout')}>
                 <div className={getClassNames('profile-state')}>
                     {loading && <div className={getClassNames('profile-spinner')} />}
                     <p className={getClassNames('')}>
-                        {loading ? infoTxt.loading_user_info : (error ?? infoTxt.user_not_found)}
+                        {loading ? infoTxt.loading_user_info : (loadFailed ? infoTxt.load_error : infoTxt.user_not_found)}
                     </p>
                 </div>
             </div>
@@ -259,18 +280,17 @@ function PersonalPage() {
     }
 
     const countTxt = localeTxt.statistic_with_count ?? localeTxt.statistic;
+    const headerImage = cssImageUrl(profile.user_header_image);
 
     return (
         <div id="PersonalPage" className={getClassNames('personal-page layout')}>
             <section id="Profile" className={getClassNames('card pp-profile')}>
                 <div
                     id="ProfileHeader"
-                    className={getClassNames(`pp-header${profile.user_header_image ? '' : ' pp-header-empty'}`)}
-                    style={profile.user_header_image
-                        ? { backgroundImage: `url("${profile.user_header_image}")` }
-                        : undefined}
+                    className={getClassNames(`pp-header${headerImage ? '' : ' pp-header-empty'}`)}
+                    style={headerImage ? { backgroundImage: headerImage } : undefined}
                     role="img"
-                    aria-label={profile.user_header_image ? `${profile.user_id} header` : undefined}
+                    aria-label={headerImage ? `${profile.user_id} header` : undefined}
                 />
                 <div className={getClassNames('pp-identity')}>
                     <Avatar src={profile.user_profile_pic} name={profile.user_id} className="pp-avatar" />

@@ -122,7 +122,8 @@
             "btn_Login":"Вход",
             "btn_Signup":"Зарегистрироваться",
             "btn_reset":"Сброс",
-            "error_AllFieldsRequired":"Все поля обязательны для заполнения."
+            "error_AllFieldsRequired":"Все поля обязательны для заполнения.",
+            "error_InvalidCredentials":"Неверный ID пользователя или пароль."
         }, 
         "signup":{
             "scr_SignUp":"Регистрация",
@@ -217,7 +218,9 @@
             "btn_Cancel":"Отмена",
             "error_login_required":"Для публикации необходимо войти в систему.",
             "error_load_failed":"Не удалось загрузить данные поста.",
-            "error_submit_failed":"Не удалось отправить пост."
+            "error_submit_failed":"Не удалось отправить пост.",
+            "error_invalid_file_type":"Можно загружать только изображения.",
+            "error_file_too_large":"Размер каждого файла не должен превышать 25 МБ."
         },
         "replieslist":{
             "lbl_Replies":"Ответы",

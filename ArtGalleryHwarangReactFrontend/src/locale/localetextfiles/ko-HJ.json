@@ -98,7 +98,8 @@
             "btn_Login":"로그인",
             "btn_Signup":"會員加入",
             "btn_reset":"初期化",
-            "error_AllFieldsRequired":"모든項目을入力해주세요。"
+            "error_AllFieldsRequired":"모든項目을入力해주세요。",
+            "error_InvalidCredentials":"使用者아이디또는祕密番號가옳바르지않습니다。"
         }, 
         "signup":{
             "scr_SignUp":"會員加入",
@@ -193,7 +194,9 @@
             "btn_Cancel":"取消",
             "error_login_required":"揭示物을올리려면로그인해야합니다。",
             "error_load_failed":"揭示物데이터를불러오지못했습니다。",
-            "error_submit_failed":"揭示物올리기에失敗했습니다。"
+            "error_submit_failed":"揭示物올리기에失敗했습니다。",
+            "error_invalid_file_type":"畵像파일만올릴수있습니다。",
+            "error_file_too_large":"各파일의크기는25MB以下여야합니다。"
         },
         "replieslist":{
             "lbl_Replies":"덧글",
