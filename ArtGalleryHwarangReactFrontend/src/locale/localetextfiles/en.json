@@ -148,7 +148,8 @@
             "load_error":"Failed to load user info.",
             "not_set":"Not set",
             "no_following":"Not following anyone yet.",
-            "no_followers":"No followers yet."
+            "no_followers":"No followers yet.",
+            "btn_edit_profile":"Edit Profile"
         },
         "personalpage":{
             "tab_all":"All",

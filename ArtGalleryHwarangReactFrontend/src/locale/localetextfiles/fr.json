@@ -148,7 +148,8 @@
             "load_error":"Impossible de charger les informations utilisateur.",
             "not_set":"Non défini",
             "no_following":"Ne suit encore personne.",
-            "no_followers":"Aucun abonné pour l'instant."
+            "no_followers":"Aucun abonné pour l'instant.",
+            "btn_edit_profile":"Modifier le profil"
         },
         "personalpage":{
             "tab_all":"Tout",

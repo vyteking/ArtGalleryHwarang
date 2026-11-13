@@ -140,7 +140,8 @@
             "load_error":"사용자 정보를 불러오지 못했습니다.",
             "not_set":"미설정",
             "no_following":"아직 팔로우한 사용자가 없습니다.",
-            "no_followers":"아직 팔로워가 없습니다."
+            "no_followers":"아직 팔로워가 없습니다.",
+            "btn_edit_profile":"프로필 편집"
         },
         "personalpage":{
             "tab_all":"전체",

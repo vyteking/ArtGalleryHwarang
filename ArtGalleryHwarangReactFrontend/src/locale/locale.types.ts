@@ -201,6 +201,7 @@ export interface LocaleTexts {
         not_set: string;
         no_following: string;
         no_followers: string;
+        btn_edit_profile: string;
     };
     personalpage: {
         tab_all: string;

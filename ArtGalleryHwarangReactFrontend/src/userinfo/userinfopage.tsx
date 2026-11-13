@@ -5,6 +5,7 @@ import { api, cssImageUrl, idSegment, isCancelled, isNotFound } from '../api';
 import { GetServerAPIAddress, useClassNames } from '../base';
 import { useLocale } from '../locale/localeoptions';
 import { usePluralForm } from '../locale/localetextgetter';
+import { useSession } from '../SessionProvider';
 import { Avatar, StatusBadge, LevelBadge } from './userprofile';
 import type { UserProfile } from './userprofile';
 import './userinfopage.css';
@@ -14,6 +15,7 @@ function Userinfopage() {
     const { localeTxt, currentLocale } = useLocale();
     const getClassNames = useClassNames();
     const plural = usePluralForm();
+    const { currentUser } = useSession();
 
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const [loading, setLoading] = useState(true);
@@ -68,6 +70,8 @@ function Userinfopage() {
         year: 'numeric', month: 'long', day: 'numeric',
     });
     const countTxt = localeTxt.statistic_with_count ?? localeTxt.statistic;
+    // API requests act as the selected account, so only that account can edit this profile.
+    const isOwnProfile = currentUser != null && String(currentUser.user_index_1st) === profile.user_index_1st;
 
     const rows: { key: string; label: string; value: ReactNode; wide?: boolean }[] = [
         { key: 'userid', label: localeTxt.userinfo.userID, value: profile.user_id },
@@ -132,6 +136,11 @@ function Userinfopage() {
                         <Link to="followers" className={getClassNames('userinfo-stat')}>
                             {plural(countTxt.followers, profile.followers_count)}
                         </Link>
+                        {isOwnProfile && (
+                            <Link to="edit" className={getClassNames('userinfo-stat userinfo-edit')}>
+                                {pageTxt.btn_edit_profile}
+                            </Link>
+                        )}
                     </div>
                 </div>
             </section>

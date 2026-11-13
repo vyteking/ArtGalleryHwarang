@@ -140,7 +140,8 @@
             "load_error":"使用者情報를불러오지못했습니다。",
             "not_set":"未設定",
             "no_following":"아직팔로우한使用者가없습니다。",
-            "no_followers":"아직팔로워가없습니다。"
+            "no_followers":"아직팔로워가없습니다。",
+            "btn_edit_profile":"프로필編輯"
         },
         "personalpage":{
             "tab_all":"全體",

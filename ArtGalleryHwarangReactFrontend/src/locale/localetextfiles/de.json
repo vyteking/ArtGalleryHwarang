@@ -148,7 +148,8 @@
             "load_error":"Benutzerinformationen konnten nicht geladen werden.",
             "not_set":"Nicht festgelegt",
             "no_following":"Folgt noch niemandem.",
-            "no_followers":"Noch keine Follower."
+            "no_followers":"Noch keine Follower.",
+            "btn_edit_profile":"Profil bearbeiten"
         },
         "personalpage":{
             "tab_all":"Alle",

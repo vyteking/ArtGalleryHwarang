@@ -129,6 +129,19 @@
     background-color: var(--c-accent-subtle);
 }
 
+/* Edit button — shown only on the logged-in user's own profile */
+.userinfo-page .userinfo-edit {
+    border-color: var(--c-accent);
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+}
+
+.userinfo-page .userinfo-edit:hover {
+    border-color: var(--c-accent-hover);
+    background-color: var(--c-accent-hover);
+    color: var(--c-accent-fg);
+}
+
 /* ── Detail rows ───────────────────────────────────────────── */
 .userinfo-page .userinfo-rows {
     display: grid;

@@ -188,7 +188,8 @@
             "load_error":"",
             "not_set":"",
             "no_following":"",
-            "no_followers":""
+            "no_followers":"",
+            "btn_edit_profile":""
         },
         "personalpage":{
             "tab_all":"",

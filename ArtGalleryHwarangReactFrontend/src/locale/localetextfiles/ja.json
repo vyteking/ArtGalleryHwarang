@@ -140,7 +140,8 @@
             "load_error":"ユーザー情報を読み込めませんでした。",
             "not_set":"未設定",
             "no_following":"まだ誰もフォローしていません。",
-            "no_followers":"まだフォロワーがいません。"
+            "no_followers":"まだフォロワーがいません。",
+            "btn_edit_profile":"プロフィールを編集"
         },
         "personalpage":{
             "tab_all":"すべて",

@@ -140,7 +140,8 @@
             "load_error":"无法加载用户信息。",
             "not_set":"未设置",
             "no_following":"尚未关注任何人。",
-            "no_followers":"尚无粉丝。"
+            "no_followers":"尚无粉丝。",
+            "btn_edit_profile":"编辑个人资料"
         },
         "personalpage":{
             "tab_all":"全部",

@@ -140,7 +140,8 @@
             "load_error":"無法載入使用者資訊。",
             "not_set":"未設定",
             "no_following":"尚未追蹤任何人。",
-            "no_followers":"尚無追蹤者。"
+            "no_followers":"尚無追蹤者。",
+            "btn_edit_profile":"編輯個人資料"
         },
         "personalpage":{
             "tab_all":"全部",
