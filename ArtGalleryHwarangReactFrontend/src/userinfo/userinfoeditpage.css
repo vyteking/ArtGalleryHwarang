@@ -1,0 +1,126 @@
+/* ============================================================
+ * Edit Profile dialog
+ *
+ * Rendered into document.body through a portal, above the header
+ * and sidebar (z 1500) but below message boxes (z 2000).
+ * Rules are scoped as `.editprofile-modal .x` so they beat the
+ * single-class theme rules (see userprofile.css). Mirrors the
+ * following/followers dialog (following_followers.css).
+ * ============================================================ */
+
+div.editprofile-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-4);
+    font-family: var(--font-sans);
+    background-color: var(--c-overlay);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    animation: editprofile-fade var(--t-base);
+}
+
+.editprofile-modal .editprofile-dialog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    max-height: min(640px, calc(100dvh - 2 * var(--sp-8)));
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    outline: none;
+    animation: editprofile-pop var(--t-slow);
+}
+
+/* ── Header: title + close ────────────────────────────────── */
+.editprofile-modal .editprofile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    padding: var(--sp-4) var(--sp-2) var(--sp-4) var(--sp-5);
+    border-bottom: 1px solid var(--c-border);
+}
+
+.editprofile-modal .editprofile-title {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: var(--fw-semibold);
+}
+
+.editprofile-modal .editprofile-close {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-full);
+    background: none;
+    color: var(--c-text-2);
+    font-size: var(--text-2xl);
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color var(--t-fast);
+}
+
+.editprofile-modal .editprofile-close:hover {
+    background-color: var(--c-surface);
+    color: var(--c-text);
+}
+
+/* ── Body: form fields ────────────────────────────────────── */
+.editprofile-modal .editprofile-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding: var(--sp-5);
+}
+
+.editprofile-modal .editprofile-body textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.editprofile-modal .editprofile-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--sp-3);
+    padding-top: var(--sp-2);
+}
+
+@keyframes editprofile-fade { from { opacity: 0; } }
+@keyframes editprofile-pop  { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
+
+/* ============================================================
+ * Mobile (< 768px): dialog becomes a bottom sheet
+ * ============================================================ */
+@media (max-width: 767px) {
+    .editprofile-modal {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .editprofile-modal .editprofile-dialog {
+        max-width: none;
+        max-height: 85dvh;
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        border-bottom: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .editprofile-modal,
+    .editprofile-modal .editprofile-dialog {
+        animation: none;
+    }
+}

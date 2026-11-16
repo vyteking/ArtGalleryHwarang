@@ -1,0 +1,259 @@
+{
+    "LocaleInfo":{
+        "code":"pl-PL",
+        "name":"Polski",
+        "direction":0
+    },
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":" ",
+        "dateformat":"dd.MM.yyyy"
+    },
+    "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
+        "common":{
+            "OK":"OK",
+            "OK_Confirm_btn":"OK",
+            "Yes":"Tak",
+            "No":"Nie",
+            "Confirm":"Potwierdź",
+            "Cancel":"Anuluj",
+            "Open":"Otwórz",
+            "Close":"Zamknij",
+            "Reset":"Resetuj"
+        },
+        "statistic":{
+            "posts": {
+                "one":"post",
+                "few":"posty",
+                "many":"postów",
+                "other":"posta"
+            },
+            "following": {
+                "one":"obserwowany",
+                "few":"obserwowanych",
+                "many":"obserwowanych",
+                "other":"obserwowanego"
+            },
+            "followers": {
+                "one":"obserwujący",
+                "few":"obserwujących",
+                "many":"obserwujących",
+                "other":"obserwującego"
+            },
+            "Replies": {
+                "one":"odpowiedź",
+                "few":"odpowiedzi",
+                "many":"odpowiedzi",
+                "other":"odpowiedzi"
+            }
+        },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} post",
+                "few":"{{count}} posty",
+                "many":"{{count}} postów",
+                "other":"{{count}} posta"
+            },
+            "following": {
+                "one":"{{count}} obserwowany",
+                "few":"{{count}} obserwowanych",
+                "many":"{{count}} obserwowanych",
+                "other":"{{count}} obserwowanego"
+            },
+            "followers": {
+                "one":"{{count}} obserwujący",
+                "few":"{{count}} obserwujących",
+                "many":"{{count}} obserwujących",
+                "other":"{{count}} obserwującego"
+            },
+            "Replies": {
+                "one":"{{count}} odpowiedź",
+                "few":"{{count}} odpowiedzi",
+                "many":"{{count}} odpowiedzi",
+                "other":"{{count}} odpowiedzi"
+            }
+        },
+        "header":{
+            "menu":"Menu"
+        },
+        "sidebar0":{
+            "mainpage":"Strona główna",
+            "hot":"Popularne",
+            "random_user_page":"Losowy użytkownik",
+            "random_submission":"Losowy post"
+        },
+        "footer":{
+            "displayoptions":"Opcje wyświetlania"
+        },
+        "userinfo":{
+            "userindex1st":"1. indeks użytkownika",
+            "userindex2nd":"2. indeks użytkownika",
+            "userindex3rd":"3. indeks użytkownika",
+            "userID":"ID użytkownika",
+            "userpassword":"Hasło",
+            "userpassword2nd":"2. hasło",
+            "userstatus":"Status użytkownika",
+            "userlevel":"Poziom użytkownika",
+            "userjoindate":"Data dołączenia",
+            "useremail":"E-mail",
+            "userphonenumber":"Numer telefonu",
+            "username":"Nazwa użytkownika",
+            "userdescription":"Opis",
+            "useraltname":"Nazwa alternatywna"
+        },
+        "useroptions":{
+            "Login":"Zaloguj się",
+            "Logout":"Wyloguj się",
+            "SignUp":"Zarejestruj się",
+            "notification":"Powiadomienia",
+            "directmessage":"Wiadomości",
+            "add_account":"+ Dodaj konto",
+            "settings":"Ustawienia"
+        },
+        "login":{
+            "scr_Login":"Logowanie",
+            "lbl_userId":"ID użytkownika",
+            "lbl_userPW":"Hasło",
+            "tbx_userId_Placeholder":"Wpisz tutaj swój ID użytkownika. ",
+            "tbx_userPW_Placeholder":"Wpisz tutaj swoje hasło. ",
+            "btn_Login":"Zaloguj się",
+            "btn_Signup":"Zarejestruj się",
+            "btn_reset":"Resetuj",
+            "error_AllFieldsRequired":"Wszystkie pola są wymagane.",
+            "error_InvalidCredentials":"Nieprawidłowy ID użytkownika lub hasło."
+        },
+        "signup":{
+            "scr_SignUp":"Rejestracja",
+            "lbl_UserId":"ID użytkownika",
+            "tbx_UserId_Placeholder":"Wpisz tutaj swój ID użytkownika. ",
+            "lbl_ConfirmUserID":"Potwierdź ID użytkownika",
+            "tbx_ConfirmUserID_Placeholder":"Powtórz tutaj swój ID użytkownika. ",
+            "lbl_UserPW":"Hasło",
+            "tbx_UserPW_Placeholder":"Wpisz tutaj swoje hasło. ",
+            "lbl_ConfirmUserPW":"Potwierdź hasło",
+            "tbx_ConfirmUserPW_Placeholder":"Powtórz tutaj swoje hasło. ",
+            "btn_GoBack":"Wróć",
+            "btn_Reset":"Resetuj",
+            "btn_Signup":"Zarejestruj się",
+            "error_AllFieldsRequired":"Wszystkie pola są wymagane.",
+            "error_UserIDsMismatch":"Identyfikatory użytkownika nie są zgodne.",
+            "error_PasswordsMismatch":"Hasła nie są zgodne.",
+            "error_UserIDExists":"Ten ID użytkownika jest już zajęty."
+        },
+        "userstatus":{
+            "SuspendedUser":"Zawieszony użytkownik",
+            "NormalUser":"Zwykły użytkownik",
+            "Admin":"Administrator",
+            "Developer":"Programista",
+            "ProjectManager":"Kierownik projektu",
+            "Founder":"Założyciel"
+        },
+        "userlevel":{
+            "UnrankedUser":"Bez rangi",
+            "BronzeUser":"Brąz",
+            "SilverUser":"Srebro",
+            "GoldUser":"Złoto",
+            "PlatinumUser":"Platyna"
+        },
+        "userinfopage":{
+            "loading_user_info":"Wczytywanie informacji o użytkowniku...",
+            "user_not_found":"Nie znaleziono użytkownika.",
+            "load_error":"Nie udało się wczytać informacji o użytkowniku.",
+            "not_set":"Nie ustawiono",
+            "no_following":"Nikogo jeszcze nie obserwuje.",
+            "no_followers":"Brak obserwujących.",
+            "btn_edit_profile":"Edytuj profil",
+            "edit_profile_title":"Edytuj profil",
+            "tbx_username_placeholder":"Dodaj nazwę wyświetlaną",
+            "tbx_alt_name_placeholder":"Dodaj nazwę alternatywną",
+            "tbx_description_placeholder":"Opowiedz coś o sobie",
+            "btn_save_profile":"Zapisz zmiany",
+            "profile_update_failed":"Nie udało się zaktualizować profilu. Spróbuj ponownie."
+        },
+        "personalpage":{
+            "tab_all":"Wszystko",
+            "tab_blogcontent":"Wpis na blogu",
+            "tab_image2d":"Obraz 2D",
+            "tab_animation2d":"Animacja 2D",
+            "tab_object3d":"Praca 3D",
+            "tab_audio":"Audio",
+            "tab_video":"Wideo",
+            "show_more":"Pokaż więcej",
+            "show_less":"Pokaż mniej",
+            "no_submissions":"Brak publikacji.",
+            "load_more":"Wczytaj więcej",
+            "loading_submissions":"Wczytywanie publikacji...",
+            "private":"Prywatne",
+            "view_details":"Zobacz szczegóły"
+        },
+        "userinterfaceoptions":{
+            "theme":"Motyw",
+            "theme_light":"Jasny",
+            "theme_dark":"Ciemny",
+            "language":"Język",
+            "enable_vertical_direction":"Włącz kierunek pionowy"
+        },
+        "postview":{
+            "prev_post":"Poprzedni post",
+            "next_post":"Następny post",
+            "btn_Modify":"Modyfikuj",
+            "btn_Delete":"Usuń",
+            "loading_post":"Wczytywanie posta",
+            "post_not_found":"Nie znaleziono strony",
+            "post_error":"Błąd posta",
+            "unknown_author":"Nieznany autor",
+            "more_from_artist":"Więcej od tego artysty",
+            "post_contents_placeholder":"Treść posta zostanie wyświetlona tutaj.",
+            "confirm_delete":"Usunąć post?"
+        },
+        "posteditor":{
+            "lbl_title":"Utwórz nowy post",
+            "scr_EditPost":"Edytuj post",
+            "lbl_post_title":"Tytuł",
+            "tbx_title_Placeholder":"Wpisz tutaj tytuł. ",
+            "lbl_description":"Opis",
+            "lbl_uploadfile":"Prześlij plik(i)",
+            "txt_description_Placeholder":"Opowiedz nam o swojej sztuce",
+            "lbl_tags":"Tagi",
+            "tbx_tags_Placeholder":"np. malarstwo, abstrakcja, nowoczesność",
+            "btn_Submit":"Utwórz post",
+            "btn_Update":"Zaktualizuj post",
+            "btn_Reset":"Resetuj",
+            "btn_Cancel":"Anuluj",
+            "error_login_required":"Musisz być zalogowany, aby publikować.",
+            "error_load_failed":"Nie udało się wczytać danych posta.",
+            "error_submit_failed":"Nie udało się wysłać posta.",
+            "error_invalid_file_type":"Można przesyłać tylko pliki graficzne.",
+            "error_file_too_large":"Każdy plik może mieć maksymalnie 25 MB."
+        },
+        "replieslist":{
+            "lbl_Replies":"Odpowiedzi",
+            "reply_submission_error":"Wystąpił błąd podczas wysyłania odpowiedzi. ",
+            "no_replies":"Brak odpowiedzi. Bądź pierwszy!",
+            "anonymous":"Anonim",
+            "tbx_reply_Placeholder":"Napisz odpowiedź…",
+            "btn_submit_reply":"Wyślij odpowiedź",
+            "btn_edit":"Edytuj",
+            "btn_delete":"Usuń",
+            "btn_save":"Zapisz",
+            "confirm_delete_reply":"Usunąć tę odpowiedź?",
+            "error_edit_failed":"Nie udało się zaktualizować odpowiedzi.",
+            "error_delete_failed":"Nie udało się usunąć odpowiedzi."
+        },
+        "homepage":{
+            "welcome_back":"Witaj ponownie",
+            "lbl_accounts":"Zalogowane konta",
+            "badge_current":"Bieżące",
+            "btn_switch":"Przełącz",
+            "btn_view_profile":"Zobacz profil",
+            "btn_new_post":"Nowy post",
+            "btn_logout_all":"Wyloguj wszystkie",
+            "confirm_logout_all":"Wylogować się ze wszystkich kont na tym urządzeniu?",
+            "welcome_title":"Witaj w Hwarang",
+            "welcome_subtitle":"Zaloguj się lub utwórz konto, aby udostępniać i odkrywać sztukę."
+        }
+    }
+}

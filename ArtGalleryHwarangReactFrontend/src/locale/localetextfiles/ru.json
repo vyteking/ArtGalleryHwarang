@@ -165,7 +165,13 @@
             "not_set":"Не указано",
             "no_following":"Пока ни на кого не подписан.",
             "no_followers":"Пока нет подписчиков.",
-            "btn_edit_profile":"Редактировать профиль"
+            "btn_edit_profile":"Редактировать профиль",
+            "edit_profile_title":"Редактировать профиль",
+            "tbx_username_placeholder":"Добавьте отображаемое имя",
+            "tbx_alt_name_placeholder":"Добавьте альтернативное имя",
+            "tbx_description_placeholder":"Расскажите о себе",
+            "btn_save_profile":"Сохранить изменения",
+            "profile_update_failed":"Не удалось обновить профиль. Попробуйте ещё раз."
         },
         "personalpage":{
             "tab_all":"Все",

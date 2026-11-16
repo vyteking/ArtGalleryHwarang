@@ -1,9 +1,13 @@
-from .models import UserInfo, UserFollowing, UserCloseFriend
-from .serializers import UserInfoSerializer, PublicUserInfoSerializer, UserProfileSerializer, UserSummarySerializer
+from .models import UserInfo, UserFollowing, UserCloseFriend, UserAdditionalInfo
+from .serializers import (
+    UserInfoSerializer, PublicUserInfoSerializer, UserProfileSerializer, UserSummarySerializer,
+    UserAdditionalInfoSerializer,
+)
 from .authentication import auth_cookie_name, parse_account_header
 from django.conf import settings
 from django.db import IntegrityError
 from django.contrib.auth.hashers import check_password
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from rest_framework import generics, permissions, status
@@ -92,6 +96,17 @@ class UserDeletionView(generics.DestroyAPIView):
     queryset = UserInfo.objects.all()
     permission_classes = [IsAuthenticated, IsUserSelf]
     lookup_field = 'user_index_1st'
+
+# Lets a user edit their own display name, alternate name, and description.
+class UserAdditionalInfoUpdateView(generics.UpdateAPIView):
+    serializer_class = UserAdditionalInfoSerializer
+    permission_classes = [IsAuthenticated, IsUserSelf]
+
+    def get_object(self):
+        user = get_object_or_404(UserInfo, pk=self.kwargs['user_index_1st'])
+        self.check_object_permissions(self.request, user)
+        obj, _ = UserAdditionalInfo.objects.get_or_create(user_info_index_1st=user)
+        return obj
 
 class FollowUserView(APIView):
     permission_classes = [IsAuthenticated]

@@ -7,6 +7,7 @@ urlpatterns = [
     path('api/logout', LogoutView.as_view(), name='logout'),
     path('<uuid:user_index_1st>', UserPageView.as_view(), name='user-page'),
     path('<uuid:user_index_1st>/info', UserDetailView.as_view(), name='user-detail'),
+    path('<uuid:user_index_1st>/info/update', UserAdditionalInfoUpdateView.as_view(), name='update-user-info'),
     path('<uuid:user_index_1st>/update', UserUpdateView.as_view(), name='update-user'),
     path('<uuid:user_index_1st>/delete', UserDeletionView.as_view(), name='delete-user'),
     path('<uuid:user_index_1st>/follow', FollowUserView.as_view(), name='follow-user'),

@@ -10,6 +10,13 @@ import { Avatar, StatusBadge, LevelBadge } from './userprofile';
 import type { UserProfile } from './userprofile';
 import './userinfopage.css';
 
+// Shared with the nested "edit" route (see userinfoeditpage.tsx) via useOutletContext().
+export interface UserInfoOutletContext {
+    profile: UserProfile;
+    isOwnProfile: boolean;
+    onProfileUpdated: (patch: Pick<UserProfile, 'username' | 'user_alt_name' | 'user_description'>) => void;
+}
+
 function Userinfopage() {
     const { userindex1st: userIndex } = useParams<{ userindex1st: string }>();
     const { localeTxt, currentLocale } = useLocale();
@@ -72,6 +79,10 @@ function Userinfopage() {
     const countTxt = localeTxt.statistic_with_count ?? localeTxt.statistic;
     // API requests act as the selected account, so only that account can edit this profile.
     const isOwnProfile = currentUser != null && String(currentUser.user_index_1st) === profile.user_index_1st;
+
+    const handleProfileUpdated = (patch: Pick<UserProfile, 'username' | 'user_alt_name' | 'user_description'>) => {
+        setProfile(prev => (prev ? { ...prev, ...patch } : prev));
+    };
 
     const rows: { key: string; label: string; value: ReactNode; wide?: boolean }[] = [
         { key: 'userid', label: localeTxt.userinfo.userID, value: profile.user_id },
@@ -159,8 +170,8 @@ function Userinfopage() {
 
             </div>
 
-            {/* Following / followers dialog (child routes) */}
-            <Outlet />
+            {/* Following / followers / edit profile dialogs (child routes) */}
+            <Outlet context={{ profile, isOwnProfile, onProfileUpdated: handleProfileUpdated } satisfies UserInfoOutletContext} />
         </div>
     );
 }

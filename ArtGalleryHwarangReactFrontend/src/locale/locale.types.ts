@@ -202,6 +202,12 @@ export interface LocaleTexts {
         no_following: string;
         no_followers: string;
         btn_edit_profile: string;
+        edit_profile_title: string;
+        tbx_username_placeholder: string;
+        tbx_alt_name_placeholder: string;
+        tbx_description_placeholder: string;
+        btn_save_profile: string;
+        profile_update_failed: string;
     };
     personalpage: {
         tab_all: string;

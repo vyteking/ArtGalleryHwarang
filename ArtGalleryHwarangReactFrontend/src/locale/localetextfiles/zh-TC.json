@@ -141,7 +141,13 @@
             "not_set":"未設定",
             "no_following":"尚未追蹤任何人。",
             "no_followers":"尚無追蹤者。",
-            "btn_edit_profile":"編輯個人資料"
+            "btn_edit_profile":"編輯個人資料",
+            "edit_profile_title":"編輯個人資料",
+            "tbx_username_placeholder":"添加顯示名稱",
+            "tbx_alt_name_placeholder":"添加備用名稱",
+            "tbx_description_placeholder":"介紹一下自己吧",
+            "btn_save_profile":"保存變更",
+            "profile_update_failed":"個人資料更新失敗，請重試。"
         },
         "personalpage":{
             "tab_all":"全部",

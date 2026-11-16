@@ -9,6 +9,7 @@ const Loginpage = lazy(() => import('./userinfo/loginpage'));
 const Signuppage = lazy(() => import('./userinfo/signuppage'));
 const PersonalPage = lazy(() => import('./userinfo/personalpage'));
 const UserInfoPage = lazy(() => import('./userinfo/userinfopage'));
+const UserInfoEditPage = lazy(() => import('./userinfo/userinfoeditpage'));
 const FollowingList = lazy(() => import('./userinfo/following_followers').then(m => ({ default: m.FollowingList })));
 const FollowersList = lazy(() => import('./userinfo/following_followers').then(m => ({ default: m.FollowersList })));
 const PostView = lazy(() => import('./post/postview'));
@@ -30,6 +31,7 @@ function PageRoutes() {
                 <Route path="/u/:userindex1st/info" element={<UserInfoPage />}>
                     <Route path="following" element={<FollowingList />} />
                     <Route path="followers" element={<FollowersList />} />
+                    <Route path="edit" element={<UserInfoEditPage />} />
                 </Route>
                 <Route path="/u/random" element={<Homepage />} />
                 <Route path="/p/:postindex" element={<PostView />} />

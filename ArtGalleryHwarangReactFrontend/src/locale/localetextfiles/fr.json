@@ -149,7 +149,13 @@
             "not_set":"Non défini",
             "no_following":"Ne suit encore personne.",
             "no_followers":"Aucun abonné pour l'instant.",
-            "btn_edit_profile":"Modifier le profil"
+            "btn_edit_profile":"Modifier le profil",
+            "edit_profile_title":"Modifier le profil",
+            "tbx_username_placeholder":"Ajoutez un nom d'affichage",
+            "tbx_alt_name_placeholder":"Ajoutez un nom alternatif",
+            "tbx_description_placeholder":"Parlez un peu de vous",
+            "btn_save_profile":"Enregistrer les modifications",
+            "profile_update_failed":"Échec de la mise à jour du profil. Veuillez réessayer."
         },
         "personalpage":{
             "tab_all":"Tout",

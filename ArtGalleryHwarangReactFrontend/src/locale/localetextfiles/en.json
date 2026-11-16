@@ -149,7 +149,13 @@
             "not_set":"Not set",
             "no_following":"Not following anyone yet.",
             "no_followers":"No followers yet.",
-            "btn_edit_profile":"Edit Profile"
+            "btn_edit_profile":"Edit Profile",
+            "edit_profile_title":"Edit Profile",
+            "tbx_username_placeholder":"Add a display name",
+            "tbx_alt_name_placeholder":"Add an alternative name",
+            "tbx_description_placeholder":"Tell people about yourself",
+            "btn_save_profile":"Save Changes",
+            "profile_update_failed":"Failed to update profile. Please try again."
         },
         "personalpage":{
             "tab_all":"All",

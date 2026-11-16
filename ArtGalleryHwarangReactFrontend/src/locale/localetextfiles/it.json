@@ -1,0 +1,243 @@
+{
+    "LocaleInfo":{
+        "code":"it-IT",
+        "name":"Italiano",
+        "direction":0
+    },
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":".",
+        "dateformat":"dd/MM/yyyy"
+    },
+    "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
+        "common":{
+            "OK":"OK",
+            "OK_Confirm_btn":"OK",
+            "Yes":"Sì",
+            "No":"No",
+            "Confirm":"Conferma",
+            "Cancel":"Annulla",
+            "Open":"Apri",
+            "Close":"Chiudi",
+            "Reset":"Reimposta"
+        },
+        "statistic":{
+            "posts": {
+                "one":"post",
+                "other":"post"
+            },
+            "following": {
+                "one":"seguito",
+                "other":"seguiti"
+            },
+            "followers": {
+                "one":"follower",
+                "other":"follower"
+            },
+            "Replies": {
+                "one":"risposta",
+                "other":"risposte"
+            }
+        },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} post",
+                "other":"{{count}} post"
+            },
+            "following": {
+                "one":"{{count}} seguito",
+                "other":"{{count}} seguiti"
+            },
+            "followers": {
+                "one":"{{count}} follower",
+                "other":"{{count}} follower"
+            },
+            "Replies": {
+                "one":"{{count}} risposta",
+                "other":"{{count}} risposte"
+            }
+        },
+        "header":{
+            "menu":"Menu"
+        },
+        "sidebar0":{
+            "mainpage":"Pagina principale",
+            "hot":"Di tendenza",
+            "random_user_page":"Utente casuale",
+            "random_submission":"Post casuale"
+        },
+        "footer":{
+            "displayoptions":"Opzioni di visualizzazione"
+        },
+        "userinfo":{
+            "userindex1st":"1° indice utente",
+            "userindex2nd":"2° indice utente",
+            "userindex3rd":"3° indice utente",
+            "userID":"ID utente",
+            "userpassword":"Password",
+            "userpassword2nd":"2ª password",
+            "userstatus":"Stato utente",
+            "userlevel":"Livello utente",
+            "userjoindate":"Data di iscrizione",
+            "useremail":"E-mail",
+            "userphonenumber":"Numero di telefono",
+            "username":"Nome utente",
+            "userdescription":"Descrizione",
+            "useraltname":"Nome alternativo"
+        },
+        "useroptions":{
+            "Login":"Accedi",
+            "Logout":"Esci",
+            "SignUp":"Registrati",
+            "notification":"Notifiche",
+            "directmessage":"DM",
+            "add_account":"+ Aggiungi account",
+            "settings":"Impostazioni"
+        },
+        "login":{
+            "scr_Login":"Accesso",
+            "lbl_userId":"ID utente",
+            "lbl_userPW":"Password",
+            "tbx_userId_Placeholder":"Inserisci qui il tuo ID utente. ",
+            "tbx_userPW_Placeholder":"Inserisci qui la tua password. ",
+            "btn_Login":"Accedi",
+            "btn_Signup":"Registrati",
+            "btn_reset":"Reimposta",
+            "error_AllFieldsRequired":"Tutti i campi sono obbligatori.",
+            "error_InvalidCredentials":"ID utente o password errati."
+        },
+        "signup":{
+            "scr_SignUp":"Registrazione",
+            "lbl_UserId":"ID utente",
+            "tbx_UserId_Placeholder":"Inserisci qui il tuo ID utente. ",
+            "lbl_ConfirmUserID":"Conferma ID utente",
+            "tbx_ConfirmUserID_Placeholder":"Ripeti qui il tuo ID utente. ",
+            "lbl_UserPW":"Password",
+            "tbx_UserPW_Placeholder":"Inserisci qui la tua password. ",
+            "lbl_ConfirmUserPW":"Conferma password",
+            "tbx_ConfirmUserPW_Placeholder":"Ripeti qui la tua password. ",
+            "btn_GoBack":"Indietro",
+            "btn_Reset":"Reimposta",
+            "btn_Signup":"Registrati",
+            "error_AllFieldsRequired":"Tutti i campi sono obbligatori.",
+            "error_UserIDsMismatch":"Gli ID utente non corrispondono.",
+            "error_PasswordsMismatch":"Le password non corrispondono.",
+            "error_UserIDExists":"Questo ID utente è già in uso."
+        },
+        "userstatus":{
+            "SuspendedUser":"Utente sospeso",
+            "NormalUser":"Utente normale",
+            "Admin":"Amministratore",
+            "Developer":"Sviluppatore",
+            "ProjectManager":"Project manager",
+            "Founder":"Fondatore"
+        },
+        "userlevel":{
+            "UnrankedUser":"Senza grado",
+            "BronzeUser":"Bronzo",
+            "SilverUser":"Argento",
+            "GoldUser":"Oro",
+            "PlatinumUser":"Platino"
+        },
+        "userinfopage":{
+            "loading_user_info":"Caricamento informazioni utente...",
+            "user_not_found":"Utente non trovato.",
+            "load_error":"Impossibile caricare le informazioni utente.",
+            "not_set":"Non impostato",
+            "no_following":"Non segue ancora nessuno.",
+            "no_followers":"Ancora nessun follower.",
+            "btn_edit_profile":"Modifica profilo",
+            "edit_profile_title":"Modifica profilo",
+            "tbx_username_placeholder":"Aggiungi un nome visualizzato",
+            "tbx_alt_name_placeholder":"Aggiungi un nome alternativo",
+            "tbx_description_placeholder":"Racconta qualcosa di te",
+            "btn_save_profile":"Salva modifiche",
+            "profile_update_failed":"Impossibile aggiornare il profilo. Riprova."
+        },
+        "personalpage":{
+            "tab_all":"Tutto",
+            "tab_blogcontent":"Post del blog",
+            "tab_image2d":"Immagine 2D",
+            "tab_animation2d":"Animazione 2D",
+            "tab_object3d":"Opera 3D",
+            "tab_audio":"Audio",
+            "tab_video":"Video",
+            "show_more":"Mostra di più",
+            "show_less":"Mostra di meno",
+            "no_submissions":"Ancora nessuna pubblicazione.",
+            "load_more":"Carica altro",
+            "loading_submissions":"Caricamento pubblicazioni...",
+            "private":"Privato",
+            "view_details":"Visualizza dettagli"
+        },
+        "userinterfaceoptions":{
+            "theme":"Tema",
+            "theme_light":"Chiaro",
+            "theme_dark":"Scuro",
+            "language":"Lingua",
+            "enable_vertical_direction":"Abilita direzione verticale"
+        },
+        "postview":{
+            "prev_post":"Post precedente",
+            "next_post":"Post successivo",
+            "btn_Modify":"Modifica",
+            "btn_Delete":"Elimina",
+            "loading_post":"Caricamento post",
+            "post_not_found":"Pagina non trovata",
+            "post_error":"Errore del post",
+            "unknown_author":"Autore sconosciuto",
+            "more_from_artist":"Altro da questo artista",
+            "post_contents_placeholder":"Il contenuto del post verrà visualizzato qui.",
+            "confirm_delete":"Eliminare il post?"
+        },
+        "posteditor":{
+            "lbl_title":"Crea nuovo post",
+            "scr_EditPost":"Modifica post",
+            "lbl_post_title":"Titolo",
+            "tbx_title_Placeholder":"Inserisci qui il titolo. ",
+            "lbl_description":"Descrizione",
+            "lbl_uploadfile":"Carica file",
+            "txt_description_Placeholder":"Parlaci della tua arte",
+            "lbl_tags":"Tag",
+            "tbx_tags_Placeholder":"es. pittura, astratto, moderno",
+            "btn_Submit":"Crea post",
+            "btn_Update":"Aggiorna post",
+            "btn_Reset":"Reimposta",
+            "btn_Cancel":"Annulla",
+            "error_login_required":"Devi aver effettuato l'accesso per pubblicare.",
+            "error_load_failed":"Impossibile caricare i dati del post.",
+            "error_submit_failed":"Impossibile inviare il post.",
+            "error_invalid_file_type":"È possibile caricare solo file immagine.",
+            "error_file_too_large":"Ogni file deve essere di 25 MB o meno."
+        },
+        "replieslist":{
+            "lbl_Replies":"Risposte",
+            "reply_submission_error":"Si è verificato un errore durante l'invio della risposta. ",
+            "no_replies":"Ancora nessuna risposta. Sii il primo!",
+            "anonymous":"Anonimo",
+            "tbx_reply_Placeholder":"Scrivi una risposta…",
+            "btn_submit_reply":"Invia risposta",
+            "btn_edit":"Modifica",
+            "btn_delete":"Elimina",
+            "btn_save":"Salva",
+            "confirm_delete_reply":"Eliminare questa risposta?",
+            "error_edit_failed":"Impossibile aggiornare la risposta.",
+            "error_delete_failed":"Impossibile eliminare la risposta."
+        },
+        "homepage":{
+            "welcome_back":"Bentornato",
+            "lbl_accounts":"Account connessi",
+            "badge_current":"Attuale",
+            "btn_switch":"Cambia",
+            "btn_view_profile":"Visualizza profilo",
+            "btn_new_post":"Nuovo post",
+            "btn_logout_all":"Esci da tutti",
+            "confirm_logout_all":"Uscire da tutti gli account su questo dispositivo?",
+            "welcome_title":"Benvenuto su Hwarang",
+            "welcome_subtitle":"Accedi o crea un account per condividere ed esplorare l'arte."
+        }
+    }
+}

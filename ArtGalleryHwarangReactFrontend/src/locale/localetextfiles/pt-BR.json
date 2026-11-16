@@ -1,0 +1,243 @@
+{
+    "LocaleInfo":{
+        "code":"pt-BR",
+        "name":"Português (Brasil)",
+        "direction":0
+    },
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":".",
+        "dateformat":"dd/MM/yyyy"
+    },
+    "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
+        "common":{
+            "OK":"OK",
+            "OK_Confirm_btn":"OK",
+            "Yes":"Sim",
+            "No":"Não",
+            "Confirm":"Confirmar",
+            "Cancel":"Cancelar",
+            "Open":"Abrir",
+            "Close":"Fechar",
+            "Reset":"Redefinir"
+        },
+        "statistic":{
+            "posts": {
+                "one":"publicação",
+                "other":"publicações"
+            },
+            "following": {
+                "one":"seguindo",
+                "other":"seguindo"
+            },
+            "followers": {
+                "one":"seguidor",
+                "other":"seguidores"
+            },
+            "Replies": {
+                "one":"resposta",
+                "other":"respostas"
+            }
+        },
+        "statistic_with_count":{
+            "posts": {
+                "one":"{{count}} publicação",
+                "other":"{{count}} publicações"
+            },
+            "following": {
+                "one":"{{count}} seguindo",
+                "other":"{{count}} seguindo"
+            },
+            "followers": {
+                "one":"{{count}} seguidor",
+                "other":"{{count}} seguidores"
+            },
+            "Replies": {
+                "one":"{{count}} resposta",
+                "other":"{{count}} respostas"
+            }
+        },
+        "header":{
+            "menu":"Menu"
+        },
+        "sidebar0":{
+            "mainpage":"Página inicial",
+            "hot":"Em alta",
+            "random_user_page":"Usuário aleatório",
+            "random_submission":"Publicação aleatória"
+        },
+        "footer":{
+            "displayoptions":"Opções de exibição"
+        },
+        "userinfo":{
+            "userindex1st":"1º índice do usuário",
+            "userindex2nd":"2º índice do usuário",
+            "userindex3rd":"3º índice do usuário",
+            "userID":"ID de usuário",
+            "userpassword":"Senha",
+            "userpassword2nd":"2ª senha",
+            "userstatus":"Status do usuário",
+            "userlevel":"Nível do usuário",
+            "userjoindate":"Data de cadastro",
+            "useremail":"E-mail",
+            "userphonenumber":"Número de telefone",
+            "username":"Nome de usuário",
+            "userdescription":"Descrição",
+            "useraltname":"Nome alternativo"
+        },
+        "useroptions":{
+            "Login":"Entrar",
+            "Logout":"Sair",
+            "SignUp":"Cadastrar-se",
+            "notification":"Notificações",
+            "directmessage":"DM",
+            "add_account":"+ Adicionar conta",
+            "settings":"Configurações"
+        },
+        "login":{
+            "scr_Login":"Entrar",
+            "lbl_userId":"ID de usuário",
+            "lbl_userPW":"Senha",
+            "tbx_userId_Placeholder":"Digite seu ID de usuário aqui. ",
+            "tbx_userPW_Placeholder":"Digite sua senha aqui. ",
+            "btn_Login":"Entrar",
+            "btn_Signup":"Cadastrar-se",
+            "btn_reset":"Redefinir",
+            "error_AllFieldsRequired":"Todos os campos são obrigatórios.",
+            "error_InvalidCredentials":"ID de usuário ou senha incorretos."
+        },
+        "signup":{
+            "scr_SignUp":"Cadastro",
+            "lbl_UserId":"ID de usuário",
+            "tbx_UserId_Placeholder":"Digite seu ID de usuário aqui. ",
+            "lbl_ConfirmUserID":"Confirmar ID de usuário",
+            "tbx_ConfirmUserID_Placeholder":"Repita seu ID de usuário aqui. ",
+            "lbl_UserPW":"Senha",
+            "tbx_UserPW_Placeholder":"Digite sua senha aqui. ",
+            "lbl_ConfirmUserPW":"Confirmar senha",
+            "tbx_ConfirmUserPW_Placeholder":"Repita sua senha aqui. ",
+            "btn_GoBack":"Voltar",
+            "btn_Reset":"Redefinir",
+            "btn_Signup":"Cadastrar-se",
+            "error_AllFieldsRequired":"Todos os campos são obrigatórios.",
+            "error_UserIDsMismatch":"Os IDs de usuário não coincidem.",
+            "error_PasswordsMismatch":"As senhas não coincidem.",
+            "error_UserIDExists":"Este ID de usuário já está em uso."
+        },
+        "userstatus":{
+            "SuspendedUser":"Usuário suspenso",
+            "NormalUser":"Usuário comum",
+            "Admin":"Administrador",
+            "Developer":"Desenvolvedor",
+            "ProjectManager":"Gerente de projeto",
+            "Founder":"Fundador"
+        },
+        "userlevel":{
+            "UnrankedUser":"Sem classificação",
+            "BronzeUser":"Bronze",
+            "SilverUser":"Prata",
+            "GoldUser":"Ouro",
+            "PlatinumUser":"Platina"
+        },
+        "userinfopage":{
+            "loading_user_info":"Carregando informações do usuário...",
+            "user_not_found":"Usuário não encontrado.",
+            "load_error":"Falha ao carregar as informações do usuário.",
+            "not_set":"Não definido",
+            "no_following":"Ainda não segue ninguém.",
+            "no_followers":"Ainda não há seguidores.",
+            "btn_edit_profile":"Editar perfil",
+            "edit_profile_title":"Editar perfil",
+            "tbx_username_placeholder":"Adicione um nome de exibição",
+            "tbx_alt_name_placeholder":"Adicione um nome alternativo",
+            "tbx_description_placeholder":"Conte um pouco sobre você",
+            "btn_save_profile":"Salvar alterações",
+            "profile_update_failed":"Falha ao atualizar o perfil. Tente novamente."
+        },
+        "personalpage":{
+            "tab_all":"Tudo",
+            "tab_blogcontent":"Post de blog",
+            "tab_image2d":"Imagem 2D",
+            "tab_animation2d":"Animação 2D",
+            "tab_object3d":"Obra 3D",
+            "tab_audio":"Áudio",
+            "tab_video":"Vídeo",
+            "show_more":"Mostrar mais",
+            "show_less":"Mostrar menos",
+            "no_submissions":"Nenhuma publicação ainda.",
+            "load_more":"Carregar mais",
+            "loading_submissions":"Carregando publicações...",
+            "private":"Privado",
+            "view_details":"Ver detalhes"
+        },
+        "userinterfaceoptions":{
+            "theme":"Tema",
+            "theme_light":"Claro",
+            "theme_dark":"Escuro",
+            "language":"Idioma",
+            "enable_vertical_direction":"Ativar direção vertical"
+        },
+        "postview":{
+            "prev_post":"Publicação anterior",
+            "next_post":"Próxima publicação",
+            "btn_Modify":"Modificar",
+            "btn_Delete":"Excluir",
+            "loading_post":"Carregando publicação",
+            "post_not_found":"Página não encontrada",
+            "post_error":"Erro na publicação",
+            "unknown_author":"Autor desconhecido",
+            "more_from_artist":"Mais deste artista",
+            "post_contents_placeholder":"O conteúdo da publicação será exibido aqui.",
+            "confirm_delete":"Excluir publicação?"
+        },
+        "posteditor":{
+            "lbl_title":"Criar nova publicação",
+            "scr_EditPost":"Editar publicação",
+            "lbl_post_title":"Título",
+            "tbx_title_Placeholder":"Digite o título aqui. ",
+            "lbl_description":"Descrição",
+            "lbl_uploadfile":"Enviar arquivo(s)",
+            "txt_description_Placeholder":"Conte-nos sobre sua arte",
+            "lbl_tags":"Tag(s)",
+            "tbx_tags_Placeholder":"ex.: pintura, abstrato, moderno",
+            "btn_Submit":"Criar publicação",
+            "btn_Update":"Atualizar publicação",
+            "btn_Reset":"Redefinir",
+            "btn_Cancel":"Cancelar",
+            "error_login_required":"Você precisa estar logado para publicar.",
+            "error_load_failed":"Falha ao carregar os dados da publicação.",
+            "error_submit_failed":"Falha ao enviar a publicação.",
+            "error_invalid_file_type":"Apenas arquivos de imagem podem ser enviados.",
+            "error_file_too_large":"Cada arquivo deve ter no máximo 25 MB."
+        },
+        "replieslist":{
+            "lbl_Replies":"Respostas",
+            "reply_submission_error":"Ocorreu um erro ao enviar a resposta. ",
+            "no_replies":"Nenhuma resposta ainda. Seja o primeiro!",
+            "anonymous":"Anônimo",
+            "tbx_reply_Placeholder":"Escreva uma resposta…",
+            "btn_submit_reply":"Enviar resposta",
+            "btn_edit":"Editar",
+            "btn_delete":"Excluir",
+            "btn_save":"Salvar",
+            "confirm_delete_reply":"Excluir esta resposta?",
+            "error_edit_failed":"Falha ao atualizar a resposta.",
+            "error_delete_failed":"Falha ao excluir a resposta."
+        },
+        "homepage":{
+            "welcome_back":"Bem-vindo de volta",
+            "lbl_accounts":"Contas conectadas",
+            "badge_current":"Atual",
+            "btn_switch":"Trocar",
+            "btn_view_profile":"Ver perfil",
+            "btn_new_post":"Nova publicação",
+            "btn_logout_all":"Sair de todas",
+            "confirm_logout_all":"Sair de todas as contas neste dispositivo?",
+            "welcome_title":"Bem-vindo ao Hwarang",
+            "welcome_subtitle":"Entre ou crie uma conta para compartilhar e explorar arte."
+        }
+    }
+}

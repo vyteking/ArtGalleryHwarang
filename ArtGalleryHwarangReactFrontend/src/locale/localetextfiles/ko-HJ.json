@@ -141,7 +141,13 @@
             "not_set":"未設定",
             "no_following":"아직팔로우한使用者가없습니다。",
             "no_followers":"아직팔로워가없습니다。",
-            "btn_edit_profile":"프로필編輯"
+            "btn_edit_profile":"프로필編輯",
+            "edit_profile_title":"프로필編輯",
+            "tbx_username_placeholder":"表示이름을入力하세요",
+            "tbx_alt_name_placeholder":"代替이름을入力하세요",
+            "tbx_description_placeholder":"自己紹介를作成해보세요",
+            "btn_save_profile":"變更事項貯藏",
+            "profile_update_failed":"프로필업데이트에失敗했습니다。다시試圖해주세요。"
         },
         "personalpage":{
             "tab_all":"全體",

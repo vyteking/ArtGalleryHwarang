@@ -1,0 +1,235 @@
+{
+    "LocaleInfo":{
+        "code":"vi-VN",
+        "name":"Tiếng Việt",
+        "direction":0
+    },
+    "format":{
+        "number_decimal_separator":",",
+        "number_group_separator":".",
+        "dateformat":"dd/MM/yyyy"
+    },
+    "Texts":{
+        "webinfo":{
+            "name":"Hwarang"
+        },
+        "common":{
+            "OK":"OK",
+            "OK_Confirm_btn":"OK",
+            "Yes":"Có",
+            "No":"Không",
+            "Confirm":"Xác nhận",
+            "Cancel":"Hủy",
+            "Open":"Mở",
+            "Close":"Đóng",
+            "Reset":"Đặt lại"
+        },
+        "statistic":{
+            "posts": {
+                "other":"bài đăng"
+            },
+            "following": {
+                "other":"đang theo dõi"
+            },
+            "followers": {
+                "other":"người theo dõi"
+            },
+            "Replies": {
+                "other":"phản hồi"
+            }
+        },
+        "statistic_with_count":{
+            "posts": {
+                "other":"{{count}} bài đăng"
+            },
+            "following": {
+                "other":"{{count}} đang theo dõi"
+            },
+            "followers": {
+                "other":"{{count}} người theo dõi"
+            },
+            "Replies": {
+                "other":"{{count}} phản hồi"
+            }
+        },
+        "header":{
+            "menu":"Menu"
+        },
+        "sidebar0":{
+            "mainpage":"Trang chính",
+            "hot":"Nổi bật",
+            "random_user_page":"Người dùng ngẫu nhiên",
+            "random_submission":"Bài đăng ngẫu nhiên"
+        },
+        "footer":{
+            "displayoptions":"Tùy chọn hiển thị"
+        },
+        "userinfo":{
+            "userindex1st":"Chỉ số người dùng thứ 1",
+            "userindex2nd":"Chỉ số người dùng thứ 2",
+            "userindex3rd":"Chỉ số người dùng thứ 3",
+            "userID":"ID người dùng",
+            "userpassword":"Mật khẩu",
+            "userpassword2nd":"Mật khẩu cấp 2",
+            "userstatus":"Trạng thái người dùng",
+            "userlevel":"Cấp độ người dùng",
+            "userjoindate":"Ngày tham gia",
+            "useremail":"E-mail",
+            "userphonenumber":"Số điện thoại",
+            "username":"Tên người dùng",
+            "userdescription":"Mô tả",
+            "useraltname":"Tên thay thế"
+        },
+        "useroptions":{
+            "Login":"Đăng nhập",
+            "Logout":"Đăng xuất",
+            "SignUp":"Đăng ký",
+            "notification":"Thông báo",
+            "directmessage":"Tin nhắn",
+            "add_account":"+ Thêm tài khoản",
+            "settings":"Cài đặt"
+        },
+        "login":{
+            "scr_Login":"Đăng nhập",
+            "lbl_userId":"ID người dùng",
+            "lbl_userPW":"Mật khẩu",
+            "tbx_userId_Placeholder":"Nhập ID người dùng của bạn tại đây. ",
+            "tbx_userPW_Placeholder":"Nhập mật khẩu của bạn tại đây. ",
+            "btn_Login":"Đăng nhập",
+            "btn_Signup":"Đăng ký",
+            "btn_reset":"Đặt lại",
+            "error_AllFieldsRequired":"Vui lòng điền đầy đủ tất cả các trường.",
+            "error_InvalidCredentials":"ID người dùng hoặc mật khẩu không đúng."
+        },
+        "signup":{
+            "scr_SignUp":"Đăng ký",
+            "lbl_UserId":"ID người dùng",
+            "tbx_UserId_Placeholder":"Nhập ID người dùng của bạn tại đây. ",
+            "lbl_ConfirmUserID":"Xác nhận ID người dùng",
+            "tbx_ConfirmUserID_Placeholder":"Nhập lại ID người dùng của bạn tại đây. ",
+            "lbl_UserPW":"Mật khẩu",
+            "tbx_UserPW_Placeholder":"Nhập mật khẩu của bạn tại đây. ",
+            "lbl_ConfirmUserPW":"Xác nhận mật khẩu",
+            "tbx_ConfirmUserPW_Placeholder":"Nhập lại mật khẩu của bạn tại đây. ",
+            "btn_GoBack":"Quay lại",
+            "btn_Reset":"Đặt lại",
+            "btn_Signup":"Đăng ký",
+            "error_AllFieldsRequired":"Vui lòng điền đầy đủ tất cả các trường.",
+            "error_UserIDsMismatch":"ID người dùng không khớp.",
+            "error_PasswordsMismatch":"Mật khẩu không khớp.",
+            "error_UserIDExists":"ID người dùng này đã được sử dụng."
+        },
+        "userstatus":{
+            "SuspendedUser":"Người dùng bị đình chỉ",
+            "NormalUser":"Người dùng thường",
+            "Admin":"Quản trị viên",
+            "Developer":"Nhà phát triển",
+            "ProjectManager":"Quản lý dự án",
+            "Founder":"Người sáng lập"
+        },
+        "userlevel":{
+            "UnrankedUser":"Chưa xếp hạng",
+            "BronzeUser":"Đồng",
+            "SilverUser":"Bạc",
+            "GoldUser":"Vàng",
+            "PlatinumUser":"Bạch kim"
+        },
+        "userinfopage":{
+            "loading_user_info":"Đang tải thông tin người dùng...",
+            "user_not_found":"Không tìm thấy người dùng.",
+            "load_error":"Không thể tải thông tin người dùng.",
+            "not_set":"Chưa thiết lập",
+            "no_following":"Chưa theo dõi ai.",
+            "no_followers":"Chưa có người theo dõi.",
+            "btn_edit_profile":"Chỉnh sửa hồ sơ",
+            "edit_profile_title":"Chỉnh sửa hồ sơ",
+            "tbx_username_placeholder":"Thêm tên hiển thị",
+            "tbx_alt_name_placeholder":"Thêm tên thay thế",
+            "tbx_description_placeholder":"Giới thiệu đôi chút về bản thân bạn",
+            "btn_save_profile":"Lưu thay đổi",
+            "profile_update_failed":"Không thể cập nhật hồ sơ. Vui lòng thử lại."
+        },
+        "personalpage":{
+            "tab_all":"Tất cả",
+            "tab_blogcontent":"Bài viết blog",
+            "tab_image2d":"Hình ảnh 2D",
+            "tab_animation2d":"Hoạt hình 2D",
+            "tab_object3d":"Tác phẩm 3D",
+            "tab_audio":"Âm thanh",
+            "tab_video":"Video",
+            "show_more":"Xem thêm",
+            "show_less":"Thu gọn",
+            "no_submissions":"Chưa có bài đăng nào.",
+            "load_more":"Tải thêm",
+            "loading_submissions":"Đang tải bài đăng...",
+            "private":"Riêng tư",
+            "view_details":"Xem chi tiết"
+        },
+        "userinterfaceoptions":{
+            "theme":"Giao diện",
+            "theme_light":"Sáng",
+            "theme_dark":"Tối",
+            "language":"Ngôn ngữ",
+            "enable_vertical_direction":"Bật hướng dọc"
+        },
+        "postview":{
+            "prev_post":"Bài trước",
+            "next_post":"Bài tiếp theo",
+            "btn_Modify":"Sửa",
+            "btn_Delete":"Xóa",
+            "loading_post":"Đang tải bài đăng",
+            "post_not_found":"Không tìm thấy trang",
+            "post_error":"Lỗi bài đăng",
+            "unknown_author":"Tác giả không xác định",
+            "more_from_artist":"Thêm từ nghệ sĩ này",
+            "post_contents_placeholder":"Nội dung bài đăng sẽ hiển thị tại đây.",
+            "confirm_delete":"Xóa bài đăng?"
+        },
+        "posteditor":{
+            "lbl_title":"Tạo bài đăng mới",
+            "scr_EditPost":"Chỉnh sửa bài đăng",
+            "lbl_post_title":"Tiêu đề",
+            "tbx_title_Placeholder":"Nhập tiêu đề tại đây. ",
+            "lbl_description":"Mô tả",
+            "lbl_uploadfile":"Tải lên tệp",
+            "txt_description_Placeholder":"Hãy kể cho chúng tôi về tác phẩm của bạn",
+            "lbl_tags":"Thẻ",
+            "tbx_tags_Placeholder":"vd: hội họa, trừu tượng, hiện đại",
+            "btn_Submit":"Tạo bài đăng",
+            "btn_Update":"Cập nhật bài đăng",
+            "btn_Reset":"Đặt lại",
+            "btn_Cancel":"Hủy",
+            "error_login_required":"Bạn cần đăng nhập để đăng bài.",
+            "error_load_failed":"Không thể tải dữ liệu bài đăng.",
+            "error_submit_failed":"Không thể gửi bài đăng.",
+            "error_invalid_file_type":"Chỉ có thể tải lên tệp hình ảnh.",
+            "error_file_too_large":"Mỗi tệp không được vượt quá 25 MB."
+        },
+        "replieslist":{
+            "lbl_Replies":"Phản hồi",
+            "reply_submission_error":"Đã xảy ra lỗi khi gửi phản hồi. ",
+            "no_replies":"Chưa có phản hồi nào. Hãy là người đầu tiên!",
+            "anonymous":"Ẩn danh",
+            "tbx_reply_Placeholder":"Viết phản hồi…",
+            "btn_submit_reply":"Gửi phản hồi",
+            "btn_edit":"Sửa",
+            "btn_delete":"Xóa",
+            "btn_save":"Lưu",
+            "confirm_delete_reply":"Xóa phản hồi này?",
+            "error_edit_failed":"Không thể cập nhật phản hồi.",
+            "error_delete_failed":"Không thể xóa phản hồi."
+        },
+        "homepage":{
+            "welcome_back":"Chào mừng trở lại",
+            "lbl_accounts":"Tài khoản đã đăng nhập",
+            "badge_current":"Hiện tại",
+            "btn_switch":"Chuyển",
+            "btn_view_profile":"Xem hồ sơ",
+            "btn_new_post":"Bài đăng mới",
+            "btn_logout_all":"Đăng xuất tất cả",
+            "confirm_logout_all":"Đăng xuất khỏi tất cả tài khoản trên thiết bị này?",
+            "welcome_title":"Chào mừng đến với Hwarang",
+            "welcome_subtitle":"Đăng nhập hoặc tạo tài khoản để chia sẻ và khám phá nghệ thuật."
+        }
+    }
+}

@@ -149,7 +149,13 @@
             "not_set":"Nicht festgelegt",
             "no_following":"Folgt noch niemandem.",
             "no_followers":"Noch keine Follower.",
-            "btn_edit_profile":"Profil bearbeiten"
+            "btn_edit_profile":"Profil bearbeiten",
+            "edit_profile_title":"Profil bearbeiten",
+            "tbx_username_placeholder":"Einen Anzeigenamen hinzufügen",
+            "tbx_alt_name_placeholder":"Einen alternativen Namen hinzufügen",
+            "tbx_description_placeholder":"Erzähl anderen etwas über dich",
+            "btn_save_profile":"Änderungen speichern",
+            "profile_update_failed":"Profil konnte nicht aktualisiert werden. Bitte versuche es erneut."
         },
         "personalpage":{
             "tab_all":"Alle",

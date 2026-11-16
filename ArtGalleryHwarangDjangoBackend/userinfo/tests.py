@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.test import APIClient
 
 from .authentication import ACCOUNT_HEADER, auth_cookie_name
-from .models import UserInfo
+from .models import UserAdditionalInfo, UserInfo
 from .urls import urlpatterns as userinfo_urls
 
 
@@ -115,3 +115,67 @@ class CookieAuthTests(TestCase):
         Token.objects.filter(user=self.alice).delete()
         response = self.client.get(f'/u/{self.alice.pk}', headers={ACCOUNT_HEADER: str(self.alice.pk)})
         self.assertEqual(response.status_code, 200)
+
+
+@override_settings(ROOT_URLCONF=__name__)
+class UserAdditionalInfoUpdateTests(TestCase):
+    PASSWORD = 'correct-horse-battery'
+
+    def setUp(self):
+        self.client = APIClient()
+        self.alice = self._signup('alice')
+        self.bob = self._signup('bob')
+        self._login('alice')
+        self._login('bob')
+
+    def _signup(self, user_id):
+        response = self.client.post('/u/api/signup', {'user_id': user_id, 'user_password': self.PASSWORD}, format='json')
+        self.assertEqual(response.status_code, 201, response.content)
+        return UserInfo.objects.get(user_id=user_id)
+
+    def _login(self, user_id):
+        return self.client.post('/u/api/login', {'user_id': user_id, 'user_password': self.PASSWORD}, format='json')
+
+    def _patch(self, account, data):
+        return self.client.patch(
+            f'/u/{account.pk}/info/update', data, format='json', headers={ACCOUNT_HEADER: str(account.pk)})
+
+    def test_owner_can_set_profile_fields_with_no_prior_row(self):
+        self.assertFalse(UserAdditionalInfo.objects.filter(pk=self.alice.pk).exists())
+
+        response = self._patch(self.alice, {
+            'username': 'Alice Doe', 'user_alt_name': 'Ally', 'user_description': 'Paints landscapes.',
+        })
+
+        self.assertEqual(response.status_code, 200, response.content)
+        self.assertEqual(response.data, {
+            'username': 'Alice Doe', 'user_alt_name': 'Ally', 'user_description': 'Paints landscapes.',
+        })
+        info = UserAdditionalInfo.objects.get(pk=self.alice.pk)
+        self.assertEqual(info.username, 'Alice Doe')
+        self.assertEqual(info.user_alt_name, 'Ally')
+        self.assertEqual(info.user_description, 'Paints landscapes.')
+
+    def test_owner_can_clear_fields_on_an_existing_row(self):
+        UserAdditionalInfo.objects.create(
+            user_info_index_1st=self.alice, username='Alice Doe', user_alt_name='Ally', user_description='Old bio.')
+
+        response = self._patch(self.alice, {'user_alt_name': '', 'user_description': ''})
+
+        self.assertEqual(response.status_code, 200, response.content)
+        info = UserAdditionalInfo.objects.get(pk=self.alice.pk)
+        self.assertEqual(info.username, 'Alice Doe')
+        self.assertEqual(info.user_alt_name, '')
+        self.assertEqual(info.user_description, '')
+
+    def test_other_user_cannot_edit_someone_elses_profile(self):
+        # Account header names bob (so bob is authenticated), but the URL targets alice.
+        response = self.client.patch(
+            f'/u/{self.alice.pk}/info/update', {'username': 'Mallory'}, format='json',
+            headers={ACCOUNT_HEADER: str(self.bob.pk)})
+        self.assertEqual(response.status_code, 403)
+        self.assertFalse(UserAdditionalInfo.objects.filter(pk=self.alice.pk).exists())
+
+    def test_anonymous_cannot_edit_profile(self):
+        response = self.client.patch(f'/u/{self.alice.pk}/info/update', {'username': 'Nope'}, format='json')
+        self.assertEqual(response.status_code, 401)

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import UserInfo, UserFollowing
+from .models import UserInfo, UserFollowing, UserAdditionalInfo
 from django.contrib.auth.hashers import make_password
 
 class UserInfoSerializer(serializers.ModelSerializer):
@@ -101,3 +101,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     def get_followers_count(self, obj):
         return UserFollowing.objects.filter(following=obj).count()
+
+
+class UserAdditionalInfoSerializer(serializers.ModelSerializer):
+    """Editable profile fields shown on the user info edit page."""
+    username = serializers.CharField(required=False, allow_blank=True, allow_null=True, max_length=255)
+    user_alt_name = serializers.CharField(required=False, allow_blank=True, allow_null=True, max_length=255)
+    user_description = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+
+    class Meta:
+        model = UserAdditionalInfo
+        fields = ('username', 'user_alt_name', 'user_description')

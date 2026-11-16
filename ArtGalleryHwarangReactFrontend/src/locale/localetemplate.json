@@ -189,7 +189,13 @@
             "not_set":"",
             "no_following":"",
             "no_followers":"",
-            "btn_edit_profile":""
+            "btn_edit_profile":"",
+            "edit_profile_title":"",
+            "tbx_username_placeholder":"",
+            "tbx_alt_name_placeholder":"",
+            "tbx_description_placeholder":"",
+            "btn_save_profile":"",
+            "profile_update_failed":""
         },
         "personalpage":{
             "tab_all":"",
