@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"ja-JP",
+        "code":"ja",
+        "code-variant":"ja-Shin",
+        "code-REGIONCODE":"ja-JP",
         "name":"日本語",
         "direction":3
-    }, 
+    },
     "format":{
         "number_decimal_separator":".",
         "number_group_separator":",",
-        "dateformat":"yyyy/MM/dd"
+        "standard_date_format":"yyyy/MM/dd"
     },
     "Texts":{
         "webinfo":{
@@ -19,36 +21,50 @@
             "Yes":"はい",
             "No":"いいえ",
             "Confirm":"確認",
-            "Cancel":"取り消し", 
-            "Open":"開く", 
+            "Cancel":"取り消し",
+            "Open":"開く",
             "Close":"閉じる",
-            "Reset":"リセット"
+            "Reset":"リセット",
+            "View":"表示",
+            "Save":"保存",
+            "Post":"投稿",
+            "Insert":"挿入",
+            "Create":"作成",
+            "Submit":"送信",
+            "Update":"更新",
+            "Edit":"編集",
+            "Modify":"変更",
+            "Delete":"削除",
+            "Back":"戻る"
         },
         "statistic":{
-            "posts": {
+            "posts":{
                 "other":"投稿"
             },
-            "following": {
+            "following":{
                 "other":"フォロー中"
             },
-            "followers": {
+            "followers":{
                 "other":"フォロワー"
             },
-            "Replies": {
+            "users":{
+                "other":"利用者"
+            },
+            "Replies":{
                 "other":"返信"
             }
         },
         "statistic_with_count":{
-            "posts": {
+            "posts":{
                 "other":"{{count}} 投稿"
             },
-            "following": {
+            "following":{
                 "other":"{{count}} フォロー中"
             },
-            "followers": {
+            "followers":{
                 "other":"{{count}} フォロワー"
             },
-            "Replies": {
+            "Replies":{
                 "other":"{{count}} 返信"
             }
         },
@@ -56,27 +72,27 @@
             "menu":"メニュー"
         },
         "sidebar0":{
-            "mainpage":"メインページ",
+            "mainpage":"トップページ",
             "hot":"人気",
-            "random_user_page":"ランダムユーザー",
-            "random_submission":"ランダム投稿"
+            "random_user_page":"ランダムな利用者",
+            "random_submission":"ランダムな投稿"
         },
         "footer":{
-            "displayoptions":"表示オプション"
+            "displayoptions":"表示設定"
         },
         "userinfo":{
-            "userindex1st":"第一ユーザー索引", 
-            "userindex2nd":"第二ユーザー索引", 
-            "userindex3rd":"第三ユーザー索引", 
-            "userID":"ユーザーID",
+            "userindex1st":"第一利用者索引",
+            "userindex2nd":"第二利用者索引",
+            "userindex3rd":"第三利用者索引",
+            "userID":"利用者ID",
             "userpassword":"パスワード",
             "userpassword2nd":"第二パスワード",
-            "userstatus":"ユーザーステータス",
-            "userlevel":"ユーザーレベル",
-            "userjoindate":"登録日付",
-            "useremail":"Eメール",
+            "userstatus":"利用者の状態",
+            "userlevel":"利用者の等級",
+            "userjoindate":"登録日",
+            "useremail":"メールアドレス",
             "userphonenumber":"電話番号",
-            "username":"ユーザー名",
+            "username":"利用者名",
             "userdescription":"説明",
             "useraltname":"別名"
         },
@@ -85,28 +101,28 @@
             "Logout":"ログアウト",
             "SignUp":"新規登録",
             "notification":"通知",
-            "directmessage":"DM",
+            "directmessage":"メッセージ",
             "add_account":"＋ アカウント追加",
             "settings":"設定"
         },
         "login":{
             "scr_Login":"ログイン",
-            "lbl_userId":"ユーザーID",
+            "lbl_userId":"利用者ID",
             "lbl_userPW":"パスワード",
-            "tbx_userId_Placeholder":"ここにユーザーIDを入力してください",
+            "tbx_userId_Placeholder":"ここに利用者IDを入力してください",
             "tbx_userPW_Placeholder":"ここにパスワードを入力してください",
             "btn_Login":"ログイン",
             "btn_Signup":"新規登録",
             "btn_reset":"リセット",
             "error_AllFieldsRequired":"すべての項目を入力してください。",
-            "error_InvalidCredentials":"ユーザーIDまたはパスワードが正しくありません。"
-        }, 
+            "error_InvalidCredentials":"利用者IDまたはパスワードが正しくありません。"
+        },
         "signup":{
             "scr_SignUp":"新規登録",
-            "lbl_UserId":"ユーザーID",
-            "tbx_UserId_Placeholder":"ここにユーザーIDを入力してください",
-            "lbl_ConfirmUserID":"ユーザーIDを確認",
-            "tbx_ConfirmUserID_Placeholder":"ここにユーザーIDをもう一度入力してください",
+            "lbl_UserId":"利用者ID",
+            "tbx_UserId_Placeholder":"ここに利用者IDを入力してください",
+            "lbl_ConfirmUserID":"利用者IDを確認",
+            "tbx_ConfirmUserID_Placeholder":"ここに利用者IDをもう一度入力してください",
             "lbl_UserPW":"パスワード",
             "tbx_UserPW_Placeholder":"ここにパスワードを入力してください",
             "lbl_ConfirmUserPW":"パスワードを確認",
@@ -115,29 +131,29 @@
             "btn_Reset":"リセット",
             "btn_Signup":"新規登録",
             "error_AllFieldsRequired":"すべての項目を入力してください。",
-            "error_UserIDsMismatch":"ユーザーIDが一致しません。",
+            "error_UserIDsMismatch":"利用者IDが一致しません。",
             "error_PasswordsMismatch":"パスワードが一致しません。",
-            "error_UserIDExists":"このユーザーIDは既に使用されています。"
+            "error_UserIDExists":"この利用者IDは既に使用されています。"
         },
         "userstatus":{
-            "SuspendedUser":"利用停止中のユーザー",
-            "NormalUser":"一般ユーザー",
+            "SuspendedUser":"利用停止中",
+            "NormalUser":"一般利用者",
             "Admin":"管理者",
             "Developer":"開発者",
-            "ProjectManager":"プロジェクトマネージャー",
+            "ProjectManager":"プロジェクト責任者",
             "Founder":"創設者"
         },
         "userlevel":{
-            "UnrankedUser":"ランクなし",
+            "UnrankedUser":"等級なし",
             "BronzeUser":"ブロンズ",
             "SilverUser":"シルバー",
             "GoldUser":"ゴールド",
             "PlatinumUser":"プラチナ"
         },
         "userinfopage":{
-            "loading_user_info":"ユーザー情報を読み込み中...",
-            "user_not_found":"ユーザーが見つかりません。",
-            "load_error":"ユーザー情報を読み込めませんでした。",
+            "loading_user_info":"利用者情報を読み込み中...",
+            "user_not_found":"利用者が見つかりません。",
+            "load_error":"利用者情報を読み込めませんでした。",
             "not_set":"未設定",
             "no_following":"まだ誰もフォローしていません。",
             "no_followers":"まだフォロワーがいません。",
@@ -151,14 +167,14 @@
         },
         "personalpage":{
             "tab_all":"すべて",
-            "tab_blogcontent":"ブログ投稿",
-            "tab_image2d":"2Dイメージ",
+            "tab_blogcontent":"ブログ記事",
+            "tab_image2d":"2D画像",
             "tab_animation2d":"2Dアニメーション",
-            "tab_object3d":"3Dアートワーク",
-            "tab_audio":"オーディオ",
-            "tab_video":"ビデオ",
+            "tab_object3d":"3D作品",
+            "tab_audio":"音声",
+            "tab_video":"動画",
             "show_more":"もっと見る",
-            "show_less":"閉じる",
+            "show_less":"折りたたむ",
             "no_submissions":"まだ投稿がありません。",
             "load_more":"さらに読み込む",
             "loading_submissions":"投稿を読み込み中...",
@@ -166,7 +182,7 @@
             "view_details":"詳細を見る"
         },
         "userinterfaceoptions":{
-            "theme":"テーマ",
+            "theme":"外観",
             "theme_light":"明るい",
             "theme_dark":"暗い",
             "language":"言語",
@@ -179,22 +195,22 @@
             "btn_Delete":"削除",
             "loading_post":"投稿を読み込み中",
             "post_not_found":"ページが見つかりません",
-            "post_error":"投稿エラー",
+            "post_error":"投稿を読み込めませんでした",
             "unknown_author":"不明な作者",
-            "more_from_artist":"このアーティストの他の投稿",
+            "more_from_artist":"この作者の他の作品",
             "post_contents_placeholder":"投稿内容がここに表示されます。",
             "confirm_delete":"投稿を削除しますか？"
         },
         "posteditor":{
             "lbl_title":"新規投稿",
             "scr_EditPost":"投稿を編集",
-            "lbl_post_title":"タイトル",
-            "tbx_title_Placeholder":"ここにタイトルを入力してください",
+            "lbl_post_title":"題名",
+            "tbx_title_Placeholder":"ここに題名を入力してください",
             "lbl_description":"説明",
             "lbl_uploadfile":"ファイルをアップロード",
             "txt_description_Placeholder":"作品について説明してください",
             "lbl_tags":"タグ",
-            "tbx_tags_Placeholder":"例：絵画、抽象、モダン",
+            "tbx_tags_Placeholder":"例：絵画、抽象、現代",
             "btn_Submit":"投稿する",
             "btn_Update":"更新する",
             "btn_Reset":"リセット",
@@ -207,8 +223,8 @@
         },
         "replieslist":{
             "lbl_Replies":"返信",
-            "reply_submission_error":"返信の投稿中にエラーが発生しました",
-            "no_replies":"まだ返信がありません。最初に投稿してみましょう！",
+            "reply_submission_error":"返信の投稿中にエラーが発生しました。",
+            "no_replies":"まだ返信がありません。最初の返信を書いてみましょう！",
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"返信をここに入力してください…",
             "btn_submit_reply":"返信を投稿",
@@ -228,8 +244,18 @@
             "btn_new_post":"新規投稿",
             "btn_logout_all":"すべてログアウト",
             "confirm_logout_all":"この端末のすべてのアカウントからログアウトしますか？",
-            "welcome_title":"花郎へようこそ",
+            "welcome_title":"花廊へようこそ",
             "welcome_subtitle":"ログインまたはアカウントを作成して、作品を共有・閲覧しましょう。"
+        },
+        "systemerror":{
+            "error":"問題が発生しました。",
+            "network_error":"通信に失敗しました。接続を確認してください。",
+            "page_not_found":"ページが見つかりません。"
+        },
+        "search":{
+            "tbx_search_Placeholder":"検索…",
+            "btn_search":"検索",
+            "btn_reset":"リセット"
         }
     }
 }

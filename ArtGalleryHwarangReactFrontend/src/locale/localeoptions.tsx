@@ -1,7 +1,7 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
 import i18n from '../i18n';
-import { GetLocaleTexts, GetLocalesList } from './localeslist';
+import { GetLocaleTexts, GetLocalesList, ResolveLocaleCode } from './localeslist';
 import type { LocaleData, LocaleTexts } from './locale.types';
 import type { Direction } from '../ui/orientation/orientationoptions';
 
@@ -26,13 +26,23 @@ export const LocaleProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const handleLanguageChange = (lng: string) => {
+            // Normalise detected/saved tags ("ko", "zh-TW", legacy "zh-SC") to a supported code,
+            // so the stored preference and the language selector use the real locale code.
+            const resolved = ResolveLocaleCode(lng);
+            if (resolved && resolved !== lng) {
+                i18n.changeLanguage(resolved);
+                return;
+            }
             if (!i18n.hasResourceBundle(lng, 'translation')) {
                 const newLocale = GetLocaleTexts(lng);
                 if (newLocale) {
                     i18n.addResourceBundle(lng, 'translation', newLocale.Texts);
                 }
             }
-            setCurrentLocale(GetLocaleTexts(lng));
+            const locale = GetLocaleTexts(lng);
+            // Lets the browser pick language-appropriate fonts (CJK glyphs) and screen readers the right voice.
+            document.documentElement.lang = locale.tag;
+            setCurrentLocale(locale);
         };
 
         i18n.on('languageChanged', handleLanguageChange);

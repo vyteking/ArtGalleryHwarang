@@ -1,54 +1,70 @@
 {
     "LocaleInfo":{
-        "code":"zh-SC",
+        "code":"zh",
+        "code-variant":"zh-Hans",
+        "code-REGIONCODE":"zh-CN",
         "name":"简体中文",
         "direction":3
-    }, 
+    },
     "format":{
         "number_decimal_separator":".",
         "number_group_separator":",",
-        "dateformat":"yyyy/MM/dd"
+        "standard_date_format":"yyyy/MM/dd"
     },
     "Texts":{
         "webinfo":{
             "name":"花廊"
         },
         "common":{
-            "OK":"是",
+            "OK":"确定",
             "OK_Confirm_btn":"确认",
             "Yes":"是",
             "No":"否",
             "Confirm":"确认",
-            "Cancel":"取消", 
-            "Open":"打开", 
+            "Cancel":"取消",
+            "Open":"打开",
             "Close":"关闭",
-            "Reset":"初始化"
+            "Reset":"重置",
+            "View":"查看",
+            "Save":"保存",
+            "Post":"发布",
+            "Insert":"插入",
+            "Create":"创建",
+            "Submit":"提交",
+            "Update":"更新",
+            "Edit":"编辑",
+            "Modify":"修改",
+            "Delete":"删除",
+            "Back":"返回"
         },
         "statistic":{
-            "posts": {
-                "other":"贴子"
+            "posts":{
+                "other":"帖子"
             },
-            "following": {
-                "other":"跟随中"
+            "following":{
+                "other":"关注"
             },
-            "followers": {
-                "other":"跟随者"
+            "followers":{
+                "other":"关注者"
             },
-            "Replies": {
+            "users":{
+                "other":"用户"
+            },
+            "Replies":{
                 "other":"评论"
             }
         },
         "statistic_with_count":{
-            "posts": {
-                "other":"{{count}} 贴子"
+            "posts":{
+                "other":"{{count}} 帖子"
             },
-            "following": {
-                "other":"{{count}} 跟随中"
+            "following":{
+                "other":"{{count}} 关注"
             },
-            "followers": {
-                "other":"{{count}} 跟随者"
+            "followers":{
+                "other":"{{count}} 关注者"
             },
-            "Replies": {
+            "Replies":{
                 "other":"{{count}} 评论"
             }
         },
@@ -56,63 +72,63 @@
             "menu":"菜单"
         },
         "sidebar0":{
-            "mainpage":"主页",
+            "mainpage":"首页",
             "hot":"热门",
-            "random_user_page":"随机账户",
-            "random_submission":"随机贴子"
+            "random_user_page":"随机用户",
+            "random_submission":"随机帖子"
         },
         "footer":{
             "displayoptions":"显示选项"
         },
         "userinfo":{
-            "userindex1st":"第一索引", 
-            "userindex2nd":"第二索引", 
-            "userindex3rd":"第三索引", 
+            "userindex1st":"第一索引",
+            "userindex2nd":"第二索引",
+            "userindex3rd":"第三索引",
             "userID":"用户名",
             "userpassword":"密码",
             "userpassword2nd":"第二密码",
-            "userstatus":"使用者状态",
-            "userlevel":"使用者阶级",
+            "userstatus":"用户状态",
+            "userlevel":"用户等级",
             "userjoindate":"注册日期",
             "useremail":"电子邮件",
             "userphonenumber":"电话号码",
-            "username":"使用者名",
+            "username":"昵称",
             "userdescription":"介绍",
             "useraltname":"别名"
         },
         "useroptions":{
-            "Login":"登绿",
-            "Logout":"退出",
+            "Login":"登录",
+            "Logout":"退出登录",
             "SignUp":"注册",
             "notification":"通知",
-            "directmessage":"直接讯信",
-            "add_account":"＋ 添加账户",
+            "directmessage":"私信",
+            "add_account":"＋ 添加账号",
             "settings":"设置"
         },
         "login":{
-            "scr_Login":"登绿",
+            "scr_Login":"登录",
             "lbl_userId":"用户名",
             "lbl_userPW":"密码",
             "tbx_userId_Placeholder":"请在这里输入用户名。",
             "tbx_userPW_Placeholder":"请在这里输入密码。",
-            "btn_Login":"登绿",
+            "btn_Login":"登录",
             "btn_Signup":"注册",
-            "btn_reset":"初始化",
-            "error_AllFieldsRequired":"请填写所有栏位。",
-            "error_InvalidCredentials":"用户 ID 或密码不正确。"
-        }, 
+            "btn_reset":"重置",
+            "error_AllFieldsRequired":"请填写所有必填项。",
+            "error_InvalidCredentials":"用户名或密码不正确。"
+        },
         "signup":{
             "scr_SignUp":"注册",
             "lbl_UserId":"用户名",
             "tbx_UserId_Placeholder":"请在这里输入用户名。",
-            "lbl_ConfirmUserID":"确定用户名",
+            "lbl_ConfirmUserID":"确认用户名",
             "tbx_ConfirmUserID_Placeholder":"请在这里再次输入用户名。",
-            "lbl_UserPW":"登绿",
+            "lbl_UserPW":"密码",
             "tbx_UserPW_Placeholder":"请在这里输入密码。",
-            "lbl_ConfirmUserPW":"确定登绿",
+            "lbl_ConfirmUserPW":"确认密码",
             "tbx_ConfirmUserPW_Placeholder":"请在这里再次输入密码。",
             "btn_GoBack":"返回",
-            "btn_Reset":"初始化",
+            "btn_Reset":"重置",
             "btn_Signup":"注册",
             "error_AllFieldsRequired":"请填写所有栏位。",
             "error_UserIDsMismatch":"用户名不匹配。",
@@ -120,11 +136,11 @@
             "error_UserIDExists":"该用户名已被使用。"
         },
         "userstatus":{
-            "SuspendedUser":"停止用户名",
-            "NormalUser":"一般用户名",
-            "Admin":"管理者",
-            "Developer":"开发员",
-            "ProjectManager":"项目管理者",
+            "SuspendedUser":"停用用户",
+            "NormalUser":"普通用户",
+            "Admin":"管理员",
+            "Developer":"开发者",
+            "ProjectManager":"项目经理",
             "Founder":"创始人"
         },
         "userlevel":{
@@ -140,10 +156,10 @@
             "load_error":"无法加载用户信息。",
             "not_set":"未设置",
             "no_following":"尚未关注任何人。",
-            "no_followers":"尚无粉丝。",
+            "no_followers":"尚无关注者。",
             "btn_edit_profile":"编辑个人资料",
             "edit_profile_title":"编辑个人资料",
-            "tbx_username_placeholder":"添加显示名称",
+            "tbx_username_placeholder":"添加昵称",
             "tbx_alt_name_placeholder":"添加备用名称",
             "tbx_description_placeholder":"介绍一下自己吧",
             "btn_save_profile":"保存更改",
@@ -159,55 +175,55 @@
             "tab_video":"视频",
             "show_more":"显示更多",
             "show_less":"收起",
-            "no_submissions":"暂无投稿。",
+            "no_submissions":"暂无作品。",
             "load_more":"加载更多",
-            "loading_submissions":"正在加载投稿...",
+            "loading_submissions":"正在加载作品...",
             "private":"私密",
             "view_details":"查看详情"
         },
         "userinterfaceoptions":{
             "theme":"主题",
-            "theme_light":"亮色",
-            "theme_dark":"暗色",
+            "theme_light":"浅色",
+            "theme_dark":"深色",
             "language":"语言",
-            "enable_vertical_direction":"活化纵书"
+            "enable_vertical_direction":"启用竖排"
         },
         "postview":{
-            "prev_post":"上一个贴子",
-            "next_post":"下一个贴子",
+            "prev_post":"上一篇帖子",
+            "next_post":"下一篇帖子",
             "btn_Modify":"修改",
             "btn_Delete":"删除",
-            "loading_post":"贴子",
-            "post_not_found":"贴子没找到",
-            "post_error":"发布错误",
+            "loading_post":"正在加载帖子...",
+            "post_not_found":"未找到帖子",
+            "post_error":"帖子加载失败。",
             "unknown_author":"未知作者",
             "more_from_artist":"该作者的更多作品",
-            "post_contents_placeholder":"贴子内容将在这里显示。",
-            "confirm_delete":"删除贴子？"
+            "post_contents_placeholder":"帖子内容将在这里显示。",
+            "confirm_delete":"删除帖子？"
         },
         "posteditor":{
-            "lbl_title":"发布新贴子",
-            "scr_EditPost":"编辑贴子",
+            "lbl_title":"发布新帖子",
+            "scr_EditPost":"编辑帖子",
             "lbl_post_title":"标题",
             "tbx_title_Placeholder":"请在这里输入标题。",
             "lbl_description":"描述",
-            "lbl_uploadfile":"上载文档",
+            "lbl_uploadfile":"上传文件",
             "txt_description_Placeholder":"请介绍您的作品",
             "lbl_tags":"标签",
             "tbx_tags_Placeholder":"例：绘画、抽象、现代",
             "btn_Submit":"发布",
             "btn_Update":"更新",
-            "btn_Reset":"初始化",
+            "btn_Reset":"重置",
             "btn_Cancel":"取消",
-            "error_login_required":"发布贴子需要先登录。",
-            "error_load_failed":"贴子数据加载失败。",
-            "error_submit_failed":"贴子发布失败。",
+            "error_login_required":"发布帖子需要先登录。",
+            "error_load_failed":"帖子数据加载失败。",
+            "error_submit_failed":"帖子发布失败。",
             "error_invalid_file_type":"只能上传图片文件。",
             "error_file_too_large":"每个文件不得超过 25 MB。"
         },
         "replieslist":{
-            "lbl_Replies":"回答",
-            "reply_submission_error":"回答发布错误",
+            "lbl_Replies":"评论",
+            "reply_submission_error":"评论发布失败。",
             "no_replies":"暂时没有评论。快来第一个评论吧！",
             "anonymous":"匿名",
             "tbx_reply_Placeholder":"在这里输入评论…",
@@ -224,12 +240,22 @@
             "lbl_accounts":"已登录账号",
             "badge_current":"当前",
             "btn_switch":"切换",
-            "btn_view_profile":"查看主页",
-            "btn_new_post":"发布新贴子",
-            "btn_logout_all":"全部登出",
+            "btn_view_profile":"查看个人资料",
+            "btn_new_post":"发布新帖子",
+            "btn_logout_all":"全部退出登录",
             "confirm_logout_all":"要登出此设备上的所有账号吗？",
-            "welcome_title":"欢迎来到花郎",
+            "welcome_title":"欢迎来到花廊",
             "welcome_subtitle":"登录或注册账号，分享和探索艺术作品。"
+        },
+        "systemerror":{
+            "error":"发生错误。",
+            "network_error":"网络错误，请检查网络连接。",
+            "page_not_found":"页面未找到。"
+        },
+        "search":{
+            "tbx_search_Placeholder":"搜索…",
+            "btn_search":"搜索",
+            "btn_reset":"重置"
         }
     }
 }

@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"ru-RU",
+        "code":"ru",
+        "code-variant":"ru-Cyrl",
+        "code-REGIONCODE":"ru-RU",
         "name":"Русский",
         "direction":0
-    }, 
+    },
     "format":{
         "number_decimal_separator":",",
-        "number_group_separator":".",
-        "dateformat":"dd/MM/yyyy"
+        "number_group_separator":" ",
+        "standard_date_format":"dd.MM.yyyy"
     },
     "Texts":{
         "webinfo":{
@@ -18,32 +20,49 @@
             "OK_Confirm_btn":"OK",
             "Yes":"Да",
             "No":"Нет",
-            "Confirm":"Подтверждение",
-            "Cancel":"Отмена", 
-            "Open":"Открыть", 
+            "Confirm":"Подтвердить",
+            "Cancel":"Отмена",
+            "Open":"Открыть",
             "Close":"Закрыть",
-            "Reset":"Сброс"
+            "Reset":"Сброс",
+            "View":"Просмотр",
+            "Save":"Сохранить",
+            "Post":"Опубликовать",
+            "Insert":"Вставить",
+            "Create":"Создать",
+            "Submit":"Отправить",
+            "Update":"Обновить",
+            "Edit":"Редактировать",
+            "Modify":"Изменить",
+            "Delete":"Удалить",
+            "Back":"Назад"
         },
         "statistic":{
-            "posts": {
-                "one":"пост",
-                "few":"поста",
-                "many":"постов",
-                "other":"поста"
+            "posts":{
+                "one":"запись",
+                "few":"записи",
+                "many":"записей",
+                "other":"записи"
             },
-            "following": {
+            "following":{
                 "one":"подписка",
                 "few":"подписки",
                 "many":"подписок",
                 "other":"подписки"
             },
-            "followers": {
+            "followers":{
                 "one":"подписчик",
                 "few":"подписчика",
                 "many":"подписчиков",
                 "other":"подписчика"
             },
-            "Replies": {
+            "users":{
+                "one":"пользователь",
+                "few":"пользователя",
+                "many":"пользователей",
+                "other":"пользователя"
+            },
+            "Replies":{
                 "one":"ответ",
                 "few":"ответа",
                 "many":"ответов",
@@ -51,25 +70,25 @@
             }
         },
         "statistic_with_count":{
-            "posts": {
-                "one":"{{count}} пост",
-                "few":"{{count}} поста",
-                "many":"{{count}} постов",
-                "other":"{{count}} поста"
+            "posts":{
+                "one":"{{count}} запись",
+                "few":"{{count}} записи",
+                "many":"{{count}} записей",
+                "other":"{{count}} записи"
             },
-            "following": {
+            "following":{
                 "one":"{{count}} подписка",
                 "few":"{{count}} подписки",
                 "many":"{{count}} подписок",
                 "other":"{{count}} подписки"
             },
-            "followers": {
+            "followers":{
                 "one":"{{count}} подписчик",
                 "few":"{{count}} подписчика",
                 "many":"{{count}} подписчиков",
                 "other":"{{count}} подписчика"
             },
-            "Replies": {
+            "Replies":{
                 "one":"{{count}} ответ",
                 "few":"{{count}} ответа",
                 "many":"{{count}} ответов",
@@ -81,20 +100,20 @@
         },
         "sidebar0":{
             "mainpage":"Главная страница",
-            "hot":"Горячие",
+            "hot":"Горячее",
             "random_user_page":"Случайный пользователь",
-            "random_submission":"Случайный пост"
+            "random_submission":"Случайная запись"
         },
         "footer":{
-            "displayoptions":"Параметры отображения"
+            "displayoptions":"Настройки отображения"
         },
         "userinfo":{
-            "userindex1st":"1-ый индекс пользователя", 
-            "userindex2nd":"2-ой индекс пользователя", 
-            "userindex3rd":"3-ий индекс пользователя", 
-            "userID":"Идент. пользователя",
+            "userindex1st":"1-й индекс пользователя",
+            "userindex2nd":"2-й индекс пользователя",
+            "userindex3rd":"3-й индекс пользователя",
+            "userID":"Логин",
             "userpassword":"Пароль",
-            "userpassword2nd":"2-ой пароль",
+            "userpassword2nd":"2-й пароль",
             "userstatus":"Состояние пользователя",
             "userlevel":"Уровень пользователя",
             "userjoindate":"Дата регистрации",
@@ -102,53 +121,53 @@
             "userphonenumber":"Номер телефона",
             "username":"Имя пользователя",
             "userdescription":"Описание",
-            "useraltname":"Альтернативное имя"
+            "useraltname":"Другое имя"
         },
         "useroptions":{
             "Login":"Вход",
             "Logout":"Выход",
             "SignUp":"Зарегистрироваться",
-            "notification":"Уведомление",
-            "directmessage":"ПС",
-            "add_account":"+ Добавить аккаунт",
+            "notification":"Уведомления",
+            "directmessage":"Сообщения",
+            "add_account":"+ Добавить учётную запись",
             "settings":"Настройки"
         },
         "login":{
             "scr_Login":"Вход",
-            "lbl_userId":"Идент. пользователя",
+            "lbl_userId":"Логин",
             "lbl_userPW":"Пароль",
-            "tbx_userId_Placeholder":"Вот вставить твой идент. ",
-            "tbx_userPW_Placeholder":"Вот вставить твой пароль. ",
+            "tbx_userId_Placeholder":"Введите здесь свой логин.",
+            "tbx_userPW_Placeholder":"Введите здесь свой пароль.",
             "btn_Login":"Вход",
             "btn_Signup":"Зарегистрироваться",
             "btn_reset":"Сброс",
             "error_AllFieldsRequired":"Все поля обязательны для заполнения.",
-            "error_InvalidCredentials":"Неверный ID пользователя или пароль."
-        }, 
+            "error_InvalidCredentials":"Неверный логин или пароль."
+        },
         "signup":{
             "scr_SignUp":"Регистрация",
-            "lbl_UserId":"Идент. пользователя",
-            "tbx_UserId_Placeholder":"Вот вставить твой идент. ",
-            "lbl_ConfirmUserID":"Подтверждение идент. ",
-            "tbx_ConfirmUserID_Placeholder":"Вот повторить твой идент. ",
+            "lbl_UserId":"Логин",
+            "tbx_UserId_Placeholder":"Введите здесь свой логин.",
+            "lbl_ConfirmUserID":"Подтверждение логина",
+            "tbx_ConfirmUserID_Placeholder":"Повторите здесь свой логин.",
             "lbl_UserPW":"Пароль",
-            "tbx_UserPW_Placeholder":"Вот вставить твой пароль. ",
+            "tbx_UserPW_Placeholder":"Введите здесь свой пароль.",
             "lbl_ConfirmUserPW":"Подтверждение пароля",
-            "tbx_ConfirmUserPW_Placeholder":"Вот повторить твой пароль. ",
-            "btn_GoBack":"Пойти",
+            "tbx_ConfirmUserPW_Placeholder":"Повторите здесь свой пароль.",
+            "btn_GoBack":"Назад",
             "btn_Reset":"Сброс",
             "btn_Signup":"Зарегистрироваться",
             "error_AllFieldsRequired":"Все поля обязательны для заполнения.",
-            "error_UserIDsMismatch":"Идентификаторы пользователей не совпадают.",
+            "error_UserIDsMismatch":"Логины не совпадают.",
             "error_PasswordsMismatch":"Пароли не совпадают.",
-            "error_UserIDExists":"Этот идентификатор пользователя уже используется."
+            "error_UserIDExists":"Этот логин уже занят."
         },
         "userstatus":{
-            "SuspendedUser":"Отстраненный пользователь",
-            "NormalUser":"Нормальный пользователь",
+            "SuspendedUser":"Заблокированный пользователь",
+            "NormalUser":"Обычный пользователь",
             "Admin":"Администратор",
             "Developer":"Разработчик",
-            "ProjectManager":"Менеджер проекта",
+            "ProjectManager":"Руководитель проекта",
             "Founder":"Основатель"
         },
         "userlevel":{
@@ -168,7 +187,7 @@
             "btn_edit_profile":"Редактировать профиль",
             "edit_profile_title":"Редактировать профиль",
             "tbx_username_placeholder":"Добавьте отображаемое имя",
-            "tbx_alt_name_placeholder":"Добавьте альтернативное имя",
+            "tbx_alt_name_placeholder":"Добавьте другое имя",
             "tbx_description_placeholder":"Расскажите о себе",
             "btn_save_profile":"Сохранить изменения",
             "profile_update_failed":"Не удалось обновить профиль. Попробуйте ещё раз."
@@ -183,55 +202,55 @@
             "tab_video":"Видео",
             "show_more":"Показать больше",
             "show_less":"Показать меньше",
-            "no_submissions":"Публикаций пока нет.",
+            "no_submissions":"Записей пока нет.",
             "load_more":"Загрузить ещё",
-            "loading_submissions":"Загрузка публикаций...",
-            "private":"Приватно",
+            "loading_submissions":"Загрузка записей...",
+            "private":"Скрыто",
             "view_details":"Подробнее"
         },
         "userinterfaceoptions":{
-            "theme":"Тема",
-            "theme_light":"Светлый",
-            "theme_dark":"Тёмный",
+            "theme":"Оформление",
+            "theme_light":"Светлое",
+            "theme_dark":"Тёмное",
             "language":"Язык",
-            "enable_vertical_direction":"Позвопить вертикальное направление"
+            "enable_vertical_direction":"Включить вертикальное письмо"
         },
         "postview":{
-            "prev_post":"Предыдущий пост",
-            "next_post":"Следующий пост",
+            "prev_post":"Предыдущая запись",
+            "next_post":"Следующая запись",
             "btn_Modify":"Изменить",
             "btn_Delete":"Удалить",
-            "loading_post":"Загрузка поста",
+            "loading_post":"Загрузка записи",
             "post_not_found":"Страница не найдена",
-            "post_error":"Ошибка поста",
+            "post_error":"Не удалось загрузить запись",
             "unknown_author":"Неизвестный автор",
             "more_from_artist":"Больше от этого художника",
-            "post_contents_placeholder":"Содержимое поста будет отображаться здесь.",
-            "confirm_delete":"Удалить пост?"
+            "post_contents_placeholder":"Содержимое записи будет отображаться здесь.",
+            "confirm_delete":"Удалить запись?"
         },
         "posteditor":{
-            "lbl_title":"Создать новый пост",
-            "scr_EditPost":"Редактировать пост",
-            "lbl_post_title":"Заголовок",
-            "tbx_title_Placeholder":"Вставьте здесь заголовок. ",
+            "lbl_title":"Создать новую запись",
+            "scr_EditPost":"Редактировать запись",
+            "lbl_post_title":"Название",
+            "tbx_title_Placeholder":"Введите здесь название.",
             "lbl_description":"Описание",
             "lbl_uploadfile":"Загрузить файл(ы)",
-            "txt_description_Placeholder":"Расскажите нам о своём искусстве",
+            "txt_description_Placeholder":"Расскажите о своём творчестве",
             "lbl_tags":"Теги",
-            "tbx_tags_Placeholder":"напр. живопись, абстракция, модерн",
-            "btn_Submit":"Создать пост",
-            "btn_Update":"Обновить пост",
+            "tbx_tags_Placeholder":"напр. живопись, абстракция, современное искусство",
+            "btn_Submit":"Создать запись",
+            "btn_Update":"Обновить запись",
             "btn_Reset":"Сброс",
             "btn_Cancel":"Отмена",
             "error_login_required":"Для публикации необходимо войти в систему.",
-            "error_load_failed":"Не удалось загрузить данные поста.",
-            "error_submit_failed":"Не удалось отправить пост.",
+            "error_load_failed":"Не удалось загрузить данные записи.",
+            "error_submit_failed":"Не удалось отправить запись.",
             "error_invalid_file_type":"Можно загружать только изображения.",
             "error_file_too_large":"Размер каждого файла не должен превышать 25 МБ."
         },
         "replieslist":{
             "lbl_Replies":"Ответы",
-            "reply_submission_error":"Произошла ошибка при отправке ответа. ",
+            "reply_submission_error":"Произошла ошибка при отправке ответа.",
             "no_replies":"Ответов пока нет. Будьте первым!",
             "anonymous":"Аноним",
             "tbx_reply_Placeholder":"Напишите ответ…",
@@ -245,15 +264,25 @@
         },
         "homepage":{
             "welcome_back":"С возвращением",
-            "lbl_accounts":"Вошедшие аккаунты",
+            "lbl_accounts":"Активные учётные записи",
             "badge_current":"Текущий",
             "btn_switch":"Переключить",
             "btn_view_profile":"Просмотреть профиль",
-            "btn_new_post":"Новый пост",
+            "btn_new_post":"Новая запись",
             "btn_logout_all":"Выйти из всех",
-            "confirm_logout_all":"Выйти из всех аккаунтов на этом устройстве?",
+            "confirm_logout_all":"Выйти из всех учётных записей на этом устройстве?",
             "welcome_title":"Добро пожаловать в Hwarang",
-            "welcome_subtitle":"Войдите или создайте аккаунт, чтобы делиться искусством и открывать новое."
+            "welcome_subtitle":"Войдите или создайте учётную запись, чтобы делиться искусством и открывать новое."
+        },
+        "systemerror":{
+            "error":"Произошла ошибка.",
+            "network_error":"Ошибка сети. Проверьте подключение.",
+            "page_not_found":"Страница не найдена."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Поиск…",
+            "btn_search":"Найти",
+            "btn_reset":"Сброс"
         }
     }
 }

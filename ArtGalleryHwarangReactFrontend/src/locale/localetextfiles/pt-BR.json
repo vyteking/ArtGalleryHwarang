@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"pt-BR",
+        "code":"pt",
+        "code-variant":"pt-Latn",
+        "code-REGIONCODE":"pt-BR",
         "name":"Português (Brasil)",
         "direction":0
     },
     "format":{
         "number_decimal_separator":",",
         "number_group_separator":".",
-        "dateformat":"dd/MM/yyyy"
+        "standard_date_format":"dd/MM/yyyy"
     },
     "Texts":{
         "webinfo":{
@@ -22,40 +24,55 @@
             "Cancel":"Cancelar",
             "Open":"Abrir",
             "Close":"Fechar",
-            "Reset":"Redefinir"
+            "Reset":"Redefinir",
+            "View":"Ver",
+            "Save":"Salvar",
+            "Post":"Publicar",
+            "Insert":"Inserir",
+            "Create":"Criar",
+            "Submit":"Enviar",
+            "Update":"Atualizar",
+            "Edit":"Editar",
+            "Modify":"Modificar",
+            "Delete":"Excluir",
+            "Back":"Voltar"
         },
         "statistic":{
-            "posts": {
+            "posts":{
                 "one":"publicação",
                 "other":"publicações"
             },
-            "following": {
+            "following":{
                 "one":"seguindo",
                 "other":"seguindo"
             },
-            "followers": {
+            "followers":{
                 "one":"seguidor",
                 "other":"seguidores"
             },
-            "Replies": {
+            "users":{
+                "one":"usuário",
+                "other":"usuários"
+            },
+            "Replies":{
                 "one":"resposta",
                 "other":"respostas"
             }
         },
         "statistic_with_count":{
-            "posts": {
+            "posts":{
                 "one":"{{count}} publicação",
                 "other":"{{count}} publicações"
             },
-            "following": {
+            "following":{
                 "one":"{{count}} seguindo",
                 "other":"{{count}} seguindo"
             },
-            "followers": {
+            "followers":{
                 "one":"{{count}} seguidor",
                 "other":"{{count}} seguidores"
             },
-            "Replies": {
+            "Replies":{
                 "one":"{{count}} resposta",
                 "other":"{{count}} respostas"
             }
@@ -79,7 +96,7 @@
             "userID":"ID de usuário",
             "userpassword":"Senha",
             "userpassword2nd":"2ª senha",
-            "userstatus":"Status do usuário",
+            "userstatus":"Situação do usuário",
             "userlevel":"Nível do usuário",
             "userjoindate":"Data de cadastro",
             "useremail":"E-mail",
@@ -93,7 +110,7 @@
             "Logout":"Sair",
             "SignUp":"Cadastrar-se",
             "notification":"Notificações",
-            "directmessage":"DM",
+            "directmessage":"Mensagens",
             "add_account":"+ Adicionar conta",
             "settings":"Configurações"
         },
@@ -101,8 +118,8 @@
             "scr_Login":"Entrar",
             "lbl_userId":"ID de usuário",
             "lbl_userPW":"Senha",
-            "tbx_userId_Placeholder":"Digite seu ID de usuário aqui. ",
-            "tbx_userPW_Placeholder":"Digite sua senha aqui. ",
+            "tbx_userId_Placeholder":"Digite seu ID de usuário aqui.",
+            "tbx_userPW_Placeholder":"Digite sua senha aqui.",
             "btn_Login":"Entrar",
             "btn_Signup":"Cadastrar-se",
             "btn_reset":"Redefinir",
@@ -112,13 +129,13 @@
         "signup":{
             "scr_SignUp":"Cadastro",
             "lbl_UserId":"ID de usuário",
-            "tbx_UserId_Placeholder":"Digite seu ID de usuário aqui. ",
+            "tbx_UserId_Placeholder":"Digite seu ID de usuário aqui.",
             "lbl_ConfirmUserID":"Confirmar ID de usuário",
-            "tbx_ConfirmUserID_Placeholder":"Repita seu ID de usuário aqui. ",
+            "tbx_ConfirmUserID_Placeholder":"Repita seu ID de usuário aqui.",
             "lbl_UserPW":"Senha",
-            "tbx_UserPW_Placeholder":"Digite sua senha aqui. ",
+            "tbx_UserPW_Placeholder":"Digite sua senha aqui.",
             "lbl_ConfirmUserPW":"Confirmar senha",
-            "tbx_ConfirmUserPW_Placeholder":"Repita sua senha aqui. ",
+            "tbx_ConfirmUserPW_Placeholder":"Repita sua senha aqui.",
             "btn_GoBack":"Voltar",
             "btn_Reset":"Redefinir",
             "btn_Signup":"Cadastrar-se",
@@ -159,7 +176,7 @@
         },
         "personalpage":{
             "tab_all":"Tudo",
-            "tab_blogcontent":"Post de blog",
+            "tab_blogcontent":"Artigo de blog",
             "tab_image2d":"Imagem 2D",
             "tab_animation2d":"Animação 2D",
             "tab_object3d":"Obra 3D",
@@ -187,7 +204,7 @@
             "btn_Delete":"Excluir",
             "loading_post":"Carregando publicação",
             "post_not_found":"Página não encontrada",
-            "post_error":"Erro na publicação",
+            "post_error":"Não foi possível carregar a publicação.",
             "unknown_author":"Autor desconhecido",
             "more_from_artist":"Mais deste artista",
             "post_contents_placeholder":"O conteúdo da publicação será exibido aqui.",
@@ -197,7 +214,7 @@
             "lbl_title":"Criar nova publicação",
             "scr_EditPost":"Editar publicação",
             "lbl_post_title":"Título",
-            "tbx_title_Placeholder":"Digite o título aqui. ",
+            "tbx_title_Placeholder":"Digite o título aqui.",
             "lbl_description":"Descrição",
             "lbl_uploadfile":"Enviar arquivo(s)",
             "txt_description_Placeholder":"Conte-nos sobre sua arte",
@@ -215,7 +232,7 @@
         },
         "replieslist":{
             "lbl_Replies":"Respostas",
-            "reply_submission_error":"Ocorreu um erro ao enviar a resposta. ",
+            "reply_submission_error":"Ocorreu um erro ao enviar a resposta.",
             "no_replies":"Nenhuma resposta ainda. Seja o primeiro!",
             "anonymous":"Anônimo",
             "tbx_reply_Placeholder":"Escreva uma resposta…",
@@ -238,6 +255,16 @@
             "confirm_logout_all":"Sair de todas as contas neste dispositivo?",
             "welcome_title":"Bem-vindo ao Hwarang",
             "welcome_subtitle":"Entre ou crie uma conta para compartilhar e explorar arte."
+        },
+        "systemerror":{
+            "error":"Ocorreu um erro.",
+            "network_error":"Erro de rede. Verifique sua conexão.",
+            "page_not_found":"Página não encontrada."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Buscar…",
+            "btn_search":"Buscar",
+            "btn_reset":"Redefinir"
         }
     }
 }

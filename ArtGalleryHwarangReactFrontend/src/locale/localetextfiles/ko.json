@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"ko-KR",
+        "code":"ko",
+        "code-variant":"ko-Hang",
+        "code-REGIONCODE":"ko-KR",
         "name":"한국어",
         "direction":3
-    }, 
+    },
     "format":{
         "number_decimal_separator":".",
         "number_group_separator":",",
-        "dateformat":"yyyy/MM/dd"
+        "standard_date_format":"yyyy/MM/dd"
     },
     "Texts":{
         "webinfo":{
@@ -19,36 +21,50 @@
             "Yes":"예",
             "No":"아니요",
             "Confirm":"확인",
-            "Cancel":"취소", 
-            "Open":"열기", 
+            "Cancel":"취소",
+            "Open":"열기",
             "Close":"닫기",
-            "Reset":"초기화"
+            "Reset":"초기화",
+            "View":"보기",
+            "Save":"저장",
+            "Post":"올리기",
+            "Insert":"삽입",
+            "Create":"만들기",
+            "Submit":"제출",
+            "Update":"업데이트",
+            "Edit":"수정",
+            "Modify":"변경",
+            "Delete":"삭제",
+            "Back":"뒤로"
         },
         "statistic":{
-            "posts": {
-                "other":"게시글"
+            "posts":{
+                "other":"게시물"
             },
-            "following": {
+            "following":{
                 "other":"팔로잉"
             },
-            "followers": {
+            "followers":{
                 "other":"팔로워"
             },
-            "Replies": {
+            "users":{
+                "other":"사용자"
+            },
+            "Replies":{
                 "other":"덧글"
             }
         },
         "statistic_with_count":{
-            "posts": {
-                "other":"{{count}} 게시글"
+            "posts":{
+                "other":"{{count}} 게시물"
             },
-            "following": {
+            "following":{
                 "other":"{{count}} 팔로잉"
             },
-            "followers": {
+            "followers":{
                 "other":"{{count}} 팔로워"
             },
-            "Replies": {
+            "Replies":{
                 "other":"{{count}} 덧글"
             }
         },
@@ -65,27 +81,27 @@
             "displayoptions":"표시설정"
         },
         "userinfo":{
-            "userindex1st":"사용자색인 1번째", 
-            "userindex2nd":"사용자색인 2번째", 
-            "userindex3rd":"사용자색인 3번째", 
+            "userindex1st":"사용자색인 1",
+            "userindex2nd":"사용자색인 2",
+            "userindex3rd":"사용자색인 3",
             "userID":"아이디",
             "userpassword":"암호",
-            "userpassword2nd":"2차암호",
+            "userpassword2nd":"2차 암호",
             "userstatus":"사용자상태",
-            "userlevel":"사용자레벨",
+            "userlevel":"사용자등급",
             "userjoindate":"가입날짜",
             "useremail":"전자우편",
             "userphonenumber":"전화번호",
             "username":"사용자이름",
             "userdescription":"자기소개",
-            "useraltname":"다른이름"
+            "useraltname":"다른 이름"
         },
         "useroptions":{
             "Login":"로그인",
             "Logout":"로그아웃",
             "SignUp":"회원가입",
             "notification":"알림",
-            "directmessage":"다이렉트메세지",
+            "directmessage":"쪽지",
             "add_account":"+ 계정 추가",
             "settings":"설정"
         },
@@ -93,24 +109,24 @@
             "scr_Login":"로그인",
             "lbl_userId":"아이디",
             "lbl_userPW":"암호",
-            "tbx_userId_Placeholder":"아이디를 여기에 입력하세요. ",
-            "tbx_userPW_Placeholder":"암호를 여기에 입력하세요. ",
+            "tbx_userId_Placeholder":"아이디를 여기에 입력하세요.",
+            "tbx_userPW_Placeholder":"암호를 여기에 입력하세요.",
             "btn_Login":"로그인",
             "btn_Signup":"회원가입",
             "btn_reset":"초기화",
             "error_AllFieldsRequired":"모든 항목을 입력해 주세요.",
-            "error_InvalidCredentials":"사용자 ID 또는 비밀번호가 올바르지 않습니다."
+            "error_InvalidCredentials":"아이디 또는 암호가 올바르지 않습니다."
         },
         "signup":{
             "scr_SignUp":"회원가입",
             "lbl_UserId":"아이디",
-            "tbx_UserId_Placeholder":"아이디를 여기에 입력하세요. ",
+            "tbx_UserId_Placeholder":"아이디를 여기에 입력하세요.",
             "lbl_ConfirmUserID":"아이디확인",
-            "tbx_ConfirmUserID_Placeholder":"아이디를 여기에 재입력하세요. ",
+            "tbx_ConfirmUserID_Placeholder":"아이디를 여기에 재입력하세요.",
             "lbl_UserPW":"암호",
-            "tbx_UserPW_Placeholder":"암호를 여기에 입력하세요. ",
+            "tbx_UserPW_Placeholder":"암호를 여기에 입력하세요.",
             "lbl_ConfirmUserPW":"암호확인",
-            "tbx_ConfirmUserPW_Placeholder":"암호를 여기에 재입력하세요. ",
+            "tbx_ConfirmUserPW_Placeholder":"암호를 여기에 재입력하세요.",
             "btn_GoBack":"뒤로 가기",
             "btn_Reset":"초기화",
             "btn_Signup":"회원가입",
@@ -120,15 +136,15 @@
             "error_UserIDExists":"이미 사용 중인 아이디입니다."
         },
         "userstatus":{
-            "SuspendedUser":"정지사용자",
+            "SuspendedUser":"정지된 사용자",
             "NormalUser":"일반사용자",
             "Admin":"관리자",
             "Developer":"개발자",
-            "ProjectManager":"프로젝트관리자",
+            "ProjectManager":"기획관리자",
             "Founder":"설립자"
         },
         "userlevel":{
-            "UnrankedUser":"등급없음",
+            "UnrankedUser":"등급 없음",
             "BronzeUser":"브론즈",
             "SilverUser":"실버",
             "GoldUser":"골드",
@@ -144,42 +160,42 @@
             "btn_edit_profile":"프로필 편집",
             "edit_profile_title":"프로필 편집",
             "tbx_username_placeholder":"표시 이름을 입력하세요",
-            "tbx_alt_name_placeholder":"대체 이름을 입력하세요",
+            "tbx_alt_name_placeholder":"다른 이름을 입력하세요",
             "tbx_description_placeholder":"자신을 소개해 보세요",
             "btn_save_profile":"변경사항 저장",
-            "profile_update_failed":"프로필 업데이트에 실패했습니다. 다시 시도해 주세요."
+            "profile_update_failed":"프로필 수정에 실패했습니다. 다시 시도해 주세요."
         },
         "personalpage":{
             "tab_all":"전체",
-            "tab_blogcontent":"블로그 글",
-            "tab_image2d":"2D 이미지",
-            "tab_animation2d":"2D 애니메이션",
-            "tab_object3d":"3D 작품",
+            "tab_blogcontent":"블로그글",
+            "tab_image2d":"2D그림",
+            "tab_animation2d":"2D애니메이션",
+            "tab_object3d":"3D작품",
             "tab_audio":"오디오",
-            "tab_video":"비디오",
+            "tab_video":"동영상",
             "show_more":"더 보기",
             "show_less":"접기",
             "no_submissions":"아직 게시물이 없습니다.",
             "load_more":"더 불러오기",
             "loading_submissions":"게시물을 불러오는 중...",
             "private":"비공개",
-            "view_details":"상세 정보"
+            "view_details":"자세히 보기"
         },
         "userinterfaceoptions":{
             "theme":"테마",
             "theme_light":"밝게",
             "theme_dark":"어둡게",
             "language":"언어",
-            "enable_vertical_direction":"세로쓰기 활성화"
+            "enable_vertical_direction":"세로쓰기 켜기"
         },
         "postview":{
-            "prev_post":"이전게시물",
-            "next_post":"다음게시물",
+            "prev_post":"이전 게시물",
+            "next_post":"다음 게시물",
             "btn_Modify":"수정",
             "btn_Delete":"삭제",
-            "loading_post":"게시물 불러오는중",
+            "loading_post":"게시물 불러오는 중",
             "post_not_found":"게시물 없음",
-            "post_error":"게시오류: ",
+            "post_error":"게시물을 불러오지 못했습니다.",
             "unknown_author":"알 수 없는 작가",
             "more_from_artist":"이 작가의 다른 작품",
             "post_contents_placeholder":"게시물 내용이 여기에 표시됩니다.",
@@ -189,7 +205,7 @@
             "lbl_title":"새 게시물 올리기",
             "scr_EditPost":"게시물 수정",
             "lbl_post_title":"제목",
-            "tbx_title_Placeholder":"제목을 여기에 입력하세요. ",
+            "tbx_title_Placeholder":"제목을 여기에 입력하세요.",
             "lbl_description":"설명",
             "lbl_uploadfile":"올릴 파일",
             "txt_description_Placeholder":"작품에 대해 설명해 주세요",
@@ -200,14 +216,14 @@
             "btn_Reset":"초기화",
             "btn_Cancel":"취소",
             "error_login_required":"게시물을 올리려면 로그인해야 합니다.",
-            "error_load_failed":"게시물 데이터를 불러오지 못했습니다.",
+            "error_load_failed":"게시물 정보를 불러오지 못했습니다.",
             "error_submit_failed":"게시물 올리기에 실패했습니다.",
-            "error_invalid_file_type":"이미지파일만 업로드할 수 있습니다.",
+            "error_invalid_file_type":"그림 파일만 올릴 수 있습니다.",
             "error_file_too_large":"각 파일의 크기는 25MB 이하여야 합니다."
         },
         "replieslist":{
             "lbl_Replies":"덧글",
-            "reply_submission_error":"덧글올리기에 오류가 발생했습니다. ",
+            "reply_submission_error":"덧글 올리기에 오류가 발생했습니다.",
             "no_replies":"아직 덧글이 없습니다. 첫 번째로 달아보세요!",
             "anonymous":"익명",
             "tbx_reply_Placeholder":"덧글을 여기에 입력하세요…",
@@ -227,9 +243,19 @@
             "btn_view_profile":"프로필 보기",
             "btn_new_post":"새 게시물",
             "btn_logout_all":"전체 로그아웃",
-            "confirm_logout_all":"이 기기의 모든 계정을 로그아웃할까요?",
+            "confirm_logout_all":"이 기기의 로그인된 모든 계정을 로그아웃할까요?",
             "welcome_title":"화랑에 오신 것을 환영합니다",
             "welcome_subtitle":"로그인하거나 계정을 만들어 작품을 공유하고 감상해 보세요."
+        },
+        "systemerror":{
+            "error":"오류가 발생했습니다.",
+            "network_error":"통신오류가 발생했습니다. 연결상태를 확인해 주세요.",
+            "page_not_found":"페이지를 찾을 수 없습니다."
+        },
+        "search":{
+            "tbx_search_Placeholder":"찾기…",
+            "btn_search":"찾기",
+            "btn_reset":"초기화"
         }
     }
 }

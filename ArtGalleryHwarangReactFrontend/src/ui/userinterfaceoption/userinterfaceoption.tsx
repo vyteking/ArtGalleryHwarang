@@ -45,7 +45,7 @@ function Userinterfaceoptionwindow({ toggleVisibility }: Userinterfaceoptionwind
                 <div className="ui-option-row">
                     <span className="ui-option-label">{localeTxt.userinterfaceoptions.language}</span>
                     <select
-                        value={currentLocale.LocaleInfo.code}
+                        value={currentLocale.id}
                         onChange={e => setLocale(e.target.value)}
                     >
                         {[...locales.entries()].map(([code, name]) => (

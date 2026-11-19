@@ -1,54 +1,70 @@
 {
     "LocaleInfo":{
-        "code":"vi-VN",
+        "code":"vi",
+        "code-variant":"vi-Latn",
+        "code-REGIONCODE":"vi-VN",
         "name":"Tiếng Việt",
         "direction":0
     },
     "format":{
         "number_decimal_separator":",",
         "number_group_separator":".",
-        "dateformat":"dd/MM/yyyy"
+        "standard_date_format":"dd/MM/yyyy"
     },
     "Texts":{
         "webinfo":{
-            "name":"Hwarang"
+            "name":"Hoa Lang"
         },
         "common":{
-            "OK":"OK",
-            "OK_Confirm_btn":"OK",
+            "OK":"Đồng ý",
+            "OK_Confirm_btn":"Đồng ý",
             "Yes":"Có",
             "No":"Không",
             "Confirm":"Xác nhận",
             "Cancel":"Hủy",
             "Open":"Mở",
             "Close":"Đóng",
-            "Reset":"Đặt lại"
+            "Reset":"Đặt lại",
+            "View":"Xem",
+            "Save":"Lưu",
+            "Post":"Đăng",
+            "Insert":"Chèn",
+            "Create":"Tạo",
+            "Submit":"Gửi",
+            "Update":"Cập nhật",
+            "Edit":"Chỉnh sửa",
+            "Modify":"Sửa đổi",
+            "Delete":"Xóa",
+            "Back":"Quay lại"
         },
         "statistic":{
-            "posts": {
+            "posts":{
                 "other":"bài đăng"
             },
-            "following": {
+            "following":{
                 "other":"đang theo dõi"
             },
-            "followers": {
+            "followers":{
                 "other":"người theo dõi"
             },
-            "Replies": {
+            "users":{
+                "other":"người dùng"
+            },
+            "Replies":{
                 "other":"phản hồi"
             }
         },
         "statistic_with_count":{
-            "posts": {
+            "posts":{
                 "other":"{{count}} bài đăng"
             },
-            "following": {
+            "following":{
                 "other":"{{count}} đang theo dõi"
             },
-            "followers": {
+            "followers":{
                 "other":"{{count}} người theo dõi"
             },
-            "Replies": {
+            "Replies":{
                 "other":"{{count}} phản hồi"
             }
         },
@@ -56,7 +72,7 @@
             "menu":"Menu"
         },
         "sidebar0":{
-            "mainpage":"Trang chính",
+            "mainpage":"Trang chủ",
             "hot":"Nổi bật",
             "random_user_page":"Người dùng ngẫu nhiên",
             "random_submission":"Bài đăng ngẫu nhiên"
@@ -68,13 +84,13 @@
             "userindex1st":"Chỉ số người dùng thứ 1",
             "userindex2nd":"Chỉ số người dùng thứ 2",
             "userindex3rd":"Chỉ số người dùng thứ 3",
-            "userID":"ID người dùng",
+            "userID":"Tên đăng nhập",
             "userpassword":"Mật khẩu",
             "userpassword2nd":"Mật khẩu cấp 2",
             "userstatus":"Trạng thái người dùng",
             "userlevel":"Cấp độ người dùng",
             "userjoindate":"Ngày tham gia",
-            "useremail":"E-mail",
+            "useremail":"Email",
             "userphonenumber":"Số điện thoại",
             "username":"Tên người dùng",
             "userdescription":"Mô tả",
@@ -91,33 +107,33 @@
         },
         "login":{
             "scr_Login":"Đăng nhập",
-            "lbl_userId":"ID người dùng",
+            "lbl_userId":"Tên đăng nhập",
             "lbl_userPW":"Mật khẩu",
-            "tbx_userId_Placeholder":"Nhập ID người dùng của bạn tại đây. ",
-            "tbx_userPW_Placeholder":"Nhập mật khẩu của bạn tại đây. ",
+            "tbx_userId_Placeholder":"Nhập tên đăng nhập của bạn tại đây.",
+            "tbx_userPW_Placeholder":"Nhập mật khẩu của bạn tại đây.",
             "btn_Login":"Đăng nhập",
             "btn_Signup":"Đăng ký",
             "btn_reset":"Đặt lại",
             "error_AllFieldsRequired":"Vui lòng điền đầy đủ tất cả các trường.",
-            "error_InvalidCredentials":"ID người dùng hoặc mật khẩu không đúng."
+            "error_InvalidCredentials":"Tên đăng nhập hoặc mật khẩu không đúng."
         },
         "signup":{
             "scr_SignUp":"Đăng ký",
-            "lbl_UserId":"ID người dùng",
-            "tbx_UserId_Placeholder":"Nhập ID người dùng của bạn tại đây. ",
-            "lbl_ConfirmUserID":"Xác nhận ID người dùng",
-            "tbx_ConfirmUserID_Placeholder":"Nhập lại ID người dùng của bạn tại đây. ",
+            "lbl_UserId":"Tên đăng nhập",
+            "tbx_UserId_Placeholder":"Nhập tên đăng nhập của bạn tại đây.",
+            "lbl_ConfirmUserID":"Xác nhận tên đăng nhập",
+            "tbx_ConfirmUserID_Placeholder":"Nhập lại tên đăng nhập của bạn tại đây.",
             "lbl_UserPW":"Mật khẩu",
-            "tbx_UserPW_Placeholder":"Nhập mật khẩu của bạn tại đây. ",
+            "tbx_UserPW_Placeholder":"Nhập mật khẩu của bạn tại đây.",
             "lbl_ConfirmUserPW":"Xác nhận mật khẩu",
-            "tbx_ConfirmUserPW_Placeholder":"Nhập lại mật khẩu của bạn tại đây. ",
+            "tbx_ConfirmUserPW_Placeholder":"Nhập lại mật khẩu của bạn tại đây.",
             "btn_GoBack":"Quay lại",
             "btn_Reset":"Đặt lại",
             "btn_Signup":"Đăng ký",
             "error_AllFieldsRequired":"Vui lòng điền đầy đủ tất cả các trường.",
-            "error_UserIDsMismatch":"ID người dùng không khớp.",
+            "error_UserIDsMismatch":"Tên đăng nhập không khớp.",
             "error_PasswordsMismatch":"Mật khẩu không khớp.",
-            "error_UserIDExists":"ID người dùng này đã được sử dụng."
+            "error_UserIDExists":"Tên đăng nhập này đã được sử dụng."
         },
         "userstatus":{
             "SuspendedUser":"Người dùng bị đình chỉ",
@@ -179,7 +195,7 @@
             "btn_Delete":"Xóa",
             "loading_post":"Đang tải bài đăng",
             "post_not_found":"Không tìm thấy trang",
-            "post_error":"Lỗi bài đăng",
+            "post_error":"Không thể tải bài đăng.",
             "unknown_author":"Tác giả không xác định",
             "more_from_artist":"Thêm từ nghệ sĩ này",
             "post_contents_placeholder":"Nội dung bài đăng sẽ hiển thị tại đây.",
@@ -189,7 +205,7 @@
             "lbl_title":"Tạo bài đăng mới",
             "scr_EditPost":"Chỉnh sửa bài đăng",
             "lbl_post_title":"Tiêu đề",
-            "tbx_title_Placeholder":"Nhập tiêu đề tại đây. ",
+            "tbx_title_Placeholder":"Nhập tiêu đề tại đây.",
             "lbl_description":"Mô tả",
             "lbl_uploadfile":"Tải lên tệp",
             "txt_description_Placeholder":"Hãy kể cho chúng tôi về tác phẩm của bạn",
@@ -207,7 +223,7 @@
         },
         "replieslist":{
             "lbl_Replies":"Phản hồi",
-            "reply_submission_error":"Đã xảy ra lỗi khi gửi phản hồi. ",
+            "reply_submission_error":"Đã xảy ra lỗi khi gửi phản hồi.",
             "no_replies":"Chưa có phản hồi nào. Hãy là người đầu tiên!",
             "anonymous":"Ẩn danh",
             "tbx_reply_Placeholder":"Viết phản hồi…",
@@ -228,8 +244,18 @@
             "btn_new_post":"Bài đăng mới",
             "btn_logout_all":"Đăng xuất tất cả",
             "confirm_logout_all":"Đăng xuất khỏi tất cả tài khoản trên thiết bị này?",
-            "welcome_title":"Chào mừng đến với Hwarang",
+            "welcome_title":"Chào mừng đến với Hoa Lang",
             "welcome_subtitle":"Đăng nhập hoặc tạo tài khoản để chia sẻ và khám phá nghệ thuật."
+        },
+        "systemerror":{
+            "error":"Đã xảy ra lỗi.",
+            "network_error":"Lỗi mạng. Vui lòng kiểm tra kết nối.",
+            "page_not_found":"Không tìm thấy trang."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Tìm kiếm…",
+            "btn_search":"Tìm kiếm",
+            "btn_reset":"Đặt lại"
         }
     }
 }

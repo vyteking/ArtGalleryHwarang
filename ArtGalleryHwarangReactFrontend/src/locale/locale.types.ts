@@ -1,5 +1,10 @@
 export interface LocaleInfo {
+    /** Language only, e.g. "zh", "ko", "pt". Not unique: zh-Hans and zh-Hant share "zh". */
     code: string;
+    /** Language + script, e.g. "zh-Hant", "ko-Kore", "ru-Cyrl". */
+    'code-variant': string;
+    /** Language + region, e.g. "zh-TW", "ko-KR", "pt-BR". */
+    'code-REGIONCODE': string;
     name: string;
     direction: number;
 }
@@ -7,7 +12,7 @@ export interface LocaleInfo {
 export interface LocaleFormat {
     number_decimal_separator: string;
     number_group_separator: string;
-    dateformat: string;
+    standard_date_format: string;
 }
 
 export interface PluralForm {
@@ -33,11 +38,23 @@ export interface LocaleTexts {
         Open: string;
         Close: string;
         Reset: string;
+        View: string;
+        Save: string;
+        Post: string;
+        Insert: string;
+        Create: string;
+        Submit: string;
+        Update: string;
+        Edit: string;
+        Modify: string;
+        Delete: string;
+        Back: string;
     };
     statistic: {
         posts: PluralForm;
         following: PluralForm;
         followers: PluralForm;
+        users: PluralForm;
         Replies: PluralForm;
     };
     statistic_with_count?: {
@@ -225,15 +242,29 @@ export interface LocaleTexts {
         private: string;
         view_details: string;
     };
-    systemerror?: {
+    systemerror: {
         error: string;
         network_error: string;
         page_not_found: string;
     };
+    search: {
+        tbx_search_Placeholder: string;
+        btn_search: string;
+        btn_reset: string;
+    };
 }
 
-export interface LocaleData {
+/** Shape of a locale JSON file (see localetemplate.json). */
+export interface LocaleFile {
     LocaleInfo: LocaleInfo;
     format: LocaleFormat;
     Texts: LocaleTexts;
+}
+
+/** A loaded locale. `id` and `tag` are derived when the files are loaded; they are not in the JSON. */
+export interface LocaleData extends LocaleFile {
+    /** Unique locale ID = the file name without ".json", e.g. "en", "zh-Hant", "ko-HJ". Used for selection and storage. */
+    id: string;
+    /** Full BCP 47 tag (language-Script-REGION) built from LocaleInfo, e.g. "zh-Hant-TW". Used for Intl and <html lang>. */
+    tag: string;
 }

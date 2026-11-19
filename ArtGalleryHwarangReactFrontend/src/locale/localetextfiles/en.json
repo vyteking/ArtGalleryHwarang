@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"en-GB",
+        "code":"en",
+        "code-variant":"en-Latn",
+        "code-REGIONCODE":"en-GB",
         "name":"English",
         "direction":0
-    }, 
+    },
     "format":{
         "number_decimal_separator":".",
         "number_group_separator":",",
-        "dateformat":"dd/MM/yyyy"
+        "standard_date_format":"dd/MM/yyyy"
     },
     "Texts":{
         "webinfo":{
@@ -19,43 +21,58 @@
             "Yes":"Yes",
             "No":"No",
             "Confirm":"Confirm",
-            "Cancel":"Cancel", 
-            "Open":"Open", 
+            "Cancel":"Cancel",
+            "Open":"Open",
             "Close":"Close",
-            "Reset":"Reset"
+            "Reset":"Reset",
+            "View":"View",
+            "Save":"Save",
+            "Post":"Post",
+            "Insert":"Insert",
+            "Create":"Create",
+            "Submit":"Submit",
+            "Update":"Update",
+            "Edit":"Edit",
+            "Modify":"Modify",
+            "Delete":"Delete",
+            "Back":"Back"
         },
         "statistic":{
-            "posts": {
+            "posts":{
                 "one":"post",
                 "other":"posts"
             },
-            "following": {
+            "following":{
                 "one":"following",
                 "other":"following"
             },
-            "followers": {
+            "followers":{
                 "one":"follower",
                 "other":"followers"
             },
-            "Replies": {
+            "users":{
+                "one":"user",
+                "other":"users"
+            },
+            "Replies":{
                 "one":"reply",
                 "other":"replies"
             }
         },
         "statistic_with_count":{
-            "posts": {
+            "posts":{
                 "one":"{{count}} post",
                 "other":"{{count}} posts"
             },
-            "following": {
+            "following":{
                 "one":"{{count}} following",
                 "other":"{{count}} following"
             },
-            "followers": {
+            "followers":{
                 "one":"{{count}} follower",
                 "other":"{{count}} followers"
             },
-            "Replies": {
+            "Replies":{
                 "one":"{{count}} reply",
                 "other":"{{count}} replies"
             }
@@ -73,52 +90,52 @@
             "displayoptions":"Display Options"
         },
         "userinfo":{
-            "userindex1st":"1st User Index", 
-            "userindex2nd":"2nd User Index", 
-            "userindex3rd":"3rd User Index", 
+            "userindex1st":"1st User Index",
+            "userindex2nd":"2nd User Index",
+            "userindex3rd":"3rd User Index",
             "userID":"User ID",
             "userpassword":"Password",
             "userpassword2nd":"2nd Password",
             "userstatus":"User Status",
             "userlevel":"User Level",
             "userjoindate":"Join Date",
-            "useremail":"E-Mail",
+            "useremail":"Email",
             "userphonenumber":"Phone Number",
             "username":"User Name",
             "userdescription":"Description",
             "useraltname":"Alternative Name"
         },
         "useroptions":{
-            "Login":"Login",
-            "Logout":"Logout",
+            "Login":"Log In",
+            "Logout":"Log Out",
             "SignUp":"Sign Up",
-            "notification":"Notification",
+            "notification":"Notifications",
             "directmessage":"DM",
             "add_account":"+ Add account",
             "settings":"Settings"
         },
         "login":{
-            "scr_Login":"Login",
+            "scr_Login":"Log In",
             "lbl_userId":"User ID",
             "lbl_userPW":"Password",
-            "tbx_userId_Placeholder":"Insert your user ID here. ",
-            "tbx_userPW_Placeholder":"Insert your password here. ",
-            "btn_Login":"Login",
+            "tbx_userId_Placeholder":"Enter your user ID here.",
+            "tbx_userPW_Placeholder":"Enter your password here.",
+            "btn_Login":"Log In",
             "btn_Signup":"Sign up",
             "btn_reset":"Reset",
             "error_AllFieldsRequired":"All fields are required.",
             "error_InvalidCredentials":"Incorrect user ID or password."
-        }, 
+        },
         "signup":{
             "scr_SignUp":"Sign up",
             "lbl_UserId":"User ID",
-            "tbx_UserId_Placeholder":"Insert your user ID here. ",
+            "tbx_UserId_Placeholder":"Enter your user ID here.",
             "lbl_ConfirmUserID":"Confirm User ID",
-            "tbx_ConfirmUserID_Placeholder":"Repeat your user ID here. ",
+            "tbx_ConfirmUserID_Placeholder":"Repeat your user ID here.",
             "lbl_UserPW":"Password",
-            "tbx_UserPW_Placeholder":"Insert your password here. ",
+            "tbx_UserPW_Placeholder":"Enter your password here.",
             "lbl_ConfirmUserPW":"Confirm Password",
-            "tbx_ConfirmUserPW_Placeholder":"Repeat your password here. ",
+            "tbx_ConfirmUserPW_Placeholder":"Repeat your password here.",
             "btn_GoBack":"Go Back",
             "btn_Reset":"Reset",
             "btn_Signup":"Sign Up",
@@ -187,7 +204,7 @@
             "btn_Delete":"Delete",
             "loading_post":"Loading Post",
             "post_not_found":"Page Not Found",
-            "post_error":"Post Error",
+            "post_error":"Failed to load post.",
             "unknown_author":"Unknown Author",
             "more_from_artist":"More from this artist",
             "post_contents_placeholder":"Post content will render here.",
@@ -197,7 +214,7 @@
             "lbl_title":"Create New Post",
             "scr_EditPost":"Edit Post",
             "lbl_post_title":"Title",
-            "tbx_title_Placeholder":"Insert the title here. ",
+            "tbx_title_Placeholder":"Enter the title here.",
             "lbl_description":"Description",
             "lbl_uploadfile":"Upload File(s)",
             "txt_description_Placeholder":"Tell us about your art",
@@ -215,7 +232,7 @@
         },
         "replieslist":{
             "lbl_Replies":"Replies",
-            "reply_submission_error":"Reply post error occured. ",
+            "reply_submission_error":"An error occurred while posting your reply.",
             "no_replies":"No replies yet. Be the first!",
             "anonymous":"Anonymous",
             "tbx_reply_Placeholder":"Write a reply…",
@@ -234,10 +251,20 @@
             "btn_switch":"Switch",
             "btn_view_profile":"View Profile",
             "btn_new_post":"New Post",
-            "btn_logout_all":"Logout All",
+            "btn_logout_all":"Log Out All",
             "confirm_logout_all":"Log out of all accounts on this device?",
             "welcome_title":"Welcome to Hwarang",
             "welcome_subtitle":"Log in or create an account to share and explore art."
+        },
+        "systemerror":{
+            "error":"An error occurred.",
+            "network_error":"A network error occurred. Please check your connection.",
+            "page_not_found":"Page not found."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Search…",
+            "btn_search":"Search",
+            "btn_reset":"Reset"
         }
     }
 }

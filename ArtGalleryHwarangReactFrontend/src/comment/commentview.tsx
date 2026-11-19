@@ -39,7 +39,7 @@ function CommentViewer({ comment, onUpdated, onDeleted }: CommentViewerProps) {
         String(currentUser?.user_index_1st) === String(comment.replyauthor.user_index_1st);
     const authorName = comment.replyauthor.user_id || t.anonymous;
     const timestamp = comment.created_at
-        ? new Date(comment.created_at).toLocaleString(currentLocale.LocaleInfo.code, {
+        ? new Date(comment.created_at).toLocaleString(currentLocale.tag, {
             dateStyle: 'medium',
             timeStyle: 'short',
         })

@@ -73,7 +73,7 @@ function Userinfopage() {
 
     const headerImage = cssImageUrl(profile.user_header_image);
     const notSet = <span className={getClassNames('userinfo-notset')}>{pageTxt.not_set}</span>;
-    const joinDate = new Date(profile.user_join_date).toLocaleDateString(currentLocale.LocaleInfo.code, {
+    const joinDate = new Date(profile.user_join_date).toLocaleDateString(currentLocale.tag, {
         year: 'numeric', month: 'long', day: 'numeric',
     });
     const countTxt = localeTxt.statistic_with_count ?? localeTxt.statistic;

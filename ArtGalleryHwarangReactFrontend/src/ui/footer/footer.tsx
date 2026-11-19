@@ -23,7 +23,7 @@ function formatTime(date: Date): string {
 
 function DateTime() {
     const { currentLocale } = useLocale();
-    const datePattern = currentLocale.format.dateformat;
+    const datePattern = currentLocale.format.standard_date_format;
 
     const [now, setNow] = useState(new Date());
 
@@ -49,7 +49,7 @@ function Localelist() {
             id="localelist"
             name="localelist"
             className={getClassNames('')}
-            value={currentLocale.LocaleInfo.code}
+            value={currentLocale.id}
             onChange={(e) => setLocale(e.target.value)}
         >
             {[...locales.entries()].map(([code, name]) => (

@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
         "code":"langcode",
+        "code-variant":"langcode-variant",
+        "code-REGIONCODE":"langcode-REGIONCODE",
         "name":"Native Language Name",
         "direction":0
     }, 
     "format":{
         "number_decimal_separator":".",
         "number_group_separator":",",
-        "dateformat":"yyyy-MM-dd"
+        "standard_date_format":"yyyy-MM-dd"
     },
     "Texts":{
         "webinfo":{
@@ -22,7 +24,18 @@
             "Cancel":"", 
             "Open":"", 
             "Close":"",
-            "Reset":""
+            "Reset":"",
+            "View":"",
+            "Save":"",
+            "Post":"",
+            "Insert":"",
+            "Create":"",
+            "Submit":"",
+            "Update":"",
+            "Edit":"",
+            "Modify":"",
+            "Delete":"",
+            "Back":""
         },
         "statistic":{
             "posts": {
@@ -230,7 +243,8 @@
             "post_error":"",
             "unknown_author":"",
             "more_from_artist":"",
-            "post_contents_placeholder":""
+            "post_contents_placeholder":"",
+            "confirm_delete":""
         },
         "posteditor":{
             "lbl_title":"",
@@ -278,6 +292,11 @@
             "welcome_title":"",
             "welcome_subtitle":""
         },
+        "search":{
+            "tbx_search_Placeholder":"",
+            "btn_search":"",
+            "btn_reset":""
+        },
         "systemerror":{
             "error":"",
             "network_error":"",
@@ -294,11 +313,16 @@
     },
     "LocaleTemplateCommentary":[
         "JSON is UTF-8 only. ",
+        "The 'code' field is the language code in the format of 'langcode'. 'langcode' contains only the code of the single language. ",
+        "The 'code-variant' field is the language code with a variant suffix to specify the using script (Latin, Cyrillic, Traditional Chinese, Simplified Chinese, etc.). ", 
+        "The 'code-REGIONCODE' field is the language code with a region suffix to specify the geographical variant. For example, 'en-US' is English in the United States, 'en-GB' is English in the United Kingdom, 'zh-CN' is Simplified Chinese in Mainland China, 'zh-TW' is Traditional Chinese in Taiwan. ",
+        "The 'name' field is the native name of the language in that language.",
+        "format-number_*_separator: the characters used for digit groups and decimals (a plain space is rendered non-breaking). Where groups go follows the CLDR rules of LocaleInfo-code. ",
         "LocaleInfo-direction: ",
         "- 0=LR_TB: Left to right and top to bottom. Latin, Cyrillic, Greek, Armenian, Georgian, and so on",
         "- 1=RL_TB: Right to left and top to bottom. Arabic, Hebrew, Syriac, and so on",
-        "- 2=TB_LR: Top to bottom and left to right for verticl writing, Right to left and top to bottom for horizontal writing. Mongolian, Mayan, and so on",
-        "- 3=TB_RL: Top to bottom and right to left for verticl writing, Left to right and top to bottom for horizontal writing. Chinese, Korean, Japanese, Jurchen, Khitan, and so on",
+        "- 2=TB_LR: Top to bottom and left to right for vertical writing, Right to left and top to bottom for horizontal writing. Mongolian, Sogdian, and so on",
+        "- 3=TB_RL: Top to bottom and right to left for vertical writing, Left to right and top to bottom for horizontal writing. Chinese, Korean, Japanese, Jurchen, Khitan, and so on",
         "For the plural forms or rules, refer to the CLDR document about plural rules of each languages (https://cldr.unicode.org/index/cldr-spec/plural-rules https://www.unicode.org/cldr/charts/47/supplemental/language_plural_rules.html). "
     ]
 }

@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"pl-PL",
+        "code":"pl",
+        "code-variant":"pl-Latn",
+        "code-REGIONCODE":"pl-PL",
         "name":"Polski",
         "direction":0
     },
     "format":{
         "number_decimal_separator":",",
         "number_group_separator":" ",
-        "dateformat":"dd.MM.yyyy"
+        "standard_date_format":"dd.MM.yyyy"
     },
     "Texts":{
         "webinfo":{
@@ -22,28 +24,45 @@
             "Cancel":"Anuluj",
             "Open":"Otwórz",
             "Close":"Zamknij",
-            "Reset":"Resetuj"
+            "Reset":"Wyczyść",
+            "View":"Wyświetl",
+            "Save":"Zapisz",
+            "Post":"Opublikuj",
+            "Insert":"Wstaw",
+            "Create":"Utwórz",
+            "Submit":"Wyślij",
+            "Update":"Zaktualizuj",
+            "Edit":"Edytuj",
+            "Modify":"Zmień",
+            "Delete":"Usuń",
+            "Back":"Wróć"
         },
         "statistic":{
-            "posts": {
-                "one":"post",
-                "few":"posty",
-                "many":"postów",
-                "other":"posta"
+            "posts":{
+                "one":"wpis",
+                "few":"wpisy",
+                "many":"wpisów",
+                "other":"wpisu"
             },
-            "following": {
+            "following":{
                 "one":"obserwowany",
                 "few":"obserwowanych",
                 "many":"obserwowanych",
                 "other":"obserwowanego"
             },
-            "followers": {
+            "followers":{
                 "one":"obserwujący",
                 "few":"obserwujących",
                 "many":"obserwujących",
                 "other":"obserwującego"
             },
-            "Replies": {
+            "users":{
+                "one":"użytkownik",
+                "few":"użytkownicy",
+                "many":"użytkowników",
+                "other":"użytkownika"
+            },
+            "Replies":{
                 "one":"odpowiedź",
                 "few":"odpowiedzi",
                 "many":"odpowiedzi",
@@ -51,25 +70,25 @@
             }
         },
         "statistic_with_count":{
-            "posts": {
-                "one":"{{count}} post",
-                "few":"{{count}} posty",
-                "many":"{{count}} postów",
-                "other":"{{count}} posta"
+            "posts":{
+                "one":"{{count}} wpis",
+                "few":"{{count}} wpisy",
+                "many":"{{count}} wpisów",
+                "other":"{{count}} wpisu"
             },
-            "following": {
+            "following":{
                 "one":"{{count}} obserwowany",
                 "few":"{{count}} obserwowanych",
                 "many":"{{count}} obserwowanych",
                 "other":"{{count}} obserwowanego"
             },
-            "followers": {
+            "followers":{
                 "one":"{{count}} obserwujący",
                 "few":"{{count}} obserwujących",
                 "many":"{{count}} obserwujących",
                 "other":"{{count}} obserwującego"
             },
-            "Replies": {
+            "Replies":{
                 "one":"{{count}} odpowiedź",
                 "few":"{{count}} odpowiedzi",
                 "many":"{{count}} odpowiedzi",
@@ -83,10 +102,10 @@
             "mainpage":"Strona główna",
             "hot":"Popularne",
             "random_user_page":"Losowy użytkownik",
-            "random_submission":"Losowy post"
+            "random_submission":"Losowy wpis"
         },
         "footer":{
-            "displayoptions":"Opcje wyświetlania"
+            "displayoptions":"Ustawienia wyświetlania"
         },
         "userinfo":{
             "userindex1st":"1. indeks użytkownika",
@@ -98,7 +117,7 @@
             "userstatus":"Status użytkownika",
             "userlevel":"Poziom użytkownika",
             "userjoindate":"Data dołączenia",
-            "useremail":"E-mail",
+            "useremail":"Adres e-mail",
             "userphonenumber":"Numer telefonu",
             "username":"Nazwa użytkownika",
             "userdescription":"Opis",
@@ -117,31 +136,31 @@
             "scr_Login":"Logowanie",
             "lbl_userId":"ID użytkownika",
             "lbl_userPW":"Hasło",
-            "tbx_userId_Placeholder":"Wpisz tutaj swój ID użytkownika. ",
-            "tbx_userPW_Placeholder":"Wpisz tutaj swoje hasło. ",
+            "tbx_userId_Placeholder":"Wpisz tutaj swoje ID użytkownika.",
+            "tbx_userPW_Placeholder":"Wpisz tutaj swoje hasło.",
             "btn_Login":"Zaloguj się",
             "btn_Signup":"Zarejestruj się",
-            "btn_reset":"Resetuj",
+            "btn_reset":"Wyczyść",
             "error_AllFieldsRequired":"Wszystkie pola są wymagane.",
-            "error_InvalidCredentials":"Nieprawidłowy ID użytkownika lub hasło."
+            "error_InvalidCredentials":"Nieprawidłowe ID użytkownika lub hasło."
         },
         "signup":{
             "scr_SignUp":"Rejestracja",
             "lbl_UserId":"ID użytkownika",
-            "tbx_UserId_Placeholder":"Wpisz tutaj swój ID użytkownika. ",
+            "tbx_UserId_Placeholder":"Wpisz tutaj swoje ID użytkownika.",
             "lbl_ConfirmUserID":"Potwierdź ID użytkownika",
-            "tbx_ConfirmUserID_Placeholder":"Powtórz tutaj swój ID użytkownika. ",
+            "tbx_ConfirmUserID_Placeholder":"Powtórz tutaj swoje ID użytkownika.",
             "lbl_UserPW":"Hasło",
-            "tbx_UserPW_Placeholder":"Wpisz tutaj swoje hasło. ",
+            "tbx_UserPW_Placeholder":"Wpisz tutaj swoje hasło.",
             "lbl_ConfirmUserPW":"Potwierdź hasło",
-            "tbx_ConfirmUserPW_Placeholder":"Powtórz tutaj swoje hasło. ",
+            "tbx_ConfirmUserPW_Placeholder":"Powtórz tutaj swoje hasło.",
             "btn_GoBack":"Wróć",
-            "btn_Reset":"Resetuj",
+            "btn_Reset":"Wyczyść",
             "btn_Signup":"Zarejestruj się",
             "error_AllFieldsRequired":"Wszystkie pola są wymagane.",
             "error_UserIDsMismatch":"Identyfikatory użytkownika nie są zgodne.",
             "error_PasswordsMismatch":"Hasła nie są zgodne.",
-            "error_UserIDExists":"Ten ID użytkownika jest już zajęty."
+            "error_UserIDExists":"To ID użytkownika jest już zajęte."
         },
         "userstatus":{
             "SuspendedUser":"Zawieszony użytkownik",
@@ -197,41 +216,41 @@
             "enable_vertical_direction":"Włącz kierunek pionowy"
         },
         "postview":{
-            "prev_post":"Poprzedni post",
-            "next_post":"Następny post",
-            "btn_Modify":"Modyfikuj",
+            "prev_post":"Poprzedni wpis",
+            "next_post":"Następny wpis",
+            "btn_Modify":"Edytuj",
             "btn_Delete":"Usuń",
-            "loading_post":"Wczytywanie posta",
+            "loading_post":"Wczytywanie wpisu",
             "post_not_found":"Nie znaleziono strony",
-            "post_error":"Błąd posta",
+            "post_error":"Nie udało się wczytać wpisu.",
             "unknown_author":"Nieznany autor",
             "more_from_artist":"Więcej od tego artysty",
-            "post_contents_placeholder":"Treść posta zostanie wyświetlona tutaj.",
-            "confirm_delete":"Usunąć post?"
+            "post_contents_placeholder":"Treść wpisu zostanie wyświetlona tutaj.",
+            "confirm_delete":"Usunąć wpis?"
         },
         "posteditor":{
-            "lbl_title":"Utwórz nowy post",
-            "scr_EditPost":"Edytuj post",
+            "lbl_title":"Utwórz nowy wpis",
+            "scr_EditPost":"Edytuj wpis",
             "lbl_post_title":"Tytuł",
-            "tbx_title_Placeholder":"Wpisz tutaj tytuł. ",
+            "tbx_title_Placeholder":"Wpisz tutaj tytuł.",
             "lbl_description":"Opis",
             "lbl_uploadfile":"Prześlij plik(i)",
             "txt_description_Placeholder":"Opowiedz nam o swojej sztuce",
             "lbl_tags":"Tagi",
             "tbx_tags_Placeholder":"np. malarstwo, abstrakcja, nowoczesność",
-            "btn_Submit":"Utwórz post",
-            "btn_Update":"Zaktualizuj post",
-            "btn_Reset":"Resetuj",
+            "btn_Submit":"Utwórz wpis",
+            "btn_Update":"Zaktualizuj wpis",
+            "btn_Reset":"Wyczyść",
             "btn_Cancel":"Anuluj",
-            "error_login_required":"Musisz być zalogowany, aby publikować.",
-            "error_load_failed":"Nie udało się wczytać danych posta.",
-            "error_submit_failed":"Nie udało się wysłać posta.",
+            "error_login_required":"Zaloguj się, aby publikować.",
+            "error_load_failed":"Nie udało się wczytać danych wpisu.",
+            "error_submit_failed":"Nie udało się wysłać wpisu.",
             "error_invalid_file_type":"Można przesyłać tylko pliki graficzne.",
-            "error_file_too_large":"Każdy plik może mieć maksymalnie 25 MB."
+            "error_file_too_large":"Każdy plik nie może przekraczać 25 MB."
         },
         "replieslist":{
             "lbl_Replies":"Odpowiedzi",
-            "reply_submission_error":"Wystąpił błąd podczas wysyłania odpowiedzi. ",
+            "reply_submission_error":"Wystąpił błąd podczas wysyłania odpowiedzi.",
             "no_replies":"Brak odpowiedzi. Bądź pierwszy!",
             "anonymous":"Anonim",
             "tbx_reply_Placeholder":"Napisz odpowiedź…",
@@ -249,11 +268,21 @@
             "badge_current":"Bieżące",
             "btn_switch":"Przełącz",
             "btn_view_profile":"Zobacz profil",
-            "btn_new_post":"Nowy post",
-            "btn_logout_all":"Wyloguj wszystkie",
+            "btn_new_post":"Nowy wpis",
+            "btn_logout_all":"Wyloguj ze wszystkich kont",
             "confirm_logout_all":"Wylogować się ze wszystkich kont na tym urządzeniu?",
             "welcome_title":"Witaj w Hwarang",
             "welcome_subtitle":"Zaloguj się lub utwórz konto, aby udostępniać i odkrywać sztukę."
+        },
+        "systemerror":{
+            "error":"Wystąpił błąd.",
+            "network_error":"Błąd sieci. Sprawdź połączenie.",
+            "page_not_found":"Nie znaleziono strony."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Szukaj…",
+            "btn_search":"Szukaj",
+            "btn_reset":"Wyczyść"
         }
     }
 }

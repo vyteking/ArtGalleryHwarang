@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"de-DE",
+        "code":"de",
+        "code-variant":"de-Latn",
+        "code-REGIONCODE":"de-DE",
         "name":"Deutsch",
         "direction":0
-    }, 
+    },
     "format":{
         "number_decimal_separator":",",
         "number_group_separator":".",
-        "dateformat":"dd.MM.yyyy"
+        "standard_date_format":"dd.MM.yyyy"
     },
     "Texts":{
         "webinfo":{
@@ -19,43 +21,58 @@
             "Yes":"Ja",
             "No":"Nein",
             "Confirm":"Bestätigen",
-            "Cancel":"Abbrechen", 
-            "Open":"Öffnen", 
+            "Cancel":"Abbrechen",
+            "Open":"Öffnen",
             "Close":"Schließen",
-            "Reset":"Zurücksetzen"
+            "Reset":"Zurücksetzen",
+            "View":"Ansehen",
+            "Save":"Speichern",
+            "Post":"Veröffentlichen",
+            "Insert":"Einfügen",
+            "Create":"Erstellen",
+            "Submit":"Absenden",
+            "Update":"Aktualisieren",
+            "Edit":"Bearbeiten",
+            "Modify":"Ändern",
+            "Delete":"Löschen",
+            "Back":"Zurück"
         },
         "statistic":{
-            "posts": {
+            "posts":{
                 "one":"Beitrag",
                 "other":"Beiträge"
             },
-            "following": {
-                "one":"folgend",
-                "other":"folgend"
+            "following":{
+                "one":"Gefolgt",
+                "other":"Gefolgt"
             },
-            "followers": {
+            "followers":{
                 "one":"Follower",
                 "other":"Follower"
             },
-            "Replies": {
+            "users":{
+                "one":"Benutzer",
+                "other":"Benutzer"
+            },
+            "Replies":{
                 "one":"Antwort",
                 "other":"Antworten"
             }
         },
         "statistic_with_count":{
-            "posts": {
+            "posts":{
                 "one":"{{count}} Beitrag",
                 "other":"{{count}} Beiträge"
             },
-            "following": {
-                "one":"{{count}} folgend",
-                "other":"{{count}} folgend"
+            "following":{
+                "one":"{{count}} Gefolgt",
+                "other":"{{count}} Gefolgt"
             },
-            "followers": {
+            "followers":{
                 "one":"{{count}} Follower",
                 "other":"{{count}} Follower"
             },
-            "Replies": {
+            "Replies":{
                 "one":"{{count}} Antwort",
                 "other":"{{count}} Antworten"
             }
@@ -64,27 +81,27 @@
             "menu":"Menü"
         },
         "sidebar0":{
-            "mainpage":"Hauptseite",
-            "hot":"Hot",
+            "mainpage":"Startseite",
+            "hot":"Beliebt",
             "random_user_page":"Zufälliger Benutzer",
             "random_submission":"Zufälliger Beitrag"
         },
         "footer":{
-            "displayoptions":"Anzeigeoption"
+            "displayoptions":"Anzeigeeinstellungen"
         },
         "userinfo":{
-            "userindex1st":"1. Benutzerindex", 
-            "userindex2nd":"2. Benutzerindex", 
-            "userindex3rd":"3. Benutzerindex", 
-            "userID":"Benutzer-ID",
-            "userpassword":"Passwort",
-            "userpassword2nd":"2. Passwort",
+            "userindex1st":"1. Benutzerindex",
+            "userindex2nd":"2. Benutzerindex",
+            "userindex3rd":"3. Benutzerindex",
+            "userID":"Benutzerkennung",
+            "userpassword":"Kennwort",
+            "userpassword2nd":"2. Kennwort",
             "userstatus":"Benutzerzustand",
-            "userlevel":"Benutzerehene",
+            "userlevel":"Benutzerstufe",
             "userjoindate":"Registrierungsdatum",
             "useremail":"E-Mail",
             "userphonenumber":"Telefonnummer",
-            "username":"Name",
+            "username":"Benutzername",
             "userdescription":"Beschreibung",
             "useraltname":"Alternativer Name"
         },
@@ -92,40 +109,40 @@
             "Login":"Anmelden",
             "Logout":"Abmelden",
             "SignUp":"Registrieren",
-            "notification":"Benachrichtigung",
-            "directmessage":"DN",
+            "notification":"Benachrichtigungen",
+            "directmessage":"Nachrichten",
             "add_account":"+ Konto hinzufügen",
             "settings":"Einstellungen"
         },
         "login":{
             "scr_Login":"Anmeldung",
-            "lbl_userId":"Benutzer-ID",
-            "lbl_userPW":"Passwort",
-            "tbx_userId_Placeholder":"Gib deine Benutzer-ID ein hier. ",
-            "tbx_userPW_Placeholder":"Gib dein Passwort ein hier. ",
+            "lbl_userId":"Benutzerkennung",
+            "lbl_userPW":"Kennwort",
+            "tbx_userId_Placeholder":"Gib hier deine Benutzerkennung ein.",
+            "tbx_userPW_Placeholder":"Gib hier dein Kennwort ein.",
             "btn_Login":"Anmelden",
             "btn_Signup":"Registrieren",
             "btn_reset":"Zurücksetzen",
             "error_AllFieldsRequired":"Alle Felder sind erforderlich.",
-            "error_InvalidCredentials":"Benutzer-ID oder Passwort ist falsch."
-        }, 
+            "error_InvalidCredentials":"Benutzerkennung oder Kennwort ist falsch."
+        },
         "signup":{
             "scr_SignUp":"Registrierung",
-            "lbl_UserId":"Benutzer-ID",
-            "tbx_UserId_Placeholder":"Gib deine Benutzer-ID ein hier. ",
-            "lbl_ConfirmUserID":"Benutzer-ID bestätigen",
-            "tbx_ConfirmUserID_Placeholder":"Wiederhole deine Benutzer-ID hier. ",
-            "lbl_UserPW":"Passwort",
-            "tbx_UserPW_Placeholder":"Gib dein Passwort ein hier. ",
-            "lbl_ConfirmUserPW":"Passwort bestätigen",
-            "tbx_ConfirmUserPW_Placeholder":"Wiederhole dein Passwort hier. ",
-            "btn_GoBack":"Zurückgehen",
+            "lbl_UserId":"Benutzerkennung",
+            "tbx_UserId_Placeholder":"Gib hier deine Benutzerkennung ein.",
+            "lbl_ConfirmUserID":"Benutzerkennung bestätigen",
+            "tbx_ConfirmUserID_Placeholder":"Wiederhole hier deine Benutzerkennung.",
+            "lbl_UserPW":"Kennwort",
+            "tbx_UserPW_Placeholder":"Gib hier dein Kennwort ein.",
+            "lbl_ConfirmUserPW":"Kennwort bestätigen",
+            "tbx_ConfirmUserPW_Placeholder":"Wiederhole hier dein Kennwort.",
+            "btn_GoBack":"Zurück",
             "btn_Reset":"Zurücksetzen",
             "btn_Signup":"Registrieren",
             "error_AllFieldsRequired":"Alle Felder sind erforderlich.",
-            "error_UserIDsMismatch":"Benutzer-IDs stimmen nicht überein.",
-            "error_PasswordsMismatch":"Passwörter stimmen nicht überein.",
-            "error_UserIDExists":"Diese Benutzer-ID wird bereits verwendet."
+            "error_UserIDsMismatch":"Benutzerkennungen stimmen nicht überein.",
+            "error_PasswordsMismatch":"Kennwörter stimmen nicht überein.",
+            "error_UserIDExists":"Diese Benutzerkennung wird bereits verwendet."
         },
         "userstatus":{
             "SuspendedUser":"Gesperrter Benutzer",
@@ -167,28 +184,28 @@
             "tab_video":"Video",
             "show_more":"Mehr anzeigen",
             "show_less":"Weniger anzeigen",
-            "no_submissions":"Noch keine Einreichungen.",
+            "no_submissions":"Noch keine Werke.",
             "load_more":"Mehr laden",
-            "loading_submissions":"Einreichungen werden geladen...",
-            "private":"Privat",
+            "loading_submissions":"Werke werden geladen...",
+            "private":"Nicht öffentlich",
             "view_details":"Details anzeigen"
         },
         "userinterfaceoptions":{
-            "theme":"Thema",
+            "theme":"Erscheinungsbild",
             "theme_light":"Hell",
             "theme_dark":"Dunkel",
-            "language":"Sprachen",
-            "enable_vertical_direction":"Vertikalrichtung ermüglichen"
+            "language":"Sprache",
+            "enable_vertical_direction":"Senkrechte Schreibrichtung einschalten"
         },
         "postview":{
             "prev_post":"Vorheriger Beitrag",
             "next_post":"Nächster Beitrag",
             "btn_Modify":"Bearbeiten",
             "btn_Delete":"Löschen",
-            "loading_post":"Beitrag laden",
+            "loading_post":"Beitrag wird geladen",
             "post_not_found":"Seite nicht gefunden",
-            "post_error":"Beitrags-Fehler",
-            "unknown_author":"Unbekannter Autor",
+            "post_error":"Fehler beim Laden des Beitrags",
+            "unknown_author":"Unbekannter Verfasser",
             "more_from_artist":"Mehr von diesem Künstler",
             "post_contents_placeholder":"Beitragsinhalt wird hier angezeigt.",
             "confirm_delete":"Beitrag löschen?"
@@ -197,17 +214,17 @@
             "lbl_title":"Neuen Beitrag erstellen",
             "scr_EditPost":"Beitrag bearbeiten",
             "lbl_post_title":"Titel",
-            "tbx_title_Placeholder":"Gib den Titel ein hier. ",
+            "tbx_title_Placeholder":"Gib hier den Titel ein.",
             "lbl_description":"Beschreibung",
-            "lbl_uploadfile":"Datei hochladen",
+            "lbl_uploadfile":"Datei(en) hochladen",
             "txt_description_Placeholder":"Erzähle uns von deiner Kunst",
-            "lbl_tags":"Hashtag(s)",
-            "tbx_tags_Placeholder":"z.B. Malerei, abstrakt, modern",
+            "lbl_tags":"Schlagwörter",
+            "tbx_tags_Placeholder":"z. B. Malerei, abstrakt, modern",
             "btn_Submit":"Beitrag erstellen",
             "btn_Update":"Beitrag aktualisieren",
             "btn_Reset":"Zurücksetzen",
             "btn_Cancel":"Abbrechen",
-            "error_login_required":"Du musst eingeloggt sein, um zu posten.",
+            "error_login_required":"Du musst angemeldet sein, um Beiträge zu veröffentlichen.",
             "error_load_failed":"Beitragsdaten konnten nicht geladen werden.",
             "error_submit_failed":"Beitrag konnte nicht gesendet werden.",
             "error_invalid_file_type":"Es können nur Bilddateien hochgeladen werden.",
@@ -215,7 +232,7 @@
         },
         "replieslist":{
             "lbl_Replies":"Antworten",
-            "reply_submission_error":"Antwortenbeitragsfehler ausgetreten. ",
+            "reply_submission_error":"Beim Senden der Antwort ist ein Fehler aufgetreten.",
             "no_replies":"Noch keine Antworten. Sei der Erste!",
             "anonymous":"Anonym",
             "tbx_reply_Placeholder":"Schreibe eine Antwort…",
@@ -238,6 +255,16 @@
             "confirm_logout_all":"Von allen Konten auf diesem Gerät abmelden?",
             "welcome_title":"Willkommen bei Hwarang",
             "welcome_subtitle":"Melde dich an oder erstelle ein Konto, um Kunst zu teilen und zu entdecken."
+        },
+        "systemerror":{
+            "error":"Ein Fehler ist aufgetreten.",
+            "network_error":"Verbindungsfehler. Bitte prüfe deine Internetverbindung.",
+            "page_not_found":"Seite nicht gefunden."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Suchen…",
+            "btn_search":"Suchen",
+            "btn_reset":"Zurücksetzen"
         }
     }
 }

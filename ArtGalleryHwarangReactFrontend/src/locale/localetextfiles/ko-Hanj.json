@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"ko-HJ",
+        "code":"ko",
+        "code-variant":"ko-Hanj",
+        "code-REGIONCODE":"ko-KR",
         "name":"朝鮮語（朝漢文混用體）",
         "direction":3
-    }, 
+    },
     "format":{
         "number_decimal_separator":".",
         "number_group_separator":",",
-        "dateformat":"yyyy/MM/dd"
+        "standard_date_format":"yyyy/MM/dd"
     },
     "Texts":{
         "webinfo":{
@@ -19,36 +21,50 @@
             "Yes":"예",
             "No":"아니요",
             "Confirm":"確認",
-            "Cancel":"取消", 
-            "Open":"열기", 
+            "Cancel":"取消",
+            "Open":"열기",
             "Close":"닫기",
-            "Reset":"初期化"
+            "Reset":"初期化",
+            "View":"보기",
+            "Save":"貯藏",
+            "Post":"올리기",
+            "Insert":"揷入",
+            "Create":"만들기",
+            "Submit":"提出",
+            "Update":"更新",
+            "Edit":"修正",
+            "Modify":"變更",
+            "Delete":"削除",
+            "Back":"뒤로"
         },
         "statistic":{
-            "posts": {
-                "other":"揭示글"
+            "posts":{
+                "other":"揭示物"
             },
-            "following": {
-                "other":"팔로잉"
+            "following":{
+                "other":"購讀"
             },
-            "followers": {
-                "other":"팔로워"
+            "followers":{
+                "other":"購讀者"
             },
-            "Replies": {
+            "users":{
+                "other":"使用者"
+            },
+            "Replies":{
                 "other":"덧글"
             }
         },
         "statistic_with_count":{
-            "posts": {
-                "other":"{{count}} 揭示글"
+            "posts":{
+                "other":"{{count}} 揭示物"
             },
-            "following": {
-                "other":"{{count}} 팔로잉"
+            "following":{
+                "other":"{{count}} 購讀"
             },
-            "followers": {
-                "other":"{{count}} 팔로워"
+            "followers":{
+                "other":"{{count}} 購讀者"
             },
-            "Replies": {
+            "Replies":{
                 "other":"{{count}} 덧글"
             }
         },
@@ -65,14 +81,14 @@
             "displayoptions":"標示設定"
         },
         "userinfo":{
-            "userindex1st":"使用者索引１", 
-            "userindex2nd":"使用者索引２", 
-            "userindex3rd":"使用者索引３", 
+            "userindex1st":"使用者索引１",
+            "userindex2nd":"使用者索引２",
+            "userindex3rd":"使用者索引３",
             "userID":"使用者아이디",
             "userpassword":"暗號",
             "userpassword2nd":"二次暗號",
             "userstatus":"使用者狀態",
-            "userlevel":"使用者係級",
+            "userlevel":"使用者等級",
             "userjoindate":"加入날자",
             "useremail":"電子郵便",
             "userphonenumber":"電話番號",
@@ -81,26 +97,26 @@
             "useraltname":"別名"
         },
         "useroptions":{
-            "Login":"로그인",
-            "Logout":"로그아웃",
+            "Login":"接續",
+            "Logout":"接續끊기",
             "SignUp":"會員加入",
             "notification":"알림",
-            "directmessage":"直接메세지",
+            "directmessage":"쪽紙",
             "add_account":"＋ 計定追加",
-            "settings":"設定" 
+            "settings":"設定"
         },
         "login":{
-            "scr_Login":"로그인",
+            "scr_Login":"接續",
             "lbl_userId":"아이디",
             "lbl_userPW":"暗號",
             "tbx_userId_Placeholder":"使用者아이디를여기에入力하세요。",
             "tbx_userPW_Placeholder":"暗號를여기에入力하세요。",
-            "btn_Login":"로그인",
+            "btn_Login":"接續",
             "btn_Signup":"會員加入",
             "btn_reset":"初期化",
             "error_AllFieldsRequired":"모든項目을入力해주세요。",
-            "error_InvalidCredentials":"使用者아이디또는祕密番號가옳바르지않습니다。"
-        }, 
+            "error_InvalidCredentials":"使用者아이디또는暗號가올바르지않습니다。"
+        },
         "signup":{
             "scr_SignUp":"會員加入",
             "lbl_UserId":"使用者아이디",
@@ -114,7 +130,7 @@
             "btn_GoBack":"뒤로가기",
             "btn_Reset":"初期化",
             "btn_Signup":"會員加入",
-            "error_AllFieldsRequired":"모든항목을入力해주세요。",
+            "error_AllFieldsRequired":"모든項目을入力해주세요。",
             "error_UserIDsMismatch":"아이디가一致하지않습니다。",
             "error_PasswordsMismatch":"暗號가一致하지않습니다。",
             "error_UserIDExists":"이미使用中인아이디입니다。"
@@ -139,24 +155,24 @@
             "user_not_found":"使用者를찾을수없습니다。",
             "load_error":"使用者情報를불러오지못했습니다。",
             "not_set":"未設定",
-            "no_following":"아직팔로우한使用者가없습니다。",
-            "no_followers":"아직팔로워가없습니다。",
+            "no_following":"아직購讀한使用者가없습니다。",
+            "no_followers":"아직購讀者가없습니다。",
             "btn_edit_profile":"프로필編輯",
             "edit_profile_title":"프로필編輯",
             "tbx_username_placeholder":"表示이름을入力하세요",
             "tbx_alt_name_placeholder":"代替이름을入力하세요",
             "tbx_description_placeholder":"自己紹介를作成해보세요",
             "btn_save_profile":"變更事項貯藏",
-            "profile_update_failed":"프로필업데이트에失敗했습니다。다시試圖해주세요。"
+            "profile_update_failed":"프로필修正에失敗했습니다。다시試圖해주세요。"
         },
         "personalpage":{
             "tab_all":"全體",
             "tab_blogcontent":"블로그글",
-            "tab_image2d":"2D이미지",
+            "tab_image2d":"2D그림",
             "tab_animation2d":"2D애니메이션",
             "tab_object3d":"3D作品",
-            "tab_audio":"오디오",
-            "tab_video":"비디오",
+            "tab_audio":"소리",
+            "tab_video":"動映像",
             "show_more":"더보기",
             "show_less":"접기",
             "no_submissions":"아직揭示物이없습니다。",
@@ -166,11 +182,11 @@
             "view_details":"詳細情報"
         },
         "userinterfaceoptions":{
-            "theme":"테마",
+            "theme":"畵面모양",
             "theme_light":"밝게",
             "theme_dark":"어둡게",
             "language":"言語",
-            "enable_vertical_direction":"세로쓰기活成化"
+            "enable_vertical_direction":"세로쓰기켜기"
         },
         "postview":{
             "prev_post":"以前揭示物",
@@ -179,7 +195,7 @@
             "btn_Delete":"削除",
             "loading_post":"揭示物불러오는中",
             "post_not_found":"揭示物없음",
-            "post_error":"揭示誤謬: ",
+            "post_error":"揭示物誤謬",
             "unknown_author":"알수없는作家",
             "more_from_artist":"이作家의다른作品",
             "post_contents_placeholder":"揭示物內容이여기에標示됩니다。",
@@ -193,14 +209,14 @@
             "lbl_description":"說明",
             "lbl_uploadfile":"올릴파일",
             "txt_description_Placeholder":"作品에대해說明해주세요",
-            "lbl_tags":"태그",
+            "lbl_tags":"꼬리票",
             "tbx_tags_Placeholder":"例：그림、抽象、現代",
             "btn_Submit":"올리기",
             "btn_Update":"修正하기",
             "btn_Reset":"初期化",
             "btn_Cancel":"取消",
-            "error_login_required":"揭示物을올리려면로그인해야합니다。",
-            "error_load_failed":"揭示物데이터를불러오지못했습니다。",
+            "error_login_required":"揭示物을올리려면接續해야합니다。",
+            "error_load_failed":"揭示物資料를불러오지못했습니다。",
             "error_submit_failed":"揭示物올리기에失敗했습니다。",
             "error_invalid_file_type":"畵像파일만올릴수있습니다。",
             "error_file_too_large":"各파일의크기는25MB以下여야합니다。"
@@ -221,15 +237,25 @@
         },
         "homepage":{
             "welcome_back":"다시오신것을歡迎합니다",
-            "lbl_accounts":"로그인된計定",
+            "lbl_accounts":"接續된計定",
             "badge_current":"現在",
             "btn_switch":"轉換",
             "btn_view_profile":"프로필보기",
             "btn_new_post":"새揭示物",
-            "btn_logout_all":"全體로그아웃",
-            "confirm_logout_all":"이機器의모든計定을로그아웃할가요？",
+            "btn_logout_all":"全體接續끊기",
+            "confirm_logout_all":"이機器의로그인된모든計定을로그아웃할가요？",
             "welcome_title":"花廊에오신것을歡迎합니다",
-            "welcome_subtitle":"로그인하거나計定을만들어作品을共有하고鑑賞해보세요。"
+            "welcome_subtitle":"接續하거나計定을만들어作品을共有하고鑑賞해보세요。"
+        },
+        "systemerror":{
+            "error":"誤謬가發生했습니다。",
+            "network_error":"通信誤謬가發生했습니다。連結狀態를確認해주세요。",
+            "page_not_found":"쪽을찾을수없습니다。"
+        },
+        "search":{
+            "tbx_search_Placeholder":"찾기…",
+            "btn_search":"찾기",
+            "btn_reset":"初期化"
         }
     }
 }

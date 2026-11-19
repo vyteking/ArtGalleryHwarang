@@ -1,13 +1,15 @@
 {
     "LocaleInfo":{
-        "code":"es-ES",
+        "code":"es",
+        "code-variant":"es-Latn",
+        "code-REGIONCODE":"es-ES",
         "name":"Español",
         "direction":0
-    }, 
+    },
     "format":{
         "number_decimal_separator":",",
         "number_group_separator":".",
-        "dateformat":"dd/MM/yyyy"
+        "standard_date_format":"dd/MM/yyyy"
     },
     "Texts":{
         "webinfo":{
@@ -19,43 +21,58 @@
             "Yes":"Sí",
             "No":"No",
             "Confirm":"Confirmar",
-            "Cancel":"Cancelar", 
-            "Open":"Abrir", 
+            "Cancel":"Cancelar",
+            "Open":"Abrir",
             "Close":"Cerrar",
-            "Reset":"Reajustar"
+            "Reset":"Restablecer",
+            "View":"Ver",
+            "Save":"Guardar",
+            "Post":"Publicar",
+            "Insert":"Insertar",
+            "Create":"Crear",
+            "Submit":"Enviar",
+            "Update":"Actualizar",
+            "Edit":"Editar",
+            "Modify":"Modificar",
+            "Delete":"Eliminar",
+            "Back":"Volver"
         },
         "statistic":{
-            "posts": {
+            "posts":{
                 "one":"publicación",
                 "other":"publicaciones"
             },
-            "following": {
-                "one":"siguiente",
-                "other":"siguientes"
+            "following":{
+                "one":"seguido",
+                "other":"seguidos"
             },
-            "followers": {
+            "followers":{
                 "one":"seguidor",
                 "other":"seguidores"
             },
-            "Replies": {
+            "users":{
+                "one":"usuario",
+                "other":"usuarios"
+            },
+            "Replies":{
                 "one":"respuesta",
                 "other":"respuestas"
             }
         },
         "statistic_with_count":{
-            "posts": {
+            "posts":{
                 "one":"{{count}} publicación",
                 "other":"{{count}} publicaciones"
             },
-            "following": {
-                "one":"{{count}} siguiente",
-                "other":"{{count}} siguientes"
+            "following":{
+                "one":"{{count}} seguido",
+                "other":"{{count}} seguidos"
             },
-            "followers": {
+            "followers":{
                 "one":"{{count}} seguidor",
                 "other":"{{count}} seguidores"
             },
-            "Replies": {
+            "Replies":{
                 "one":"{{count}} respuesta",
                 "other":"{{count}} respuestas"
             }
@@ -70,60 +87,60 @@
             "random_submission":"Publicación aleatoria"
         },
         "footer":{
-            "displayoptions":"Opción de visualización"
+            "displayoptions":"Opciones de visualización"
         },
         "userinfo":{
-            "userindex1st":"1o índice de usuario", 
-            "userindex2nd":"2o índice de usuario", 
-            "userindex3rd":"3o índice de usuario", 
+            "userindex1st":"1.er índice de usuario",
+            "userindex2nd":"2.º índice de usuario",
+            "userindex3rd":"3.er índice de usuario",
             "userID":"ID de usuario",
             "userpassword":"Contraseña",
-            "userpassword2nd":"2a contraseña",
+            "userpassword2nd":"2.ª contraseña",
             "userstatus":"Estado de usuario",
             "userlevel":"Nivel de usuario",
-            "userjoindate":"Fecha de ingreso",
+            "userjoindate":"Fecha de registro",
             "useremail":"Correo electrónico",
             "userphonenumber":"Número de teléfono",
-            "username":"Nombre",
+            "username":"Nombre de usuario",
             "userdescription":"Descripción",
             "useraltname":"Nombre alternativo"
         },
         "useroptions":{
-            "Login":"Entrar",
-            "Logout":"Deconectarse",
+            "Login":"Iniciar sesión",
+            "Logout":"Cerrar sesión",
             "SignUp":"Registrarse",
-            "notification":"Notificación",
-            "directmessage":"MD",
-            "add_account":"+ Agregar cuenta",
+            "notification":"Notificaciones",
+            "directmessage":"Mensajes",
+            "add_account":"+ Añadir cuenta",
             "settings":"Configuración"
         },
         "login":{
             "scr_Login":"Inicio de sesión",
             "lbl_userId":"ID de usuario",
             "lbl_userPW":"Contraseña",
-            "tbx_userId_Placeholder":"Inserta tu ID de usuario aquí. ",
-            "tbx_userPW_Placeholder":"Inserta tu contraseña aquí. ",
-            "btn_Login":"Entrar",
+            "tbx_userId_Placeholder":"Escribe tu ID de usuario aquí.",
+            "tbx_userPW_Placeholder":"Escribe tu contraseña aquí.",
+            "btn_Login":"Iniciar sesión",
             "btn_Signup":"Registrarse",
-            "btn_reset":"Reajustar",
+            "btn_reset":"Restablecer",
             "error_AllFieldsRequired":"Todos los campos son obligatorios.",
             "error_InvalidCredentials":"El ID de usuario o la contraseña son incorrectos."
-        }, 
+        },
         "signup":{
-            "scr_SignUp":"Inscripción",
+            "scr_SignUp":"Registro",
             "lbl_UserId":"ID de usuario",
-            "tbx_UserId_Placeholder":"Inserta tu ID de usuario aquí. ",
-            "lbl_ConfirmUserID":"Confirmar la ID de usuario",
-            "tbx_ConfirmUserID_Placeholder":"Repite tu ID de usuario aquí. ",
+            "tbx_UserId_Placeholder":"Escribe tu ID de usuario aquí.",
+            "lbl_ConfirmUserID":"Confirmar el ID de usuario",
+            "tbx_ConfirmUserID_Placeholder":"Repite tu ID de usuario aquí.",
             "lbl_UserPW":"Contraseña",
-            "tbx_UserPW_Placeholder":"Inserta tu contraseña aquí. ",
+            "tbx_UserPW_Placeholder":"Escribe tu contraseña aquí.",
             "lbl_ConfirmUserPW":"Confirmar la contraseña",
-            "tbx_ConfirmUserPW_Placeholder":"Repite tu contraseña aquí. ",
+            "tbx_ConfirmUserPW_Placeholder":"Repite tu contraseña aquí.",
             "btn_GoBack":"Volver",
-            "btn_Reset":"Reajustar",
+            "btn_Reset":"Restablecer",
             "btn_Signup":"Registrarse",
             "error_AllFieldsRequired":"Todos los campos son obligatorios.",
-            "error_UserIDsMismatch":"Los IDs de usuario no coinciden.",
+            "error_UserIDsMismatch":"Los ID de usuario no coinciden.",
             "error_PasswordsMismatch":"Las contraseñas no coinciden.",
             "error_UserIDExists":"Este ID de usuario ya está en uso."
         },
@@ -132,7 +149,7 @@
             "NormalUser":"Usuario normal",
             "Admin":"Administrador",
             "Developer":"Desarrollador",
-            "ProjectManager":"Gestor de proyectos",
+            "ProjectManager":"Jefe de proyecto",
             "Founder":"Fundador"
         },
         "userlevel":{
@@ -182,12 +199,12 @@
         },
         "postview":{
             "prev_post":"Publicación anterior",
-            "next_post":"Publicación siguente",
-            "btn_Modify":"Modificar",
-            "btn_Delete":"Borrar",
+            "next_post":"Publicación siguiente",
+            "btn_Modify":"Editar",
+            "btn_Delete":"Eliminar",
             "loading_post":"Cargando la publicación",
             "post_not_found":"Página no encontrada",
-            "post_error":"Error de publicación",
+            "post_error":"No se pudo cargar la publicación.",
             "unknown_author":"Autor desconocido",
             "more_from_artist":"Más de este artista",
             "post_contents_placeholder":"El contenido de la publicación se mostrará aquí.",
@@ -197,12 +214,12 @@
             "lbl_title":"Crear nueva publicación",
             "scr_EditPost":"Editar publicación",
             "lbl_post_title":"Título",
-            "tbx_title_Placeholder":"Inserta el título aquí. ",
+            "tbx_title_Placeholder":"Escribe el título aquí.",
             "lbl_description":"Descripción",
-            "lbl_uploadfile":"Subir el archivo",
+            "lbl_uploadfile":"Subir archivo(s)",
             "txt_description_Placeholder":"Cuéntanos sobre tu arte",
             "lbl_tags":"Etiqueta(s)",
-            "tbx_tags_Placeholder":"p.ej. pintura, abstracto, moderno",
+            "tbx_tags_Placeholder":"p. ej., pintura, abstracto, moderno",
             "btn_Submit":"Crear publicación",
             "btn_Update":"Actualizar publicación",
             "btn_Reset":"Restablecer",
@@ -215,17 +232,17 @@
         },
         "replieslist":{
             "lbl_Replies":"Respuestas",
-            "reply_submission_error":"Error de las respuestas de publicación ocurrió. ",
+            "reply_submission_error":"Se produjo un error al enviar la respuesta.",
             "no_replies":"Aún no hay respuestas. ¡Sé el primero!",
             "anonymous":"Anónimo",
             "tbx_reply_Placeholder":"Escribe una respuesta…",
             "btn_submit_reply":"Enviar respuesta",
             "btn_edit":"Editar",
-            "btn_delete":"Borrar",
+            "btn_delete":"Eliminar",
             "btn_save":"Guardar",
-            "confirm_delete_reply":"¿Borrar esta respuesta?",
+            "confirm_delete_reply":"¿Eliminar esta respuesta?",
             "error_edit_failed":"No se pudo actualizar la respuesta.",
-            "error_delete_failed":"No se pudo borrar la respuesta."
+            "error_delete_failed":"No se pudo eliminar la respuesta."
         },
         "homepage":{
             "welcome_back":"Bienvenido de nuevo",
@@ -235,9 +252,19 @@
             "btn_view_profile":"Ver perfil",
             "btn_new_post":"Nueva publicación",
             "btn_logout_all":"Cerrar todas las sesiones",
-            "confirm_logout_all":"¿Cerrar sesión de todas las cuentas en este dispositivo?",
+            "confirm_logout_all":"¿Cerrar sesión en todas las cuentas en este dispositivo?",
             "welcome_title":"Bienvenido a Hwarang",
             "welcome_subtitle":"Inicia sesión o crea una cuenta para compartir y explorar arte."
+        },
+        "systemerror":{
+            "error":"Se produjo un error.",
+            "network_error":"Error de red. Comprueba tu conexión.",
+            "page_not_found":"Página no encontrada."
+        },
+        "search":{
+            "tbx_search_Placeholder":"Buscar…",
+            "btn_search":"Buscar",
+            "btn_reset":"Restablecer"
         }
     }
 }
